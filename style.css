@@ -53,10 +53,11 @@ body {
 
 /* ФОТО */
 .hero-right img {
-    width: 900px;
+    width: 80%;
+    max-width: 900px;
     height: auto;
-    border-radius: 10px;
-
+    border-radius: 20px;
+}
     opacity: 0;
     transform: translateY(40px);
     animation: fadeIn 1s ease forwards;
