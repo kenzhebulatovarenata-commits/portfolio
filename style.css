@@ -292,7 +292,8 @@ footer a:hover {
     /* ТЕКСТ */
     .hero-left {
         padding-left: 0;
-        max-width: 100%;
+        max-width: 100% !important:
+        width: 100% !important:
     }
 
     /* 🔥 ЗАГОЛОВОК МЕНЬШЕ */
@@ -305,7 +306,7 @@ footer a:hover {
     .description {
         font-size: 18px;
         line-height: 1.6;
-        max-width: 100%;
+        max-width: 100% !important:
         margin-top: 18px;
     }
 
@@ -328,8 +329,8 @@ footer a:hover {
     /* 📦 ПРОЕКТЫ */
     .projects {
         padding: 20px;
-        display: flex;
-        flex-direction: column;
+        display: flex !important:
+        flex-direction: column !important:
         align-items: center; /* центрируем */
         gap: 20px;
     }
