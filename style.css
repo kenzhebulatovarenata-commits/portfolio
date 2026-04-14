@@ -23,6 +23,7 @@ body {
     display: flex;
     min-height: 100vh;
     padding: 60px 40px;
+    align-items: flex-start; /* ← ВАЖНО */
 }
 
 /* ЛЕВАЯ ЧАСТЬ */
@@ -30,7 +31,8 @@ body {
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* ← ВВЕРХ */
+    padding-top: 80px; /* ← отступ сверху */
 }
 
 .hero-left h1 {
@@ -111,6 +113,13 @@ body {
     flex-direction: column;
     gap: 40px;
     padding: 40px;
+    position: relative;
+    margin-top: -200px; /* ← поднимаем вверх */
+    z-index: 2;
+}
+.projects {
+    background: #f2f2f2;
+    padding-top: 100px;
 }
 
 /* КАРТОЧКИ */
