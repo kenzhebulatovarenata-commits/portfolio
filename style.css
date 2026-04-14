@@ -93,7 +93,7 @@ body {
     height: auto;
     border-radius: 20px;
     opacity: 1;
-    transform: translateX(-60px) translateY(-100px);
+    transform: translateX(-60px) translateY(-150px) !important;
     position: relative;
  
 }
