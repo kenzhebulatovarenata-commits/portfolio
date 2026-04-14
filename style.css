@@ -81,6 +81,7 @@ body {
     position: relative;
     z-index: 1;
     top: 80px;
+    padding-top: 40px
 }
 
 /* ФОТО (УВЕЛИЧЕНО В 3 РАЗА +++) */
@@ -90,7 +91,7 @@ body {
     height: auto;
     border-radius: 20px;
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateX(-20px) translateY(20px);
     position: relative;
     z-index: 1;
 
