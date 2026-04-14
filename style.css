@@ -104,17 +104,6 @@ body {
     }
 }
 
-@keyframes floatScroll {
-    0% {
-        transform: translateY(-40px);
-    }
-    50% {
-        transform: translateY(40px);
-    }
-    100% {
-        transform: translateY(-40px);
-    }
-}
 
 /* ПРОЕКТЫ */
 .projects {
