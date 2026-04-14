@@ -53,9 +53,9 @@ body {
 
 /* ФОТО */
 .hero-right img {
-    width: 300px;
+    width: 900px;
     height: auto;
-    border-radius: 20px;
+    border-radius: 10px;
 
     opacity: 0;
     transform: translateY(40px);
