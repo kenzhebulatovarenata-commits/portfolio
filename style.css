@@ -218,6 +218,31 @@ body {
     background: red;
 }
 
+.hero-description-card {
+    margin-top: 20px;
+
+    padding: 18px 22px;
+
+    background: #ff2d2d; /* красная плашка */
+    color: white;
+
+    border-radius: 14px;
+
+    font-family: "Inter Tight", sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+
+    transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+
+    max-width: 520px;
+}
+
+.hero-description-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.05);
+}
+
 /* ФУТЕР */
 footer {
     padding: 40px;
