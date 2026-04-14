@@ -51,24 +51,6 @@ body {
     height: fit-content;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(60px);
-        filter: blur(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-    }
-}
-
-.hero-right img {
-    opacity: 0;
-    animation: fadeIn 3.5s ease forwards;
-    animation-delay: 0.3s;
-}
 .hero h1 {
     font-family: 'BebasNeueCyrillic', sans-serif;
     font-size: 64px;
@@ -159,10 +141,28 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+        filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.hero-right img {
+    opacity: 0;
+    animation: fadeIn 3.5s ease forwards;
+    animation-delay: 0.3s;
+}
 /* ФОТО */
 .hero-right img {
     width: 80%;
-    max-width: 900px;
+    max-width: 1200px;
     height: auto;
     border-radius: 20px;
 }
