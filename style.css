@@ -79,28 +79,6 @@ body {
     animation-delay: 3s;
 }
 
-.hero-description-card {
-    margin-top: 20px;
-
-    padding: 18px 22px;
-
-    background: #a63535;
-    color: white;
-
-    border-radius: 14px;
-
-    font-family: "Inter Tight", sans-serif;
-    font-size: 16px;
-    line-height: 1.4;
-
-    max-width: 520px;
-
-    opacity: 0; /* важно */
-    animation: fadeUp 1s ease forwards;
-
-    animation-delay: 3s; /* появится ПОСЛЕ заголовка */
-}
-
 /* ПРАВАЯ ЧАСТЬ */
 .hero-right {
     width: 50%;
