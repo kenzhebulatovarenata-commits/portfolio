@@ -82,9 +82,9 @@ body {
     align-items: flex-start;
     position: relative;
     z-index: 1;
-    top: 40px;
+    top: 20px;
     padding-top: 0;
-    padding-left: 150px;
+    padding-left: 300px;
 }
 
 /* ФОТО (УВЕЛИЧЕНО В 3 РАЗА +++) */
