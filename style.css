@@ -84,10 +84,12 @@ body {
 
 /* ФОТО (УВЕЛИЧЕНО В 3 РАЗА +++) */
 .hero-right img {
-    width: 2000px;
+    width: 2500px;
     max-width: 95%;
     height: auto;
     border-radius: 20px;
+    position: relative;
+z-index: 1;
 
     opacity: 0;
     transform: translateY(40px);
@@ -131,9 +133,7 @@ body {
     padding: 40px;
     position: relative;
     margin-top: -200px; /* ← поднимаем вверх */
-    z-index: 2;
-}
-.projects {
+    z-index: 3;
     background: #f2f2f2;
     padding-top: 100px;
 }
