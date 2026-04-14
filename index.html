@@ -81,24 +81,21 @@
         <a href="mailto:your@email.com">your@email.com</a><br>
         <a href="#">Instagram</a>
         <a href="#">LinkedIn</a>
-   <script>
+<script>
 window.addEventListener("scroll", () => {
     const image = document.querySelector(".hero-right img");
     if (!image) return;
 
     let scrollY = window.scrollY;
-
-    image.style.transform = `translateY(${scrollY * -0.2}px)`;
+    image.style.transform = translateY(${scrollY * -0.2}px);
 });
 </script>
-        <script>
+
+<script>
 document.querySelectorAll(".project-card").forEach(card => {
     const video = card.querySelector("video");
 
-    card.addEventListener("mouseenter", () => {
-        video.play();
-    });
-
+    card.addEventListener("mouseenter", () => video.play());
     card.addEventListener("mouseleave", () => {
         video.pause();
         video.currentTime = 0;
