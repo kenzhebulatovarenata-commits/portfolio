@@ -93,9 +93,6 @@ z-index: 1;
 
     opacity: 0;
     transform: translateY(40px);
-
-    animation: fadeIn 2.5s ease forwards;
-    animation-delay: 2.2s;
 }
 
 /* АНИМАЦИЯ ПОЯВЛЕНИЯ */
