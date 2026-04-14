@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Портфолио Ренаты</title>
+    <title>Рената Кенжебулатова</title>
 
     <!-- Шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter+Tight:wght@400&display=swap" rel="stylesheet">
@@ -66,16 +66,22 @@
         <a href="#">LinkedIn</a>
     </footer>
 <script>
+window.addEventListener("DOMContentLoaded", () => {
+    const image = document.querySelector(".hero-right img");
+    if (!image) return;
+
+    image.style.opacity = "1";
+    image.style.transform = "translateY(0)";
+});
+
 window.addEventListener("scroll", () => {
     const image = document.querySelector(".hero-right img");
     if (!image) return;
 
     let scrollY = window.scrollY;
 
-   image.style.transform = `translateY(${scrollY * -0.3}px) scale(${1 - scrollY/2000})`;
-
-    let opacity = 1 - scrollY / 500;
-    image.style.opacity = opacity;
+    image.style.transform = `translateY(${scrollY * -0.2}px)`;
+    image.style.opacity = 1 - scrollY / 500;
 });
 </script>
 </body>
