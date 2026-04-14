@@ -83,11 +83,12 @@
         <a href="#">LinkedIn</a>
 <script>
 window.addEventListener("scroll", () => {
-    const image = document.querySelector(".hero-right img");
-    if (!image) return;
+    const wrapper = document.querySelector(".photo-wrapper");
+    if (!wrapper) return;
 
-    let scrollY = window.scrollY;
-    image.style.transform = translateY(${scrollY * -0.2}px);
+    const scrollY = window.scrollY;
+
+    wrapper.style.transform = `translateY(${scrollY * -0.2}px)`;
 });
 </script>
 
@@ -95,7 +96,10 @@ window.addEventListener("scroll", () => {
 document.querySelectorAll(".project-card").forEach(card => {
     const video = card.querySelector("video");
 
-    card.addEventListener("mouseenter", () => video.play());
+    card.addEventListener("mouseenter", () => {
+        video.play();
+    });
+
     card.addEventListener("mouseleave", () => {
         video.pause();
         video.currentTime = 0;
