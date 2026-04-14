@@ -22,7 +22,8 @@ body {
 .hero {
     display: flex;
     min-height: 100vh;
-    
+    position: relative;
+    z-index: 1;
     padding: 40px;
     align-items: flex-start; /* ← ВАЖНО */
 }
@@ -131,10 +132,10 @@ body {
     gap: 40px;
     padding: 40px;
     padding-top: 0;
-    margin-top: -120px; /* ← поднимаем вверх */
+    margin-top: -200px; /* ← поднимаем вверх */
     
     position: relative;
-    z-index: 5;
+    z-index: 10;
     
     background: #f2f2f2;
    
