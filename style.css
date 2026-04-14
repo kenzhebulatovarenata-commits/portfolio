@@ -20,7 +20,11 @@ body {
 
 /* HERO (2 КОЛОНКИ) */
 .hero {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 100vh;
+    gap: 40px;
     min-height: auto;
     position: relative;
     padding: 40px;
@@ -34,7 +38,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* ← ВВЕРХ */
-    padding-top: 40px; /* ← отступ сверху */
+    padding-top: 40px;
+    padding-left: 60px;/* ← отступ сверху */
 }
 
 .hero-left h1 {
