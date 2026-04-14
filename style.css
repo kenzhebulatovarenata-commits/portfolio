@@ -74,7 +74,7 @@ body {
 
     opacity: 0;
     transform: translateY(-40px);
-    animation: fadeIn 3.5s ease forwards, floatScroll 8s ease-in-out infinite;
+    animation: fadeIn 3.5s ease forwards;
     animation-delay: 0.3s;
 }
 
