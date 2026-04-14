@@ -132,16 +132,12 @@ body {
     gap: 40px;
     padding: 40px;
     padding-top: 120px;
-    margin-top: -350px; /* ← поднимаем вверх */
+    margin-top: -600px; /* ← поднимаем вверх */
     
     position: relative;
     z-index: 10;
     
-    background: linear-gradient(
-        to bottom,
-        rgba(242,242,242,0.6),
-        #f2f2f2
-    );
+    background: #f2f2f2;
 }
 
 /* КАРТОЧКИ */
