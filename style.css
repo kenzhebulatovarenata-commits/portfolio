@@ -78,21 +78,24 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    position: sticky;
+    position: relative;
+    z-index: 1;
     top: 80px;
 }
 
 /* ФОТО (УВЕЛИЧЕНО В 3 РАЗА +++) */
 .hero-right img {
-    width: 2500px;
-    max-width: 95%;
+    width: 1200px;
+    max-width: none;
     height: auto;
     border-radius: 20px;
-    position: relative;
-z-index: 1;
-
     opacity: 0;
     transform: translateY(40px);
+    position: relative;
+    z-index: 1;
+
+   
+    
 }
 
 /* АНИМАЦИЯ ПОЯВЛЕНИЯ */
@@ -129,8 +132,8 @@ z-index: 1;
     gap: 40px;
     padding: 40px;
     position: relative;
-    margin-top: -200px; /* ← поднимаем вверх */
-    z-index: 3;
+    margin-top: -250px; /* ← поднимаем вверх */
+    z-index: 5;
     background: #f2f2f2;
     padding-top: 100px;
 }
