@@ -9,6 +9,20 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+    <script>
+window.addEventListener("scroll", () => {
+    const image = document.querySelector(".hero-right img");
+
+    let scrollY = window.scrollY;
+
+    // движение вверх
+    image.style.transform = `translateY(${scrollY * -0.2}px)`;
+
+    // плавное исчезновение
+    let opacity = 1 - scrollY / 500;
+    image.style.opacity = opacity;
+});
+</script>
 <body>
 
     <section class="hero">
