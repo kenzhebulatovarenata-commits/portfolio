@@ -81,10 +81,12 @@ body {
     justify-content: center;
     align-items: flex-start;
     position: relative;
+    margin-left: 60px;
     z-index: 1;
     top: 5px;
     padding-top: 5px;
     padding-left: 5px;
+    
 }
 
 /* ФОТО (УВЕЛИЧЕНО В 3 РАЗА +++) */
