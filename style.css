@@ -23,7 +23,7 @@ body {
     display: flex;
     min-height: 100vh;
     
-    padding: 40px 40px;
+    padding: 40px;
     align-items: flex-start; /* ← ВАЖНО */
 }
 
@@ -33,7 +33,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* ← ВВЕРХ */
-    padding-top: 80px; /* ← отступ сверху */
+    padding-top: 40px; /* ← отступ сверху */
 }
 
 .hero-left h1 {
@@ -82,19 +82,20 @@ body {
     position: relative;
     z-index: 1;
     top: 80px;
-    padding-top: 20px
+    padding-top: 40px
 }
 
 /* ФОТО (УВЕЛИЧЕНО В 3 РАЗА +++) */
 .hero-right img {
-    width: 1000px;
+    width: 1100px;
     max-width: none;
     height: auto;
     border-radius: 20px;
-    opacity: 0;
-    transform: translateX(-40px) translateY(20px);
+    opacity: 1;
+    transform: translateX(-60px) translateY(20px);
     position: relative;
     z-index: 1;
+    
 
    
     
