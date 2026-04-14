@@ -38,8 +38,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* ← ВВЕРХ */
-    padding-top: 40px;
-    padding-left: 60px;/* ← отступ сверху */
+    padding-top: 40px;/* ← отступ сверху */
+    padding-left: 100px;
 }
 
 .hero-left h1 {
