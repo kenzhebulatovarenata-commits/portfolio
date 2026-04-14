@@ -39,7 +39,7 @@ body {
     flex-direction: column;
     justify-content: flex-start; /* ← ВВЕРХ */
     padding-top: 40px;/* ← отступ сверху */
-    padding-left: 200px;
+    padding-left: 10px;
     max-width: 600px;
 }
 
