@@ -20,7 +20,54 @@ body {
 
 /* HERO БЛОК */
 .hero {
+    display: flex;
+    min-height: 100vh;
     padding: 60px 40px;
+}
+
+/* ЛЕВАЯ ЧАСТЬ */
+.hero-left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-left h1 {
+    font-family: 'BebasNeueCyrillic', sans-serif;
+    font-size: 64px;
+    line-height: 1.1;
+}
+
+/* ПРАВАЯ ЧАСТЬ */
+.hero-right {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+/* ФОТО */
+.hero-right img {
+    width: 300px;
+    height: auto;
+    border-radius: 20px;
+
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeIn 1s ease forwards;
+}
+
+/* АНИМАЦИЯ ПОЯВЛЕНИЯ */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero h1 {
