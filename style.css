@@ -131,12 +131,10 @@ body {
     gap: 40px;
     padding: 40px;
     padding-top: 120px;
-    margin-top: -600px; /* ← поднимаем вверх */
+    margin-top: -500px; /* ← поднимаем вверх */
     
     position: relative;
     z-index: 10;
-    
-    background-color: #f2f2f2;
 }
 
 /* КАРТОЧКИ */
