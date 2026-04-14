@@ -276,3 +276,65 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+/* ===================== */
+/* 📱 АДАПТИВ (МОБИЛКА) */
+/* ===================== */
+
+@media (max-width: 768px) {
+
+    /* HERO */
+    .hero {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    /* ЛЕВАЯ ЧАСТЬ */
+    .hero-left {
+        padding-left: 0;
+        max-width: 100%;
+    }
+
+    /* ЗАГОЛОВОК */
+    .hero-left h1 {
+        font-size: 40px;
+        line-height: 1.1;
+    }
+
+    /* ОПИСАНИЕ */
+    .description {
+        font-size: 15px;
+        line-height: 1.5;
+        max-width: 100%;
+        margin-top: 16px;
+    }
+
+    /* ФОТО */
+    .hero-right {
+        order: -1; /* фото вверх */
+        display: flex;
+        justify-content: center;
+    }
+
+    .photo-wrapper img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+
+    /* ПРОЕКТЫ */
+    .projects {
+        padding: 20px;
+    }
+
+    .project-card {
+        width: 100%;
+    }
+
+    /* УБИРАЕМ HOVER ДЛЯ ТЕЛЕФОНА */
+    .project-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
