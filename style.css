@@ -282,57 +282,66 @@ footer a:hover {
 
 @media (max-width: 768px) {
 
-    /* HERO */
+    /* HERO В КОЛОНКУ */
     .hero {
-        display: grid;
         grid-template-columns: 1fr;
         padding: 40px 20px;
         gap: 30px;
     }
 
-    /* ЛЕВАЯ ЧАСТЬ */
+    /* ТЕКСТ */
     .hero-left {
         padding-left: 0;
         max-width: 100%;
     }
 
-    /* ЗАГОЛОВОК */
+    /* 🔥 ЗАГОЛОВОК МЕНЬШЕ */
     .hero-left h1 {
-        font-size: 40px;
+        font-size: 34px;
         line-height: 1.1;
     }
 
-    /* ОПИСАНИЕ */
+    /* 🔥 ОПИСАНИЕ БОЛЬШЕ */
     .description {
-        font-size: 15px;
-        line-height: 1.5;
+        font-size: 18px;
+        line-height: 1.6;
         max-width: 100%;
-        margin-top: 16px;
+        margin-top: 18px;
     }
 
-    /* ФОТО */
+    /* 📸 ФОТО */
     .hero-right {
-        order: -1; /* фото вверх */
+        order: -1;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start; /* влево */
+    }
+
+    .photo-wrapper {
+        transform: translateX(-40px); /* сдвиг влево */
     }
 
     .photo-wrapper img {
         width: 100%;
-        max-width: 300px;
-        height: auto;
+        max-width: 320px;
     }
 
-    /* ПРОЕКТЫ */
+    /* 📦 ПРОЕКТЫ */
     .projects {
         padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* центрируем */
+        gap: 20px;
     }
 
+    /* 🔥 ПЛАШКИ БОЛЬШЕ И ПО ЦЕНТРУ */
     .project-card {
         width: 100%;
+        max-width: 340px;
+        height: 220px;
     }
 
-    /* УБИРАЕМ HOVER ДЛЯ ТЕЛЕФОНА */
+    /* убираем hover для мобилы */
     .project-card:hover {
         transform: none;
         box-shadow: none;
