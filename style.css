@@ -34,13 +34,13 @@ body {
 
 /* ЛЕВАЯ ЧАСТЬ */
 .hero-left {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* ← ВВЕРХ */
     padding-top: 40px;/* ← отступ сверху */
     padding-left: 10px;
-    max-width: 600px;
+    max-width: none;
 }
 
 .hero-left h1 {
@@ -75,7 +75,9 @@ body {
     
     font-family: "Inter Tight", sans-serif;
     font-size: 24px;
-    max-width: 650px;
+    max-width: none;
+    width: 100%;
+    
     
     color: #111;
 
