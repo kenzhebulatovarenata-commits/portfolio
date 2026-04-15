@@ -163,12 +163,15 @@ body {
 
     width: 100%;
     padding: 40px;
+    height: 360px;
 
     gap: 40px;
 
     background: white;
     border-radius: 20px;
+    overflow: hidden;
 
+    background: white;
     text-decoration: none;
     color: black;
 
@@ -198,7 +201,14 @@ body {
 /* ТЕКСТ СПРАВА */
 .project-info {
     flex: 1;
-    max-width: 500px;
+
+    background: white;
+
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .project-info h3 {
