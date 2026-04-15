@@ -85,7 +85,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInText 1s ease forwards;
-    animation-delay: 2.5s;
+    animation-delay: 2s;
 }
 
 /* ПРАВАЯ ЧАСТЬ */
