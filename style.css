@@ -163,7 +163,7 @@ body {
 
     width: 100%;
     padding: 40px;
-    height: 360px;
+    min-height: 360px;
 
     gap: 40px;
 
@@ -184,7 +184,8 @@ body {
     max-width: none;
 
     aspect-ratio: auto;
-    height: 100%;
+    min-height: 100%;
+    height: auto;
     
     overflow: hidden;
     border-radius: 16px;
