@@ -74,8 +74,9 @@ body {
     margin-top: 20px;
     
     font-family: "Inter Tight", sans-serif;
-    font-size: 18px;
-    max-width: 480px;
+    font-size: 24px;
+    max-width: none;
+    width: 100%;
     
     color: #111;
 
