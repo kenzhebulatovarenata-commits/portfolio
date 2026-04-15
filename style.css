@@ -163,7 +163,7 @@ body {
 
     width: 100%;
     padding: 40px;
-    aspect-ratio: 16 / 5;
+    height: 460px;
 
     gap: 40px;
 
@@ -183,13 +183,13 @@ body {
     flex: 1;
     max-width: none;
 
-    aspect-ratio: auto;
     height: 100%;
     height: auto;
     
     overflow: hidden;
     border-radius: 16px;
     padding: 0;
+    margin: 0;
 }
 
 .project-video-block video {
