@@ -161,6 +161,8 @@ body {
     width: fit-content;
 
     color: white;
+    .proj {
+    transition: transform 0.1s linear;
 }
 .proj h2 {
     font-weight: 200;
