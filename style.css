@@ -102,7 +102,7 @@ body {
 /* HERO */
 .hero {
     position: absolute;
-    bottom: 10vh;   /* ключ: под карточками в начале */
+    bottom: 15vh;   /* вот это ключ */
     left: 0;
     width: 100%;
 
@@ -111,7 +111,6 @@ body {
     z-index: 2;
     pointer-events: none;
 }
-
 .hero h1 {
     font-weight: 200; /* ExtraLight */
     font-size: 110px;
