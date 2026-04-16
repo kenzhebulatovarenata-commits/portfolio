@@ -41,13 +41,20 @@ body {
     transition: transform 0.3s ease;
     z-index: 10;
 }
-/* сцена скролла */
-.scroll-stage {
-    height: 100vh; /* да, магия скролла требует пространства */
-    perspective: 1200px;
+.scene-wrapper {
+    height: 170vh; /* ВАЖНО: это теперь таймлайн */
     position: relative;
-    z-index: 0;
 }
+
+.scroll-stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    perspective: 1200px;
+    overflow: hidden;
+}
+
 .scroll-spacer {
     height: 180vh; /* регулирует длину скролла после сцены */
 }
@@ -104,7 +111,7 @@ body {
 /* HERO */
 .hero {
     position: absolute;
-    bottom: 16vh;   /* вот это ключ */
+    bottom: 10vh;   /* вот это ключ */
     left: 0;
     width: 100%;
 
