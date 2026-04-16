@@ -1,11 +1,12 @@
+/* Подключение твоего шрифта */
 @font-face {
-    font-family: 'BebasNeueCyrillic';
-    src: url('fonts/BebasNeueCyrillic.ttf') format('truetype');
+    font-family: 'YourFont';
+    src: url('fonts/your-font.woff2') format('woff2'),
+         url('fonts/your-font.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
-/* ОБЩИЕ СБРОСЫ */
 * {
     margin: 0;
     padding: 0;
@@ -13,310 +14,57 @@
 }
 
 body {
-    background-color: #FFFFFF;
-    font-family: 'Inter Tight', sans-serif;
-    color: black;
+    background: #000;
+    color: #fff;
+    font-family: 'YourFont', sans-serif;
 }
 
-/* HERO (2 КОЛОНКИ) */
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.nav-left a:last-child {
+    margin-right: 0;
+}
+
+/* GALLERY */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 80px;
+}
+
+.card {
+    width: 180px;
+    height: 220px;
+    background: #2e7d32;
+    border-radius: 30px;
+}
+
+/* HERO TEXT */
 .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    min-height: 100vh;
-    gap: 60px;
-    min-height: auto;
-    position: relative;
-    padding: 10px 40px 40px 40px;
-    align-items: flex-start;
-    z-index: 1;
+    margin-top: 120px;
+    padding: 0 60px;
 }
 
-/* ЛЕВАЯ ЧАСТЬ */
-.hero-left {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* ← ВВЕРХ */
-    padding-top: 20px;/* ← отступ сверху */
-    padding-left: 10px;
-    max-width: none;
-}
-
-.hero-left h1 {
-    font-family: 'BebasNeueCyrillic', sans-serif;
-    font-size: 86px;
+.hero h1 {
+    font-size: 100px;
+    font-weight: 300;
     line-height: 1.1;
-    letter-spacing: 1.5px;
-
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fadeInText 1s ease forwards;
+    letter-spacing: 2px;
 }
-
-/* АНИМАЦИЯ СТРОК */
-.line1 {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInText 1s ease forwards;
-}
-
-.line2 {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInText 1s ease forwards;
-    animation-delay: 1s;
-}
-
-.hero-left p {
-    margin-top: 20px;
-    
-    font-family: "Inter Tight", sans-serif;
-    font-size: 24px;
-    max-width: none;
-    width: 100%;
-    
-    
-    color: #000000;
-
-    text-align: left;
-
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInText 1s ease forwards;
-    animation-delay: 2s;
-}
-
-/* ПРАВАЯ ЧАСТЬ */
-.hero-right {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    position: relative;
-    margin-left: 25px;
-    z-index: 1;
-    top: 5px;
-    
-}
-
-/* ФОТО (УВЕЛИЧЕНО В 3 РАЗА +++) */
-.hero-right img {
-    width: 900px;
-    max-width: none;
-    height: auto;
-    border-radius: 20px;
-    position: relative;
- 
-}
-
-/* АНИМАЦИЯ ПОЯВЛЕНИЯ */
-@keyframes fadeInText {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-        filter: blur(8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(60px);
-        filter: blur(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-    }
-}
-
-/* ПРОЕКТЫ */
-.projects {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    padding: 40px;
-    padding-top: 120px;
-    margin-top: -500px; /* ← поднимаем вверх */
-    
-    position: relative;
-    z-index: 10;
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-}
-
-.project-card {
-    display: flex;
-    align-items: stretch;
-
-    width: 100%;
-    padding: 0;
-    height: 460px !important;
-
-    gap: 0;
-
-    background: white;
-    border-radius: 30px;
-    overflow: hidden;
-
-    background: #F3F3F3;
-    text-decoration: none;
-    color: black;
-
-    transition: 0.3s ease;
-}
-
-/* ВИДЕО СЛЕВА */
-.project-video-block {
-    flex: 1;
-    max-width: none;
-
-    height: 100%;
-    
-    overflow: hidden;
-    border-radius: 16px;
-    padding: 0;
-    margin: 0;
-}
-
-.project-video-block video {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-/* ТЕКСТ СПРАВА */
-.project-info {
-    flex: 1;
-
-    background: #F3F3F3;
-
-    padding: 40px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.project-info h3 {
-    font-size: 28px;
-    margin-bottom: 12px;
-}
-
-.project-info p {
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-/* HOVER */
-.project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-}
-
-
-/* ФУТЕР */
-footer {
-    padding: 40px;
-    text-align: center;
-}
-
-footer p {
-    margin-bottom: 10px;
-}
-
-footer a {
-    display: inline-block;
-    margin: 5px 10px;
-    color: black;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-/* ===================== */
-/* 📱 АДАПТИВ (МОБИЛКА) */
-/* ===================== */
-.extra-projects {
-    display: flex;
-    gap: 40px;
-    padding: 40px;
-
-    width: 100%;
-}
-
-.extra-card {
-    flex: 1;
-
-    height: 460px;
-
-    background: #F3F3F3;
-    border-radius: 30px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 24px;
-    text-align: center;
-
-    transition: 0.3s ease;
-}
-
-/* hover как у остальных */
-.extra-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-}
-
-@media (max-width: 768px) {
-
-    /* HERO В ОДНУ КОЛОНКУ */
-    .hero {
-        grid-template-columns: 1fr;
-        padding: 30px 20px;
-        gap: 20px;
-    }
-
-    /* ЗАГОЛОВОК МЕНЬШЕ */
-    .hero-left h1 {
-        font-size: 42px !important;
-        line-height: 1.1;
-    }
-
-    /* ОПИСАНИЕ */
-    .hero-left p {
-        font-size: 18px !important;
-    }
-
-    /* ФОТО БЛИЖЕ К ЦЕНТРУ */
-    .hero-right {
-        width: 100% !important;
-        margin-left: 0 !important;
-
-        display: flex;
-        justify-content: center; /* центрируем */
-    }
-
-    /* УБИРАЕМ СТАРЫЕ СДВИГИ */
-    .hero-right img {
-        width: 80% !important;
-        max-width: 320px;
-        transform: none !important;
-    }
-}
-
