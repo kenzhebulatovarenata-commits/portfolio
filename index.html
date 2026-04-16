@@ -38,46 +38,26 @@
 const cards = document.querySelectorAll('.card');
 const header = document.querySelector('.header');
 
-let activeIndex = 2;   // реальное положение (плавное)
-let targetIndex = 2;   // куда стремимся
+let activeIndex = 2;
 
 function lerp(a, b, t) {
     return a + (b - a) * t;
 }
 
 // =========================
-// КЛИК → задаёт цель
+// КЛИК → меняем центр
 // =========================
 cards.forEach((card, i) => {
     card.addEventListener('click', () => {
-        targetIndex = i;
+        activeIndex = i;
+        update();
     });
 });
 
 // =========================
-// АВТО-МАГНИТ ПО СКРОЛЛУ
+// SCROLL + RENDER
 // =========================
-function updateTargetByScroll() {
-    const scrollY = window.scrollY;
-    const section = window.innerHeight;
-
-    const progress = scrollY / section;
-
-    // округляем к ближайшей карточке
-    targetIndex = Math.round(progress * (cards.length - 1));
-}
-
-// =========================
-// SPRING (инерция)
-// =========================
-function smoothStep() {
-    activeIndex = lerp(activeIndex, targetIndex, 0.10);
-}
-
-// =========================
-// РЕНДЕР
-// =========================
-function render() {
+function update() {
     const scrollY = window.scrollY;
     const maxScroll = window.innerHeight;
     const p = Math.min(scrollY / maxScroll, 1);
@@ -92,22 +72,29 @@ function render() {
 
         const x = offset * spacing;
 
-        // SCALE (фиксированная логика)
-        let scale =
-            offset === 0 ? lerp(1, 2.2, p) :
-            abs === 1 ? lerp(1, 1.5, p) :
-            1.1;
+        // SCALE (без “самодеятельности”)
+        let scale;
+        if (offset === 0) {
+            scale = lerp(1, 2.2, p);
+        } else if (abs === 1) {
+            scale = lerp(1, 1.5, p);
+        } else {
+            scale = 1.1;
+        }
 
         // Z depth
-        let z =
-            offset === 0 ? lerp(0, 250, p) :
-            abs === 1 ? lerp(0, 120, p) :
-            -120;
+        let z;
+        if (offset === 0) {
+            z = lerp(0, 250, p);
+        } else if (abs === 1) {
+            z = lerp(0, 120, p);
+        } else {
+            z = -120;
+        }
 
         // opacity
         let opacity = abs >= 2 ? 0.7 : 1;
 
-        // layering
         card.style.zIndex = 10 - abs;
 
         card.style.transform = `
@@ -120,18 +107,8 @@ function render() {
     });
 }
 
-// =========================
-// MAIN LOOP
-// =========================
-function animate() {
-    updateTargetByScroll(); // scroll → цель
-    smoothStep();           // spring
-    render();               // draw
-
-    requestAnimationFrame(animate);
-}
-
-animate();
+window.addEventListener('scroll', update);
+update();
 </script>
 </body>
 </html>
