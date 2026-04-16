@@ -39,19 +39,41 @@ const cards = document.querySelectorAll('.card');
 const header = document.querySelector('.header');
 
 let activeIndex = 2;
+let targetIndex = 2; // куда хотим прийти
 
 function lerp(a, b, t) {
     return a + (b - a) * t;
 }
 
-// hover вместо клика
+// -------------------------
+// hover с задержкой (anti-flicker)
+// -------------------------
 cards.forEach((card, i) => {
+    let hoverTimeout;
+
     card.addEventListener('mouseenter', () => {
-        activeIndex = i;
-        update();
+        clearTimeout(hoverTimeout);
+
+        hoverTimeout = setTimeout(() => {
+            targetIndex = i;
+        }, 70); // задержка против дёргания
+    });
+
+    card.addEventListener('mouseleave', () => {
+        clearTimeout(hoverTimeout);
     });
 });
 
+// -------------------------
+// плавное приближение activeIndex к targetIndex
+// -------------------------
+function smoothActive() {
+    activeIndex = lerp(activeIndex, targetIndex, 0.12);
+}
+
+// -------------------------
+// основной update
+// -------------------------
 function update() {
     const scrollY = window.scrollY;
     const maxScroll = window.innerHeight;
@@ -67,7 +89,7 @@ function update() {
 
         const x = offset * spacing;
 
-        // SCALE с заморозкой дальних
+        // SCALE (замороженные дальние)
         let scale;
         if (abs >= 2) {
             scale = 1.1;
@@ -79,7 +101,7 @@ function update() {
             scale = lerp(1, targetScale, p);
         }
 
-        // Z глубина
+        // Z depth
         let z;
         if (abs >= 2) {
             z = -120;
@@ -105,8 +127,16 @@ function update() {
     });
 }
 
-window.addEventListener('scroll', update);
-update();
+// -------------------------
+// loop вместо тупого scroll event
+// -------------------------
+function animate() {
+    smoothActive();
+    update();
+    requestAnimationFrame(animate);
+}
+
+animate();
 </script>
 </body>
 </html>
