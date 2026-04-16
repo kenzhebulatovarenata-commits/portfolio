@@ -2,117 +2,36 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Рената Кенжебулатова</title>
-
-    <!-- Шрифты -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter+Tight:wght@400&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renata</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <section class="hero">
-
-        <div class="hero-left">
-            <h1>
-                <span class="line1">Привет!</span><br>
-                <span class="line2">Меня зовут Рената!</span>
-            </h1>
-
-            <p class="description">
-    Я — motion designer, работаю с анимацией, визуальными системами и 3D-графикой. Уже 4 года развиваюсь в этой области, совмещая графический дизайн, моушен и 3D, и постоянно расширяю набор инструментов и подходов.
-</p>
-        </div>
-
-        <div class="hero-right">
-            <div class="photo-wrapper">
-                <img src="photo/me.png" alt="photo">
-            </div>
-        </div>
-
-    </section>
-
-    <section class="projects">
-
-       <a href="project1.html" class="project-card">
-
-    <div class="project-video-block">
-        <video muted loop playsinline preload="auto">
-            <source src="animations/notation2.mp4" type="video/mp4">
-        </video>
+<header class="header">
+    <div class="nav-left">
+        <a href="#">Работы</a>
+        <a href="#">Обо мне</a>
     </div>
-
-    <div class="project-info">
-        <h3>Проект 1</h3>
-        <p>Описание проекта, что это, зачем и что ты делала.</p>
+    <div class="nav-right">
+        <a href="#">Связаться со мной</a>
     </div>
+</header>
 
-</a>
-        <a href="project1.html" class="project-card">
-
-    <div class="project-video-block">
-        <video muted loop playsinline preload="auto">
-            <source src="animations/museum.mp4" type="video/mp4">
-        </video>
-    </div>
-
-    <div class="project-info">
-        <h3>Проект 1</h3>
-        <p>Описание проекта, что это, зачем и что ты делала.</p>
-    </div>
-
-</a>
-        <a href="project1.html" class="project-card">
-
-    <div class="project-video-block">
-        <video muted loop playsinline preload="auto">
-            <source src="animations/museum.mp4" type="video/mp4">
-        </video>
-    </div>
-
-    <div class="project-info">
-        <h3>Проект 1</h3>
-        <p>Описание проекта, что это, зачем и что ты делала.</p>
-    </div>
-
-</a>
-    </section>
-
-    <section class="extra-projects">
-
-    <div class="extra-card">Проект A</div>
-    <div class="extra-card">Проект B</div>
-    <div class="extra-card">Проект C</div>
-
+<section class="gallery">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
 </section>
 
-    <footer>
-        <p>Контакты:</p>
-        <a href="mailto:your@email.com">your@email.com</a><br>
-        <a href="#">Instagram</a>
-        <a href="#">LinkedIn</a>
-<script>
-window.addEventListener("scroll", () => {
-    const wrapper = document.querySelector(".photo-wrapper");
-    if (!wrapper) return;
+<section class="hero">
+    <h1>
+        ПРИВЕТ, МЕНЯ<br>
+        ЗОВУТ РЕНАТА!
+    </h1>
+</section>
 
-    const scrollY = window.scrollY;
-
-    wrapper.style.transform = `translateY(${scrollY * -0.2}px)`;
-});
-</script>
-
-<script>
-document.querySelectorAll(".project-card").forEach(card => {
-    const video = card.querySelector("video");
-
-    card.addEventListener("mouseenter", () => video.play());
-
-    card.addEventListener("mouseleave", () => {
-        video.pause();
-        video.currentTime = 0;
-    });
-});
-</script>
 </body>
 </html>
