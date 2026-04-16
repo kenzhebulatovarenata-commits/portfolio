@@ -1,28 +1,29 @@
+/* ExtraLight */
 @font-face {
     font-family: 'RalewayCustom';
-    src: url('./fonts/Raleway-ExtraLight.otf') format('opentype');
+    src: url('fonts/Raleway-ExtraLight.otf') format('opentype');
     font-weight: 200;
+    font-style: normal;
 }
 
+/* Medium — тебе нужно ДОБАВИТЬ файл */
 @font-face {
     font-family: 'RalewayCustom';
-    src: url('./fonts/Raleway-Medium.otf') format('opentype');
+    src: url('fonts/Raleway-Medium.otf') format('opentype');
     font-weight: 500;
+    font-style: normal;
 }
 
-/* Сброс */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ВОТ ТУТ ТВОЙ ЧЕРНЫЙ ФОН */
-html, body {
-    background-color: #000;
+body {
+    background: #000;
     color: #fff;
     font-family: 'RalewayCustom', sans-serif;
-    height: 100%;
 }
 
 /* HEADER */
@@ -34,7 +35,7 @@ html, body {
 }
 
 .header a {
-    font-weight: 500;
+    font-weight: 500; /* Medium */
     color: white;
     text-decoration: none;
     border: 1px solid white;
@@ -48,64 +49,31 @@ html, body {
     margin-right: 0;
 }
 
-/* КАРТОЧКИ */
+/* GALLERY */
 .gallery {
     display: flex;
-    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
     gap: 40px;
-    padding: 60px;
-    margin-top: 60px;
-    position: relative;
-    height: 200vh; /* чтобы было где скроллить */
-}
-
-.gallery-inner {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-
-    display: flex;
-    flex-wrap: nowrap; /* ВАЖНО */
-    align-items: center;
-    gap: 40px;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    padding: 0 60px;
-
-    scroll-snap-type: x mandatory;
-}
-
-.gallery-inner::-webkit-scrollbar {
-    display: none;
+    margin-top: 90px;
 }
 
 .card {
-    flex: 0 0 auto; /* чтобы не сжимались */
-    width: 100%;
-    height: 300px;
-    background: #2f8f3a;
-    border-radius: 24px;
-    
-    scroll-snap-align: center;
-    transition: transform 0.3s ease;
-    cursor: pointer;
+    width: 190px;
+    height: 240px;
+    background: #2f8f3a; /* ближе к твоему зеленому */
+    border-radius: 32px;
 }
 
-/* ЗАГОЛОВОК */
+/* HERO */
 .hero {
-    margin-top: 90px;
-    height: 100vh;
-    display: flex;
-    align-items: flex-end;
-    padding: 60px;
+    margin-top: 140px;
+    padding: 0 60px;
 }
 
 .hero h1 {
-    font-weight: 200;
-    font-size: 120px; /* УВЕЛИЧИЛ */
-    line-height: 0.8;
+    font-weight: 200; /* ExtraLight */
+    font-size: 110px;
+    line-height: 1.05;
     letter-spacing: 1.5px;
 }
 
