@@ -61,6 +61,7 @@ function update(){
 
         const x = offset * spacing;
         const y = lerp(-60, 0, p);
+        const exit = lerp(0, -300, Math.max(0, (p - 0.85) / 0.15));
 
         let scale =
             offset===0 ? lerp(1,1.6,p) :
@@ -76,7 +77,7 @@ function update(){
 
         card.style.transform = `
             translateX(${x}px)
-            translateY(${y}px)
+            translateY(${y + exit}px)
             translateZ(${z}px)
             scale(${scale})
         `;
