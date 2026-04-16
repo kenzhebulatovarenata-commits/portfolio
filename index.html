@@ -34,21 +34,20 @@
 </section>
     <script id="l2q8wr">
 window.addEventListener('scroll', () => {
+    const gallery = document.querySelector('.gallery');
     const cards = document.querySelectorAll('.card');
 
+    const rect = gallery.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    let progress = -rect.top / windowHeight;
+    progress = Math.max(0, Math.min(1, progress));
+
+    const scale = 0.8 + progress * 0.7; 
+    // от 0.8 до 1.5 — эффект приближения
+
     cards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // когда карточка входит в экран
-        let progress = (windowHeight - rect.top) / windowHeight;
-
-        progress = Math.max(0, Math.min(1, progress));
-
-        const scale = 0.9 + progress * 0.1;
-
-        card.style.transform = `scale(${scale}) translateY(${(1 - progress) * 50}px)`;
-        card.style.opacity = progress;
+        card.style.transform = `scale(${scale})`;
     });
 });
 </script>
