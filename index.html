@@ -63,63 +63,57 @@ function update() {
     const spacing = 240;
 
     cards.forEach((card, i) => {
-        const offset = i - activeIndex;
-        const abs = Math.abs(offset);
+    const offset = i - activeIndex;
 
-        // базовая позиция (строго ровная цепочка)
-        const x = offset * spacing;
+    const spacing = 240; // фиксированное расстояние ВСЕГДА
+    const x = offset * spacing;
 
-        // =========================
-        // SCALE (с заморозкой)
-        // =========================
-        let scale;
+    const abs = Math.abs(offset);
 
-        if (abs >= 2) {
-            scale = 1.1; // дальние зафиксированы
-        } else {
-            const targetScale =
-                offset === 0 ? 2.2 :
-                abs === 1 ? 1.5 : 1;
+    // =========================
+    // SCALE (не влияет на расстояние!)
+    // =========================
+    let scale = 1;
 
-            scale = lerp(1, targetScale, p);
-        }
+    if (offset === 0) {
+        scale = lerp(1, 2.2, p);
+    } else if (abs === 1) {
+        scale = lerp(1, 1.5, p);
+    } else {
+        scale = 1.1; // фикс, без анимации влияющей на расклад
+    }
 
-        // =========================
-        // Z (глубина с заморозкой)
-        // =========================
-        let z;
+    // =========================
+    // Z (только глубина, не позиция)
+    // =========================
+    let z = 0;
 
-        if (abs >= 2) {
-            z = -120;
-        } else {
-            z =
-                offset === 0 ? lerp(0, 250, p) :
-                abs === 1 ? lerp(0, 120, p) :
-                0;
-        }
+    if (offset === 0) {
+        z = lerp(0, 250, p);
+    } else if (abs === 1) {
+        z = lerp(0, 120, p);
+    } else {
+        z = -120;
+    }
 
-        // =========================
-        // opacity (мягкое затухание дальних)
-        // =========================
-        let opacity = 1;
-        if (abs >= 2) {
-            opacity = 0.7;
-        } else if (abs === 1) {
-            opacity = lerp(1, 0.9, p);
-        }
+    // =========================
+    // opacity (чисто визуал)
+    // =========================
+    let opacity = 1;
+    if (abs >= 2) opacity = 0.7;
 
-        // слой — центр всегда сверху
-        card.style.zIndex = 10 - abs;
+    // z-index
+    card.style.zIndex = 10 - abs;
 
-        // итоговый трансформ
-        card.style.transform = `
-            translateX(${x}px)
-            translateZ(${z}px)
-            scale(${scale})
-        `;
+    // итог
+    card.style.transform = `
+        translateX(${x}px)
+        translateZ(${z}px)
+        scale(${scale})
+    `;
 
-        card.style.opacity = opacity;
-    });
+    card.style.opacity = opacity;
+});
 }
 
 window.addEventListener('scroll', update);
