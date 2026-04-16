@@ -1,4 +1,5 @@
-/* ExtraLight */@font-face {
+/* ExtraLight */
+@font-face {
     font-family: 'RalewayCustom';
     src: url('fonts/Raleway-v4020-ExtraLight.otf') format('opentype');
     font-weight: 200;
@@ -40,6 +41,21 @@ body {
     transition: transform 0.3s ease;
     z-index: 10;
 }
+.scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    perspective: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+}
+
 .scene-wrapper {
     height: 170vh; /* ВАЖНО: это теперь таймлайн */
     position: relative;
@@ -55,7 +71,7 @@ body {
 }
 
 .scroll-spacer {
-    height: 180vh; /* регулирует длину скролла после сцены */
+    height: 170vh; /* регулирует длину скролла после сцены */
 }
     
 .header a {
@@ -79,7 +95,7 @@ body {
     justify-content: center;
     align-items: center;
     
-    position: sticky;
+    position: relative;
     top: 0;
     height: 100vh;
     
