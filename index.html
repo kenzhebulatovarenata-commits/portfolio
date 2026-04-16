@@ -39,46 +39,25 @@ const cards = document.querySelectorAll('.card');
 const header = document.querySelector('.header');
 
 let activeIndex = 2;
-let targetIndex = 2; // куда хотим прийти
 
 function lerp(a, b, t) {
     return a + (b - a) * t;
 }
 
-// -------------------------
-// hover с задержкой (anti-flicker)
-// -------------------------
+// клики: любая карточка становится центром
 cards.forEach((card, i) => {
-    let hoverTimeout;
-
-    card.addEventListener('mouseenter', () => {
-        clearTimeout(hoverTimeout);
-
-        hoverTimeout = setTimeout(() => {
-            targetIndex = i;
-        }, 70); // задержка против дёргания
-    });
-
-    card.addEventListener('mouseleave', () => {
-        clearTimeout(hoverTimeout);
+    card.addEventListener('click', () => {
+        activeIndex = i;
+        update();
     });
 });
 
-// -------------------------
-// плавное приближение activeIndex к targetIndex
-// -------------------------
-function smoothActive() {
-    activeIndex = lerp(activeIndex, targetIndex, 0.12);
-}
-
-// -------------------------
-// основной update
-// -------------------------
 function update() {
     const scrollY = window.scrollY;
     const maxScroll = window.innerHeight;
     let p = Math.min(scrollY / maxScroll, 1);
 
+    // header уезжает вверх
     header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
 
     const spacing = 240;
@@ -87,12 +66,16 @@ function update() {
         const offset = i - activeIndex;
         const abs = Math.abs(offset);
 
+        // базовая позиция (строго ровная цепочка)
         const x = offset * spacing;
 
-        // SCALE (замороженные дальние)
+        // =========================
+        // SCALE (с заморозкой)
+        // =========================
         let scale;
+
         if (abs >= 2) {
-            scale = 1.1;
+            scale = 1.1; // дальние зафиксированы
         } else {
             const targetScale =
                 offset === 0 ? 2.2 :
@@ -101,8 +84,11 @@ function update() {
             scale = lerp(1, targetScale, p);
         }
 
-        // Z depth
+        // =========================
+        // Z (глубина с заморозкой)
+        // =========================
         let z;
+
         if (abs >= 2) {
             z = -120;
         } else {
@@ -112,11 +98,20 @@ function update() {
                 0;
         }
 
-        // opacity
-        let opacity = abs >= 2 ? 0.7 : 1;
+        // =========================
+        // opacity (мягкое затухание дальних)
+        // =========================
+        let opacity = 1;
+        if (abs >= 2) {
+            opacity = 0.7;
+        } else if (abs === 1) {
+            opacity = lerp(1, 0.9, p);
+        }
 
+        // слой — центр всегда сверху
         card.style.zIndex = 10 - abs;
 
+        // итоговый трансформ
         card.style.transform = `
             translateX(${x}px)
             translateZ(${z}px)
@@ -127,16 +122,8 @@ function update() {
     });
 }
 
-// -------------------------
-// loop вместо тупого scroll event
-// -------------------------
-function animate() {
-    smoothActive();
-    update();
-    requestAnimationFrame(animate);
-}
-
-animate();
+window.addEventListener('scroll', update);
+update();
 </script>
 </body>
 </html>
