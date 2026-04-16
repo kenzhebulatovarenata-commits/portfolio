@@ -182,11 +182,7 @@ function animate() {
     const offset = i - activeIndex;
     const abs = Math.abs(offset);
     const distance = Math.abs(offset);
-    const peak = lerp(0.8, 1.0, Math.min(distance / 2, 1));
-
-// ограничиваем рост
-scale = Math.min(scale, peak);
-
+    
     const x = offset * spacing;
 
     /* =========================
@@ -212,7 +208,6 @@ const y = lerp(startY, -60, t);
     const endScale = lerp(1.7, 0.9, Math.min(distance / 2, 1));
 
     const scale = lerp(startScale, endScale, t);
-   scale = Math.min(scale, peak);
     
 
     /* =========================
