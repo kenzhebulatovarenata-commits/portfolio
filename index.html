@@ -54,36 +54,46 @@ function update() {
 
    cards.forEach((card, i) => {
     const center = 2;
-
-    const baseSpacing = 240; // равное расстояние ВСЕГДА
     const offset = i - center;
 
-    // базовая позиция (строго симметричная)
+    const baseSpacing = 240;
     const baseX = offset * baseSpacing;
 
-    // прогресс анимации
-    const pLocal = Math.max(0, 1 - Math.abs(offset) / 3); 
-    // центр = 1, края = меньше
+    // прогресс скролла
+    const pLocal = p;
 
-    // масштаб: центр и соседи увеличиваются
-    let scale = 1;
+    // Z-глубина: центр ближе, края дальше
+    let z = 0;
 
-    if (Math.abs(offset) === 0) {
-        scale = lerp(1, 2.1, p);
+    if (offset === 0) {
+        z = lerp(0, 250, p); // выезжает вперёд
     } else if (Math.abs(offset) === 1) {
-        scale = lerp(1, 1.7, p);
+        z = lerp(0, 120, p); // немного ближе
     } else {
-        scale = lerp(1, 0.9, p);
+        z = lerp(0, -300, p); // уходит в глубину
     }
 
-    // крайние уезжают сильнее, но не меняют дистанцию между собой
+    // масштаб как дополнительный слой ощущения
+    let scale = 1;
+
+    if (offset === 0) scale = lerp(1, 2.1, p);
+    else if (Math.abs(offset) === 1) scale = lerp(1, 1.6, p);
+    else scale = lerp(1, 0.85, p);
+
+    // боковой сдвиг крайних
     let xShift = 0;
 
-    if (i === 0) xShift = lerp(0, -400, p);
-    if (i === 4) xShift = lerp(0, 400, p);
+    if (i === 0) xShift = lerp(0, -500, p);
+    if (i === 4) xShift = lerp(0, 500, p);
+
+    // z-index чтобы центр всегда сверху
+    const zIndex = 10 - Math.abs(offset);
+
+    card.style.zIndex = zIndex;
 
     card.style.transform = `
         translateX(${baseX + xShift}px)
+        translateZ(${z}px)
         scale(${scale})
     `;
 });
