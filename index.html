@@ -38,86 +38,100 @@
 const cards = document.querySelectorAll('.card');
 const header = document.querySelector('.header');
 
-let activeIndex = 2;
+let activeIndex = 2;   // реальное положение (плавное)
+let targetIndex = 2;   // куда стремимся
 
 function lerp(a, b, t) {
     return a + (b - a) * t;
 }
 
-// клики: любая карточка становится центром
+// =========================
+// КЛИК → задаёт цель
+// =========================
 cards.forEach((card, i) => {
     card.addEventListener('click', () => {
-        activeIndex = i;
-        update();
+        targetIndex = i;
     });
 });
 
-function update() {
+// =========================
+// АВТО-МАГНИТ ПО СКРОЛЛУ
+// =========================
+function updateTargetByScroll() {
+    const scrollY = window.scrollY;
+    const section = window.innerHeight;
+
+    const progress = scrollY / section;
+
+    // округляем к ближайшей карточке
+    targetIndex = Math.round(progress * (cards.length - 1));
+}
+
+// =========================
+// SPRING (инерция)
+// =========================
+function smoothStep() {
+    activeIndex = lerp(activeIndex, targetIndex, 0.10);
+}
+
+// =========================
+// РЕНДЕР
+// =========================
+function render() {
     const scrollY = window.scrollY;
     const maxScroll = window.innerHeight;
-    let p = Math.min(scrollY / maxScroll, 1);
+    const p = Math.min(scrollY / maxScroll, 1);
 
-    // header уезжает вверх
     header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
 
     const spacing = 240;
 
     cards.forEach((card, i) => {
-    const offset = i - activeIndex;
+        const offset = i - activeIndex;
+        const abs = Math.abs(offset);
 
-    const spacing = 240; // фиксированное расстояние ВСЕГДА
-    const x = offset * spacing;
+        const x = offset * spacing;
 
-    const abs = Math.abs(offset);
+        // SCALE (фиксированная логика)
+        let scale =
+            offset === 0 ? lerp(1, 2.2, p) :
+            abs === 1 ? lerp(1, 1.5, p) :
+            1.1;
 
-    // =========================
-    // SCALE (не влияет на расстояние!)
-    // =========================
-    let scale = 1;
+        // Z depth
+        let z =
+            offset === 0 ? lerp(0, 250, p) :
+            abs === 1 ? lerp(0, 120, p) :
+            -120;
 
-    if (offset === 0) {
-        scale = lerp(1, 2.2, p);
-    } else if (abs === 1) {
-        scale = lerp(1, 1.5, p);
-    } else {
-        scale = 1.1; // фикс, без анимации влияющей на расклад
-    }
+        // opacity
+        let opacity = abs >= 2 ? 0.7 : 1;
 
-    // =========================
-    // Z (только глубина, не позиция)
-    // =========================
-    let z = 0;
+        // layering
+        card.style.zIndex = 10 - abs;
 
-    if (offset === 0) {
-        z = lerp(0, 250, p);
-    } else if (abs === 1) {
-        z = lerp(0, 120, p);
-    } else {
-        z = -120;
-    }
+        card.style.transform = `
+            translateX(${x}px)
+            translateZ(${z}px)
+            scale(${scale})
+        `;
 
-    // =========================
-    // opacity (чисто визуал)
-    // =========================
-    let opacity = 1;
-    if (abs >= 2) opacity = 0.7;
-
-    // z-index
-    card.style.zIndex = 10 - abs;
-
-    // итог
-    card.style.transform = `
-        translateX(${x}px)
-        translateZ(${z}px)
-        scale(${scale})
-    `;
-
-    card.style.opacity = opacity;
-});
+        card.style.opacity = opacity;
+    });
 }
 
-window.addEventListener('scroll', update);
-update();
+// =========================
+// MAIN LOOP
+// =========================
+function animate() {
+    updateTargetByScroll(); // scroll → цель
+    smoothStep();           // spring
+    render();               // draw
+
+    requestAnimationFrame(animate);
+}
+
+animate();
 </script>
 </body>
 </html>
