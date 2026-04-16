@@ -183,6 +183,7 @@ function animate() {
         const exitProgress = Math.pow(
     Math.min(1, Math.max(0, (p - 0.75) / 0.35)),
     1.5
+);
         const exit = lerp(0, -window.innerHeight * 1.2, exitProgress);
 
         /* SCALE (градиент) */
