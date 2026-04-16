@@ -162,10 +162,10 @@ body {
     align-items: stretch;
 
     width: 100%;
-    padding: 40px;
+    padding: 0;
     height: 460px;
 
-    gap: 40px;
+    gap: 0;
 
     background: white;
     border-radius: 20px;
