@@ -82,13 +82,18 @@ body {
 .card {
     width: 190px;
     height: 240px;
-    background: #2f8f3a;
     border-radius: 32px;
     position: absolute;
-    transition: transform 0.2s linear;
+
+    overflow: hidden; /* чтобы картинка не вылезала */
     will-change: transform;
-    transform-style: preserve-3d;
-    z-index: 1;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* чтобы не было растяжения */
+    display: block;
 }
 
 /* HERO */
