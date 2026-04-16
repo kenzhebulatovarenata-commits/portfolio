@@ -227,37 +227,7 @@ body {
     box-shadow: 0 20px 50px rgba(0,0,0,0.15);
 }
 
-.extra-projects {
-    display: flex;
-    gap: 40px;
-    padding: 40px;
 
-    width: 100%;
-}
-
-.extra-card {
-    flex: 1;
-
-    height: 180px;
-
-    background: white;
-    border-radius: 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 18px;
-    text-align: center;
-
-    transition: 0.3s ease;
-}
-
-/* hover как у остальных */
-.extra-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-}
 /* ФУТЕР */
 footer {
     padding: 40px;
@@ -281,6 +251,37 @@ footer a:hover {
 /* ===================== */
 /* 📱 АДАПТИВ (МОБИЛКА) */
 /* ===================== */
+.extra-projects {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+
+    width: 100%;
+}
+
+.extra-card {
+    flex: 1;
+
+    height: 180px;
+
+    background: orange;
+    border-radius: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+    text-align: center;
+
+    transition: 0.3s ease;
+}
+
+/* hover как у остальных */
+.extra-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
 
 @media (max-width: 768px) {
 
@@ -318,3 +319,4 @@ footer a:hover {
         transform: none !important;
     }
 }
+
