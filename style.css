@@ -148,3 +148,27 @@ body {
     display: inline-block;
     margin-left: 200px; /* регулируй как надо */
 }
+
+.about {
+    position: relative;
+    z-index: 2;
+
+    padding: 140px 60px;
+    max-width: 900px;
+
+    color: white;
+}
+
+.about h2 {
+    font-weight: 200;
+    font-size: 64px;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+.about p {
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.85;
+}
