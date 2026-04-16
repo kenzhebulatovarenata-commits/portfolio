@@ -104,7 +104,7 @@ body {
 /* HERO */
 .hero {
     position: absolute;
-    bottom: 20vh;   /* вот это ключ */
+    bottom: 18vh;   /* вот это ключ */
     left: 0;
     width: 100%;
 
