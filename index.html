@@ -170,12 +170,19 @@ function animate() {
     activeIndex = lerp(activeIndex, targetIndex, 0.08);
 
     const p = scrollProgress;
+    const projectsTitle = document.querySelector('.proj');
 
     header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
     
     const t = Math.min(1, Math.max(0, (p - 0.15) / 0.85));
 
     const spacing = 240;
+    const projectsExit = Math.max(0, (p - 0.75) / 0.25);
+const projectsY = lerp(0, -150, projectsExit);
+
+if (projectsTitle) {
+    projectsTitle.style.transform = `translateY(${projectsY}px)`;
+}
 
     cards.forEach((card, i) => {
 
