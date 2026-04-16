@@ -44,7 +44,7 @@ function lerp(a, b, t) {
     return a + (b - a) * t;
 }
 
-// клики по карточкам → делают их центром
+// клики: любая карточка становится центром
 cards.forEach((card, i) => {
     card.addEventListener('click', () => {
         activeIndex = i;
@@ -57,47 +57,61 @@ function update() {
     const maxScroll = window.innerHeight;
     let p = Math.min(scrollY / maxScroll, 1);
 
-    // header уезжает вверх (фикс твоей ошибки с кавычками)
+    // header уезжает вверх
     header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
 
     const spacing = 240;
 
     cards.forEach((card, i) => {
         const offset = i - activeIndex;
-
-        const x = offset * spacing;
-
         const abs = Math.abs(offset);
 
-        // глубина
-        let z = 0;
-        if (offset === 0) {
-            z = lerp(0, 250, p);
-        } else if (abs === 1) {
-            z = lerp(0, 120, p);
+        // базовая позиция (строго ровная цепочка)
+        const x = offset * spacing;
+
+        // =========================
+        // SCALE (с заморозкой)
+        // =========================
+        let scale;
+
+        if (abs >= 2) {
+            scale = 1.1; // дальние зафиксированы
         } else {
-            z = lerp(0, -120, p);
+            const targetScale =
+                offset === 0 ? 2.2 :
+                abs === 1 ? 1.5 : 1;
+
+            scale = lerp(1, targetScale, p);
         }
 
-        // масштаб
-        let scale = 1;
-        if (offset === 0) {
-            scale = lerp(1, 2.2, p);
-        } else if (abs === 1) {
-            scale = lerp(1, 1.5, p);
+        // =========================
+        // Z (глубина с заморозкой)
+        // =========================
+        let z;
+
+        if (abs >= 2) {
+            z = -120;
         } else {
-            scale = lerp(1, 1.1, p);
+            z =
+                offset === 0 ? lerp(0, 250, p) :
+                abs === 1 ? lerp(0, 120, p) :
+                0;
         }
 
-        // прозрачность дальних
+        // =========================
+        // opacity (мягкое затухание дальних)
+        // =========================
         let opacity = 1;
-        if (abs > 1) {
-            opacity = lerp(1, 0.7, p);
+        if (abs >= 2) {
+            opacity = 0.7;
+        } else if (abs === 1) {
+            opacity = lerp(1, 0.9, p);
         }
 
-        // слой
+        // слой — центр всегда сверху
         card.style.zIndex = 10 - abs;
 
+        // итоговый трансформ
         card.style.transform = `
             translateX(${x}px)
             translateZ(${z}px)
