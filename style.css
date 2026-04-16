@@ -53,27 +53,27 @@ html, body {
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
 .card {
-    width: 200px;
-    height: 250px;
+    width: 150px;
+    height: 200px;
     background: #2f8f3a;
-    border-radius: 30px;
+    border-radius: 24px;
 }
 
 /* ЗАГОЛОВОК */
 .hero {
-    margin-top: 140px;
+    margin-top: 90px;
     padding: 0 60px;
 }
 
 .hero h1 {
     font-weight: 200;
     font-size: 120px; /* УВЕЛИЧИЛ */
-    line-height: 1.05;
-    letter-spacing: 2px;
+    line-height: 0.8;
+    letter-spacing: 1.5px;
 }
 
 .indent {
