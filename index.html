@@ -191,7 +191,7 @@ function animate() {
     const t = Math.min(1, Math.max(0, (p - 0.15) / 0.85));
 
     const startY = -80; // или -60, если хочешь выше
-const y = lerp(startY, -60, t);
+    const y = lerp(startY, -60, t);
 
     const exitProgress = Math.pow(
         Math.min(1, Math.max(0, (p - 0.75) / 0.35)),
@@ -199,6 +199,8 @@ const y = lerp(startY, -60, t);
     );
 
     const exit = lerp(0, -window.innerHeight * 1.2, exitProgress);
+        const endOffset = Math.max(0, (p - 0.7) / 0.3);
+    const extraY = lerp(0, 80, endOffset);
 
     /* =========================
        SCALE: СТАРТ → ФИНАЛ
