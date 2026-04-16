@@ -38,65 +38,74 @@
 const cards = document.querySelectorAll('.card');
 const header = document.querySelector('.header');
 
+let activeIndex = 2;
+
 function lerp(a, b, t) {
     return a + (b - a) * t;
 }
 
+// клики по карточкам → делают их центром
+cards.forEach((card, i) => {
+    card.addEventListener('click', () => {
+        activeIndex = i;
+        update();
+    });
+});
+
 function update() {
     const scrollY = window.scrollY;
-    const maxScroll = window.innerHeight; // одна “сцена”
+    const maxScroll = window.innerHeight;
     let p = Math.min(scrollY / maxScroll, 1);
 
-    // header уезжает вверх
+    // header уезжает вверх (фикс твоей ошибки с кавычками)
     header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
 
-    const centerIndex = 2; // средняя точка (из 5)
+    const spacing = 240;
 
-   cards.forEach((card, i) => {
-    const center = 2;
-    const offset = i - center;
+    cards.forEach((card, i) => {
+        const offset = i - activeIndex;
 
-    const baseSpacing = 240;
-    const baseX = offset * baseSpacing;
+        const x = offset * spacing;
 
-    // прогресс скролла
-    const pLocal = p;
+        const abs = Math.abs(offset);
 
-    // Z-глубина: центр ближе, края дальше
-    let z = 0;
+        // глубина
+        let z = 0;
+        if (offset === 0) {
+            z = lerp(0, 250, p);
+        } else if (abs === 1) {
+            z = lerp(0, 120, p);
+        } else {
+            z = lerp(0, -120, p);
+        }
 
-    if (offset === 0) {
-        z = lerp(0, 250, p); // выезжает вперёд
-    } else if (Math.abs(offset) === 1) {
-        z = lerp(0, 120, p); // немного ближе
-    } else {
-        z = lerp(0, -300, p); // уходит в глубину
-    }
+        // масштаб
+        let scale = 1;
+        if (offset === 0) {
+            scale = lerp(1, 2.2, p);
+        } else if (abs === 1) {
+            scale = lerp(1, 1.5, p);
+        } else {
+            scale = lerp(1, 1.1, p);
+        }
 
-    // масштаб как дополнительный слой ощущения
-    let scale = 1;
+        // прозрачность дальних
+        let opacity = 1;
+        if (abs > 1) {
+            opacity = lerp(1, 0.7, p);
+        }
 
-    if (offset === 0) scale = lerp(1, 2.1, p);
-    else if (Math.abs(offset) === 1) scale = lerp(1, 1.6, p);
-    else scale = lerp(1, 0.85, p);
+        // слой
+        card.style.zIndex = 10 - abs;
 
-    // боковой сдвиг крайних
-    let xShift = 0;
+        card.style.transform = `
+            translateX(${x}px)
+            translateZ(${z}px)
+            scale(${scale})
+        `;
 
-    if (i === 0) xShift = lerp(0, -500, p);
-    if (i === 4) xShift = lerp(0, 500, p);
-
-    // z-index чтобы центр всегда сверху
-    const zIndex = 10 - Math.abs(offset);
-
-    card.style.zIndex = zIndex;
-
-    card.style.transform = `
-        translateX(${baseX + xShift}px)
-        translateZ(${z}px)
-        scale(${scale})
-    `;
-});
+        card.style.opacity = opacity;
+    });
 }
 
 window.addEventListener('scroll', update);
