@@ -75,3 +75,8 @@ html, body {
     line-height: 1.05;
     letter-spacing: 2px;
 }
+
+.indent {
+    display: inline-block;
+    margin-left: 120px; /* регулируй как надо */
+}
