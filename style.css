@@ -49,7 +49,7 @@ body {
     z-index: 0;
 }
 .scroll-spacer {
-    height: 150vh; /* регулирует длину скролла после сцены */
+    height: 180vh; /* регулирует длину скролла после сцены */
 }
     
 .header a {
@@ -71,14 +71,13 @@ body {
 .gallery {
     display: flex;
     justify-content: center;
-    gap: 0;
-    margin-top: 90px;
+    align-items: center;
+    
     position: sticky;
     top: 0;
     height: 100vh;
-    align-items: center;
+    
     transform-style: preserve-3d;
-    transform: translateY(-5vh);
 }
 
 /* карточки теперь управляются JS */
