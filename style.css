@@ -73,11 +73,11 @@ body {
 .hero h1 {
     font-weight: 200; /* ExtraLight */
     font-size: 110px;
-    line-height: 1.05;
-    letter-spacing: 0.8px;
+    line-height: 0.8;
+    letter-spacing: 1.5px;
 }
 
 .indent {
     display: inline-block;
-    margin-left: 120px; /* регулируй как надо */
+    margin-left: 200px; /* регулируй как надо */
 }
