@@ -40,7 +40,8 @@ window.addEventListener('scroll', () => {
         const rect = card.getBoundingClientRect();
         const windowHeight = window.innerHeight;
 
-        let progress = 1 - (rect.top / windowHeight);
+        // когда карточка входит в экран
+        let progress = (windowHeight - rect.top) / windowHeight;
 
         progress = Math.max(0, Math.min(1, progress));
 
