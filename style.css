@@ -110,9 +110,9 @@ body {
 /* HERO */
 .hero {
     position: relative;
-    bottom: 10vh;   /* вот это ключ */
     left: 0;
     width: 100%;
+    margin-top: 0;
 
     padding: 120px 60px 0;
 
