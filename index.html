@@ -30,6 +30,7 @@
             <div class="card"><img src="img/5.jpg"></div>
         </section>
 
+    </section>
 </div>
 
 <section class="hero">
@@ -37,7 +38,7 @@
 </section>
 
 <div class="scroll-spacer"></div>
-    <div style="height: 150vh;"></div>
+
 <script>
 const cards = document.querySelectorAll('.card');
 const header = document.querySelector('.header');
@@ -48,35 +49,23 @@ function lerp(a, b, t) {
     return a + (b - a) * t;
 }
 
-// =========================
-// КЛИК — ТОЛЬКО ЦЕНТР
-// =========================
 cards.forEach((card, i) => {
     card.addEventListener('click', (e) => {
-
         if (i !== activeIndex) {
             e.preventDefault();
             return;
         }
 
         const link = card.getAttribute('href');
-        if (link) {
-            window.location.href = link;
-        }
+        if (link) window.location.href = link;
     });
 });
 
-// =========================
-// RENDER
-// =========================
 function update() {
     const scrollY = window.scrollY;
-
-    // анимация длится до 170vh
     const maxScroll = window.innerHeight * 1.7;
     const p = Math.min(scrollY / maxScroll, 1);
 
-    // header уезжает вверх
     header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
 
     const spacing = 240;
@@ -85,19 +74,9 @@ function update() {
         const offset = i - activeIndex;
         const abs = Math.abs(offset);
 
-        // =========================
-        // X позиция (горизонталь)
-        // =========================
         const x = offset * spacing;
-
-        // =========================
-        // Y: сначала выше, потом центр
-        // =========================
         const y = lerp(-80, 0, p);
 
-        // =========================
-        // SCALE
-        // =========================
         let scale;
         if (offset === 0) {
             scale = lerp(1, 2.2, p);
@@ -107,9 +86,6 @@ function update() {
             scale = 1.1;
         }
 
-        // =========================
-        // Z depth
-        // =========================
         let z;
         if (offset === 0) {
             z = lerp(0, 250, p);
@@ -119,23 +95,8 @@ function update() {
             z = -120;
         }
 
-        // =========================
-        // opacity дальних
-        // =========================
-        let opacity = abs >= 2 ? 0.7 : 1;
+        const opacity = abs >= 2 ? 0.7 : 1;
 
-        // =========================
-        // active class (центр)
-        // =========================
-        if (i === activeIndex) {
-            card.classList.add('center');
-        } else {
-            card.classList.remove('center');
-        }
-
-        // =========================
-        // APPLY
-        // =========================
         card.style.zIndex = 10 - abs;
 
         card.style.transform = `
@@ -149,11 +110,9 @@ function update() {
     });
 }
 
-// =========================
-// SCROLL
-// =========================
 window.addEventListener('scroll', update);
 update();
 </script>
+
 </body>
 </html>
