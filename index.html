@@ -55,7 +55,6 @@ function lerp(a, b, t) {
 // =========================
 cards.forEach((card, i) => {
     card.addEventListener('click', (e) => {
-
         if (i !== activeIndex) {
             e.preventDefault();
             return;
@@ -69,16 +68,20 @@ cards.forEach((card, i) => {
 });
 
 // =========================
-// RENDER
+// SCROLL UPDATE
 // =========================
 function update() {
     const scrollY = window.scrollY;
 
-    // анимация длится до 170vh
     const maxScroll = window.innerHeight * 1.7;
-    const p = Math.min(scrollY / maxScroll, 1);
 
-    // header уезжает вверх
+    let p = Math.min(scrollY / maxScroll, 1);
+
+    // 🔥 ЗАДЕРЖКА В ЦЕНТРЕ (главный апгрейд)
+    p = p * p * (3 - 2 * p); // smoothstep
+    p = Math.sin(p * Math.PI / 2); // дополнительное “залипание”
+
+    // header уезжает вверх сразу
     header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
 
     const spacing = 240;
@@ -88,12 +91,12 @@ function update() {
         const abs = Math.abs(offset);
 
         // =========================
-        // X позиция (горизонталь)
+        // X
         // =========================
         const x = offset * spacing;
 
         // =========================
-        // Y: сначала выше, потом центр
+        // Y (подъём → центр)
         // =========================
         const y = lerp(-80, 0, p);
 
@@ -110,7 +113,7 @@ function update() {
         }
 
         // =========================
-        // Z depth
+        // Z DEPTH
         // =========================
         let z;
         if (offset === 0) {
@@ -125,15 +128,6 @@ function update() {
         // opacity дальних
         // =========================
         let opacity = abs >= 2 ? 0.7 : 1;
-
-        // =========================
-        // active class (центр)
-        // =========================
-        if (i === activeIndex) {
-            card.classList.add('center');
-        } else {
-            card.classList.remove('center');
-        }
 
         // =========================
         // APPLY
@@ -152,7 +146,7 @@ function update() {
 }
 
 // =========================
-// SCROLL
+// INIT
 // =========================
 window.addEventListener('scroll', update);
 update();
