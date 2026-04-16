@@ -46,6 +46,32 @@ let activeIndex = 2;
 
 function lerp(a,b,t){return a+(b-a)*t;}
 
+/* =========================
+   КЛИК ЛОГИКА (ДОБАВЛЕНО)
+========================= */
+cards.forEach((card, i) => {
+    card.addEventListener('click', (e) => {
+
+        // если не центр — делаем её центральной
+        if (i !== activeIndex) {
+            e.preventDefault();
+            activeIndex = i;
+            update();
+            return;
+        }
+
+        // если центр — идём в проект
+        const link = card.getAttribute('href');
+
+        if (link) {
+            window.location.href = link;
+        }
+    });
+});
+
+/* =========================
+   SCROLL АНИМАЦИЯ
+========================= */
 function update(){
     const scrollY = window.scrollY;
     const maxScroll = window.innerHeight * 1.7;
@@ -56,11 +82,13 @@ function update(){
     const spacing = 240;
 
     cards.forEach((card,i)=>{
+
         const offset = i - activeIndex;
         const abs = Math.abs(offset);
 
         const x = offset * spacing;
         const y = lerp(-60, 0, p);
+
         const exitProgress = Math.min(1, Math.max(0, (p - 0.8) / 0.2));
         const exit = lerp(0, -window.innerHeight * 1.2, exitProgress);
 
