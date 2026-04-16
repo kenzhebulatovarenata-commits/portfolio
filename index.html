@@ -42,12 +42,12 @@ window.addEventListener('scroll', () => {
 
         let progress = 1 - (rect.top / windowHeight);
 
-        if (progress < 0) progress = 0;
-        if (progress > 1) progress = 1;
+        progress = Math.max(0, Math.min(1, progress));
 
-        const scale = 1 + progress * 0.5; // увеличиваются до 1.5
+        const scale = 0.9 + progress * 0.1;
 
-        card.style.transform = `scale(${scale})`;
+        card.style.transform = `scale(${scale}) translateY(${(1 - progress) * 50}px)`;
+        card.style.opacity = progress;
     });
 });
 </script>
