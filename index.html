@@ -120,15 +120,17 @@ function animate() {
 
         const isCenter = Math.round(activeIndex) === i;
 
-        let scale =
-            isCenter ? 1.6 :
-            abs === 1 ? 1.25 :
-            1;
+        const distance = Math.abs(offset);
 
-        let z =
-            isCenter ? 250 :
-            abs === 1 ? 120 :
-            -120;
+/* =========================
+   SCALE (градиент)
+========================= */
+const scale = lerp(1.7, 0.9, Math.min(distance / 2, 1));
+
+/* =========================
+   Z DEPTH (тоже градиент)
+========================= */
+const z = lerp(260, -120, Math.min(distance / 2, 1));
 
         card.style.zIndex = 100 - abs;
 
