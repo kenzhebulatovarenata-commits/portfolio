@@ -43,7 +43,8 @@ body {
 /* сцена скролла */
 .scroll-stage {
     height: 200vh; /* да, магия скролла требует пространства */
-
+]
+    
 .header a {
     font-weight: 500; /* Medium */
     color: white;
