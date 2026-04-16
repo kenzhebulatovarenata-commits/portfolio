@@ -81,6 +81,31 @@ cards.forEach((card, i) => {
 });
 
 /* =========================
+   TRACKPAD / WHEEL CONTROL (ДОБАВЛЕНО)
+========================= */
+let wheelLock = false;
+
+window.addEventListener('wheel', (e) => {
+
+    const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+
+    if (!isHorizontal) return;
+    if (wheelLock) return;
+
+    wheelLock = true;
+
+    if (e.deltaX > 0) {
+        targetIndex = Math.min(cards.length - 1, targetIndex + 1);
+    } else {
+        targetIndex = Math.max(0, targetIndex - 1);
+    }
+
+    setTimeout(() => {
+        wheelLock = false;
+    }, 350);
+});
+
+/* =========================
    SCROLL TRACKER
 ========================= */
 window.addEventListener('scroll', () => {
@@ -95,10 +120,7 @@ window.addEventListener('scroll', () => {
 ========================= */
 function animate() {
 
-    /* smooth scroll */
     scrollProgress = lerp(scrollProgress, targetScroll, 0.08);
-
-    /* smooth center change */
     activeIndex = lerp(activeIndex, targetIndex, 0.08);
 
     const p = scrollProgress;
@@ -111,6 +133,7 @@ function animate() {
 
         const offset = i - activeIndex;
         const abs = Math.abs(offset);
+        const distance = Math.abs(offset);
 
         const x = offset * spacing;
         const y = lerp(-60, 0, p);
@@ -118,19 +141,11 @@ function animate() {
         const exitProgress = Math.min(1, Math.max(0, (p - 0.8) / 0.2));
         const exit = lerp(0, -window.innerHeight * 1.2, exitProgress);
 
-        const isCenter = Math.round(activeIndex) === i;
+        /* SCALE (градиент) */
+        const scale = lerp(1.7, 0.9, Math.min(distance / 2, 1));
 
-        const distance = Math.abs(offset);
-
-/* =========================
-   SCALE (градиент)
-========================= */
-const scale = lerp(1.7, 0.9, Math.min(distance / 2, 1));
-
-/* =========================
-   Z DEPTH (тоже градиент)
-========================= */
-const z = lerp(260, -120, Math.min(distance / 2, 1));
+        /* Z DEPTH (градиент) */
+        const z = lerp(260, -120, Math.min(distance / 2, 1));
 
         card.style.zIndex = 100 - abs;
 
