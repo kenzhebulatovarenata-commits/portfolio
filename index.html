@@ -180,7 +180,9 @@ function animate() {
         const x = offset * spacing;
         const y = lerp(-60, 0, p);
 
-        const exitProgress = Math.min(1, Math.max(0, (p - 0.8) / 0.2));
+        const exitProgress = Math.pow(
+    Math.min(1, Math.max(0, (p - 0.75) / 0.35)),
+    1.5
         const exit = lerp(0, -window.innerHeight * 1.2, exitProgress);
 
         /* SCALE (градиент) */
