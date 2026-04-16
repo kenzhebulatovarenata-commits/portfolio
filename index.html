@@ -47,17 +47,27 @@ function lerp(a, b, t) {
 }
 
 // =========================
-// КЛИК → меняем центр
+// КЛИК ТОЛЬКО ПО ЦЕНТРУ
 // =========================
 cards.forEach((card, i) => {
-    card.addEventListener('click', () => {
-        activeIndex = i;
-        update();
+    card.addEventListener('click', (e) => {
+
+        // если не центр — блокируем переход
+        if (i !== activeIndex) {
+            e.preventDefault();
+            return;
+        }
+
+        // если центр — переходим
+        const link = card.getAttribute('href');
+        if (link) {
+            window.location.href = link;
+        }
     });
 });
 
 // =========================
-// SCROLL + RENDER
+// ОСНОВНОЙ РЕНДЕР
 // =========================
 function update() {
     const scrollY = window.scrollY;
@@ -74,7 +84,9 @@ function update() {
 
         const x = offset * spacing;
 
-        // SCALE (без “самодеятельности”)
+        // =========================
+        // SCALE
+        // =========================
         let scale;
         if (offset === 0) {
             scale = lerp(1, 2.2, p);
@@ -84,7 +96,9 @@ function update() {
             scale = 1.1;
         }
 
-        // Z depth
+        // =========================
+        // Z DEPTH
+        // =========================
         let z;
         if (offset === 0) {
             z = lerp(0, 250, p);
@@ -94,9 +108,23 @@ function update() {
             z = -120;
         }
 
-        // opacity
+        // =========================
+        // OPACITY
+        // =========================
         let opacity = abs >= 2 ? 0.7 : 1;
 
+        // =========================
+        // ACTIVE CLASS (центр)
+        // =========================
+        if (i === activeIndex) {
+            card.classList.add('center');
+        } else {
+            card.classList.remove('center');
+        }
+
+        // =========================
+        // APPLY
+        // =========================
         card.style.zIndex = 10 - abs;
 
         card.style.transform = `
@@ -109,6 +137,9 @@ function update() {
     });
 }
 
+// =========================
+// SCROLL LOOP
+// =========================
 window.addEventListener('scroll', update);
 update();
 </script>
