@@ -25,6 +25,7 @@ body {
     color: #fff;
     font-family: 'RalewayCustom', sans-serif;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* HEADER */
@@ -44,7 +45,9 @@ body {
 .scroll-stage {
     height: 200vh; /* да, магия скролла требует пространства */
     perspective: 1200px;
-]
+    position: relative;
+    z-index: 1;
+}
     
 .header a {
     font-weight: 500; /* Medium */
@@ -84,13 +87,15 @@ body {
     transition: transform 0.2s linear;
     will-change: transform;
     transform-style: preserve-3d;
+    z-index: 0;
 }
 
 /* HERO */
 .hero {
     margin-top: 110px;
     padding: 0 60px;
-    
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
