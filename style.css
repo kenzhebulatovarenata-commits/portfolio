@@ -87,6 +87,9 @@ body {
 
     overflow: hidden; /* чтобы картинка не вылезала */
     will-change: transform;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .card img {
