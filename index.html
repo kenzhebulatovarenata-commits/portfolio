@@ -13,28 +13,23 @@
         <a href="works.html">Работы</a>
         <a href="about.html">Обо мне</a>
     </div>
-
     <div class="nav-right">
         <a href="contact.html">Связаться со мной</a>
     </div>
 </header>
 
-<div class="scene-wrapper">
-    <section class="scroll-stage">
-
-        <section class="gallery">
-            <div class="card"><img src="img/1.jpg"></div>
-            <div class="card"><img src="img/2.jpg"></div>
-            <div class="card"><img src="img/3.jpg"></div>
-            <div class="card"><img src="img/4.jpg"></div>
-            <div class="card"><img src="img/5.jpg"></div>
-        </section>
-
-    </section>
-</div>
-
 <section class="hero">
     <h1>ПРИВЕТ, МЕНЯ<br><span class="indent">ЗОВУТ РЕНАТА!</span></h1>
+</section>
+
+<section class="scene">
+    <div class="gallery">
+        <div class="card"><img src="img/1.jpg"></div>
+        <div class="card"><img src="img/2.jpg"></div>
+        <div class="card"><img src="img/3.jpg"></div>
+        <div class="card"><img src="img/4.jpg"></div>
+        <div class="card"><img src="img/5.jpg"></div>
+    </div>
 </section>
 
 <div class="scroll-spacer"></div>
@@ -45,57 +40,33 @@ const header = document.querySelector('.header');
 
 let activeIndex = 2;
 
-function lerp(a, b, t) {
-    return a + (b - a) * t;
-}
+function lerp(a,b,t){return a+(b-a)*t;}
 
-cards.forEach((card, i) => {
-    card.addEventListener('click', (e) => {
-        if (i !== activeIndex) {
-            e.preventDefault();
-            return;
-        }
-
-        const link = card.getAttribute('href');
-        if (link) window.location.href = link;
-    });
-});
-
-function update() {
+function update(){
     const scrollY = window.scrollY;
     const maxScroll = window.innerHeight * 1.7;
-    const p = Math.min(scrollY / maxScroll, 1);
+    const p = Math.min(scrollY / maxScroll,1);
 
-    header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
+    header.style.transform = `translateY(${lerp(0,-120,p)}px)`;
 
     const spacing = 240;
 
-    cards.forEach((card, i) => {
+    cards.forEach((card,i)=>{
         const offset = i - activeIndex;
         const abs = Math.abs(offset);
 
         const x = offset * spacing;
-        const y = lerp(-80, 0, p);
+        const y = lerp(-60, 0, p);
 
-        let scale;
-        if (offset === 0) {
-            scale = lerp(1, 2.2, p);
-        } else if (abs === 1) {
-            scale = lerp(1, 1.5, p);
-        } else {
-            scale = 1.1;
-        }
+        let scale =
+            offset===0 ? lerp(1,2.2,p) :
+            abs===1 ? lerp(1,1.5,p) :
+            1.1;
 
-        let z;
-        if (offset === 0) {
-            z = lerp(0, 250, p);
-        } else if (abs === 1) {
-            z = lerp(0, 120, p);
-        } else {
-            z = -120;
-        }
-
-        const opacity = abs >= 2 ? 0.7 : 1;
+        let z =
+            offset===0 ? lerp(0,250,p) :
+            abs===1 ? lerp(0,120,p) :
+            -120;
 
         card.style.zIndex = 10 - abs;
 
@@ -105,12 +76,10 @@ function update() {
             translateZ(${z}px)
             scale(${scale})
         `;
-
-        card.style.opacity = opacity;
     });
 }
 
-window.addEventListener('scroll', update);
+window.addEventListener('scroll',update);
 update();
 </script>
 
