@@ -65,10 +65,13 @@ html, body {
     height: 100vh;
 
     display: flex;
-    justify-content: center;
+    flex-wrap: nowrap; /* ВАЖНО */
     align-items: center;
     gap: 40px;
-    overflow-x: auto; /* ВОТ ОНО */
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
     padding: 0 60px;
 
     scroll-snap-type: x mandatory;
