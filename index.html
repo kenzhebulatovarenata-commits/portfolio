@@ -48,18 +48,16 @@ function lerp(a, b, t) {
 }
 
 // =========================
-// КЛИК ТОЛЬКО ПО ЦЕНТРУ
+// КЛИК — ТОЛЬКО ЦЕНТР
 // =========================
 cards.forEach((card, i) => {
     card.addEventListener('click', (e) => {
 
-        // если не центр — блокируем переход
         if (i !== activeIndex) {
             e.preventDefault();
             return;
         }
 
-        // если центр — переходим
         const link = card.getAttribute('href');
         if (link) {
             window.location.href = link;
@@ -68,13 +66,16 @@ cards.forEach((card, i) => {
 });
 
 // =========================
-// ОСНОВНОЙ РЕНДЕР
+// RENDER
 // =========================
 function update() {
     const scrollY = window.scrollY;
-    const maxScroll = window.innerHeight;
+
+    // анимация длится до 170vh
+    const maxScroll = window.innerHeight * 1.7;
     const p = Math.min(scrollY / maxScroll, 1);
 
+    // header уезжает вверх
     header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
 
     const spacing = 240;
@@ -83,7 +84,15 @@ function update() {
         const offset = i - activeIndex;
         const abs = Math.abs(offset);
 
+        // =========================
+        // X позиция (горизонталь)
+        // =========================
         const x = offset * spacing;
+
+        // =========================
+        // Y: сначала выше, потом центр
+        // =========================
+        const y = lerp(-80, 0, p);
 
         // =========================
         // SCALE
@@ -98,7 +107,7 @@ function update() {
         }
 
         // =========================
-        // Z DEPTH
+        // Z depth
         // =========================
         let z;
         if (offset === 0) {
@@ -110,12 +119,12 @@ function update() {
         }
 
         // =========================
-        // OPACITY
+        // opacity дальних
         // =========================
         let opacity = abs >= 2 ? 0.7 : 1;
 
         // =========================
-        // ACTIVE CLASS (центр)
+        // active class (центр)
         // =========================
         if (i === activeIndex) {
             card.classList.add('center');
@@ -130,6 +139,7 @@ function update() {
 
         card.style.transform = `
             translateX(${x}px)
+            translateY(${y}px)
             translateZ(${z}px)
             scale(${scale})
         `;
@@ -139,7 +149,7 @@ function update() {
 }
 
 // =========================
-// SCROLL LOOP
+// SCROLL
 // =========================
 window.addEventListener('scroll', update);
 update();
