@@ -1,5 +1,4 @@
-/* ExtraLight */
-@font-face {
+/* ExtraLight */@font-face {
     font-family: 'RalewayCustom';
     src: url('fonts/Raleway-v4020-ExtraLight.otf') format('opentype');
     font-weight: 200;
@@ -114,7 +113,6 @@ body {
     bottom: 10vh;   /* вот это ключ */
     left: 0;
     width: 100%;
-    margin-top: 0;
 
     padding: 120px 60px 0;
 
