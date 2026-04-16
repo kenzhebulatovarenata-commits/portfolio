@@ -1,3 +1,7 @@
+body {
+    background: red !important;
+}
+
 @font-face {
     font-family: 'RalewayCustom';
     src: url('./fonts/Raleway-ExtraLight.otf') format('opentype');
