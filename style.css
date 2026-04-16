@@ -98,19 +98,13 @@ body {
 
 /* HERO */
 .hero {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+    position: relative;
+    z-index: 2;
 
-    display: flex;
-    align-items: center;
+    padding: 120px 60px 0;
+    margin-top: 0;
 
-    padding: 0 60px;
-
-    z-index: 100;
-    pointer-events: none; /* чтобы карточки можно было кликать/hover */
+    pointer-events: none;
 }
 
 .hero h1 {
