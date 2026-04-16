@@ -34,6 +34,53 @@
     <span class="indent">ЗОВУТ РЕНАТА!</span>
 </h1>
 </section>
+<script>
+const cards = document.querySelectorAll('.card');
+const header = document.querySelector('.header');
 
+function lerp(a, b, t) {
+    return a + (b - a) * t;
+}
+
+function update() {
+    const scrollY = window.scrollY;
+    const maxScroll = window.innerHeight; // одна “сцена”
+    let p = Math.min(scrollY / maxScroll, 1);
+
+    // header уезжает вверх
+    header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
+
+    const centerIndex = 2; // средняя точка (из 5)
+
+    cards.forEach((card, i) => {
+        let offset = i - centerIndex;
+
+        // финальные позиции:
+        // центр: сжимаем в 3 карточки
+        let targetX;
+
+        if (i === 0) {
+            targetX = lerp(-420, -800, p); // уходит влево
+        } 
+        else if (i === 4) {
+            targetX = lerp(420, 800, p); // уходит вправо
+        } 
+        else {
+            targetX = lerp(offset * 220, offset * 180, p);
+        }
+
+        // чтобы не было пересечений — добавляем вертикальную стабилизацию
+        const scale = i === 2 ? lerp(1, 1.05, p) : lerp(1, 0.95, p);
+
+        card.style.transform = `
+            translateX(${targetX}px)
+            scale(${scale})
+        `;
+    });
+}
+
+window.addEventListener('scroll', update);
+update();
+</script>
 </body>
 </html>
