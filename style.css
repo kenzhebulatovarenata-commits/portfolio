@@ -24,6 +24,7 @@ body {
     background: #000;
     color: #fff;
     font-family: 'RalewayCustom', sans-serif;
+    overflow-x: hidden;
 }
 
 /* HEADER */
@@ -32,7 +33,16 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 30px 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform 0.3s ease;
+    z-index: 10;
 }
+/* сцена скролла */
+.scroll-stage {
+    height: 200vh; /* да, магия скролла требует пространства */
 
 .header a {
     font-weight: 500; /* Medium */
@@ -53,15 +63,23 @@ body {
 .gallery {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 0;
     margin-top: 90px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    align-items: center;
 }
 
+/* карточки теперь управляются JS */
 .card {
     width: 190px;
     height: 240px;
-    background: #2f8f3a; /* ближе к твоему зеленому */
+    background: #2f8f3a;
     border-radius: 32px;
+    position: absolute;
+    transition: transform 0.2s linear;
+    will-change: transform;
 }
 
 /* HERO */
