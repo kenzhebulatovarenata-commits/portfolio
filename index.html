@@ -112,7 +112,11 @@ function update(){
             abs===1 ? lerp(0,120,p) :
             -120;
 
-        card.style.zIndex = 10 - abs;
+        /* 🔥 ВАЖНО: возвращаем нормальную слоистость */
+        card.style.zIndex = 100 - abs;
+
+        /* 🔥 чтобы клики не ломались по слоям */
+        card.style.pointerEvents = "auto";
 
         card.style.transform = `
             translateX(${x}px)
