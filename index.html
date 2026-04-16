@@ -32,7 +32,7 @@
     <span class="indent">ЗОВУТ РЕНАТА!</span>
 </h1>
 </section>
-    <script id="l2q8wr">
+   <script>
 window.addEventListener('scroll', () => {
     const gallery = document.querySelector('.gallery');
     const cards = document.querySelectorAll('.card');
@@ -43,10 +43,10 @@ window.addEventListener('scroll', () => {
     let progress = -rect.top / windowHeight;
     progress = Math.max(0, Math.min(1, progress));
 
-    const scale = 0.8 + progress * 0.7; 
-    // от 0.8 до 1.5 — эффект приближения
+    // масштаб от маленьких к большим
+    const scale = 0.6 + progress * 1.2;
 
-    cards.forEach((card, index) => {
+    cards.forEach((card) => {
         card.style.transform = `scale(${scale})`;
     });
 });
