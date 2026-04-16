@@ -57,7 +57,7 @@ body {
 }
 
 .scene-wrapper {
-    height: 170vh; /* ВАЖНО: это теперь таймлайн */
+    height: 140vh; /* ВАЖНО: это теперь таймлайн */
     position: relative;
 }
 
