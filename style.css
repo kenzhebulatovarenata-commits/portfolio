@@ -56,7 +56,19 @@ html, body {
     gap: 40px;
     padding: 60px;
     margin-top: 60px;
-    height: 200vh; /* важно */
+    position: relative;
+    height: 200vh; /* чтобы было где скроллить */
+}
+
+.gallery-inner {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
 }
 
 .card {
@@ -74,7 +86,10 @@ html, body {
 /* ЗАГОЛОВОК */
 .hero {
     margin-top: 90px;
-    padding: 0 60px;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 60px;
 }
 
 .hero h1 {
