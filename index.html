@@ -44,9 +44,9 @@ function lerp(a, b, t) {
     return a + (b - a) * t;
 }
 
-// клики: любая карточка становится центром
+// hover вместо клика
 cards.forEach((card, i) => {
-    card.addEventListener('click', () => {
+    card.addEventListener('mouseenter', () => {
         activeIndex = i;
         update();
     });
@@ -57,7 +57,6 @@ function update() {
     const maxScroll = window.innerHeight;
     let p = Math.min(scrollY / maxScroll, 1);
 
-    // header уезжает вверх
     header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
 
     const spacing = 240;
@@ -66,16 +65,12 @@ function update() {
         const offset = i - activeIndex;
         const abs = Math.abs(offset);
 
-        // базовая позиция (строго ровная цепочка)
         const x = offset * spacing;
 
-        // =========================
-        // SCALE (с заморозкой)
-        // =========================
+        // SCALE с заморозкой дальних
         let scale;
-
         if (abs >= 2) {
-            scale = 1.1; // дальние зафиксированы
+            scale = 1.1;
         } else {
             const targetScale =
                 offset === 0 ? 2.2 :
@@ -84,11 +79,8 @@ function update() {
             scale = lerp(1, targetScale, p);
         }
 
-        // =========================
-        // Z (глубина с заморозкой)
-        // =========================
+        // Z глубина
         let z;
-
         if (abs >= 2) {
             z = -120;
         } else {
@@ -98,20 +90,11 @@ function update() {
                 0;
         }
 
-        // =========================
-        // opacity (мягкое затухание дальних)
-        // =========================
-        let opacity = 1;
-        if (abs >= 2) {
-            opacity = 0.7;
-        } else if (abs === 1) {
-            opacity = lerp(1, 0.9, p);
-        }
+        // opacity
+        let opacity = abs >= 2 ? 0.7 : 1;
 
-        // слой — центр всегда сверху
         card.style.zIndex = 10 - abs;
 
-        // итоговый трансформ
         card.style.transform = `
             translateX(${x}px)
             translateZ(${z}px)
