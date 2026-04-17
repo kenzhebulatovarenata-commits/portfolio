@@ -378,37 +378,42 @@ scroll-stage {
 
 .tools {
     width: 100%;
-    padding: 120px 100px;
+    padding: 140px 100px;
     color: white;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .tools h2 {
     font-weight: 200;
     font-size: 64px;
-    margin-bottom: 60px;
+    margin-bottom: 70px;
     letter-spacing: 1px;
+    text-align: center;
 }
 
 /* сетка иконок */
 .tools-grid {
     display: flex;
-    gap: 40px;
+    justify-content: center;
     align-items: center;
+    gap: 60px; /* больше воздуха между иконками */
     flex-wrap: wrap;
 }
 
 /* сами иконки */
 .tools-grid img {
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
     opacity: 0.9;
     transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .tools-grid img:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px) scale(1.05);
     opacity: 1;
 }
 
