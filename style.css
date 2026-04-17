@@ -33,7 +33,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 90px;
+    padding: 30px 60px;
     position: fixed;
     top: 0;
     left: 0;
@@ -301,7 +301,7 @@ body {
 .all-works {
     display: flex;
     justify-content: flex-end;
-    padding: 0 100px 400px;
+    padding: 0 60px 400px;
     position: relative;
     pointer-events: none;
 
