@@ -214,8 +214,8 @@ body {
     gap: 80px;
 }
 .about-photo img {
-    width: 320px;
-    height: 420px;
+    width: 640px;
+    height: 840px;
     object-fit: cover;
     border-radius: 24px;
     flex-shrink: 0;
