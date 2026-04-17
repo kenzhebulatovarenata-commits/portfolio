@@ -181,7 +181,7 @@ scroll-stage {
     position: relative;
     z-index: 2;
     margin-top: 10px;
-    margin-bottom: 0;
+    margin-bottom: 40px;
     color: white;
     transition: transform 0.1s linear;
 }
