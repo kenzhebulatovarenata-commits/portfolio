@@ -230,8 +230,8 @@ body {
     justify-content: space-between;
     gap: 40px;
 
-    width: 100%;
-    max-width: none;
+    width: calc(100% - 200px);
+    margin: 0 auto;
 
     margin: 0;
 
