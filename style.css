@@ -183,7 +183,7 @@ body {
     padding: 60px 60px;
     max-width: 1200px;
     margin-top: 10px;
-    margin-left: auto;
+    margin-left: 120px;
     margin-right: auto;
     text-align: left;
 
@@ -216,11 +216,12 @@ body {
     gap: 80px;
 }
 .about-photo img {
-    width: 420px;
-    height: 540px;
+    width: 525px;
+    height: 675px;
     object-fit: cover;
     border-radius: 24px;
     flex-shrink: 0;
+    margin-left: -40px;
 }
 
 .experience {
