@@ -297,12 +297,12 @@ body {
 .all-works {
     display: flex;
     justify-content: flex-end;
-    padding: 0 120px 400px;
+    padding: 0 100px 400px;
     position: relative;
     pointer-events: none;
 
     width: 100%;
-    padding-right: 70px;
+    padding-right: 65px;
     padding-top: 20px;
     margin-top: -450px;
     margin-bottom: 80px;
