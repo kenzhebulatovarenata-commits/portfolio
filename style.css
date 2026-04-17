@@ -210,7 +210,7 @@ scroll-stage {
     border-radius: 32px;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
 
     padding: 40px;
@@ -227,7 +227,6 @@ scroll-stage {
 
 .contact-text {
     max-width: 500px;
-   margin-left: -10px;
 }
 
 .contact h2 {
