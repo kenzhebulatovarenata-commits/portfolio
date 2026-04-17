@@ -217,41 +217,11 @@ window.addEventListener('wheel', (e) => {
 
     wheelLock = true;
 
-    let wheelAccum = 0;
-let wheelCooldown = false;
-
-window.addEventListener('wheel', (e) => {
-    const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-    if (!isHorizontal) return;
-    if (wheelCooldown) return;
-
-    // копим движение
-    wheelAccum += e.deltaX;
-
-    const threshold = 60; // 👈 чувствительность (чем больше, тем спокойнее)
-
-    if (wheelAccum > threshold) {
-        targetIndex = Math.min(cards.length - 1, targetIndex + 1);
-        wheelAccum = 0;
-        wheelCooldown = true;
-    }
-
-    if (wheelAccum < -threshold) {
-        targetIndex = Math.max(0, targetIndex - 1);
-        wheelAccum = 0;
-        wheelCooldown = true;
-    }
-
-    setTimeout(() => {
-        wheelCooldown = false;
-    }, 350); // блок между переключениями
-});
-
-    setTimeout(() => {
-        wheelLock = false;
-    }, 350);
-});
-
+    if (e.deltaX > 0) {
+    targetIndex = Math.min(cards.length - 1, targetIndex + 1);
+} else {
+    targetIndex = Math.max(0, targetIndex - 1);
+}
 /* =========================
    SCROLL TRACKER
 ========================= */
