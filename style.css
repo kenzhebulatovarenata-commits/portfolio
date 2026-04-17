@@ -169,6 +169,7 @@ scroll-stage {
 /* при наведении выезжает внутрь карточки */
 .card:hover .card-label {
     transform: translateY(0);
+}
 
 
 /* =========================
