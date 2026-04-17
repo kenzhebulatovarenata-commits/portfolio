@@ -274,6 +274,40 @@ scroll-stage {
     opacity: 1;
 }
 
+.about {
+    width: 100%;
+    padding: 120px 100px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.about-inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 120px;
+}
+
+/* заголовок */
+.about-inner h2 {
+    font-weight: 200;
+    font-size: 64px;
+    letter-spacing: 1px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* текст */
+.about-inner p {
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.85;
+
+    max-width: 600px;
+    margin: 0;
+}
+
 /* =========================
    EXPERIENCE
 ========================= */
@@ -340,6 +374,42 @@ scroll-stage {
 .experience-inner {
     max-width: none;
     margin: 0 auto;
+}
+
+.tools {
+    width: 100%;
+    padding: 120px 100px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.tools h2 {
+    font-weight: 200;
+    font-size: 64px;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+}
+
+/* сетка иконок */
+.tools-grid {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* сами иконки */
+.tools-grid img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    opacity: 0.9;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.tools-grid img:hover {
+    transform: translateY(-4px);
+    opacity: 1;
 }
 
 /* =========================
