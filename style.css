@@ -227,6 +227,7 @@ scroll-stage {
 
 .about-text {
     max-width: 500px;
+    margin-left: -10px;
 }
 
 .about h2 {
