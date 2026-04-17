@@ -132,7 +132,8 @@ scroll-stage {
     text-decoration: none;
     cursor: pointer;
     pointer-events: auto;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    will-change: transform;
 }
 
 .card img {
@@ -143,8 +144,9 @@ scroll-stage {
 }
 /* лёгкий намёк что это интерактив */
 .card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    transform: translateY(-18px) scale(1.02);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+    z-index: 999;
 }
 
 /* подпись внутри карточки */
