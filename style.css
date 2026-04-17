@@ -267,13 +267,12 @@ body {
     width: 100%;
 }
 .all-works {
-    position: relative;
-
-    display: flex;
-    justify-content: flex-end;
+    position: absolute;
+    right: 60px
+    top: 300px
+    z-index: 5;
 
     padding: 40px 60px;
-    margin-top: -250px; /* подтягиваем ближе к hero */
 }
 
 .all-works a {
