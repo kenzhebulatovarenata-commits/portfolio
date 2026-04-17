@@ -159,7 +159,7 @@ body {
 
     padding: 10px 60px;
     max-width: 900px;
-    margin-top: 150px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: 0;
     margin-bottom: 0;
@@ -269,9 +269,9 @@ body {
 .all-works {
     display: flex;
     justify-content: flex-end;
-    padding: 0 60px 250px;
+    padding: 0 60px 400px;
     margin-top: 5px;
-    margin-bottom: 150px;
+    margin-bottom: 10px;
     position: relative;
 }
 
