@@ -417,6 +417,18 @@ scroll-stage {
     opacity: 1;
 }
 
+.tools-desc {
+    max-width: 700px;
+    text-align: center;
+
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.85;
+
+    margin-bottom: 60px;
+}
+
 /* =========================
    ALL WORKS BUTTON
 ========================= */
