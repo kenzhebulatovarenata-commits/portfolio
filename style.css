@@ -6,12 +6,14 @@
     font-family: 'RalewayCustom';
     src: url('fonts/Raleway-v4020-ExtraLight.otf') format('opentype');
     font-weight: 200;
+    font-style: normal;
 }
 
 @font-face {
     font-family: 'RalewayCustom';
     src: url('fonts/Raleway-v4020-Medium.otf') format('opentype');
     font-weight: 500;
+    font-style: normal;
 }
 
 /* =========================
@@ -29,6 +31,7 @@ body {
     color: #fff;
     font-family: 'RalewayCustom', sans-serif;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* =========================
@@ -47,11 +50,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px var(--side-padding);
+    padding: 30px 50px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    transition: transform 0.3s ease;
     z-index: 10;
 }
 
@@ -83,6 +87,18 @@ body {
     align-items: center;
     justify-content: center;
     pointer-events: none;
+}
+scene-wrapper {
+    height: 170vh; /* ВАЖНО: это теперь таймлайн */
+    position: relative;
+}
+scroll-stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    perspective: 1200px;
+    overflow: hidden;
 }
 
 .gallery {
