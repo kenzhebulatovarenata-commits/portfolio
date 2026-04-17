@@ -302,10 +302,16 @@ body {
     display: flex;
     justify-content: flex-end;
     padding: 0 100px 400px;
-    margin-top: -350px;
-    margin-bottom: 0;
     position: relative;
     pointer-events: none;
+
+    width: 100%;
+
+    padding-right: 100px;
+    padding-top: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
 }
 
 .all-works a {
