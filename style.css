@@ -187,8 +187,6 @@ body {
     margin-top: 10px;
     margin: 0;
     text-align: left;
-    display: flex;
-    justify-content: center;
 
     color: white;
 }
@@ -233,11 +231,11 @@ body {
     gap: 40px;
 
     width: 100%;
-    max-width: 1200px;
+    max-width: none;
 
-    margin: 0 auto;
+    margin: 0;
 
-    padding: 100px;
+    padding: 60px 100px;
     box-sizing: border-box;
 }
 
