@@ -127,11 +127,12 @@ scroll-stage {
     border-radius: 32px;
     position: absolute;
     overflow: hidden;
-   will-change: transform;
+    will-change: transform;
     display: block;
     text-decoration: none;
     cursor: pointer;
     pointer-events: auto;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card img {
@@ -140,6 +141,35 @@ scroll-stage {
     object-fit: cover;
     display: block;
 }
+/* лёгкий намёк что это интерактив */
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* подпись внутри карточки */
+.card-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    padding: 10px 12px;
+
+    transform: translateY(100%);
+    transition: transform 0.25s ease;
+}
+
+/* при наведении выезжает внутрь карточки */
+.card:hover .card-label {
+    transform: translateY(0);
+
 
 /* =========================
    HERO
