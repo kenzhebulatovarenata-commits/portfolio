@@ -226,7 +226,8 @@ scroll-stage {
 }
 
 .contact-text {
-    max-width: 700px;
+    max-width: 500px;
+   margin-left: -10px;
 }
 
 .contact h2 {
