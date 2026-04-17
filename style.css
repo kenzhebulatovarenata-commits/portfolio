@@ -136,9 +136,8 @@ body {
     width: 100%;
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 100px;
 
-    padding: 500px 60px 0;
+    padding: 500px 100px 0;
 
     z-index: 1;
     pointer-events: none;
