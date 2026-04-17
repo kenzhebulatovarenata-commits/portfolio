@@ -280,6 +280,10 @@ body {
 
     width: 100%;
 }
+.experience-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 .all-works {
     display: flex;
     justify-content: flex-end;
