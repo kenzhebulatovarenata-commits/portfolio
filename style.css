@@ -267,10 +267,11 @@ body {
     width: 100%;
 }
 .all-works {
-    position: fixed;
-    top: 120px;
-    right: 60px;
-    z-index: 9999;
+    display: flex;
+    justify-content: flex-end;
+    padding: 40px 60px;
+    margin-top: 40px;
+    position: relative;
 }
 
 .all-works a {
