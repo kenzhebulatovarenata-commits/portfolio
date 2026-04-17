@@ -219,7 +219,7 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 60px;
+    gap: 100px;
 }
 
 .about-photo img {
