@@ -203,9 +203,21 @@ body {
     line-height: 1.6;
     opacity: 0.85;
 
-    max-width: 700px;
+    max-width: 500px;
     margin: 0 auto;
     text-align: left;
+}
+.about-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+.about-photo img {
+    width: 320px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 24px;
 }
 
 .experience {
