@@ -269,7 +269,7 @@ body {
 .all-works {
     position: absolute;
     right: 60px
-    top: 300px
+    top: 200px
     z-index: 5;
 
     padding: 40px 60px;
