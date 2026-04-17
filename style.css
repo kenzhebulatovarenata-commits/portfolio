@@ -268,8 +268,8 @@ body {
 }
 .all-works {
     position: fixed;
-    top: 120px
-    right: 60px
+    top: 120px;
+    right: 60px;
     z-index: 9999;
 }
 
