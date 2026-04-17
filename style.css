@@ -178,11 +178,20 @@ scroll-stage {
     display: flex;
     justify-content: flex-end;
     padding: 10px var(--side-padding);
+    position: relative;
+    z-index: 2;
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: white;
+    transition: transform 0.1s linear;
 }
 
 .proj h2 {
     font-weight: 200;
     font-size: 110px;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+    margin: 0;
 }
 
 /* =========================
@@ -206,7 +215,7 @@ scroll-stage {
 
     padding: 60px;
 
-    gap: 60px;
+    gap: 40px;
 }
 
 .about-photo img {
@@ -224,12 +233,15 @@ scroll-stage {
     font-size: 64px;
     font-weight: 200;
     margin-bottom: 40px;
+    letter-spacing: 1px;
 }
 
 .about p {
+    font-weight: 200;
     font-size: 18px;
     opacity: 0.85;
     line-height: 1.6;
+   
 }
 
 /* =========================
