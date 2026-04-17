@@ -253,3 +253,8 @@ body {
     transform: translateY(-6px);
     border-bottom: 1px solid white;
 }
+.exp-grid {
+    display: flex;
+    gap: 40px;
+    margin-top: 60px;
+}
