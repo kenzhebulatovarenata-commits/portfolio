@@ -198,13 +198,13 @@ scroll-stage {
    ABOUT SECTION
 ========================= */
 
-.about {
+.contact {
     width: 100%;
     padding: 0 var(--side-padding);
 }
 
 /* ПЛАШКА */
-.about-card {
+.contact-card {
     width: 100%;
     background: #040404;
     border-radius: 32px;
@@ -218,26 +218,26 @@ scroll-stage {
     gap: 20px;
 }
 
-.about-photo img {
+.contact-photo img {
     width: 520px;
     height: 675px;
     object-fit: cover;
     border-radius: 24px;
 }
 
-.about-text {
+.contact-text {
     max-width: 650px;
     margin-left: -10px;
 }
 
-.about h2 {
+.contact h2 {
     font-size: 64px;
     font-weight: 200;
     margin-bottom: 40px;
     letter-spacing: 1px;
 }
 
-.about p {
+.contact p {
     font-weight: 200;
     font-size: 18px;
     opacity: 0.85;
