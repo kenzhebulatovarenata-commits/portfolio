@@ -297,7 +297,7 @@ body {
 .all-works {
     display: flex;
     justify-content: flex-end;
-    padding: 0 105px 400px;
+    padding: 0 110px 400px;
     position: relative;
     pointer-events: none;
 
