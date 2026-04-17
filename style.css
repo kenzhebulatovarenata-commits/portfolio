@@ -267,10 +267,10 @@ body {
     width: 100%;
 }
 .all-works {
-    position: absolute;
+    position: fixed;
     right: 60px
     top: 120px
-    z-index: 5;
+    z-index: 999;
 
     padding: 40px 60px;
 }
