@@ -148,15 +148,24 @@ scroll-stage {
 .hero {
     width: 100%;
     padding: 500px var(--side-padding) 0;
+    position: relative;
+    left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .hero h1 {
     font-weight: 200;
     font-size: 110px;
     line-height: 0.8;
+    letter-spacing: 1.05px;
+    color: white;
 }
 
 .indent {
+    display: inline-block;
     margin-left: 200px;
 }
 
