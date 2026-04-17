@@ -244,3 +244,7 @@ body {
     line-height: 1.6;
     opacity: 0.75;
 }
+.exp-item:hover {
+    transform: translateY(-6px);
+    border-bottom: 1px solid white;
+}
