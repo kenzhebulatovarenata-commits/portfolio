@@ -1,18 +1,22 @@
-/* ExtraLight */
+/* =========================
+   FONTS
+========================= */
+
 @font-face {
     font-family: 'RalewayCustom';
     src: url('fonts/Raleway-v4020-ExtraLight.otf') format('opentype');
     font-weight: 200;
-    font-style: normal;
 }
 
-/* Medium — тебе нужно ДОБАВИТЬ файл */
 @font-face {
     font-family: 'RalewayCustom';
     src: url('fonts/Raleway-v4020-Medium.otf') format('opentype');
     font-weight: 500;
-    font-style: normal;
 }
+
+/* =========================
+   RESET
+========================= */
 
 * {
     margin: 0;
@@ -25,57 +29,34 @@ body {
     color: #fff;
     font-family: 'RalewayCustom', sans-serif;
     overflow-x: hidden;
-    overflow-y: auto;
 }
 
-/* HEADER */
+/* =========================
+   GLOBAL PADDING SYSTEM
+========================= */
+
+:root {
+    --side-padding: 100px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 50px;
+    padding: 30px var(--side-padding);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    transition: transform 0.3s ease;
     z-index: 10;
 }
-.scene {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
 
-    perspective: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    pointer-events: none;
-}
-
-.scene-wrapper {
-    height: 170vh; /* ВАЖНО: это теперь таймлайн */
-    position: relative;
-}
-
-.scroll-stage {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-
-    perspective: 1200px;
-    overflow: hidden;
-}
-
-.scroll-spacer {
-    height: calc(170vh - 100vh); /* регулирует длину скролла после сцены */
-}
-    
 .header a {
-    font-weight: 500; /* Medium */
+    font-weight: 500;
     color: white;
     text-decoration: none;
     border: 1px solid white;
@@ -83,264 +64,184 @@ body {
     padding: 10px 22px;
     font-size: 14px;
     margin-right: 12px;
-    transition: all 0.3s ease;
-}
-.header a:hover {
-    background: white;
-    color: black;
 }
 
 .nav-left a:last-child {
     margin-right: 0;
 }
 
-/* GALLERY */
+/* =========================
+   SCENE / GALLERY
+========================= */
+
+.scene {
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    perspective: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
 .gallery {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    position: relative;
-    top: 0;
     height: 100vh;
-    
-    transform-style: preserve-3d;
+    position: relative;
 }
 
-/* карточки теперь управляются JS */
 .card {
     width: 190px;
     height: 240px;
     border-radius: 32px;
     position: absolute;
-
-    overflow: hidden; /* чтобы картинка не вылезала */
-    will-change: transform;
-    display: block;
-    text-decoration: none;
-    cursor: pointer;
+    overflow: hidden;
     pointer-events: auto;
 }
 
 .card img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* чтобы не было растяжения */
-    display: block;
+    object-fit: cover;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
+
 .hero {
-    position: relative;
-    left: 0;
     width: 100%;
-    margin-top: 0;
-    margin-bottom: 0;
-
-    padding: 500px 97px 0;
-
-    z-index: 1;
-    pointer-events: none;
+    padding: 500px var(--side-padding) 0;
 }
+
 .hero h1 {
-    font-weight: 200; /* ExtraLight */
+    font-weight: 200;
     font-size: 110px;
     line-height: 0.8;
-    letter-spacing: 1.05px;
-    color: white;
 }
 
 .indent {
-    display: inline-block;
-    margin-left: 200px; /* регулируй как надо */
+    margin-left: 200px;
 }
-.proj {
-    position: relative;
-    z-index: 2;
 
-    margin-top: 10px;
-    margin-bottom: 0;
-    
+/* =========================
+   PROJECT TITLE
+========================= */
+
+.proj {
+    width: 100%;
     display: flex;
     justify-content: flex-end;
-    width: 100%;
-    padding: 10px 100px;
-    
-    color: white;
-    transition: transform 0.1s linear;
+    padding: 10px var(--side-padding);
 }
+
 .proj h2 {
     font-weight: 200;
     font-size: 110px;
-    margin-bottom: 0;
-    letter-spacing: 1px;
-    margin: 0;
 }
+
+/* =========================
+   ABOUT SECTION
+========================= */
 
 .about {
-    position: relative;
-    z-index: 2;
-
-    padding: 0;
-    max-width: 1200px;
     width: 100%;
-    margin-top: 10px;
-    margin: 0;
-    text-align: left;
-
-    color: white;
+    padding: 0 var(--side-padding);
 }
 
-.about h2 {
-    font-weight: 200;
-    font-size: 64px;
-    margin-bottom: 60px;
-    letter-spacing: 1px;
+/* ПЛАШКА */
+.about-card {
+    width: 100%;
+    background: #0F0F0F;
+    border-radius: 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 60px;
+
+    gap: 60px;
 }
 
-.about p {
-    font-weight: 200;
-    font-size: 18px;
-    line-height: 1.6;
-    opacity: 0.85;
-
-    max-width: 500px;
-    margin: 0;
-    text-align: left;
-    flex-shrink: 0;
+.about-photo img {
+    width: 520px;
+    height: 675px;
+    object-fit: cover;
+    border-radius: 24px;
 }
 
 .about-text {
     max-width: 500px;
 }
 
-.about-inner {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 100px;
+.about h2 {
+    font-size: 64px;
+    font-weight: 200;
+    margin-bottom: 40px;
 }
 
-.about-card {
-    background: #0F0F0F;
-    border-radius: 32px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    width: 100%;
-    margin: 0;
-
-    margin: 0;
-
-    padding: 60px 100px;
-    box-sizing: border-box;
+.about p {
+    font-size: 18px;
+    opacity: 0.85;
+    line-height: 1.6;
 }
 
-.about-photo img {
-    width: 525px;
-    height: 675px;
-    object-fit: cover;
-    border-radius: 24px;
-    flex-shrink: 0;
-    margin-left: 0;
-}
+/* =========================
+   EXPERIENCE
+========================= */
 
 .experience {
-    position: relative;
-    z-index: 2;
-
-    padding: 120px 100px;
-    max-width: none;
     width: 100%;
+    padding: 120px var(--side-padding);
 }
 
 .experience h2 {
-    font-weight: 200;
     font-size: 64px;
+    font-weight: 200;
     margin-bottom: 50px;
-    letter-spacing: 1px;
+}
+
+.exp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
 }
 
 .exp-item {
-    width: 100%;
-    height: 100%;
-    flex: 1;
-    position: relative;
-    padding: 30px 30px 40px;
-
-    background: transparent;
-    
+    padding: 30px;
     border-bottom: 1px solid rgba(255,255,255,0.6);
-    border-radius: 0 0 24px 24px;
-
-    margin-bottom: 40px;
-
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    background: transparent;
 }
 
 .exp-item h3 {
-    font-weight: 500;
     font-size: 22px;
     margin-bottom: 12px;
 }
 
 .exp-item p {
-    font-weight: 200;
     font-size: 18px;
-    line-height: 1.6;
     opacity: 0.75;
+    line-height: 1.6;
 }
-.exp-item:hover {
-    transform: translateY(-6px);
-    border-bottom: 1px solid white;
-}
-.exp-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 равные */
-    gap: 40px;
 
-    width: 100%;
-}
-.experience-inner {
-    max-width: none;
-    margin: 0 auto;
-}
+/* =========================
+   ALL WORKS BUTTON
+========================= */
+
 .all-works {
+    width: 100%;
     display: flex;
     justify-content: flex-end;
-    padding: 0 100px 400px;
-    position: relative;
-    pointer-events: none;
-
-    width: 100%;
-    padding-right: 63px;
-    padding-top: 20px;
-    margin-top: -450px;
-    margin-bottom: 80px;
+    padding: 0 var(--side-padding) 400px;
 }
 
 .all-works a {
-    font-weight: 500;
-    color: white;
-    text-decoration: none;
-
     border: 1px solid white;
     border-radius: 999px;
-
     padding: 10px 22px;
-    font-size: 14px;
-    display: inline-block;
-
-    transition: all 0.3s ease;
-    pointer-events: auto;
-}
-
-.all-works a:hover {
-    background: white;
-    color: black;
+    color: white;
+    text-decoration: none;
 }
