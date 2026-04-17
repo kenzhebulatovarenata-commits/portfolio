@@ -274,6 +274,7 @@ body {
     margin-top: -350px;
     margin-bottom: 0;
     position: relative;
+    pointer-events: none;
 }
 
 .all-works a {
@@ -289,7 +290,9 @@ body {
     display: inline-block;
 
     transition: all 0.3s ease;
+    pointer-events: auto;
 }
+
 .all-works a:hover {
     background: white;
     color: black;
