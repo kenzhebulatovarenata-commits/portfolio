@@ -217,11 +217,35 @@ window.addEventListener('wheel', (e) => {
 
     wheelLock = true;
 
-    if (e.deltaX > 0) {
+    let wheelAccum = 0;
+let wheelCooldown = false;
+
+window.addEventListener('wheel', (e) => {
+    const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+    if (!isHorizontal) return;
+    if (wheelCooldown) return;
+
+    // копим движение
+    wheelAccum += e.deltaX;
+
+    const threshold = 60; // 👈 чувствительность (чем больше, тем спокойнее)
+
+    if (wheelAccum > threshold) {
         targetIndex = Math.min(cards.length - 1, targetIndex + 1);
-    } else {
-        targetIndex = Math.max(0, targetIndex - 1);
+        wheelAccum = 0;
+        wheelCooldown = true;
     }
+
+    if (wheelAccum < -threshold) {
+        targetIndex = Math.max(0, targetIndex - 1);
+        wheelAccum = 0;
+        wheelCooldown = true;
+    }
+
+    setTimeout(() => {
+        wheelCooldown = false;
+    }, 350); // блок между переключениями
+});
 
     setTimeout(() => {
         wheelLock = false;
@@ -244,7 +268,7 @@ window.addEventListener('scroll', () => {
 function animate() {
 
     scrollProgress = lerp(scrollProgress, targetScroll, 0.08);
-    activeIndex = lerp(activeIndex, targetIndex, 0.08);
+    activeIndex = lerp(activeIndex, targetIndex, 0.12);
 
     const p = scrollProgress;
     const projectsTitle = document.querySelector('.proj');
@@ -253,7 +277,7 @@ function animate() {
     
     const t = Math.min(1, Math.max(0, (p - 0.15) / 0.85));
 
-    const spacing = 240;
+    const spacing = lerp(220, 260, scrollProgress);
     const projectsExit = Math.max(0, (p - 0.75) / 0.25);
 const projectsY = lerp(0, -150, projectsExit);
 
