@@ -158,11 +158,13 @@ body {
     position: relative;
     z-index: 2;
 
-    padding: 10px 100px;
     max-width: 900px;
     margin-top: 10px;
     margin-left: auto;
     margin-bottom: 0;
+    
+    display: flex;
+    justify-content: flex-end;
     width: 100%;
     padding: 10px 100px;
     
@@ -174,6 +176,7 @@ body {
     font-size: 110px;
     margin-bottom: 0;
     letter-spacing: 1px;
+    margin: 0;
 }
 
 .about {
