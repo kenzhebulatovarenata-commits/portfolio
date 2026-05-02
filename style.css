@@ -559,40 +559,57 @@ scroll-stage {
 /* белая плашка */
 .motion-label {
     position: absolute;
-    left: 0;
     bottom: 0;
+    left: 0;
+
     width: 100%;
+    height: 100%;
 
-    padding: 18px 22px;
+    background: rgba(255,255,255,0.9);
+    color: #000;
 
-    font-size: 14px;
+    padding: 12px 18px;
+
+    font-size: 16px;
     font-weight: 500;
-    color: black;
 
-    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    transform: translateY(70%);
+    transition: transform 0.3s ease;
+
+    overflow: hidden;
 }
 
-/* сама белая полоса */
+/* “линия” теперь не псевдоэлемент, а сам фон */
 .motion-label::before {
     content: "";
     position: absolute;
 
     left: 0;
-    bottom: 0; /* 👈 ВАЖНО: всегда прижата к низу */
+    bottom: 0;
 
     width: 100%;
-    height: 0; /* старт */
+    height: 40px;
 
     background: white;
 
-    transition: height 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: scaleY(0);
+    transform-origin: bottom;
 
-    z-index: -1;
+    transition: transform 0.3s ease;
 }
 
 /* hover */
+.motion-item:hover .motion-label {
+    transform: translateY(0);
+}
+
+/* линия появляется вместе с движением */
 .motion-item:hover .motion-label::before {
-    height: 100%; /* растёт вверх, но начинается снизу */
+    transform: scaleY(1);
 }
 /* =========================
    GRID GALLERY
