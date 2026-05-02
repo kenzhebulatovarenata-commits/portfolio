@@ -561,56 +561,27 @@ scroll-stage {
     position: absolute;
     bottom: 0;
     left: 0;
-
     width: 100%;
-    height: 100%;
 
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
     color: #000;
 
-    padding: 12px 18px;
-
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
-
+   
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
 
-    transform: translateY(70%);
-    transition: transform 0.3s ease;
+    padding: 10px 14px 10px 18px;
 
-    overflow: hidden;
+    transform: translateY(100%);
+    transition: transform 0.25s ease;
 }
-
-/* “линия” теперь не псевдоэлемент, а сам фон */
-.motion-label::before {
-    content: "";
-    position: absolute;
-
-    left: 0;
-    bottom: 0;
-
-    width: 100%;
-    height: 40px;
-
-    background: white;
-
-    transform: scaleY(0);
-    transform-origin: bottom;
-
-    transition: transform 0.3s ease;
-}
-
-/* hover */
-.motion-item:hover .motion-label {
+.motion:hover .motion-label {
     transform: translateY(0);
 }
 
-/* линия появляется вместе с движением */
-.motion-item:hover .motion-label::before {
-    transform: scaleY(1);
-}
 /* =========================
    GRID GALLERY
 ========================= */
