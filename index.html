@@ -233,8 +233,8 @@ window.addEventListener('wheel', (e) => {
     
 let scrollTimeout = null;
 
-const ATTRACTION_POINT = 0.72; // где "пик плашек"
-const ATTRACTION_RADIUS = 0.12; // насколько близко нужно быть
+const ATTRACTION_POINT = 0.68; // где "пик плашек"
+const ATTRACTION_RADIUS = 0.22; // насколько близко нужно быть
 
 window.addEventListener('scroll', () => {
 
@@ -255,16 +255,18 @@ window.addEventListener('scroll', () => {
         const dist = Math.abs(p - ATTRACTION_POINT);
 
         // 🧠 если далеко — ничего не делаем
-        if (dist > ATTRACTION_RADIUS) return;
+        const force = 1 - (dist / ATTRACTION_RADIUS);
+
+        if (force <= 0) return;
 
         // 🎯 мягко "дотягиваем" к центру
-        const targetP = ATTRACTION_POINT;
+       const targetP = ATTRACTION_POINT;
 
-        const targetY = targetP * maxScroll;
+       const targetY = targetP * maxScroll;
 
+       smoothScrollTo(targetY, 1400 * force);
+        
         isSnapping = true;
-
-        smoothScrollTo(targetY, 1400);
 
         setTimeout(() => {
             isSnapping = false;
