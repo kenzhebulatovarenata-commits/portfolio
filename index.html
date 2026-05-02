@@ -245,7 +245,7 @@ window.addEventListener('scroll', () => {
     if (isAutoScrolling) return;
 
     const scrollY = window.scrollY;
-    const triggerPoint = window.innerHeight * 0.4;
+    const triggerPoint = window.innerHeight * 0.55;
 
     const projectsSection = document.querySelector('.proj');
     const targetY = projectsSection.offsetTop;
@@ -254,16 +254,39 @@ window.addEventListener('scroll', () => {
 
         isAutoScrolling = true;
 
-        window.scrollTo({
-            top: targetY,
-            behavior: 'smooth'
-        });
+       smoothScrollTo(targetY, 1600);
 
         setTimeout(() => {
             isAutoScrolling = false;
         }, 800);
     }
 });
+
+    function smoothScrollTo(target, duration = 1400) {
+    const start = window.scrollY;
+    const distance = target - start;
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const time = currentTime - startTime;
+
+        const progress = Math.min(time / duration, 1);
+
+        // easeInOut (мягкое ускорение и замедление)
+        const ease = progress < 0.5
+            ? 2 * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+        window.scrollTo(0, start + distance * ease);
+
+        if (time < duration) {
+            requestAnimationFrame(animation);
+        }
+    }
+
+    requestAnimationFrame(animation);
+}
 
 /* =========================
    ANIMATION LOOP (RAF)
