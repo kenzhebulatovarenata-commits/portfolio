@@ -277,7 +277,9 @@ window.addEventListener('scroll', () => {
 
     const y = window.scrollY;
 
-    // ❗ ВАЖНО: анимация карточек должна всегда получать scroll
+    // =========================
+    // 📊 ВСЕГДА обновляем анимацию карточек
+    // =========================
     targetScroll = Math.min(y / (window.innerHeight * 2.3), 1);
 
     const directionDown = y > lastScrollY;
@@ -285,27 +287,36 @@ window.addEventListener('scroll', () => {
 
     lastScrollY = y;
 
-    if (isSnapping) {
-    lastScrollY = window.scrollY;
-    targetScroll = Math.min(window.scrollY / (window.innerHeight * 2.3), 1);
-    return;
-}
+    // =========================
+    // 🚫 МЯГКИЙ СТАРТ БЕЗ SNAP
+    // =========================
+    const SNAP_START = window.innerHeight * 1.5;
+
+    // пока пользователь в начале — никакого автоскролла
+    if (y < SNAP_START) return;
+
+    // если уже идёт докатка — не вмешиваемся
+    if (isSnapping) return;
 
     clearTimeout(scrollTimeout);
 
+    // =========================
+    // ⏳ ждём остановку скролла
+    // =========================
     scrollTimeout = setTimeout(() => {
 
         const s = getSections();
 
         const points = [
-            s.top,
             s.sceneEnd,
             s.about,
             s.tools,
             s.contact
         ];
 
-        // ищем ближайшую секцию
+        // =========================
+        // 🎯 ищем ближайшую секцию
+        // =========================
         let closest = points[0];
         let minDist = Math.abs(y - closest);
 
@@ -317,14 +328,15 @@ window.addEventListener('scroll', () => {
             }
         }
 
-        // запускаем плавную докатку
+        // =========================
+        // 🧲 запускаем плавный snap
+        // =========================
         isSnapping = true;
         smoothScrollTo(closest, 2400);
 
-    }, 120); // 👈 чувствительность (меньше = агрессивнее snap)
+    }, 150);
 
 });
-    
 /* =========================
    ANIMATION LOOP (RAF)
 ========================= */
