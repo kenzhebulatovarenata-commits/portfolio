@@ -277,11 +277,11 @@ if (projectsTitle) {
     const y = lerp(startY, 0, t);
 
     const exitProgress = Math.pow(
-        Math.min(1, Math.max(0, (p - 0.75) / 0.35)),
-        1.5
+        Math.min(1, Math.max(0, (p - 0.7) / 0.2)),
+        2.2
     );
 
-    const exit = lerp(0, -window.innerHeight * 1.2, exitProgress);
+    const exit = lerp(0, -window.innerHeight * 1.8, exitProgress);
         const endOffset = Math.max(0, (p - 0.7) / 0.3);
     const extraY = lerp(0, 80, endOffset);
 
