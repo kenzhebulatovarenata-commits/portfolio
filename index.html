@@ -237,106 +237,83 @@ window.addEventListener('scroll', () => {
 
     targetScroll = Math.min(scrollY / maxScroll, 1);
 });
-
-/* =========================
-   SMART SNAP SCROLL
-========================= */
-
 let isAutoScrolling = false;
-let autoScrollFrame = null;
 let lastScrollY = window.scrollY;
 
-const duration = 2200; // медленно и приятно
-
-window.addEventListener('scroll', () => {
-
-    const scrollY = window.scrollY;
-    const directionDown = scrollY > lastScrollY;
-    const directionUp = scrollY < lastScrollY;
-
-    lastScrollY = scrollY;
-
-    // ❗ если пользователь вмешался — отменяем
-    if (isAutoScrolling) {
-        cancelAnimationFrame(autoScrollFrame);
-        isAutoScrolling = false;
-        return;
-    }
-
-    const vh = window.innerHeight;
-
-    const projects = document.querySelector('.proj');
-    const about = document.querySelector('.about');
-    const contact = document.querySelector('.contact');
-
-    const points = [
-        0, // верх
-        vh * 2.4, // конец анимации (подстрой если надо)
-        projects.offsetTop,
-        about.offsetTop,
-        contact.offsetTop
-    ];
-
-    /* ===== ВНИЗ ===== */
-    if (directionDown) {
-        for (let i = 0; i < points.length; i++) {
-            if (scrollY < points[i] - 100) {
-                // спец условие для 700vh
-                if (scrollY > vh * 7) {
-                    startAutoScroll(points[1]); // конец анимации
-                } else {
-                    startAutoScroll(points[i]);
-                }
-                break;
-            }
-        }
-    }
-
-    /* ===== ВВЕРХ ===== */
-    if (directionUp) {
-        for (let i = points.length - 1; i >= 0; i--) {
-            if (scrollY > points[i] + 100) {
-                startAutoScroll(points[i]);
-                break;
-            }
-        }
-    }
+const sections = () => ({
+    endAnimation: window.innerHeight * 2.4,
+    projects: document.querySelector('.proj')?.offsetTop || 0,
+    about: document.querySelector('.about')?.offsetTop || 0,
+    contact: document.querySelector('.contact')?.offsetTop || 0
 });
 
-
-/* =========================
-   ULTRA SMOOTH SCROLL
-========================= */
-
-function startAutoScroll(target) {
-
-    isAutoScrolling = true;
-
+function smoothScrollTo(target, duration = 2200) {
     const start = window.scrollY;
     const distance = target - start;
     let startTime = null;
 
-    function animation(currentTime) {
+    function animate(time) {
+        if (!startTime) startTime = time;
+        const t = Math.min((time - startTime) / duration, 1);
 
-        if (!startTime) startTime = currentTime;
-        const time = currentTime - startTime;
-
-        const progress = Math.min(time / duration, 1);
-
-        // мягкий, без резкости
-        const ease = 1 - Math.pow(1 - progress, 3);
+        // мягкое ease
+        const ease = 1 - Math.pow(1 - t, 3);
 
         window.scrollTo(0, start + distance * ease);
 
-        if (progress < 1) {
-            autoScrollFrame = requestAnimationFrame(animation);
+        if (t < 1) {
+            requestAnimationFrame(animate);
         } else {
             isAutoScrolling = false;
         }
     }
 
-    autoScrollFrame = requestAnimationFrame(animation);
+    requestAnimationFrame(animate);
 }
+
+window.addEventListener('scroll', () => {
+
+    if (isAutoScrolling) return;
+
+    const y = window.scrollY;
+    const dirDown = y > lastScrollY;
+    const dirUp = y < lastScrollY;
+
+    lastScrollY = y;
+
+    const s = sections();
+
+    const pointsDown = [
+        s.endAnimation,
+        s.projects,
+        s.about,
+        s.contact
+    ];
+
+    const pointsUp = [...pointsDown].reverse();
+
+    // 👉 вниз
+    if (dirDown) {
+        for (let p of pointsDown) {
+            if (y < p - 80) {
+                isAutoScrolling = true;
+                smoothScrollTo(p);
+                return;
+            }
+        }
+    }
+
+    // 👉 вверх
+    if (dirUp) {
+        for (let p of pointsUp) {
+            if (y > p + 80) {
+                isAutoScrolling = true;
+                smoothScrollTo(p);
+                return;
+            }
+        }
+    }
+});
 
 /* =========================
    ANIMATION LOOP (RAF)
