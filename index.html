@@ -222,53 +222,13 @@ let targetScroll = 0;
 let activeIndex = 2;
 let targetIndex = 2;
 
-let isSnapping = false;
-
-/* =========================
-   SCROLL → только значение
-========================= */
 window.addEventListener('scroll', () => {
     const y = window.scrollY;
 
     const maxScroll = window.innerHeight * 2.3;
 
     targetScroll = Math.min(y / maxScroll, 1);
-
-    softAttraction();
 });
-
-/* =========================
-   МЯГКОЕ ПРИТЯЖЕНИЕ (НЕ ЛОМАЕТ СКРОЛЛ)
-========================= */
-function softAttraction() {
-
-    if (isSnapping) return;
-
-    const maxScroll = window.innerHeight * 2.3;
-    const p = targetScroll;
-
-    const CENTER = 0.72;   // где “идеальные плашки”
-    const RADIUS = 0.18;   // зона влияния
-
-    const dist = Math.abs(p - CENTER);
-
-    if (dist > RADIUS) return;
-
-    const force = 1 - dist / RADIUS;
-
-    const targetY = CENTER * maxScroll;
-
-    isSnapping = true;
-
-    window.scrollTo({
-        top: targetY,
-        behavior: "smooth"
-    });
-
-    setTimeout(() => {
-        isSnapping = false;
-    }, 800);
-}
 
 /* =========================
    ANIMATION LOOP (RAF)
@@ -279,6 +239,16 @@ function animate() {
     activeIndex = lerp(activeIndex, targetIndex, 0.12);
 
     const p = scrollProgress;
+    const CENTER = 0.72;
+const RADIUS = 0.18;
+
+const dist = Math.abs(p - CENTER);
+
+if (dist < RADIUS) {
+    const force = 1 - dist / RADIUS;
+
+    targetScroll = lerp(targetScroll, CENTER, force * 0.05);
+}
     const projectsTitle = document.querySelector('.proj');
 
    header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
