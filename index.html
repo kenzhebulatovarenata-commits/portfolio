@@ -210,23 +210,16 @@ cards.forEach((card, i) => {
 let wheelLock = false;
 
 window.addEventListener('wheel', (e) => {
-
-    const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-
-    if (!isHorizontal) return;
     if (wheelLock) return;
 
     wheelLock = true;
 
-    if (e.deltaX > 0) {
-        targetIndex = Math.min(cards.length - 1, targetIndex + 1);
-    } else {
-        targetIndex = Math.max(0, targetIndex - 1);
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        if (e.deltaX > 0) targetIndex = Math.min(cards.length - 1, targetIndex + 1);
+        else targetIndex = Math.max(0, targetIndex - 1);
     }
 
-    setTimeout(() => {
-        wheelLock = false;
-    }, 350);
+    setTimeout(() => wheelLock = false, 350);
 });
 /* =========================
    SCROLL TRACKER
@@ -250,8 +243,6 @@ function animate() {
     const projectsTitle = document.querySelector('.proj');
 
     header.style.transform = translateY(${lerp(0, -120, p)}px);
-    
-    const t = Math.min(1, Math.max(0, (p - 0.15) / 0.85));
 
    const spacing = 240;
     const projectsExit = Math.max(0, (p - 0.75) / 0.25);
