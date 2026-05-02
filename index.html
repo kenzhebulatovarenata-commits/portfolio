@@ -223,11 +223,12 @@ let activeIndex = 2;
 let targetIndex = 2;
 
 window.addEventListener('scroll', () => {
+
     const y = window.scrollY;
 
-    const maxScroll = window.innerHeight * 2.3;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
 
-    targetScroll = Math.min(y / maxScroll, 1);
+    targetScroll = y / maxScroll;
 });
 
 /* =========================
@@ -239,16 +240,7 @@ function animate() {
     activeIndex = lerp(activeIndex, targetIndex, 0.12);
 
     const p = scrollProgress;
-    const CENTER = 0.72;
-const RADIUS = 0.18;
 
-const dist = Math.abs(p - CENTER);
-
-if (dist < RADIUS) {
-    const force = 1 - dist / RADIUS;
-
-    targetScroll = lerp(targetScroll, CENTER, force * 0.05);
-}
     const projectsTitle = document.querySelector('.proj');
 
    header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
@@ -315,8 +307,16 @@ if (projectsTitle) {
         scale(${scale})
     `;
 });
+     const CENTER = 0.72;
+const RADIUS = 0.18;
 
-    requestAnimationFrame(animate);
+const dist = Math.abs(p - CENTER);
+
+if (dist < RADIUS) {
+    const force = 1 - dist / RADIUS;
+
+    // вместо реального скролла — мягко “подтягиваем визуал”
+    scrollProgress = lerp(scrollProgress, CENTER, force * 0.06);
 }
 
 animate();
