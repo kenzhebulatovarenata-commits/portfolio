@@ -237,105 +237,102 @@ window.addEventListener('scroll', () => {
 
     targetScroll = Math.min(scrollY / maxScroll, 1);
 });
+
 /* =========================
-   SMART SNAP SCROLL
+   SMOOTH SNAP SCROLL (НОРМАЛЬНЫЙ)
 ========================= */
 
 let isAutoScrolling = false;
 let autoScrollFrame = null;
-let lastScrollY = window.scrollY;
 
-const duration = 2200; // медленно и приятно
+const duration = 1800; // мягко, но не как улитка
+const SNAP_THRESHOLD = 140;
 
-window.addEventListener('scroll', () => {
+/* easing (мягкий, без дерганий) */
+function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+}
 
-    const scrollY = window.scrollY;
-    const directionDown = scrollY > lastScrollY;
-    const directionUp = scrollY < lastScrollY;
+/* блокировка скролла */
+function lockScroll() {
+    document.body.style.overflow = 'hidden';
+}
 
-    lastScrollY = scrollY;
+function unlockScroll() {
+    document.body.style.overflow = '';
+}
 
-    // ❗ если пользователь вмешался — отменяем
-    if (isAutoScrolling) {
-        cancelAnimationFrame(autoScrollFrame);
-        isAutoScrolling = false;
-        return;
-    }
-
+/* точки прилипания */
+function getSnapPoints() {
     const vh = window.innerHeight;
 
     const projects = document.querySelector('.proj');
     const about = document.querySelector('.about');
     const contact = document.querySelector('.contact');
 
-    const points = [
-        0, // верх
-        vh * 2.4, // конец анимации (подстрой если надо)
+    return [
+        0,
+        vh * 2.4,              // конец анимации карточек
         projects.offsetTop,
         about.offsetTop,
         contact.offsetTop
     ];
+}
 
-    /* ===== ВНИЗ ===== */
-    if (directionDown) {
-        for (let i = 0; i < points.length; i++) {
-            if (scrollY < points[i] - 100) {
-                // спец условие для 700vh
-                if (scrollY > vh * 7) {
-                    startAutoScroll(points[1]); // конец анимации
-                } else {
-                    startAutoScroll(points[i]);
-                }
-                break;
-            }
-        }
-    }
-
-    /* ===== ВВЕРХ ===== */
-    if (directionUp) {
-        for (let i = points.length - 1; i >= 0; i--) {
-            if (scrollY > points[i] + 100) {
-                startAutoScroll(points[i]);
-                break;
-            }
-        }
-    }
-});
-
-
-/* =========================
-   ULTRA SMOOTH SCROLL
-========================= */
-
+/* запуск автоскролла */
 function startAutoScroll(target) {
 
     isAutoScrolling = true;
+    lockScroll();
 
     const start = window.scrollY;
     const distance = target - start;
     let startTime = null;
 
-    function animation(currentTime) {
+    function step(time) {
 
-        if (!startTime) startTime = currentTime;
-        const time = currentTime - startTime;
+        if (!startTime) startTime = time;
 
-        const progress = Math.min(time / duration, 1);
+        const progress = Math.min((time - startTime) / duration, 1);
+        const eased = easeOutCubic(progress);
 
-        // мягкий, без резкости
-        const ease = 1 - Math.pow(1 - progress, 3);
-
-        window.scrollTo(0, start + distance * ease);
+        window.scrollTo(0, start + distance * eased);
 
         if (progress < 1) {
-            autoScrollFrame = requestAnimationFrame(animation);
+            autoScrollFrame = requestAnimationFrame(step);
         } else {
             isAutoScrolling = false;
+            unlockScroll();
         }
     }
 
-    autoScrollFrame = requestAnimationFrame(animation);
+    autoScrollFrame = requestAnimationFrame(step);
 }
+
+/* основной scroll */
+window.addEventListener('scroll', () => {
+
+    if (isAutoScrolling) return;
+
+    const scrollY = window.scrollY;
+    const points = getSnapPoints();
+
+    let closest = null;
+    let minDist = Infinity;
+
+    for (let p of points) {
+        const dist = Math.abs(scrollY - p);
+
+        if (dist < minDist) {
+            minDist = dist;
+            closest = p;
+        }
+    }
+
+    if (minDist < SNAP_THRESHOLD) {
+        startAutoScroll(closest);
+    }
+});
 /* =========================
    ANIMATION LOOP (RAF)
 ========================= */
