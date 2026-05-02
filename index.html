@@ -149,7 +149,6 @@
 
     <section class="contact">
     <div class="contact-card">
-
         <div class="contact-photo">
             <img src="img/me.jpg" alt="Renata">
         </div>
@@ -221,126 +220,8 @@ window.addEventListener('wheel', (e) => {
 
     setTimeout(() => wheelLock = false, 350);
 });
-let isSnapping = false;
-let lastScrollY = window.scrollY;
-let scrollTimeout = null;
-
-/* =========================
-   ПЛАВНЫЙ SCROLL TO
-========================= */
-function smoothScrollTo(target, duration = 2200) {
-    isSnapping = true;
-    const start = window.scrollY;
-    const distance = target - start;
-    let startTime = null;
-
-    function step(time) {
-        if (!startTime) startTime = time;
-
-        const t = Math.min((time - startTime) / duration, 1);
-
-        // мягкое замедление в конце
-        const ease = 1 - Math.pow(1 - t, 3);
-
-        window.scrollTo(0, start + distance * ease);
-
-        if (t < 1) {
-            requestAnimationFrame(step);
-        } else {
-            isSnapping = false;
-        }
-    }
-
-    requestAnimationFrame(step);
-}
-    window.addEventListener('wheel', () => {
-    isSnapping = false;
-}, { once: true });
-
-/* =========================
-   СЕКЦИИ (точки остановки)
-========================= */
-function getSections() {
-    return {
-        top: 0,
-        sceneEnd: window.innerHeight * 2.3, // конец анимации плашек
-        about: document.querySelector('.about')?.offsetTop || 0,
-        tools: document.querySelector('.tools')?.offsetTop || 0,
-        contact: document.querySelector('.contact')?.offsetTop || 0
-    };
-}
-
-/* =========================
-   SCROLL LISTENER + SNAP
-========================= */
-/* =========================
-   SCROLL ДЛЯ АНИМАЦИИ
-========================= */
-window.addEventListener('scroll', () => {
-
-    const y = window.scrollY;
-
-    // 📊 всегда обновляем прогресс анимации карточек
-    targetScroll = Math.min(y / (window.innerHeight * 2.3), 1);
-
-});
 
 
-/* =========================
-   МЯГКИЙ SNAP (ПОДДЕРЖКА, НЕ КОНТРОЛЬ)
-========================= */
-
-let scrollTimeout = null;
-let isSnapping = false;
-
-const SNAP_DISTANCE = window.innerHeight * 0.35;
-
-window.addEventListener('scroll', () => {
-
-    const y = window.scrollY;
-
-    if (isSnapping) return;
-
-    clearTimeout(scrollTimeout);
-
-    scrollTimeout = setTimeout(() => {
-
-        const s = getSections();
-
-        const points = [
-            0,            // верх страницы
-            s.sceneEnd,   // конец анимации карточек
-            s.about,
-            s.tools,
-            s.contact
-        ];
-
-        let closest = null;
-        let minDist = Infinity;
-
-        for (let p of points) {
-            const d = Math.abs(y - p);
-            if (d < minDist) {
-                minDist = d;
-                closest = p;
-            }
-        }
-
-        // 🧠 snap только если ты реально близко к секции
-        if (minDist > SNAP_DISTANCE) return;
-
-        isSnapping = true;
-
-        smoothScrollTo(closest, 1800);
-
-        // снимаем блокировку после анимации
-        setTimeout(() => {
-            isSnapping = false;
-        }, 1900);
-
-    }, 200); // ждём, пока пользователь остановится
-
-});
 /* =========================
    ANIMATION LOOP (RAF)
 ========================= */
@@ -352,14 +233,14 @@ function animate() {
     const p = scrollProgress;
     const projectsTitle = document.querySelector('.proj');
 
-   header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
+   header.style.transform = translateY(${lerp(0, -120, p)}px);
 
    const spacing = 240;
     const projectsExit = Math.max(0, (p - 0.75) / 0.25);
 const projectsY = lerp(0, -150, projectsExit);
 
 if (projectsTitle) {
-    projectsTitle.style.transform = `translateY(${projectsY}px)`;
+    projectsTitle.style.transform = translateY(${projectsY}px);
 }
 
     cards.forEach((card, i) => {
