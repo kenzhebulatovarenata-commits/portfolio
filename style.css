@@ -512,3 +512,144 @@ scroll-stage {
     background: white;
     color: black;
 }
+/* =========================
+   MOTION CARDS
+========================= */
+
+.motion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 var(--side-padding);
+}
+
+.motion-item {
+    width: 100%;
+    height: 260px;
+
+    display: block;
+    text-decoration: none;
+
+    border-radius: 32px;
+    overflow: hidden;
+}
+
+.motion-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.motion-item:hover .motion-inner {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+
+.motion-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* белая плашка */
+.motion-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    background: rgba(255,255,255,0.9);
+    color: #000;
+
+    padding: 12px 18px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    display: flex;
+    justify-content: space-between;
+
+    transform: translateY(100%);
+    transition: 0.25s ease;
+}
+
+.motion-item:hover .motion-label {
+    transform: translateY(0);
+}
+/* =========================
+   GRID GALLERY
+========================= */
+
+.grid {
+    padding: 0 var(--side-padding);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    cursor: pointer;
+
+    border-radius: 16px;
+    transition: transform 0.2s ease;
+}
+
+.grid img:hover {
+    transform: scale(1.03);
+}
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.9);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: 0.3s ease;
+    z-index: 100;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 16px;
+}
+
+/* стрелки */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+}
+
+.arrow.left {
+    left: 40px;
+}
+
+.arrow.right {
+    right: 40px;
+}
