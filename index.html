@@ -230,6 +230,9 @@ window.addEventListener('wheel', (e) => {
 /* =========================
    SCROLL TRACKER
 ========================= */
+/* =========================
+   SCROLL TRACKER (оставляем)
+========================= */
 window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     const maxScroll = window.innerHeight * 2.4;
@@ -237,55 +240,79 @@ window.addEventListener('scroll', () => {
     targetScroll = Math.min(scrollY / maxScroll, 1);
 });
 
-    
-    let isAutoScrolling = false;
+
+/* =========================
+   AUTO SCROLL (умный и мягкий)
+========================= */
+let isAutoScrolling = false;
+let lastScrollY = window.scrollY;
+let autoScrollFrame = null;
 
 window.addEventListener('scroll', () => {
 
-    if (isAutoScrolling) return;
-
     const scrollY = window.scrollY;
-    const triggerPoint = window.innerHeight * 0.55;
+    const directionDown = scrollY > lastScrollY;
+    const directionUp = scrollY < lastScrollY;
+
+    lastScrollY = scrollY;
 
     const projectsSection = document.querySelector('.proj');
     const targetY = projectsSection.offsetTop;
 
-    if (scrollY > triggerPoint && scrollY < targetY - 100) {
+    const triggerDown = window.innerHeight * 0.55;
+    const triggerUp = targetY - window.innerHeight * 0.55;
 
-        isAutoScrolling = true;
+    // ❗ если пользователь вмешался — сразу отменяем анимацию
+    if (isAutoScrolling) {
+        cancelAnimationFrame(autoScrollFrame);
+        isAutoScrolling = false;
+        return;
+    }
 
-       smoothScrollTo(targetY, 1600);
+    /* ===== ВНИЗ ===== */
+    if (directionDown && scrollY > triggerDown && scrollY < targetY - 50) {
+        startAutoScroll(targetY);
+    }
 
-        setTimeout(() => {
-            isAutoScrolling = false;
-        }, 800);
+    /* ===== ВВЕРХ ===== */
+    if (directionUp && scrollY < targetY && scrollY > triggerUp) {
+        startAutoScroll(0);
     }
 });
 
-    function smoothScrollTo(target, duration = 1400) {
+
+/* =========================
+   ПЛАВНЫЙ СКРОЛЛ (очень мягкий)
+========================= */
+function startAutoScroll(target) {
+
+    isAutoScrolling = true;
+
     const start = window.scrollY;
     const distance = target - start;
     let startTime = null;
+    const duration = 2200; // 👈 медленно и приятно
 
     function animation(currentTime) {
+
         if (!startTime) startTime = currentTime;
         const time = currentTime - startTime;
 
         const progress = Math.min(time / duration, 1);
 
-        // easeInOut (мягкое ускорение и замедление)
-        const ease = progress < 0.5
-            ? 2 * progress * progress
-            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        // супер мягкий ease (без резкости)
+        const ease = 1 - Math.pow(1 - progress, 3);
 
         window.scrollTo(0, start + distance * ease);
 
-        if (time < duration) {
-            requestAnimationFrame(animation);
+        if (progress < 1) {
+            autoScrollFrame = requestAnimationFrame(animation);
+        } else {
+            isAutoScrolling = false;
         }
     }
 
-    requestAnimationFrame(animation);
+    autoScrollFrame = requestAnimationFrame(animation);
 }
 
 /* =========================
