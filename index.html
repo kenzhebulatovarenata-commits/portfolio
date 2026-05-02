@@ -181,9 +181,11 @@ let targetIndex = 2;
 function lerp(a, b, t) {
     return a + (b - a) * t;
 }
+
     let scrollProgress = 0;
 let targetScroll = 0;
-let snapActive = false;
+
+let snapTriggered = false;
 
 window.addEventListener('scroll', () => {
     const maxScroll = document.body.scrollHeight - window.innerHeight;
@@ -191,19 +193,24 @@ window.addEventListener('scroll', () => {
 
     targetScroll = raw;
 
-    // мягкий "доводчик" к финалу сцены карточек
-    const startSnap = 0.72;
-    const endSnap = 0.9;
+    // зона "доводчика"
+    const snapStart = 0.72;
+    const snapEnd = 0.9;
 
-    if (raw > startSnap && raw < endSnap && !snapActive) {
-        snapActive = true;
+    if (raw > snapStart && raw < snapEnd && !snapTriggered) {
+        snapTriggered = true;
 
-        // аккуратно "дотягиваем" до конца анимации
-        targetScroll = endSnap;
+        // мягко тянем к финалу
+        targetScroll = snapEnd;
+
+        window.scrollTo({
+            top: maxScroll * snapEnd,
+            behavior: "smooth"
+        });
     }
 
-    if (raw < startSnap) {
-        snapActive = false;
+    if (raw < snapStart) {
+        snapTriggered = false;
     }
 });
 
@@ -269,7 +276,7 @@ function animate() {
 const projectsY = lerp(0, -150, projectsExit);
 
 if (projectsTitle) {
-    projectsTitle.style.transform = `translateY(${projectsY}px)`;
+    projectsTitle.style.transform = translateY(${projectsY}px);
 }
 
     cards.forEach((card, i) => {
