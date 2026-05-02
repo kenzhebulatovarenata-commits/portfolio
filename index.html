@@ -178,10 +178,6 @@ const header = document.querySelector('.header');
 let activeIndex = 2;
 let targetIndex = 2;
 
-/* scroll progress */
-let scrollProgress = 0;
-let targetScroll = 0;
-
 function lerp(a, b, t) {
     return a + (b - a) * t;
 }
@@ -228,45 +224,14 @@ window.addEventListener('wheel', (e) => {
 let snapTimeout = null;
 let isSnapping = false;
 
+let scrollProgress = 0;
+let targetScroll = 0;
+
 window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const maxScroll = window.innerHeight * 2.3;
 
-    if (isSnapping) return;
-
-    clearTimeout(snapTimeout);
-
-    snapTimeout = setTimeout(() => {
-
-        const y = window.scrollY;
-        const maxScroll = window.innerHeight * 2.3;
-
-        const p = targetScroll;
-
-        // 🎯 центр "красивого состояния плашек"
-        const ATTRACTION_POINT = 0.72;
-
-        // 📏 широкая зона, чтобы реально срабатывало
-        const ATTRACTION_RADIUS = 0.30;
-
-        const dist = Math.abs(p - ATTRACTION_POINT);
-
-        // если далеко — вообще не трогаем
-        if (dist > ATTRACTION_RADIUS) return;
-
-        // сила притяжения (чем ближе — тем сильнее)
-        const force = 1 - dist / ATTRACTION_RADIUS;
-
-        const targetY = ATTRACTION_POINT * maxScroll;
-
-        isSnapping = true;
-
-        smoothScrollTo(targetY, 1200 * force);
-
-        setTimeout(() => {
-            isSnapping = false;
-        }, 1300);
-
-    }, 120);
-
+    targetScroll = Math.min(y / maxScroll, 1);
 });
 
 /* =========================
