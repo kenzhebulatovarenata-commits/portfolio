@@ -217,48 +217,57 @@ window.addEventListener('wheel', (e) => {
     setTimeout(() => wheelLock = false, 350);
 });
 
-/* =========================
-   SOFT ATTRACTION (ТОЛЬКО ЗОНА ПЛАШЕК)
-========================= */
-
-let snapTimeout = null;
-let isSnapping = false;
-
 let scrollProgress = 0;
 let targetScroll = 0;
+let activeIndex = 2;
+let targetIndex = 2;
 
+let isSnapping = false;
+
+/* =========================
+   SCROLL → только значение
+========================= */
 window.addEventListener('scroll', () => {
     const y = window.scrollY;
+
     const maxScroll = window.innerHeight * 2.3;
 
     targetScroll = Math.min(y / maxScroll, 1);
+
+    softAttraction();
 });
 
 /* =========================
-   SMOOTH SCROLL FUNCTION
+   МЯГКОЕ ПРИТЯЖЕНИЕ (НЕ ЛОМАЕТ СКРОЛЛ)
 ========================= */
+function softAttraction() {
 
-function smoothScrollTo(target, duration = 1200) {
+    if (isSnapping) return;
 
-    const start = window.scrollY;
-    const distance = target - start;
-    let startTime = null;
+    const maxScroll = window.innerHeight * 2.3;
+    const p = targetScroll;
 
-    function step(time) {
+    const CENTER = 0.72;   // где “идеальные плашки”
+    const RADIUS = 0.18;   // зона влияния
 
-        if (!startTime) startTime = time;
+    const dist = Math.abs(p - CENTER);
 
-        const t = Math.min((time - startTime) / duration, 1);
+    if (dist > RADIUS) return;
 
-        const ease = 1 - Math.pow(1 - t, 3);
+    const force = 1 - dist / RADIUS;
 
-        window.scrollTo(0, start + distance * ease);
+    const targetY = CENTER * maxScroll;
 
-        if (t < 1) requestAnimationFrame(step);
-        else isSnapping = false;
-    }
+    isSnapping = true;
 
-    requestAnimationFrame(step);
+    window.scrollTo({
+        top: targetY,
+        behavior: "smooth"
+    });
+
+    setTimeout(() => {
+        isSnapping = false;
+    }, 800);
 }
 
 /* =========================
