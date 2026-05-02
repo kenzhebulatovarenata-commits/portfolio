@@ -559,7 +559,10 @@ scroll-stage {
 /* белая плашка */
 .motion-inner {
     position: relative;
+    height: 260px; /* или твоя высота */
     overflow: hidden;
+
+    border-radius: 32px; /* ← ВАЖНО */
 }
 
 /* ПАНЕЛЬ (как в карточках) */
@@ -575,6 +578,8 @@ scroll-stage {
 
     font-size: 14px;
     font-weight: 500;
+   
+    border-radius: 0 0 32px 32px;
 
     display: flex;
     justify-content: space-between;
