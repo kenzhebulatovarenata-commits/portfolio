@@ -557,10 +557,17 @@ scroll-stage {
 }
 
 /* белая плашка */
+.motion-inner {
+    position: relative;
+    overflow: hidden;
+}
+
+/* ПАНЕЛЬ (как в карточках) */
 .motion-label {
     position: absolute;
     bottom: 0;
     left: 0;
+
     width: 100%;
 
     background: rgba(255, 255, 255, 0.9);
@@ -568,7 +575,7 @@ scroll-stage {
 
     font-size: 14px;
     font-weight: 500;
-   
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -577,8 +584,12 @@ scroll-stage {
 
     transform: translateY(100%);
     transition: transform 0.25s ease;
+
+    z-index: 2;
 }
-.motion:hover .motion-label {
+
+/* ХОВЕР — как у тебя в карточках */
+.motion-item:hover .motion-label {
     transform: translateY(0);
 }
 
