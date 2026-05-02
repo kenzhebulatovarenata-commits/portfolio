@@ -143,11 +143,11 @@
             <img src="img/ae.png" alt="">
 
             <img src="img/indesign.png" alt="">
-        </div>
+            </div>
 
 </section>
 
-    <section class="contact">
+<section class="contact">
     <div class="contact-card">
         <div class="contact-photo">
             <img src="img/me.jpg" alt="Renata">
@@ -217,19 +217,49 @@ window.addEventListener('wheel', (e) => {
     setTimeout(() => wheelLock = false, 350);
 });
 
+/* =========================
+   SOFT ATTRACTION (ТОЛЬКО ЗОНА ПЛАШЕК)
+========================= */
+
+let snapTimeout = null;
+let isSnapping = false;
+
 let scrollProgress = 0;
 let targetScroll = 0;
-let activeIndex = 2;
-let targetIndex = 2;
 
 window.addEventListener('scroll', () => {
-
     const y = window.scrollY;
+    const maxScroll = window.innerHeight * 2.3;
 
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-
-    targetScroll = y / maxScroll;
+    targetScroll = Math.min(y / maxScroll, 1);
 });
+
+/* =========================
+   SMOOTH SCROLL FUNCTION
+========================= */
+
+function smoothScrollTo(target, duration = 1200) {
+
+    const start = window.scrollY;
+    const distance = target - start;
+    let startTime = null;
+
+    function step(time) {
+
+        if (!startTime) startTime = time;
+
+        const t = Math.min((time - startTime) / duration, 1);
+
+        const ease = 1 - Math.pow(1 - t, 3);
+
+        window.scrollTo(0, start + distance * ease);
+
+        if (t < 1) requestAnimationFrame(step);
+        else isSnapping = false;
+    }
+
+    requestAnimationFrame(step);
+}
 
 /* =========================
    ANIMATION LOOP (RAF)
@@ -240,7 +270,6 @@ function animate() {
     activeIndex = lerp(activeIndex, targetIndex, 0.12);
 
     const p = scrollProgress;
-
     const projectsTitle = document.querySelector('.proj');
 
    header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
@@ -282,8 +311,8 @@ if (projectsTitle) {
        SCALE: СТАРТ → ФИНАЛ
     ========================= */
 
-    const startScale = 0.9;   // одинаковые маленькие
-    const endScale = lerp(1.7, 0.9, Math.min(distance / 2, 1));
+const startScale = 0.9;   // одинаковые маленькие
+                  const endScale = lerp(1.7, 0.9, Math.min(distance / 2, 1));
 
     const scale = lerp(startScale, endScale, t);
     
@@ -307,16 +336,8 @@ if (projectsTitle) {
         scale(${scale})
     `;
 });
-     const CENTER = 0.72;
-const RADIUS = 0.18;
 
-const dist = Math.abs(p - CENTER);
-
-if (dist < RADIUS) {
-    const force = 1 - dist / RADIUS;
-
-    // вместо реального скролла — мягко “подтягиваем визуал”
-    scrollProgress = lerp(scrollProgress, CENTER, force * 0.06);
+    requestAnimationFrame(animate);
 }
 
 animate();
