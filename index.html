@@ -230,42 +230,47 @@ window.addEventListener('wheel', (e) => {
     targetScroll = Math.min(y / maxScroll, 1);
 
 });
+    
+let scrollTimeout = null;
 
-let snapTimeout = null;
-let isSnapping = false;
-
-const SNAP_RANGE = window.innerHeight * 0.25; // насколько “можно промахнуться”
+const ATTRACTION_POINT = 0.72; // где "пик плашек"
+const ATTRACTION_RADIUS = 0.12; // насколько близко нужно быть
 
 window.addEventListener('scroll', () => {
 
     const y = window.scrollY;
+    const maxScroll = window.innerHeight * 2.3;
 
-    if (isSnapping) return;
+    // 📊 твоя анимация
+    targetScroll = Math.min(y / maxScroll, 1);
 
-    clearTimeout(snapTimeout);
+    clearTimeout(scrollTimeout);
 
-    snapTimeout = setTimeout(() => {
+    scrollTimeout = setTimeout(() => {
 
-        const proj = document.querySelector('.proj');
+        // текущий прогресс анимации
+        const p = targetScroll;
 
-        if (!proj) return;
+        // расстояние до "идеального центра"
+        const dist = Math.abs(p - ATTRACTION_POINT);
 
-        const target = proj.offsetTop;
+        // 🧠 если далеко — ничего не делаем
+        if (dist > ATTRACTION_RADIUS) return;
 
-        const distance = Math.abs(y - target);
+        // 🎯 мягко "дотягиваем" к центру
+        const targetP = ATTRACTION_POINT;
 
-        // 🧠 если ты НЕ рядом с проектами — ничего не делаем
-        if (distance > SNAP_RANGE) return;
+        const targetY = targetP * maxScroll;
 
         isSnapping = true;
 
-        smoothScrollTo(target, 1200);
+        smoothScrollTo(targetY, 1400);
 
         setTimeout(() => {
             isSnapping = false;
-        }, 1300);
+        }, 1500);
 
-    }, 180); // ждём, пока ты реально остановилась
+    }, 180);
 
 });
 
