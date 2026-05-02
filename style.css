@@ -524,26 +524,28 @@ scroll-stage {
 
     padding: 0 var(--side-padding);
 }
-
 .motion-item {
-    width: 100%;
-    height: 300px;
-
     display: block;
     text-decoration: none;
 
+    height: 450px; /* ← ВОТ ТУТ РЕГУЛИРУЕШЬ ВЫСОТУ */
     border-radius: 32px;
+
     overflow: hidden;
 }
 
+/* ВНУТРЕННИЙ КОНТЕЙНЕР */
 .motion-inner {
-    width: 100%;
-    height: 450px;
     position: relative;
+    width: 100%;
+    height: 100%; /* ← важно: наследует высоту от motion-item */
+
     overflow: hidden;
+    border-radius: 32px;
 
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
+
 
 .motion-item:hover .motion-inner {
     transform: translateY(-10px);
@@ -554,15 +556,6 @@ scroll-stage {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-/* белая плашка */
-.motion-inner {
-    position: relative;
-    height: 260px; /* или твоя высота */
-    overflow: hidden;
-
-    border-radius: 32px; /* ← ВАЖНО */
 }
 
 /* ПАНЕЛЬ (как в карточках) */
