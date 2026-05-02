@@ -221,60 +221,108 @@ window.addEventListener('wheel', (e) => {
     setTimeout(() => wheelLock = false, 350);
 });
 
-    window.addEventListener('scroll', () => {
+let scrollProgress = 0;
+let targetScroll = 0;
 
-    const y = window.scrollY;
+let activeIndex = 2;
+let targetIndex = 2;
 
-    const maxScroll = window.innerHeight * 2.1;
+const cards = document.querySelectorAll('.card');
+const header = document.querySelector('.header');
 
-    targetScroll = Math.min(y / maxScroll, 1);
+function lerp(a, b, t) {
+    return a + (b - a) * t;
+}
 
-});
-    
-let scrollTimeout = null;
-
-const ATTRACTION_POINT = 0.68; // где "пик плашек"
-const ATTRACTION_RADIUS = 0.22; // насколько близко нужно быть
-
+/* =========================
+   SMOOTH SCROLL VALUE (основа анимации)
+========================= */
 window.addEventListener('scroll', () => {
 
     const y = window.scrollY;
     const maxScroll = window.innerHeight * 2.3;
 
-    // 📊 твоя анимация
     targetScroll = Math.min(y / maxScroll, 1);
 
-    clearTimeout(scrollTimeout);
+});
 
-    scrollTimeout = setTimeout(() => {
+/* =========================
+   SOFT ATTRACTION (ТОЛЬКО ЗОНА ПЛАШЕК)
+========================= */
 
-        // текущий прогресс анимации
+let snapTimeout = null;
+let isSnapping = false;
+
+window.addEventListener('scroll', () => {
+
+    if (isSnapping) return;
+
+    clearTimeout(snapTimeout);
+
+    snapTimeout = setTimeout(() => {
+
+        const y = window.scrollY;
+        const maxScroll = window.innerHeight * 2.3;
+
         const p = targetScroll;
 
-        // расстояние до "идеального центра"
+        // 🎯 центр "красивого состояния плашек"
+        const ATTRACTION_POINT = 0.72;
+
+        // 📏 широкая зона, чтобы реально срабатывало
+        const ATTRACTION_RADIUS = 0.30;
+
         const dist = Math.abs(p - ATTRACTION_POINT);
 
-        // 🧠 если далеко — ничего не делаем
-        const force = 1 - (dist / ATTRACTION_RADIUS);
+        // если далеко — вообще не трогаем
+        if (dist > ATTRACTION_RADIUS) return;
 
-        if (force <= 0) return;
+        // сила притяжения (чем ближе — тем сильнее)
+        const force = 1 - dist / ATTRACTION_RADIUS;
 
-        // 🎯 мягко "дотягиваем" к центру
-       const targetP = ATTRACTION_POINT;
+        const targetY = ATTRACTION_POINT * maxScroll;
 
-       const targetY = targetP * maxScroll;
-
-       smoothScrollTo(targetY, 1400 * force);
-        
         isSnapping = true;
+
+        smoothScrollTo(targetY, 1200 * force);
 
         setTimeout(() => {
             isSnapping = false;
-        }, 1500);
+        }, 1300);
 
-    }, 180);
+    }, 120);
 
 });
+
+/* =========================
+   SMOOTH SCROLL FUNCTION
+========================= */
+
+function smoothScrollTo(target, duration = 1200) {
+
+    const start = window.scrollY;
+    const distance = target - start;
+    let startTime = null;
+
+    function step(time) {
+
+        if (!startTime) startTime = time;
+
+        const t = Math.min((time - startTime) / duration, 1);
+
+        const ease = 1 - Math.pow(1 - t, 3);
+
+        window.scrollTo(0, start + distance * ease);
+
+        if (t < 1) {
+            requestAnimationFrame(step);
+        } else {
+            isSnapping = false;
+        }
+    }
+
+    requestAnimationFrame(step);
+}
 
 /* =========================
    ANIMATION LOOP (RAF)
