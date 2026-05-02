@@ -18,19 +18,11 @@ body {
     </div>
 </header>
 
-/* ===== SECTION TITLE ===== */
-.section-title {
-    width: 100%;
-    text-align: right;
-    font-size: 48px;
-    padding: 80px 60px 40px;
-    box-sizing: border-box;
-}
-
 /* ===== FULL WIDTH CARDS ===== */
 .motion-list {
     display: flex;
     flex-direction: column;
+    padding: 0 var(--side-padding) 80px;
 }
 
 .motion-item {
@@ -56,8 +48,8 @@ body {
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 0 60px 100px;
+    gap: 20px;
+    padding: 0 var(--side-padding) 100px;
 }
 
 .grid img {
@@ -116,7 +108,11 @@ body {
 <body>
 
 <!-- ===== MOTION ===== -->
-<div class="section-title">Моушн дизайн</div>
+<section class="about">
+    <div class="about-inner">
+        <h2>Моушн дизайн</h2>
+    </div>
+</section>
 
 <div class="motion-list">
     <a href="project1.html" class="motion-item"><img src="img/1.jpg"></a>
@@ -127,17 +123,21 @@ body {
 </div>
 
 <!-- ===== GRAPHIC ===== -->
-<div class="section-title">Графический дизайн</div>
+<section class="about">
+    <div class="about-inner">
+        <h2>Графический дизайн</h2>
+    </div>
+</section>
 
 <div class="grid" id="grid">
-    <img src="img/g1.jpg">
-    <img src="img/g2.jpg">
-    <img src="img/g3.jpg">
-    <img src="img/g4.jpg">
-    <img src="img/g5.jpg">
-    <img src="img/g6.jpg">
-    <img src="img/g7.jpg">
-    <img src="img/g8.jpg">
+    <img src="img/1.jpg">
+    <img src="img/2.jpg">
+    <img src="img/3.jpg">
+    <img src="img/4.jpg">
+    <img src="img/5.jpg">
+    <img src="img/6.jpg">
+    <img src="img/7.jpg">
+    <img src="img/8.jpg">
 </div>
 
 <!-- ===== MODAL ===== -->
