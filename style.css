@@ -226,8 +226,8 @@ scroll-stage {
     padding: 10px var(--side-padding);
     position: relative;
     z-index: 2;
-    margin-top: 250px;
-    margin-bottom: 20px;
+    margin-top: -450px;
+    margin-bottom: 100px;
     color: white;
     transition: transform 0.1s linear;
 }
