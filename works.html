@@ -10,14 +10,13 @@ body {
     margin: 0;
     font-family: sans-serif;
     background: #fff;
+}
     
     <header class="header">
     <div class="nav-left">
         <a href="index.html">Назад</a>
     </div>
 </header>
-    
-}
 
 /* ===== FULL WIDTH CARDS ===== */
 .motion-list {
@@ -26,25 +25,42 @@ body {
     padding: 0 var(--side-padding) 80px;
 }
 
+.motion-list {
+    padding: 0 var(--side-padding) 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
 .motion-item {
     width: 100%;
-    height: 420px;
-    position: relative;
+    height: 220px;
+    border-radius: 32px;
     overflow: hidden;
-    cursor: pointer;
+    position: relative;
+    display: block;
+    text-decoration: none;
 }
 
 .motion-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: 0.4s;
 }
 
-.motion-item:hover img {
-    transform: scale(1.05);
+/* ВНУТРЕННИЙ КОНТЕЙНЕР (как .card-inner) */
+.motion-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* hover эффект как на главной */
+.motion-item:hover .motion-inner {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+}
 /* ===== GRID ===== */
 .grid {
     display: grid;
@@ -116,11 +132,46 @@ body {
 </section>
 
 <div class="motion-list">
-    <a href="project1.html" class="motion-item"><img src="img/1.jpg"></a>
-    <a href="project2.html" class="motion-item"><img src="img/2.jpg"></a>
-    <a href="project3.html" class="motion-item"><img src="img/3.jpg"></a>
-    <a href="project4.html" class="motion-item"><img src="img/4.jpg"></a>
-    <a href="project5.html" class="motion-item"><img src="img/5.jpg"></a>
+    <<a href="project1.html" class="motion-item">
+    <div class="motion-inner">
+        <img src="img/1.jpg">
+        <div class="motion-label">
+            Project One <span>→</span>
+        </div>
+    </div>
+</a>
+    <a href="project1.html" class="motion-item">
+    <div class="motion-inner">
+        <img src="img/2.jpg">
+        <div class="motion-label">
+            Project One <span>→</span>
+        </div>
+    </div>
+</a>
+    <a href="project1.html" class="motion-item">
+    <div class="motion-inner">
+        <img src="img/3.jpg">
+        <div class="motion-label">
+            Project One <span>→</span>
+        </div>
+    </div>
+</a>
+    <a href="project1.html" class="motion-item">
+    <div class="motion-inner">
+        <img src="img/4.jpg">
+        <div class="motion-label">
+            Project One <span>→</span>
+        </div>
+    </div>
+</a>
+    <a href="project1.html" class="motion-item">
+    <div class="motion-inner">
+        <img src="img/5.jpg">
+        <div class="motion-label">
+            Project One <span>→</span>
+        </div>
+    </div>
+</a>
 </div>
 
 <!-- ===== GRAPHIC ===== -->
