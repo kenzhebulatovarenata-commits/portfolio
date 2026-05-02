@@ -192,7 +192,7 @@ scroll-stage {
 
 .hero {
     width: 100%;
-    padding: 500px var(--side-padding) 0;
+    padding: 600px var(--side-padding) 0;
     position: relative;
     left: 0;
     margin-top: 0;
