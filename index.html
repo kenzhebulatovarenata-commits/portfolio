@@ -231,6 +231,43 @@ window.addEventListener('wheel', (e) => {
 
 });
 
+let snapTimeout = null;
+let isSnapping = false;
+
+const SNAP_RANGE = window.innerHeight * 0.25; // насколько “можно промахнуться”
+
+window.addEventListener('scroll', () => {
+
+    const y = window.scrollY;
+
+    if (isSnapping) return;
+
+    clearTimeout(snapTimeout);
+
+    snapTimeout = setTimeout(() => {
+
+        const proj = document.querySelector('.proj');
+
+        if (!proj) return;
+
+        const target = proj.offsetTop;
+
+        const distance = Math.abs(y - target);
+
+        // 🧠 если ты НЕ рядом с проектами — ничего не делаем
+        if (distance > SNAP_RANGE) return;
+
+        isSnapping = true;
+
+        smoothScrollTo(target, 1200);
+
+        setTimeout(() => {
+            isSnapping = false;
+        }, 1300);
+
+    }, 180); // ждём, пока ты реально остановилась
+
+});
 
 /* =========================
    ANIMATION LOOP (RAF)
