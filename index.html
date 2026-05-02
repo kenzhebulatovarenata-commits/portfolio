@@ -221,16 +221,80 @@ window.addEventListener('wheel', (e) => {
 
     setTimeout(() => wheelLock = false, 350);
 });
-/* =========================
-   SCROLL TRACKER
-========================= */
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const maxScroll = window.innerHeight * 2.3;
 
-    targetScroll = Math.min(scrollY / maxScroll, 1);
+let isSnapping = false;
+let lastScrollY = window.scrollY;
+let scrollTimeout = null;
+
+const getSections = () => ({
+    top: 0,
+    sceneEnd: window.innerHeight * 2.3, // конец твоей анимации
+    about: document.querySelector('.about')?.offsetTop || 0,
+    tools: document.querySelector('.tools')?.offsetTop || 0
 });
 
+function smoothScrollTo(target, duration = 2200) {
+    const start = window.scrollY;
+    const distance = target - start;
+    let startTime = null;
+
+    function step(time) {
+        if (!startTime) startTime = time;
+        const t = Math.min((time - startTime) / duration, 1);
+
+        const ease = 1 - Math.pow(1 - t, 3);
+
+        window.scrollTo(0, start + distance * ease);
+
+        if (t < 1) requestAnimationFrame(step);
+        else isSnapping = false;
+    }
+
+    requestAnimationFrame(step);
+}
+
+/* =========================
+   DETECT STOP SCROLL → SNAP
+========================= */
+window.addEventListener('scroll', () => {
+
+    const y = window.scrollY;
+    const directionDown = y > lastScrollY;
+    const directionUp = y < lastScrollY;
+
+    lastScrollY = y;
+
+    if (isSnapping) return;
+
+    clearTimeout(scrollTimeout);
+
+    scrollTimeout = setTimeout(() => {
+
+        const s = getSections();
+        const points = [
+            s.top,
+            s.sceneEnd,
+            s.about,
+            s.tools
+        ];
+
+        // ближайшая точка
+        let closest = points[0];
+        let minDist = Math.abs(y - closest);
+
+        for (let p of points) {
+            const d = Math.abs(y - p);
+            if (d < minDist) {
+                minDist = d;
+                closest = p;
+            }
+        }
+
+        isSnapping = true;
+        smoothScrollTo(closest);
+
+    }, 120); // 👈 чувствительность (меньше = агрессивнее)
+});
 /* =========================
    ANIMATION LOOP (RAF)
 ========================= */
