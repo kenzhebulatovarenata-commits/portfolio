@@ -182,38 +182,6 @@ function lerp(a, b, t) {
     return a + (b - a) * t;
 }
 
-    let scrollProgress = 0;
-let targetScroll = 0;
-
-let snapTriggered = false;
-
-window.addEventListener('scroll', () => {
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const raw = window.scrollY / maxScroll;
-
-    targetScroll = raw;
-
-    // зона "доводчика"
-    const snapStart = 0.72;
-    const snapEnd = 0.9;
-
-    if (raw > snapStart && raw < snapEnd && !snapTriggered) {
-        snapTriggered = true;
-
-        // мягко тянем к финалу
-        targetScroll = snapEnd;
-
-        window.scrollTo({
-            top: maxScroll * snapEnd,
-            behavior: "smooth"
-        });
-    }
-
-    if (raw < snapStart) {
-        snapTriggered = false;
-    }
-});
-
 /* =========================
    CLICK
 ========================= */
@@ -254,6 +222,38 @@ window.addEventListener('wheel', (e) => {
     setTimeout(() => {
         wheelLock = false;
     }, 350);
+});
+
+        let scrollProgress = 0;
+let targetScroll = 0;
+
+let snapTriggered = false;
+
+window.addEventListener('scroll', () => {
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const raw = window.scrollY / maxScroll;
+
+    targetScroll = raw;
+
+    // зона "доводчика"
+    const snapStart = 0.72;
+    const snapEnd = 0.9;
+
+    if (raw > snapStart && raw < snapEnd && !snapTriggered) {
+        snapTriggered = true;
+
+        // мягко тянем к финалу
+        targetScroll = snapEnd;
+
+        window.scrollTo({
+            top: maxScroll * snapEnd,
+            behavior: "smooth"
+        });
+    }
+
+    if (raw < snapStart) {
+        snapTriggered = false;
+    }
 });
 
 /* =========================
