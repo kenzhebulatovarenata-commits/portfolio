@@ -233,14 +233,14 @@ function animate() {
     const p = scrollProgress;
     const projectsTitle = document.querySelector('.proj');
 
-   header.style.transform = translateY(${lerp(0, -120, p)}px);
+   header.style.transform = `translateY(${lerp(0, -120, p)}px)`;
 
    const spacing = 240;
     const projectsExit = Math.max(0, (p - 0.75) / 0.25);
 const projectsY = lerp(0, -150, projectsExit);
 
 if (projectsTitle) {
-    projectsTitle.style.transform = translateY(${projectsY}px);
+    projectsTitle.style.transform = `translateY(${projectsY}px)`;
 }
 
     cards.forEach((card, i) => {
