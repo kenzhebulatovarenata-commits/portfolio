@@ -566,6 +566,7 @@ scroll-stage {
     color: #000;
 
     padding: 12px 18px;
+    padding-bottom: 0;
 
     font-size: 16px;
     font-weight: 500;
