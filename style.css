@@ -528,7 +528,7 @@ scroll-stage {
     display: block;
     text-decoration: none;
 
-    height: 450px; /* ← ВОТ ТУТ РЕГУЛИРУЕШЬ ВЫСОТУ */
+    height: 360px; /* ← ВОТ ТУТ РЕГУЛИРУЕШЬ ВЫСОТУ */
     border-radius: 32px;
 
     overflow: hidden;
