@@ -221,64 +221,91 @@ window.addEventListener('wheel', (e) => {
 
     setTimeout(() => wheelLock = false, 350);
 });
-
 let isSnapping = false;
 let lastScrollY = window.scrollY;
 let scrollTimeout = null;
 
-const getSections = () => ({
-    top: 0,
-    sceneEnd: window.innerHeight * 2.3, // конец твоей анимации
-    about: document.querySelector('.about')?.offsetTop || 0,
-    tools: document.querySelector('.tools')?.offsetTop || 0
-});
-
+/* =========================
+   ПЛАВНЫЙ SCROLL TO
+========================= */
 function smoothScrollTo(target, duration = 2200) {
+    isSnapping = true;
     const start = window.scrollY;
     const distance = target - start;
     let startTime = null;
 
     function step(time) {
         if (!startTime) startTime = time;
+
         const t = Math.min((time - startTime) / duration, 1);
 
+        // мягкое замедление в конце
         const ease = 1 - Math.pow(1 - t, 3);
 
         window.scrollTo(0, start + distance * ease);
 
-        if (t < 1) requestAnimationFrame(step);
-        else isSnapping = false;
+        if (t < 1) {
+            requestAnimationFrame(step);
+        } else {
+            isSnapping = false;
+        }
     }
 
     requestAnimationFrame(step);
 }
+    window.addEventListener('wheel', () => {
+    isSnapping = false;
+}, { once: true });
 
 /* =========================
-   DETECT STOP SCROLL → SNAP
+   СЕКЦИИ (точки остановки)
+========================= */
+function getSections() {
+    return {
+        top: 0,
+        sceneEnd: window.innerHeight * 2.3, // конец анимации плашек
+        about: document.querySelector('.about')?.offsetTop || 0,
+        tools: document.querySelector('.tools')?.offsetTop || 0,
+        contact: document.querySelector('.contact')?.offsetTop || 0
+    };
+}
+
+/* =========================
+   SCROLL LISTENER + SNAP
 ========================= */
 window.addEventListener('scroll', () => {
 
     const y = window.scrollY;
+
+    // ❗ ВАЖНО: анимация карточек должна всегда получать scroll
+    targetScroll = Math.min(y / (window.innerHeight * 2.3), 1);
+
     const directionDown = y > lastScrollY;
     const directionUp = y < lastScrollY;
 
     lastScrollY = y;
 
-    if (isSnapping) return;
+    if (isSnapping) {
+    lastScrollY = window.scrollY;
+    targetScroll = Math.min(window.scrollY / (window.innerHeight * 2.3), 1);
+    return;
+}
 
     clearTimeout(scrollTimeout);
 
     scrollTimeout = setTimeout(() => {
 
         const s = getSections();
+
         const points = [
             s.top,
             s.sceneEnd,
             s.about,
-            s.tools
+            s.tools,
+            s.contact
         ];
 
-        // ближайшая точка
+        // ищем ближайшую секцию
         let closest = points[0];
         let minDist = Math.abs(y - closest);
 
@@ -290,11 +317,14 @@ window.addEventListener('scroll', () => {
             }
         }
 
+        // запускаем плавную докатку
         isSnapping = true;
-        smoothScrollTo(closest);
+        smoothScrollTo(closest, 2400);
 
-    }, 120); // 👈 чувствительность (меньше = агрессивнее)
+    }, 120); // 👈 чувствительность (меньше = агрессивнее snap)
+
 });
+    
 /* =========================
    ANIMATION LOOP (RAF)
 ========================= */
