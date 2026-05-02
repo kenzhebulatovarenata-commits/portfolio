@@ -221,6 +221,16 @@ window.addEventListener('wheel', (e) => {
     setTimeout(() => wheelLock = false, 350);
 });
 
+    window.addEventListener('scroll', () => {
+
+    const y = window.scrollY;
+
+    const maxScroll = window.innerHeight * 2.3;
+
+    targetScroll = Math.min(y / maxScroll, 1);
+
+});
+
 
 /* =========================
    ANIMATION LOOP (RAF)
