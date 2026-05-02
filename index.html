@@ -273,52 +273,50 @@ function getSections() {
 /* =========================
    SCROLL LISTENER + SNAP
 ========================= */
+/* =========================
+   SCROLL ДЛЯ АНИМАЦИИ
+========================= */
 window.addEventListener('scroll', () => {
 
     const y = window.scrollY;
 
-    // =========================
-    // 📊 ВСЕГДА обновляем анимацию карточек
-    // =========================
+    // 📊 всегда обновляем прогресс анимации карточек
     targetScroll = Math.min(y / (window.innerHeight * 2.3), 1);
 
-    const directionDown = y > lastScrollY;
-    const directionUp = y < lastScrollY;
+});
 
-    lastScrollY = y;
 
-    // =========================
-    // 🚫 МЯГКИЙ СТАРТ БЕЗ SNAP
-    // =========================
-    const SNAP_START = window.innerHeight * 1.5;
+/* =========================
+   МЯГКИЙ SNAP (ПОДДЕРЖКА, НЕ КОНТРОЛЬ)
+========================= */
 
-    // пока пользователь в начале — никакого автоскролла
-    if (y < SNAP_START) return;
+let scrollTimeout = null;
+let isSnapping = false;
 
-    // если уже идёт докатка — не вмешиваемся
+const SNAP_DISTANCE = window.innerHeight * 0.35;
+
+window.addEventListener('scroll', () => {
+
+    const y = window.scrollY;
+
     if (isSnapping) return;
 
     clearTimeout(scrollTimeout);
 
-    // =========================
-    // ⏳ ждём остановку скролла
-    // =========================
     scrollTimeout = setTimeout(() => {
 
         const s = getSections();
 
         const points = [
-            s.sceneEnd,
+            0,            // верх страницы
+            s.sceneEnd,   // конец анимации карточек
             s.about,
             s.tools,
             s.contact
         ];
 
-        // =========================
-        // 🎯 ищем ближайшую секцию
-        // =========================
-        let closest = points[0];
-        let minDist = Math.abs(y - closest);
+        let closest = null;
+        let minDist = Infinity;
 
         for (let p of points) {
             const d = Math.abs(y - p);
@@ -328,13 +326,19 @@ window.addEventListener('scroll', () => {
             }
         }
 
-        // =========================
-        // 🧲 запускаем плавный snap
-        // =========================
-        isSnapping = true;
-        smoothScrollTo(closest, 2400);
+        // 🧠 snap только если ты реально близко к секции
+        if (minDist > SNAP_DISTANCE) return;
 
-    }, 150);
+        isSnapping = true;
+
+        smoothScrollTo(closest, 1800);
+
+        // снимаем блокировку после анимации
+        setTimeout(() => {
+            isSnapping = false;
+        }, 1900);
+
+    }, 200); // ждём, пока пользователь остановится
 
 });
 /* =========================
