@@ -237,6 +237,34 @@ window.addEventListener('scroll', () => {
     targetScroll = Math.min(scrollY / maxScroll, 1);
 });
 
+    
+    let isAutoScrolling = false;
+
+window.addEventListener('scroll', () => {
+
+    if (isAutoScrolling) return;
+
+    const scrollY = window.scrollY;
+    const triggerPoint = window.innerHeight * 0.4;
+
+    const projectsSection = document.querySelector('.proj');
+    const targetY = projectsSection.offsetTop;
+
+    if (scrollY > triggerPoint && scrollY < targetY - 100) {
+
+        isAutoScrolling = true;
+
+        window.scrollTo({
+            top: targetY,
+            behavior: 'smooth'
+        });
+
+        setTimeout(() => {
+            isAutoScrolling = false;
+        }, 800);
+    }
+});
+
 /* =========================
    ANIMATION LOOP (RAF)
 ========================= */
