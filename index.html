@@ -238,39 +238,26 @@ window.addEventListener('scroll', () => {
     targetScroll = Math.min(scrollY / maxScroll, 1);
 });
 
+// 1. tracker (оставили)
+window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const maxScroll = window.innerHeight * 2.4;
+
+    targetScroll = Math.min(scrollY / maxScroll, 1);
+});
+
 /* =========================
-   SMOOTH SNAP SCROLL (НОРМАЛЬНЫЙ)
+   SNAP SCROLL (ГОТОВЫЙ)
 ========================= */
 
 let isAutoScrolling = false;
 let autoScrollFrame = null;
+let lastScrollY = window.scrollY;
 
-const duration = 1800; // мягко, но не как улитка
-const SNAP_THRESHOLD = 140;
+const duration = 1200;
 
-/* easing (мягкий, без дерганий) */
-function easeOutCubic(t) {
-    return 1 - Math.pow(1 - t, 3);
-}
 
-/* точки прилипания */
-function getSnapPoints() {
-    const vh = window.innerHeight;
-
-    const projects = document.querySelector('.proj');
-    const about = document.querySelector('.about');
-    const contact = document.querySelector('.contact');
-
-    return [
-        0,
-        vh * 2.4,              // конец анимации карточек
-        projects.offsetTop,
-        about.offsetTop,
-        contact.offsetTop
-    ];
-}
-
-/* запуск автоскролла */
+/* ===== АВТОСКРОЛЛ ===== */
 function startAutoScroll(target) {
 
     isAutoScrolling = true;
@@ -284,7 +271,7 @@ function startAutoScroll(target) {
         if (!startTime) startTime = time;
 
         const progress = Math.min((time - startTime) / duration, 1);
-        const eased= 1 - Math.pow(1 - progress, 3);
+        const eased = 1 - Math.pow(1 - progress, 3);
 
         window.scrollTo(0, start + distance * eased);
 
@@ -298,28 +285,45 @@ function startAutoScroll(target) {
     autoScrollFrame = requestAnimationFrame(step);
 }
 
-/* основной scroll */
+
+/* ===== SNAP ЛОГИКА ===== */
 window.addEventListener('scroll', () => {
 
     if (isAutoScrolling) return;
 
     const scrollY = window.scrollY;
-    const points = getSnapPoints();
+    const vh = window.innerHeight;
 
-    let closest = null;
-    let minDist = Infinity;
+    const projects = document.querySelector('.proj');
+    const about = document.querySelector('.about');
+    const contact = document.querySelector('.contact');
 
-    for (let p of points) {
-        const dist = Math.abs(scrollY - p);
+    const points = [
+        0,
+        vh * 2.4,
+        projects.offsetTop,
+        about.offsetTop,
+        contact.offsetTop
+    ];
 
-        if (dist < minDist) {
-            minDist = dist;
-            closest = p;
+    const direction = scrollY > lastScrollY ? 1 : -1;
+    lastScrollY = scrollY;
+
+    let currentIndex = 0;
+
+    for (let i = 0; i < points.length; i++) {
+        if (scrollY >= points[i]) {
+            currentIndex = i;
         }
     }
 
-    if (minDist < SNAP_THRESHOLD) {
-        startAutoScroll(closest);
+    let targetIndex = currentIndex + direction;
+    targetIndex = Math.max(0, Math.min(points.length - 1, targetIndex));
+
+    const target = points[targetIndex];
+
+    if (Math.abs(scrollY - target) > 60) {
+        startAutoScroll(target);
     }
 });
 /* =========================
