@@ -109,25 +109,45 @@
 </div>
 
 <script>
-const images = document.querySelectorAll('#grid img');
+const projects = document.querySelectorAll('.project');
 const modal = document.getElementById('modal');
 const modalImg = document.getElementById('modalImg');
+const extraImages = document.getElementById('extraImages');
 
-let current = 0;
+let currentImages = [];
+let currentIndex = 0;
 
+/* OPEN PROJECT */
+projects.forEach((project) => {
+    project.addEventListener('click', () => {
+        currentImages = project.dataset.images.split(',');
+        currentIndex = 0;
 
-/* OPEN */
-images.forEach((img, i) => {
-    img.addEventListener('click', () => {
-        current = i;
-        show();
+        showImage();
+        showExtras();
+
         modal.classList.add('active');
     });
 });
 
-/* SHOW IMAGE */
-function show() {
-    modalImg.src = images[current].src;
+function showImage() {
+    modalImg.src = currentImages[currentIndex];
+}
+
+function showExtras() {
+    extraImages.innerHTML = '';
+
+    currentImages.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+
+        img.addEventListener('click', () => {
+            currentIndex = i;
+            showImage();
+        });
+
+        extraImages.appendChild(img);
+    });
 }
 
 /* CLOSE */
@@ -139,14 +159,14 @@ modal.addEventListener('click', (e) => {
 
 /* NEXT */
 document.getElementById('next').onclick = () => {
-    current = (current + 1) % images.length;
-    show();
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    showImage();
 };
 
 /* PREV */
 document.getElementById('prev').onclick = () => {
-    current = (current - 1 + images.length) % images.length;
-    show();
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    showImage();
 };
  <div class="footer-note">
     Сделано Ренатой Кенжебулатовой
