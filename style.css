@@ -258,8 +258,7 @@ scroll-stage {
     justify-content: flex-start;
     align-items: flex-start;
 
-    padding: 40px;
-   padding-top: 100px;
+    padding: 80px;
 
     gap: 60px;
 }
@@ -322,7 +321,7 @@ scroll-stage {
 
 .about {
     width: 100%;
-    padding: 20px 100px;
+    padding: 60px 100px;
     color: white;
     box-sizing: border-box;
 }
@@ -705,8 +704,7 @@ scroll-stage {
 }
 .project-gallery {
     width: 100%;
-    padding: 0 var(--side-padding) 120px;
-    padding-top: 40px
+    padding: 80px var(--side-padding) 120px;
     box-sizing: border-box;
 }
 
