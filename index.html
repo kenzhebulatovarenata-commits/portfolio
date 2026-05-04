@@ -323,11 +323,13 @@ if (projectsTitle) {
        SCALE: СТАРТ → ФИНАЛ
     ========================= */
 
-const startScale = 0.9;   // одинаковые маленькие
-                  const endScale = lerp(1.7, 0.9, Math.min(distance / 2, 1));
+    const startScale = 0.9;
+    const maxScale = 1.2;
 
-    const scale = lerp(startScale, endScale, t);
-    
+    // рост только в начале появления, потом фиксируется
+    const scaleProgress = Math.min(t / 0.6, 1);
+
+    const scale = lerp(startScale, maxScale, scaleProgress);
 
     /* =========================
        Z DEPTH
