@@ -682,9 +682,12 @@ scroll-stage {
     letter-spacing: 0.5px;
 }
 .zig-image {
-    width: 100%;
-    padding: 0;
-    margin: 0; /* расстояние сверху и снизу */
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 }
 
 .zig-image img {
