@@ -215,30 +215,6 @@ scroll-stage {
 }
 
 /* =========================
-   PROJECT TITLE
-========================= */
-
-.proj {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding: 150px var(--side-padding);
-    position: relative;
-    z-index: 2;
-    margin-top: 450px;
-    margin-bottom: 150px;
-    color: white;
-    transition: transform 0.1s linear;
-}
-
-.proj h2 {
-    font-weight: 200;
-    font-size: 110px;
-    margin-bottom: 0;
-    letter-spacing: 1px;
-    margin: 0;
-}
-/* =========================
    ALL WORKS BUTTON
 ========================= */
 
@@ -276,6 +252,31 @@ scroll-stage {
     color: black;
 }
 
+/* =========================
+   PROJECT TITLE
+========================= */
+
+.proj {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 150px var(--side-padding);
+    position: relative;
+    z-index: 2;
+    margin-top: 450px;
+    margin-bottom: 80px;
+    color: white;
+    transition: transform 0.1s linear;
+}
+
+.proj h2 {
+    font-weight: 200;
+    font-size: 110px;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
 .zig-image {
     position: relative;
     width: 100vw;
@@ -283,6 +284,7 @@ scroll-stage {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+    margin-top: 0;
 }
 
 .zig-image img {
