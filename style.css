@@ -664,6 +664,9 @@ scroll-stage {
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    position: relative;
+    width: 100%;
+    height: 100%;
 
     max-width: 95vw;
     max-height: 95vh;
@@ -758,10 +761,16 @@ scroll-stage {
 }
 
 .extra-images {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-top: 20px; /* сильнее отодвинули вниз */
+
+    z-index: 200;
 }
 
 .extra-images img {
