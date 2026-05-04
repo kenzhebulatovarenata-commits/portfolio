@@ -798,19 +798,40 @@ scroll-stage {
 
 .project::after {
     content: "↗";
-    font-size: 18px;
-
     position: absolute;
-    top: 12px;
-    right: 12px;
+    left: 12px;
+    bottom: 12px;
+
+    font-size: 18px;
+    color: white;
 
     opacity: 0;
     transform: translateY(4px);
-
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .project:hover::after {
     opacity: 1;
     transform: translateY(-2px);
+}
+
+.project::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0)
+    );
+
+    opacity: 0;
+    transition: opacity 0.25s ease;
+
+    pointer-events: none;
+}
+
+.project:hover::before {
+    opacity: 1;
 }
