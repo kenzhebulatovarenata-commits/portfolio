@@ -797,4 +797,18 @@ scroll-stage {
 .project::after {
     content: "↗";
     font-size: 18px;
+
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    opacity: 0;
+    transform: translateY(4px);
+
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.project:hover::after {
+    opacity: 1;
+    transform: translateY(-2px);
 }
