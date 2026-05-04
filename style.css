@@ -751,9 +751,9 @@ scroll-stage {
 
 .extra-images {
     position: fixed;
-    bottom: -115px;
+    bottom: 40px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(30px);
 
     display: flex;
     justify-content: center;
@@ -773,11 +773,6 @@ scroll-stage {
 
     cursor: pointer;
     transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.extra-images img:hover {
-    opacity: 1;
-    transform: translateY(-3px) scale(1.05);
 }
 
 .project {
