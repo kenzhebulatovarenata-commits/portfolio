@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проект</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="nav-left">
+        <a href="works.html">Назад</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="contact.html">Связаться со мной</a>
+    </div>
+</header>
+
+<!-- ЗАГОЛОВОК -->
+<section class="about">
+    <div class="about-inner">
+        <h2>ГРАФИЧЕСКИЙ ДИЗАЙН</h2>
+    </div>
+</section>
+
+<!-- ГАЛЕРЕЯ -->
+<section class="project-gallery">
+    <div class="gallery-grid">
+
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+
+    </div>
+</section>
+
+<div class="footer-note">
+    Сделано Ренатой Кенжебулатовой
+</div>
+
+</body>
+</html>
