@@ -698,6 +698,7 @@ scroll-stage {
 .project-gallery {
     width: 100%;
     padding: 0 var(--side-padding) 120px;
+    padding-top: 40px
     box-sizing: border-box;
 }
 
