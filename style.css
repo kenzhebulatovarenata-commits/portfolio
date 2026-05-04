@@ -665,8 +665,8 @@ scroll-stage {
 .modal img {
     width: auto;
     height: auto;
-    max-width: 99%;
-    max-height: 92%;
+    max-width: 96%;
+    max-height: 89%;
     border-radius: 16px;
     object-fit: contain;
     display: block;
