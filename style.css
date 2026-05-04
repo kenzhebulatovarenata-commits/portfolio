@@ -751,7 +751,7 @@ scroll-stage {
 
 .extra-images {
     position: fixed;
-    bottom: -120px;
+    bottom: -115px;
     left: 50%;
     transform: translateX(-50%);
 
