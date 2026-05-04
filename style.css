@@ -598,8 +598,8 @@ scroll-stage {
     padding: 0 var(--side-padding);
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
-}
+    gap: 12px;
+
 
 /* важно: ссылка становится контейнером */
 .grid a {
