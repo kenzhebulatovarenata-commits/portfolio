@@ -47,6 +47,66 @@
         <div class="lightbox-arrow right" id="next">→</div>
     </div>
 </div>
+<script>
+const images = document.querySelectorAll('.gallery-grid img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
 
+const next = document.getElementById('next');
+const prev = document.getElementById('prev');
+const close = document.getElementById('close');
+
+let currentIndex = 0;
+
+/* открыть */
+images.forEach((img, i) => {
+    img.addEventListener('click', () => {
+        currentIndex = i;
+        openLightbox();
+    });
+});
+
+function openLightbox() {
+    lightbox.classList.add('active');
+    updateImage();
+}
+
+/* закрыть */
+function closeLightbox() {
+    lightbox.classList.remove('active');
+}
+
+close.addEventListener('click', closeLightbox);
+
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+});
+
+/* показать картинку */
+function updateImage() {
+    lightboxImg.src = images[currentIndex].src;
+}
+
+/* next */
+next.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateImage();
+});
+
+/* prev */
+prev.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateImage();
+});
+
+/* клавиатура (потому что ты теперь почти как продуктовый дизайнер, но с клавишами) */
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') next.click();
+    if (e.key === 'ArrowLeft') prev.click();
+});
+</script>
 </body>
 </html>
