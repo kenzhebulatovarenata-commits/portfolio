@@ -679,11 +679,18 @@ scroll-stage {
 .modal img {
     width: auto;
     height: auto;
-    max-width: 60%;
-    max-height: 50%;
     border-radius: 16px;
     object-fit: contain;
     display: block;
+}
+.modal img.horizontal {
+    max-width: 80%;
+    max-height: 70vh;
+}
+
+.modal img.vertical {
+    max-width: 50%;   /* уже */
+    max-height: 65vh; /* ниже */
 }
 
 /* стрелки */
