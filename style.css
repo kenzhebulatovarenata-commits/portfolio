@@ -809,7 +809,7 @@ scroll-stage {
     bottom: 0;
 
     width: 100%;
-    height: 35%; /* примерно 1/3 карточки */
+    height: 35%;
 
     background: linear-gradient(
         to top,
@@ -817,6 +817,9 @@ scroll-stage {
         rgba(0, 0, 0, 0.4) 50%,
         rgba(0, 0, 0, 0) 100%
     );
+
+    opacity: 0;
+    transition: opacity 0.25s ease;
 
     z-index: 1;
     pointer-events: none;
