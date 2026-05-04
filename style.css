@@ -596,10 +596,11 @@ scroll-stage {
 
 .grid {
     padding: 0 var(--side-padding);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 20px;
-    cursor: pointer;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
 }
 
 /* важно: ссылка становится контейнером */
@@ -767,12 +768,15 @@ scroll-stage {
     opacity: 1;
     transform: scale(1.05);
 }
+
 .project {
-    position: relative;
-    aspect-ratio: 1 / 1.414;
-    overflow: hidden;
+    flex: 0 0 auto;
+    width: 320px; /* можно менять */
+    aspect-ratio: 1 / 1.414; /* твой A4 стиль */
     border-radius: 18px;
+    overflow: hidden;
     cursor: pointer;
+    scroll-snap-align: start;
 }
 .project img {
     width: 100%;
