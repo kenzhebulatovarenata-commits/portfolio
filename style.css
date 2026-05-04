@@ -668,7 +668,7 @@ scroll-stage {
     max-height: 95vh;
 
     gap: 20px;
-    transform: translateY(50px);
+    transform: translateY(-40px);
 }
 
 .modal.active {
