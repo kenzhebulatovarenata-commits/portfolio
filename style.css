@@ -668,6 +668,8 @@ scroll-stage {
     justify-content: center;
 
     position: relative;
+
+    transform: translateY(-30px);
 }
 
 .modal.active {
