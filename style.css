@@ -637,6 +637,8 @@ scroll-stage {
     align-items: center;
     justify-content: center;
 
+    padding: 80px 40px;
+
     opacity: 0;
     pointer-events: none;
 
@@ -658,8 +660,8 @@ scroll-stage {
 }
 
 .modal img {
-    max-width: 90vw;
-    max-height: 90vh;
+    max-width: 85%;
+    max-height: 80%;
     border-radius: 16px;
     object-fit: contain;
     display: block;
