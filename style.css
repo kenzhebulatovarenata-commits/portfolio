@@ -646,14 +646,15 @@ scroll-stage {
 }
 
 .modal-content {
-    width: 70vw;
-    height: 70vh;
-    justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
-    transform: translateY(30px);
+
+    max-width: 95vw;
+    max-height: 95vh;
+
+    gap: 20px;
+    transform: translateY(50px);
 }
 
 .modal.active {
@@ -664,12 +665,11 @@ scroll-stage {
 .modal img {
     width: auto;
     height: auto;
-    max-width: 95%;
-    max-height: 88%;
+    max-width: 99%;
+    max-height: 92%;
     border-radius: 16px;
     object-fit: contain;
     display: block;
-    margin-bottom: 10px;
 }
 
 /* стрелки */
@@ -747,25 +747,27 @@ scroll-stage {
 
 .extra-images {
     display: flex;
-    gap: 8px;
-    margin-top: 10px;
     justify-content: center;
-    flex-wrap: wrap;
+    gap: 6px;
+
+    margin-top: 10px; /* сильнее отодвинули вниз */
 }
 
 .extra-images img {
-    width: 80px;
-    height: 110px;
+    width: 60px;
+    height: 85px;
     object-fit: cover;
-    border-radius: 10px;
-    opacity: 0.8;
+
+    border-radius: 8px;
+    opacity: 0.65;
+
     cursor: pointer;
-    transition: 0.2s;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .extra-images img:hover {
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .project {
