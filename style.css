@@ -602,13 +602,21 @@ scroll-stage {
     gap: 20px;
 }
 
+/* важно: ссылка становится контейнером */
+.grid a {
+    display: block;
+    aspect-ratio: 1 / 1.414; /* A4 */
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+/* картинка заполняет контейнер */
 .grid img {
     width: 100%;
-    aspect-ratio: 1 / 1.414;
+    height: 100%;
     object-fit: cover;
+    display: block;
     cursor: pointer;
-
-    border-radius: 16px;
     transition: transform 0.2s ease;
 }
 
