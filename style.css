@@ -792,3 +792,8 @@ scroll-stage {
     display: block;
 }
 
+.project::after {
+    content: "↗";
+    font-size: 18px;
+}
+
