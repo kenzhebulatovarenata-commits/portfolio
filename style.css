@@ -402,6 +402,10 @@ scroll-stage {
     margin: 0 auto;
 }
 
+/* =========================
+       ИНСТРУМЕНТЫ
+========================= */
+
 .tools {
     width: 100%;
     padding: 100px 100px;
@@ -454,6 +458,10 @@ scroll-stage {
 
     margin-bottom: 60px;
 }
+
+/* =========================
+       КОНТАКТЫ
+========================= */
 
 .contact {
     width: 100%;
@@ -533,7 +541,7 @@ scroll-stage {
 
 
 /* =========================
-   MOTION CARDS
+   ПРОЕКТЫ МОУШН
 ========================= */
 
 .motion-list {
@@ -630,6 +638,10 @@ scroll-stage {
     right: 40px;
 }
 
+/* =========================
+       СДЕЛАНО МНОЙ
+========================= */
+
 .footer-note {
     width: 100%;
     text-align: center;
@@ -646,7 +658,7 @@ scroll-stage {
 }
 
 /* =========================
-   GRID GALLERY
+       ДРУГИЕ РАБОТЫ
 ========================= */
 
 .grid {
@@ -675,6 +687,25 @@ scroll-stage {
 }
 
 .grid img:hover {
+    transform: scale(1.03);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.gallery-grid img:hover {
     transform: scale(1.03);
 }
 /* =========================
@@ -729,6 +760,10 @@ scroll-stage {
     transition: transform 0.25s ease;
     transform: translateY(-25px);
 }
+
+/* =========================
+     КОНКРЕТНО КАРТОЧКА
+========================= */
 
 .project {
     position: relative;
@@ -795,25 +830,9 @@ scroll-stage {
     box-sizing: border-box;
 }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.gallery-grid img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 18px;
-    cursor: pointer;
-    transition: transform 0.25s ease;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.03);
-}
-
+/* =========================
+  МАЛЕНЬКИЕ КАРТИНКИ ВНИЗУ
+========================= */
 
 .extra-images {
     position: fixed;
