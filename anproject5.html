@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="img/favicon.png">
+    <title>Комната мечты</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<header class="header">
+    <div class="nav-left">
+        <a href="works.html">Назад</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="contact.html">Связаться со мной</a>
+    </div>
+</header>
+
+<!-- ЗАГОЛОВОК -->
+<section class="about">
+    <div class="about-inner">
+        <h2>Комната мечты</h2>
+    </div>
+</section>
+
+<!-- ГАЛЕРЕЯ -->
+<section class="project-gallery">
+    <div class="gallery-grid">
+
+        <img src="img/img1.png" alt="">
+        <img src="img/img2.png" alt="">
+        <img src="img/img3.png" alt="">
+
+    </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <span class="lightbox-close" id="close">×</span>
+
+        <div class="lightbox-arrow left" id="prev">←</div>
+        <img id="lightbox-img">
+        <div class="lightbox-arrow right" id="next">→</div>
+    </div>
+</div>
+<script>
+const images = document.querySelectorAll('.gallery-grid img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+const next = document.getElementById('next');
+const prev = document.getElementById('prev');
+const close = document.getElementById('close');
+
+let currentIndex = 0;
+
+/* открыть */
+images.forEach((img, i) => {
+    img.addEventListener('click', () => {
+        currentIndex = i;
+        openLightbox();
+    });
+});
+
+function openLightbox() {
+    lightbox.classList.add('active');
+    updateImage();
+}
+
+/* закрыть */
+function closeLightbox() {
+    lightbox.classList.remove('active');
+}
+
+close.addEventListener('click', closeLightbox);
+
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+});
+
+/* показать картинку */
+function updateImage() {
+    lightboxImg.src = images[currentIndex].src;
+}
+
+/* next */
+next.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateImage();
+});
+
+/* prev */
+prev.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateImage();
+});
+
+/* клавиатура (потому что ты теперь почти как продуктовый дизайнер, но с клавишами) */
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') next.click();
+    if (e.key === 'ArrowLeft') prev.click();
+});
+</script>
+</body>
+</html>
