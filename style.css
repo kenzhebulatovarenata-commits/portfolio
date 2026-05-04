@@ -596,11 +596,9 @@ scroll-stage {
 
 .grid {
     padding: 0 var(--side-padding);
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     gap: 20px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
 }
 
 /* важно: ссылка становится контейнером */
