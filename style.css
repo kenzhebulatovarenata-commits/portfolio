@@ -245,7 +245,7 @@ scroll-stage {
 
 .contact {
     width: 100%;
-    padding: 0 var(--side-padding);
+    padding: 90px var(--side-padding);
 }
 
 /* ПЛАШКА */
@@ -321,7 +321,7 @@ scroll-stage {
 
 .about {
     width: 100%;
-    padding: 60px 100px;
+    padding: 90px 100px;
     color: white;
     box-sizing: border-box;
 }
@@ -704,7 +704,7 @@ scroll-stage {
 }
 .project-gallery {
     width: 100%;
-    padding: 80px var(--side-padding) 120px;
+    padding: 90px var(--side-padding) 120px;
     box-sizing: border-box;
 }
 
