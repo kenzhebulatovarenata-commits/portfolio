@@ -158,9 +158,24 @@ function showExtras() {
         extraImages.appendChild(img);
     });
 }
+    function openModal() {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
 
 /* CLOSE */
 modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('active');
+    }
+});
+    
+    modal.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.classList.remove('active');
     }
