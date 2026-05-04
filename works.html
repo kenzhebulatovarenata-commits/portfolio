@@ -77,24 +77,21 @@
     </div>
 </section>
 
-<div class="grid" id="grid">
-     <a href="anproject1.html">
-        <img src="img/img3.png">
-    </a>
+<div class="grid">
 
-    <a href="anproject2.html">
-        <img src="img/img5.png">
-    </a>
+  <div class="project" data-images="img/img3.png,img/img3-2.png,img/img3-3.png">
+      <img src="img/img3.png">
+  </div>
 
-    <a href="anproject3.html">
-        <img src="img/img8.png">
-    </a>
-     <a href="anproject4.html">
-        <img src="img/img9.png">
-    </a>
-    <a href="anproject5.html">
-        <img src="img/img1_1.png">
-    </a>
+  <div class="project" data-images="img/img5.png">
+      <img src="img/img5.png">
+  </div>
+
+  <div class="project" data-images="img/img8.png,img/img8-2.png,img/img8-3.png">
+      <img src="img/img8.png">
+  </div>
+
+</div>
     
 
 </div>
@@ -102,7 +99,12 @@
 <!-- ===== MODAL ===== -->
 <div class="modal" id="modal">
     <div class="arrow left" id="prev">←</div>
-    <img id="modalImg">
+
+    <div class="modal-content">
+        <img id="modalImg">
+        <div class="extra-images" id="extraImages"></div>
+    </div>
+
     <div class="arrow right" id="next">→</div>
 </div>
 
