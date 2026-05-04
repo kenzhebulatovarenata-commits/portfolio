@@ -683,14 +683,12 @@ scroll-stage {
 }
 .zig-image {
     width: 100%;
-    padding: 0 var(--side-padding);
-    margin: 10px 0; /* расстояние сверху и снизу */
-    box-sizing: border-box;
+    padding: 0;
+    margin: 0; /* расстояние сверху и снизу */
 }
 
 .zig-image img {
     width: 100%;
-    height: 60px; /* можно менять */
-    object-fit: cover;
+    height: auto; /* можно менять */
     display: block;
 }
