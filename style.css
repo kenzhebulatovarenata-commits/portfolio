@@ -599,6 +599,7 @@ scroll-stage {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    cursor: pointer;
 }
 
 /* важно: ссылка становится контейнером */
@@ -789,9 +790,6 @@ scroll-stage {
 .lightbox-arrow.right {
     right: -60px;
 }
-.project {
-    cursor: pointer;
-}
 
 .modal-content {
     display: flex;
@@ -819,3 +817,16 @@ scroll-stage {
     opacity: 1;
     transform: scale(1.05);
 }
+.project {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    cursor: pointer;
+}
+.project img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
