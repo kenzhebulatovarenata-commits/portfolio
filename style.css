@@ -647,11 +647,13 @@ scroll-stage {
 }
 
 .modal-content {
+    width: 70vw;
+    height: 70vh;
+    justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
-    max-width: 90vw;
 }
 
 .modal.active {
@@ -660,8 +662,10 @@ scroll-stage {
 }
 
 .modal img {
-    max-width: 85%;
-    max-height: 80%;
+    width: auto;
+    height: auto;
+    max-width: 70vw;
+    max-height: 70vh;
     border-radius: 16px;
     object-fit: contain;
     display: block;
