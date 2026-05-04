@@ -318,6 +318,20 @@ scroll-stage {
 .contact-text a:hover {
     opacity: 1;
 }
+.zig-image {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.zig-image img {
+    width: 100%;
+    height: auto; /* можно менять */
+    display: block;
+}
 
 .about {
     width: 100%;
@@ -599,7 +613,7 @@ scroll-stage {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 12px;
-
+}
 
 /* важно: ссылка становится контейнером */
 .grid a {
@@ -665,8 +679,8 @@ scroll-stage {
 .modal img {
     width: auto;
     height: auto;
-    max-width: 96%;
-    max-height: 89%;
+    max-width: 80%;
+    max-height: 70%;
     border-radius: 16px;
     object-fit: contain;
     display: block;
@@ -706,20 +720,7 @@ scroll-stage {
 
     letter-spacing: 0.5px;
 }
-.zig-image {
-    position: relative;
-    width: 100vw;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-}
 
-.zig-image img {
-    width: 100%;
-    height: auto; /* можно менять */
-    display: block;
-}
 .project-gallery {
     width: 100%;
     padding: 90px var(--side-padding) 120px;
@@ -748,14 +749,14 @@ scroll-stage {
 .extra-images {
     display: flex;
     justify-content: center;
-    gap: 6px;
-
-    margin-top: 10px; /* сильнее отодвинули вниз */
+    gap: 8px;
+    margin-top: 20px; /* сильнее отодвинули вниз */
 }
 
 .extra-images img {
     width: 60px;
     height: 85px;
+    opacity: 0.7;
     object-fit: cover;
 
     border-radius: 8px;
@@ -771,13 +772,11 @@ scroll-stage {
 }
 
 .project {
-    flex: 0 0 auto;
-    width: 320px; /* можно менять */
+    position: relative;
     aspect-ratio: 1 / 1.414; /* твой A4 стиль */
     border-radius: 18px;
     overflow: hidden;
     cursor: pointer;
-    scroll-snap-align: start;
 }
 .project img {
     width: 100%;
