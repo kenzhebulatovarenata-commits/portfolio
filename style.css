@@ -222,7 +222,7 @@ scroll-stage {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    padding: 150 var(--side-padding);
+    padding: 110 var(--side-padding);
     margin-top: 200px;
     position: relative;
     pointer-events: none;
