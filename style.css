@@ -679,7 +679,7 @@ scroll-stage {
     object-fit: contain;
     display: block;
 
-    transition: all 0.25s ease;
+    transition: none;
 
     max-width: 85vw;
     max-height: 75vh;
