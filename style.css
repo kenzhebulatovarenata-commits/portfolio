@@ -259,6 +259,7 @@ scroll-stage {
     align-items: flex-start;
 
     padding: 40px;
+   padding-top: 100px;
 
     gap: 60px;
 }
