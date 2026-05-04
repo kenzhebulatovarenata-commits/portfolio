@@ -640,25 +640,6 @@ scroll-stage {
    MODAL
 ========================= */
 
-.modal {
-    position: fixed;
-    inset: 0;
-
-    background: rgba(0,0,0,0.9);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 80px 20px;
-
-    opacity: 0;
-    pointer-events: none;
-
-    transition: 0.3s ease;
-    z-index: 100;
-}
-
 .modal-content {
     display: flex;
     flex-direction: column;
@@ -667,7 +648,6 @@ scroll-stage {
 
     max-width: 95vw;
     max-height: 95vh;
-    justify-content: flex-start;
 }
 
 .modal.active {
@@ -676,27 +656,25 @@ scroll-stage {
 }
 
 .modal img {
-    max-width: 100%;
-    max-height: 100%;
-
     border-radius: 16px;
     object-fit: contain;
     display: block;
+
+    max-width: 85vw;
+    max-height: 75vh;
 }
 
-.modal-main {
-    width: 85vw;
-    height: 75vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-
-    flex-shrink: 0;
+/* горизонтальные */
+.modal img.horizontal {
+    max-width: 85vw;
+    max-height: 65vh;
 }
 
+/* вертикальные */
+.modal img.vertical {
+    max-width: 45vw;
+    max-height: 80vh;
+}
 /* стрелки */
 .arrow {
     position: absolute;
