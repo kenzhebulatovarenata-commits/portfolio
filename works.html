@@ -171,6 +171,19 @@ function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
 }
+    function showImage() {
+    modalImg.src = currentImages[currentIndex];
+
+    modalImg.onload = () => {
+        if (modalImg.naturalHeight > modalImg.naturalWidth) {
+            modalImg.classList.add('vertical');
+            modalImg.classList.remove('horizontal');
+        } else {
+            modalImg.classList.add('horizontal');
+            modalImg.classList.remove('vertical');
+        }
+    };
+}
 
 /* CLOSE */
 modal.addEventListener('click', (e) => {
