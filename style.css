@@ -222,14 +222,14 @@ scroll-stage {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    padding: 90 var(--side-padding);
+    padding: 10 var(--side-padding);
     margin-top: 200px;
     position: relative;
     pointer-events: none;
 
     width: 100%;
     padding-right: 63px;
-    padding-top: 250px;
+    padding-top: 180px;
 }
 
 .all-works a {
