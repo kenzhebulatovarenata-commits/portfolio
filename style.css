@@ -889,8 +889,8 @@ scroll-stage {
     display: grid;
     grid-template-columns: 1fr 520px;
 
-    gap: 24px; /* ЕДИНЫЙ РИТМ */
-    align-items: end;
+    gap: 24px;
+    align-items: end; /* ключ: низ выравнивается */
 }
 .notation-left {
     display: flex;
@@ -909,6 +909,7 @@ scroll-stage {
     grid-template-columns: repeat(3, 1fr);
 
     gap: 16px; /* чуть плотнее, чем основной ритм */
+    margin-top: auto;
 }
 
 .notation-posters img {
