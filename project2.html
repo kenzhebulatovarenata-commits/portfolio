@@ -2,15 +2,102 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Проект 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title>Experimental Notation</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <section class="hero">
-        <h1>Проект 1</h1>
-        <p>Полное описание проекта...</p>
-    </section>
+<header class="header">
+    <div class="nav-left">
+        <a href="works.html">Назад</a>
+    </div>
 
+    <div class="nav-right">
+        <a href="contact.html">Связаться со мной</a>
+    </div>
+</header>
+<section class="exp-section">
+  <h1 class="exp-title">EXPERIMENTAL<br>NOTATION</h1>
+
+  <div class="exp-cards">
+    <img src="img1.jpg" class="card card-1" />
+    <img src="img2.jpg" class="card card-2" />
+    <img src="img3.jpg" class="card card-3" />
+    <img src="img4.jpg" class="card card-4" />
+  </div>
+</section>
+    <script>
+const section = document.querySelector('.exp-section');
+const cards = document.querySelectorAll('.card');
+
+function lerp(start, end, t) {
+  return start + (end - start) * t;
+}
+
+function animateCards(progress) {
+  // ограничиваем
+  progress = Math.max(0, Math.min(1, progress));
+
+  cards.forEach((card, i) => {
+    let x = 0;
+    let y = 0;
+    let rotate = 0;
+    let scale = 1;
+
+    switch(i) {
+      case 0:
+        x = lerp(-300, 0, progress);
+        y = lerp(-200, 0, progress);
+        rotate = lerp(-45, 0, progress);
+        break;
+
+      case 1:
+        x = lerp(300, 0, progress);
+        y = lerp(-200, 0, progress);
+        rotate = lerp(45, 0, progress);
+        break;
+
+      case 2:
+        x = lerp(-300, 0, progress);
+        y = lerp(200, 0, progress);
+        rotate = lerp(30, 0, progress);
+        break;
+
+      case 3:
+        x = lerp(300, 0, progress);
+        y = lerp(200, 0, progress);
+        rotate = lerp(-30, 0, progress);
+        break;
+    }
+
+    scale = lerp(0.7, 1, progress);
+
+    card.style.transform = `
+      translate(${x}px, ${y}px)
+      rotate(${rotate}deg)
+      scale(${scale})
+    `;
+  });
+}
+
+function onScroll() {
+  const rect = section.getBoundingClientRect();
+  const windowHeight = window.innerHeight;
+
+  const start = windowHeight;
+  const end = -rect.height;
+
+  const progress = (start - rect.top) / (start - end);
+
+  animateCards(progress);
+}
+
+window.addEventListener('scroll', onScroll);
+onScroll();
+</script>
 </body>
 </html>
