@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="img/favicon.png">
-    <title>Комната мечты</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <title>Experimental Notation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -24,91 +24,35 @@
 <!-- ЗАГОЛОВОК -->
 <section class="about">
     <div class="about-inner">
-        <h2>Комната мечты</h2>
+        <h2>Experimental Notation</h2>
     </div>
 </section>
 
-<!-- ГАЛЕРЕЯ -->
-<section class="project-gallery">
-    <div class="gallery-grid">
+<!-- НОВЫЙ БЛОК -->
+<section class="project">
+    <div class="project-inner">
 
-        <img src="img/img6.png" alt="">
-        <img src="img/img7.png" alt="">
-        <img src="img/img8.png" alt="">
+        <!-- ЛЕВО: ТЕКСТ -->
+        <div class="project-text">
+            <p>
+                Здесь будет описание проекта. Напиши что-нибудь осмысленное, 
+                а не «я сделала красиво потому что красиво». 
+                Например: идея, концепция, материалы, почему это вообще существует.
+            </p>
+
+            <p>
+                Можно разбить на несколько абзацев, чтобы не выглядело как 
+                поток сознания дизайнера в 3 часа ночи.
+            </p>
+        </div>
+
+        <!-- ПРАВО: ВИДЕО -->
+        <div class="project-video">
+            <video src="notation/nmedia.mp4" autoplay muted loop playsinline></video>
+        </div>
 
     </div>
 </section>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-    <div class="lightbox-content">
-        <span class="lightbox-close" id="close">×</span>
-
-        <div class="lightbox-arrow left" id="prev">←</div>
-        <img id="lightbox-img">
-        <div class="lightbox-arrow right" id="next">→</div>
-    </div>
-</div>
-<script>
-const images = document.querySelectorAll('.gallery-grid img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-
-const next = document.getElementById('next');
-const prev = document.getElementById('prev');
-const close = document.getElementById('close');
-
-let currentIndex = 0;
-
-/* открыть */
-images.forEach((img, i) => {
-    img.addEventListener('click', () => {
-        currentIndex = i;
-        openLightbox();
-    });
-});
-
-function openLightbox() {
-    lightbox.classList.add('active');
-    updateImage();
-}
-
-/* закрыть */
-function closeLightbox() {
-    lightbox.classList.remove('active');
-}
-
-close.addEventListener('click', closeLightbox);
-
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-});
-
-/* показать картинку */
-function updateImage() {
-    lightboxImg.src = images[currentIndex].src;
-}
-
-/* next */
-next.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateImage();
-});
-
-/* prev */
-prev.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateImage();
-});
-
-/* клавиатура (потому что ты теперь почти как продуктовый дизайнер, но с клавишами) */
-document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') next.click();
-    if (e.key === 'ArrowLeft') prev.click();
-});
-</script>
 </body>
 </html>
