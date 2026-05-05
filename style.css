@@ -898,3 +898,27 @@ scroll-stage {
     max-width: 480px;
     border-radius: 12px;
     object-fit: cover;
+}
+
+   .notation-posters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+
+    margin-top: 40px;
+}
+
+/* сами постеры */
+.notation-posters img {
+    width: 100%;
+    aspect-ratio: 1 / 1.414; /* твой A4 стиль */
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    transition: transform 0.2s ease;
+}
+
+.notation-posters img:hover {
+    transform: scale(1.03);
+}
