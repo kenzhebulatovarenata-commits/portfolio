@@ -1009,11 +1009,12 @@ scroll-stage {
     display: flex;
     gap: 60px;
     align-items: flex-start;
+    margin-top: 20px;
 }
 
 .notationani-inner .video-wrapper {
     max-width: 100%;
-    width: 700px;
+    width: 780px;
    
 }
 
