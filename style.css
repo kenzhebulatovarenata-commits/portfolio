@@ -1065,7 +1065,7 @@ scroll-stage {
 }
 
 /* контейнер карточек */
-.exp-cards {
+.ncards-cards {
     position: absolute;
     inset: 0;
 
@@ -1077,7 +1077,7 @@ scroll-stage {
 }
 
 /* сами карточки */
-.exp-card {
+.ncards-card {
     position: absolute;
 
     width: 190px;
@@ -1092,7 +1092,7 @@ scroll-stage {
 }
 
 /* картинки внутри */
-.exp-card img {
+.ncards-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1100,17 +1100,11 @@ scroll-stage {
 }
 
 /* стартовое состояние (до анимации) */
-.exp-card {
+.ncards-card {
     transform: scale(0.7);
 }
-
-/* когда активируется */
-.exp-card.is-visible {
-    opacity: 1;
-}
-
 /* немного свечения как в макете */
-.exp-card::after {
+.ncards-card::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -1120,9 +1114,3 @@ scroll-stage {
     box-shadow: 0 0 40px rgba(255, 80, 120, 0.25);
     pointer-events: none;
 }
-
-/* вариации (чтобы можно было руками подправить) */
-.exp-card--1 {}
-.exp-card--2 {}
-.exp-card--3 {}
-.exp-card--4 {}
