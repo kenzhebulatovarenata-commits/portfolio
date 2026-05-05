@@ -916,8 +916,12 @@ scroll-stage {
     aspect-ratio: 1 / 1.414;
     object-fit: cover;
 
-    border-radius: 12px;
-    transition: transform 0.2s ease;
+    border-radius: 14px;
+
+    transform: scale(1.15); /* вот тут магия размера */
+    transform-origin: bottom; /* чтобы росли вниз, а не “в космос” */
+
+    transition: transform 0.25s ease;
 }
 
 .notation-posters img:hover {
