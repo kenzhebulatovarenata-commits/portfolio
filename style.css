@@ -1036,7 +1036,6 @@ scroll-stage {
 /* секция */
 .ncards-section {
     width: 100%;
-    display: block;
 }
 
 /* заголовок */
@@ -1044,14 +1043,16 @@ scroll-stage {
     text-align: center;
     font-size: 80px;
     font-weight: 200;
-    margin: 60px 0;
+    margin: 60px 0 40px 0;
 }
 
 /* контейнер карточек */
 .ncards-cards {
     display: flex;
     width: 100%;
-}
+    gap: 20px;
+    padding: 0 20px;
+    box-sizing: border-box;
 
 /* карточка */
 .ncards-card {
