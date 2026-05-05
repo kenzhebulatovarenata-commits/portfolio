@@ -539,6 +539,17 @@ scroll-stage {
     opacity: 1;
 }
 
+/* =========================
+   одинаковый мелкий текст
+========================= */
+.text-body {
+    font-family: 'RalewayCustom', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
 
 /* =========================
    ПРОЕКТЫ МОУШН
