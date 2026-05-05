@@ -895,7 +895,7 @@ scroll-stage {
 
 .notation-video video {
     width: 100%;
-    max-width: 480px;
+    max-width: 390px;
     border-radius: 12px;
     object-fit: cover;
 }
