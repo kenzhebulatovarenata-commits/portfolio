@@ -39,55 +39,64 @@
 <script>
 const section = document.querySelector('.exp-section');
 const cards = document.querySelectorAll('.exp-card');
+const title = document.querySelector('.exp-title');
 
-function lerp(a, b, t) {
-  return a + (b - a) * t;
+function clamp(v) {
+  return Math.max(0, Math.min(1, v));
 }
 
 function animate(progress) {
-  progress = Math.max(0, Math.min(1, progress));
+  progress = clamp(progress);
+
+  // ===== ДВИЖЕНИЕ ЗАГОЛОВКА =====
+  const titleY = (1 - progress) * 300;   // снизу вверх
+  const titleX = (1 - progress) * -150;  // слева → центр
+
+  title.style.transform = `
+    translate(${titleX}px, ${titleY}px)
+  `;
+
+  // ===== КАРТОЧКИ =====
+  const radius = 400; // радиус дуги
 
   cards.forEach((card, i) => {
-    let x = 0;
-    let y = 0;
-    let r = 0;
 
-    switch(i) {
-      case 0:
-        x = lerp(-400, 0, progress);
-        y = lerp(-250, 0, progress);
-        r = lerp(-40, 0, progress);
-        break;
+    // смещение по времени (чтобы шли "змейкой")
+    const delay = i * 0.08;
+    let t = clamp((progress - delay) / (1 - delay));
 
-      case 1:
-        x = lerp(400, 0, progress);
-        y = lerp(-250, 0, progress);
-        r = lerp(40, 0, progress);
-        break;
+    // угол: от верхней точки → вниз справа
+    const startAngle = -Math.PI / 2; // сверху
+    const endAngle = Math.PI / 4;    // вниз справа
 
-      case 2:
-        x = lerp(-400, 0, progress);
-        y = lerp(250, 0, progress);
-        r = lerp(25, 0, progress);
-        break;
+    const angle = startAngle + (endAngle - startAngle) * t;
 
-      case 3:
-        x = lerp(400, 0, progress);
-        y = lerp(250, 0, progress);
-        r = lerp(-25, 0, progress);
-        break;
-    }
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
 
-    const scale = lerp(0.6, 1, progress);
-    const opacity = progress;
+    // финальная позиция (линия по центру)
+    const finalX = (i - 1.5) * 220;
+    const finalY = 0;
+
+    // смешиваем дугу → в линию
+    const mix = clamp((progress - 0.6) / 0.4);
+
+    const posX = x * (1 - mix) + finalX * mix;
+    const posY = y * (1 - mix) + finalY * mix;
+
+    // вращение: перевернутые → ровные
+    const rotate = (1 - t) * 180;
+
+    // масштаб
+    const scale = 0.7 + t * 0.3;
 
     card.style.transform = `
-      translate(${x}px, ${y}px)
-      rotate(${r}deg)
+      translate(${posX}px, ${posY}px)
+      rotate(${rotate}deg)
       scale(${scale})
     `;
 
-    card.style.opacity = opacity;
+    card.style.opacity = t;
   });
 }
 
