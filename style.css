@@ -1011,3 +1011,21 @@ scroll-stage {
     border-radius: 12px;
     display: block;
 }
+
+.notationani-wrapper {
+    display: flex;
+    align-items: flex-end; /* ключ: выравнивание по нижнему краю */
+    gap: 24px;
+    margin-top: 20px; /* чтобы оно не прилипало к постерам */
+}
+
+.notationani-wrapper .video-wrapper {
+    width: 260px; /* подгони под визуальный ритм постеров */
+}
+
+.notationani-text {
+    max-width: 280px;
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.85;
+}
