@@ -329,20 +329,12 @@ if (projectsTitle) {
     // рост только в начале появления, потом фиксируется
     const scaleProgress = Math.min(t / 0.6, 1);
 
-   const baseScale = lerp(startScale, maxScale, scaleProgress);
+  const baseScale = lerp(startScale, maxScale, scaleProgress);
 
-// задаём уровни влияния
-let influence;
+// плавное уменьшение размера от центра
+const falloff = Math.max(0, 1 - distance * 0.6);
 
-if (distance < 0.5) {
-    influence = 1; // центр
-} else if (distance < 1.5) {
-    influence = 0.6; // соседние (средний размер)
-} else {
-    influence = 0; // дальние (маленькие)
-}
-
-const scale = lerp(startScale, baseScale, influence);
+const scale = lerp(startScale, baseScale, falloff);
     /* =========================
        Z DEPTH
     ========================= */
