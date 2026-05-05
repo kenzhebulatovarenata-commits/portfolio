@@ -865,3 +865,36 @@ scroll-stage {
     transition: transform 0.2s ease, opacity 0.2s ease;
     transform-origin: center;
 }
+
+/* =========================
+  experimental notation
+========================= */
+
+.notation {
+    padding: 60px 40px;
+}
+
+.notation-inner {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.notation-text {
+    flex: 1;
+    max-width: 500px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.notation-video {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.notation-video video {
+    width: 100%;
+    max-width: 360px;
+    border-radius: 12px;
+    object-fit: cover;
