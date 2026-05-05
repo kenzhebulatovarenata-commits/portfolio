@@ -891,7 +891,7 @@ scroll-stage {
     grid-template-columns: 1fr 0.9fr;
     grid-template-rows: auto 1fr;
     gap: 60px;
-    align-items: stretch;
+    align-items: start;
 }
 
 .notation-left {
@@ -911,7 +911,7 @@ scroll-stage {
     grid-row: 1 / 3; /* ВАЖНО: занимает обе строки */
     display: flex;
     justify-content: flex-end;
-    align-items: stretch;
+    align-items: flex-end;
 }
 
 .notation-posters {
@@ -946,12 +946,12 @@ scroll-stage {
     position: relative;
     width: 100%;
     height: 100%;
-    max-width: 520px;
+    max-width: 480px;
 }
 
 .video-wrapper video {
     width: 100%;
-    height: 100%;
+    height: auto;
     border-radius: 12px;
     object-fit: cover;
 }
