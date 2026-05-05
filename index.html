@@ -331,12 +331,18 @@ if (projectsTitle) {
 
    const baseScale = lerp(startScale, maxScale, scaleProgress);
 
-// влияние центра (0 = боковые, 1 = центр)
-   const centerInfluence = Math.max(0, 1 - distance);
+// задаём уровни влияния
+let influence;
 
-// финальный scale
-   const scale = lerp(startScale, baseScale, centerInfluence);
+if (distance < 0.5) {
+    influence = 1; // центр
+} else if (distance < 1.5) {
+    influence = 0.6; // соседние (средний размер)
+} else {
+    influence = 0; // дальние (маленькие)
+}
 
+const scale = lerp(startScale, baseScale, influence);
     /* =========================
        Z DEPTH
     ========================= */
