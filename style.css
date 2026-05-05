@@ -887,28 +887,21 @@ scroll-stage {
 
 .notation-inner {
     display: flex;
-    grid-template-columns: 1fr 0.8fr;
     gap: 60px;
-    align-items: flex-end;
+    align-items: stretch;
 }
 
 .notation-left {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* ВАЖНО — выравнивает по высоте */
+    justify-content: space-between;
     height: 100%;
-    gap: 20px;
 }
-
 .notation-text {
-    flex: 1;
     max-width: 600px;
     font-size: 16px;
     line-height: 1.6;
-    display: flex;
-    align-items: flex-start;
 }
-
 .notation-video {
     flex: 1;
     display: flex;
@@ -928,7 +921,7 @@ scroll-stage {
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
 
-    margin-top: 20px;
+    margin-top: auto;
 }
 
 /* сами постеры */
@@ -958,11 +951,10 @@ scroll-stage {
 }
 
 .video-wrapper video {
-    display: block;
-    height: 100%;
-    width: auto;
+    width: 100%;
+    height: auto;
     max-width: 520px;
-
+    display: block;
     border-radius: 12px;
     object-fit: cover;
 }
