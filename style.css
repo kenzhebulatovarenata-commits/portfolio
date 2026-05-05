@@ -910,7 +910,6 @@ scroll-stage {
 
     gap: 16px; /* чуть плотнее, чем основной ритм */
     margin-top: auto;
-    margin-top: 20px;
 }
 
 .notation-posters img {
@@ -1004,6 +1003,10 @@ scroll-stage {
 
 .notationani-bottom {
     padding: 80px var(--side-padding);
+}
+
+.notationani-wrapper {
+    margin-top: 20px;
 }
 
 .notationani-inner {
