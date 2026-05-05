@@ -885,18 +885,18 @@ scroll-stage {
     padding: 60px var(--side-padding);
 }
 
-/* 2 колонки: текст/постеры слева + видео справа */
 .notation-inner {
     display: grid;
-    grid-template-columns: 1fr 0.85fr;
-    grid-template-rows: 1fr;
-    gap: 60px;
-    align-items: stretch;
+    grid-template-columns: 1fr 520px;
+
+    gap: 24px; /* ЕДИНЫЙ РИТМ */
+    align-items: end;
 }
 .notation-left {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+
+    gap: 24px; /* совпадает с общим ритмом */
     height: 100%;
 }
 .notation-text {
@@ -907,7 +907,8 @@ scroll-stage {
 .notation-posters {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px; /* можно 20px если хочешь больше воздуха */
+
+    gap: 16px; /* чуть плотнее, чем основной ритм */
 }
 
 .notation-posters img {
@@ -944,6 +945,7 @@ scroll-stage {
     width: 100%;
     height: auto;
     display: block;
+
     border-radius: 12px;
     object-fit: cover;
 }
