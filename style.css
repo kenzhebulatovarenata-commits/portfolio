@@ -910,6 +910,7 @@ scroll-stage {
 
     gap: 16px; /* чуть плотнее, чем основной ритм */
     margin-top: auto;
+    margin-top: 20px;
 }
 
 .notation-posters img {
@@ -1009,12 +1010,11 @@ scroll-stage {
     display: flex;
     gap: 60px;
     align-items: flex-start;
-    margin-top: 20px;
 }
 
 .notationani-inner .video-wrapper {
     max-width: 100%;
-    width: 780px;
+    width: 800px;
    
 }
 
