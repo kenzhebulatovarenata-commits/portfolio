@@ -888,48 +888,46 @@ scroll-stage {
 /* 2 колонки: текст/постеры слева + видео справа */
 .notation-inner {
     display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    grid-template-rows: 1fr;
     gap: 60px;
-    align-items: flex-end;
+    align-items: stretch;
 }
 .notation-left {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    gap: 20px;
+    justify-content: space-between;
+    height: 100%;
 }
 .notation-text {
-    grid-column: 1;
-    grid-row: 1;
     max-width: 600px;
     font-size: 16px;
     line-height: 1.6;
 }
-.notation-video {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-
 .notation-posters {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-    align-self: end;
 }
 
 /* сами постеры */
 .notation-posters img {
     width: 100%;
-    aspect-ratio: 1 / 1.414; /* твой A4 стиль */
+    aspect-ratio: 1 / 1.414;
     object-fit: cover;
 
     border-radius: 12px;
-
     transition: transform 0.2s ease;
 }
 
 .notation-posters img:hover {
     transform: scale(1.03);
+}
+
+.notation-video {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 /* =========================
@@ -938,15 +936,14 @@ scroll-stage {
 
 .video-wrapper {
     position: relative;
-    display: inline-block;
+    width: 100%;
+    max-width: 520px;
 }
 
 .video-wrapper video {
+    width: 100%;
+    height: auto;
     display: block;
-    height: 100%;
-    width: auto;
-    max-width: 520px;
-
     border-radius: 12px;
     object-fit: cover;
 }
