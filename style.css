@@ -1101,7 +1101,6 @@ scroll-stage {
 
 /* стартовое состояние (до анимации) */
 .exp-card {
-    opacity: 0;
     transform: scale(0.7);
 }
 
