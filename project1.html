@@ -79,5 +79,41 @@
 </div>
 </section>
 
+    <!-- ВЕСЬ ТВОЙ HTML ВЫШЕ -->
+
+<script>
+const video = document.getElementById('notationVideo');
+const muteBtn = document.getElementById('muteBtn');
+const volumeSlider = document.getElementById('volumeSlider');
+
+// стартовое состояние
+video.muted = true;
+video.volume = 0;
+
+muteBtn.addEventListener('click', () => {
+    video.muted = !video.muted;
+
+    muteBtn.textContent = video.muted ? '🔇' : '🔊';
+
+    if (!video.muted && video.volume === 0) {
+        video.volume = 0.5;
+        volumeSlider.value = 0.5;
+    }
+});
+
+volumeSlider.addEventListener('input', (e) => {
+    const value = parseFloat(e.target.value);
+    video.volume = value;
+
+    if (value > 0) {
+        video.muted = false;
+        muteBtn.textContent = '🔊';
+    } else {
+        video.muted = true;
+        muteBtn.textContent = '🔇';
+    }
+});
+</script>
+
 </body>
 </html>
