@@ -992,3 +992,22 @@ scroll-stage {
     width: 80px;
     accent-color: white;
 }
+
+/* =========================
+видео второе
+========================= */
+
+
+.notationani {
+    position: relative;
+    width: 100%;
+}
+
+.notationani video {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+
+    border-radius: 12px;
+    display: block;
+}
