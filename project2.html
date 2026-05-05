@@ -36,70 +36,68 @@
 
   </div>
 </section>
-    <script>
+<script>
 const section = document.querySelector('.exp-section');
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll('.exp-card');
 
-function lerp(start, end, t) {
-  return start + (end - start) * t;
+function lerp(a, b, t) {
+  return a + (b - a) * t;
 }
 
-function animateCards(progress) {
-  // ограничиваем
+function animate(progress) {
   progress = Math.max(0, Math.min(1, progress));
 
   cards.forEach((card, i) => {
     let x = 0;
     let y = 0;
-    let rotate = 0;
-    let scale = 1;
+    let r = 0;
 
     switch(i) {
       case 0:
-        x = lerp(-300, 0, progress);
-        y = lerp(-200, 0, progress);
-        rotate = lerp(-45, 0, progress);
+        x = lerp(-400, 0, progress);
+        y = lerp(-250, 0, progress);
+        r = lerp(-40, 0, progress);
         break;
 
       case 1:
-        x = lerp(300, 0, progress);
-        y = lerp(-200, 0, progress);
-        rotate = lerp(45, 0, progress);
+        x = lerp(400, 0, progress);
+        y = lerp(-250, 0, progress);
+        r = lerp(40, 0, progress);
         break;
 
       case 2:
-        x = lerp(-300, 0, progress);
-        y = lerp(200, 0, progress);
-        rotate = lerp(30, 0, progress);
+        x = lerp(-400, 0, progress);
+        y = lerp(250, 0, progress);
+        r = lerp(25, 0, progress);
         break;
 
       case 3:
-        x = lerp(300, 0, progress);
-        y = lerp(200, 0, progress);
-        rotate = lerp(-30, 0, progress);
+        x = lerp(400, 0, progress);
+        y = lerp(250, 0, progress);
+        r = lerp(-25, 0, progress);
         break;
     }
 
-    scale = lerp(0.7, 1, progress);
+    const scale = lerp(0.6, 1, progress);
+    const opacity = progress;
 
     card.style.transform = `
       translate(${x}px, ${y}px)
-      rotate(${rotate}deg)
+      rotate(${r}deg)
       scale(${scale})
     `;
+
+    card.style.opacity = opacity;
   });
 }
 
 function onScroll() {
   const rect = section.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
+  const windowH = window.innerHeight;
 
-  const start = windowHeight;
-  const end = -rect.height;
+  const progress = (windowH - rect.top) / (windowH + rect.height);
 
-  const progress = (start - rect.top) / (start - end);
-
-  animateCards(progress);
+  animate(progress);
 }
 
 window.addEventListener('scroll', onScroll);
