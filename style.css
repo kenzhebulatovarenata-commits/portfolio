@@ -1036,6 +1036,7 @@ scroll-stage {
 /* секция */
 .ncards-section {
     width: 100%;
+    display: block;
 }
 
 /* заголовок */
@@ -1055,7 +1056,7 @@ scroll-stage {
 /* карточка */
 .ncards-card {
     flex: 1;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 1 / 1.414;
     overflow: hidden;
 }
 
