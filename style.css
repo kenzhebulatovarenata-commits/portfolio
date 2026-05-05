@@ -996,7 +996,10 @@ scroll-stage {
 /* =========================
 видео второе
 ========================= */
-
+.notationani video {
+    width: 100%;
+    height: auto;
+}
 
 .notationani-bottom {
     padding: 80px var(--side-padding);
@@ -1009,8 +1012,9 @@ scroll-stage {
 }
 
 .notationani-inner .video-wrapper {
-    max-width: 520px;
-    width: 100%;
+    max-width: 100%;
+    width: 420px;
+   
 }
 
 .notationani-textblock {
