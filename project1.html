@@ -61,10 +61,22 @@
 
         <!-- ПРАВАЯ КОЛОНКА -->
         <div class="notation-video">
-            <video src="notation/nmedia.mp4" autoplay muted loop playsinline></video>
-        </div>
 
+    <div class="video-wrapper">
+        <video id="notationVideo" src="notation/nmedia.mp4" autoplay muted loop playsinline></video>
+
+        <!-- КНОПКА ЗВУКА -->
+        <div class="video-controls">
+
+            <button id="muteBtn" class="mute-btn">🔇</button>
+
+            <!-- ГРОМКОСТЬ -->
+            <input id="volumeSlider" class="volume-slider" type="range" min="0" max="1" step="0.01" value="0">
+
+        </div>
     </div>
+
+</div>
 </section>
 
 </body>
