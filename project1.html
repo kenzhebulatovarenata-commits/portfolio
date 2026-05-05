@@ -59,7 +59,44 @@
 
         </div>
 
-        <!-- ПРАВАЯ КОЛОНКА -->
+      <!-- ВТОРОЕ ВИДЕО (notationani) -->
+            <div class="notationani-wrapper">
+
+                <div class="video-wrapper">
+                    <video id="notationAniVideo" src="notation/notationani.mp4" autoplay muted loop playsinline></video>
+
+                    <div class="video-controls">
+
+                        <button id="muteBtnAni" class="mute-btn" aria-label="sound toggle">
+
+                            <svg class="icon icon-mute" viewBox="0 0 24 24">
+                                <path d="M5 9v6h4l5 4V5L9 9H5z" fill="white"/>
+                                <line x1="17" y1="7" x2="21" y2="11" stroke="white" stroke-width="2"/>
+                                <line x1="21" y1="7" x2="17" y2="11" stroke="white" stroke-width="2"/>
+                            </svg>
+
+                            <svg class="icon icon-sound hidden" viewBox="0 0 24 24">
+                                <path d="M5 9v6h4l5 4V5L9 9H5z" fill="white"/>
+                                <path d="M14 8c1.5 1.5 1.5 6.5 0 8" stroke="white" fill="none"/>
+                                <path d="M16 6c2.5 2.5 2.5 9.5 0 12" stroke="white" fill="none"/>
+                            </svg>
+
+                        </button>
+
+                        <input id="volumeSliderAni" class="volume-slider hidden" type="range" min="0" max="1" step="0.01" value="0">
+
+                    </div>
+                </div>
+
+                <p class="notationani-text">
+                    Здесь текст, который относится ко второму видео.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ПРАВАЯ КОЛОНКА (основное видео) -->
         <div class="notation-video">
 
     <div class="video-wrapper">
@@ -91,33 +128,6 @@
 </div>
 </div>
             <!-- ПРАВАЯ КОЛОНКА -->
-<div class="notationani">
-
-    <video id="notationVideoAni" src="notation/notationani.mp4" autoplay muted loop playsinline></video>
-
-    <!-- КНОПКА ЗВУКА -->
-    <div class="video-controls">
-
-        <button id="muteBtnAni" class="mute-btn" aria-label="sound toggle">
-
-            <svg class="icon icon-mute" viewBox="0 0 24 24">
-                <path d="M5 9v6h4l5 4V5L9 9H5z" fill="white"/>
-                <line x1="17" y1="7" x2="21" y2="11" stroke="white" stroke-width="2"/>
-                <line x1="21" y1="7" x2="17" y2="11" stroke="white" stroke-width="2"/>
-            </svg>
-
-            <svg class="icon icon-sound hidden" viewBox="0 0 24 24">
-                <path d="M5 9v6h4l5 4V5L9 9H5z" fill="white"/>
-                <path d="M14 8c1.5 1.5 1.5 6.5 0 8" stroke="white" fill="none"/>
-                <path d="M16 6c2.5 2.5 2.5 9.5 0 12" stroke="white" fill="none"/>
-            </svg>
-
-        </button>
-
-        <input id="volumeSliderAni" class="volume-slider hidden" type="range" min="0" max="1" step="0.01" value="0">
-
-    </div>
-</div>
 
 </div>
 
