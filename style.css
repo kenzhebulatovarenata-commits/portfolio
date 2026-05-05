@@ -1004,16 +1004,12 @@ scroll-stage {
 }
 
 .notationani-bottom {
-    padding: 80px var(--side-padding);
-}
-
-.notationani-wrapper {
-    margin-top: 20px;
+    padding: 20px var(--side-padding);
 }
 
 .notationani-inner {
     display: flex;
-    gap: 60px;
+    gap: 20px;
     align-items: flex-start;
 }
 
@@ -1025,12 +1021,6 @@ scroll-stage {
 
 .notationani-textblock {
     max-width: 500px;
-}
-
-.notationani-textblock h3 {
-    font-size: 22px;
-    font-weight: 200;
-    margin-bottom: 20px;
 }
 
 .notationani-textblock p {
