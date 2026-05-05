@@ -206,18 +206,17 @@ volumeSlider.addEventListener('input', (e) => {
     }
 });
 
-    const videoAni = document.getElementById('notationVideoAni');
+const videoAni = document.getElementById('notationAniVideo');
 const muteBtnAni = document.getElementById('muteBtnAni');
 const volumeSliderAni = document.getElementById('volumeSliderAni');
 
 const iconMuteAni = muteBtnAni.querySelector('.icon-mute');
 const iconSoundAni = muteBtnAni.querySelector('.icon-sound');
 
-// старт
 videoAni.muted = true;
 videoAni.volume = 0;
 
-function updateIconAni(isMuted) {
+function updateAni(isMuted) {
     if (isMuted) {
         iconMuteAni.classList.remove('hidden');
         iconSoundAni.classList.add('hidden');
@@ -229,7 +228,7 @@ function updateIconAni(isMuted) {
     }
 }
 
-updateIconAni(true);
+updateAni(true);
 
 muteBtnAni.addEventListener('click', () => {
     videoAni.muted = !videoAni.muted;
@@ -239,19 +238,19 @@ muteBtnAni.addEventListener('click', () => {
         volumeSliderAni.value = 0.5;
     }
 
-    updateIconAni(videoAni.muted);
+    updateAni(videoAni.muted);
 });
 
 volumeSliderAni.addEventListener('input', (e) => {
-    const value = parseFloat(e.target.value);
-    videoAni.volume = value;
+    const v = parseFloat(e.target.value);
+    videoAni.volume = v;
 
-    if (value > 0) {
+    if (v > 0) {
         videoAni.muted = false;
-        updateIconAni(false);
+        updateAni(false);
     } else {
         videoAni.muted = true;
-        updateIconAni(true);
+        updateAni(true);
     }
 });
 </script>
