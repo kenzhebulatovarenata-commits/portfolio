@@ -889,15 +889,15 @@ scroll-stage {
     display: flex;
     grid-template-columns: 1fr 0.8fr;
     gap: 60px;
-    align-items: stretch;
+    align-items: flex-end;
 }
 
 .notation-left {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* ВАЖНО — выравнивает по высоте */
+    justify-content: flex-end; /* ВАЖНО — выравнивает по высоте */
     height: 100%;
-    gap: 40px;
+    gap: 20px;
 }
 
 .notation-text {
@@ -926,9 +926,9 @@ scroll-stage {
    .notation-posters {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: 12px;
 
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 /* сами постеры */
