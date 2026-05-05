@@ -907,10 +907,9 @@ scroll-stage {
 .notation-posters {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 16px; /* можно 20px если хочешь больше воздуха */
 }
 
-/* сами постеры */
 .notation-posters img {
     width: 100%;
     aspect-ratio: 1 / 1.414;
@@ -918,14 +917,11 @@ scroll-stage {
 
     border-radius: 14px;
 
-    transform: scale(1.15); /* вот тут магия размера */
-    transform-origin: bottom; /* чтобы росли вниз, а не “в космос” */
-
     transition: transform 0.25s ease;
 }
 
 .notation-posters img:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 .notation-video {
