@@ -439,7 +439,6 @@ scroll-stage {
     height: 90px;
     object-fit: contain;
     opacity: 0.9;
-    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .tools-grid img:hover {
