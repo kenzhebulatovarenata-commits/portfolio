@@ -880,11 +880,6 @@ scroll-stage {
 ========================= */
 
 .notation {
-    min-height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     padding: 160px var(--side-padding) 120px;
 }
@@ -932,9 +927,10 @@ scroll-stage {
     max-width: 900px;
 }
 
-.notation .video-wrapper video {
-    width: 100%;
-    border-radius: 18px;
+.notation .video-wrapper video{
+    width:100%;
+    display:block;
+    border-radius:18px;
 }
 
 /* =========================
