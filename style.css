@@ -1133,35 +1133,33 @@ scroll-stage {
     grid-template-columns: 0.7fr 1.3fr;
     gap: 20px;
 
-    align-items: stretch;
+    height: 520px; /* ← ВАЖНО: общая высота блока */
 }
 
-/* ЛЕВАЯ КОЛОНКА */
+/* ЛЕВАЯ КОЛОНКА (2 равные половины) */
 .small-col {
     display: grid;
     grid-template-rows: 1fr 1fr;
     gap: 20px;
 }
 
-/* ПРАВАЯ КОЛОНКА */
+/* ПРАВАЯ КОЛОНКА (2 рядом, но на всю высоту) */
 .big-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
-/* ОБЩИЙ СТИЛЬ КАРТИНОК */
+/* КАРТИНКИ */
 .small-col img,
 .big-col img {
     width: 100%;
     height: 100%;
 
-    object-fit: contain; /* ← ключ: НЕ ОБРЕЗАЕТ */
+    object-fit: cover; /* ← чтобы заполняло красиво */
     display: block;
 
     border-radius: 16px;
-
-    background: rgba(255,255,255,0.02); /* чтобы пустота не была “дырой” */
 }
 
 
