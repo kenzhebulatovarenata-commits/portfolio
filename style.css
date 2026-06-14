@@ -890,9 +890,8 @@ scroll-stage {
 
     display: flex;
     flex-direction: column;
-    align-items: center;
 
-    text-align: center;
+    align-items: flex-start;
 }
 
 .notation h2 {
@@ -920,19 +919,6 @@ scroll-stage {
     margin-bottom: 20px;
 }
 
-/* первое видео */
-
-.notation .video-wrapper {
-    width: 100%;
-    max-width: 900px;
-}
-
-.notation .video-wrapper video{
-    width:100%;
-    display:block;
-    border-radius:18px;
-}
-
 /* =========================
  кнопка звука
 ========================= */
@@ -940,17 +926,18 @@ scroll-stage {
 .video-wrapper {
     position: relative;
     width: 100%;
-    max-width: 520px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .video-wrapper video {
     width: 100%;
     height: auto;
     display: block;
-
-    border-radius: 12px;
+    border-radius: 18px;
     object-fit: cover;
 }
+
 /* контейнер кнопок */
 .video-controls {
     position: absolute;
