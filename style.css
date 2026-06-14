@@ -1026,9 +1026,10 @@ scroll-stage {
 
 .notationani-inner {
     display:grid;
-    grid-template-columns: 560px 1fr;
+    grid-template-columns: 560px 1.2fr;
     gap: 60px;
-    align-items:start;
+    align-items: stretch;
+    min-height: 100%;
 
 }
 
@@ -1046,6 +1047,7 @@ scroll-stage {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 100%;
 }
 
 .notationani-textblock p{
@@ -1058,6 +1060,10 @@ scroll-stage {
     max-width: 480px;
     margin: 0 auto 22px auto;
 
+}
+
+.notationani-inner > div {
+    height: 100%;
 }
 
 .project-gallery{
