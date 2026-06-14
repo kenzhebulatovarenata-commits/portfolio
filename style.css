@@ -1071,6 +1071,7 @@ scroll-stage {
     gap: 20px;
     padding: 0 20px;
     box-sizing: border-box;
+}
 
 /* карточка */
 .ncards-card {
