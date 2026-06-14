@@ -42,9 +42,14 @@
 
         <div class="video-wrapper">
 
-            <video id="notationani" autoplay muted loop playsinline>
-                <source src="video/notationani.mp4" type="video/mp4">
-            </video>
+           <video
+    id="notationani"
+    src="video/notationani.mp4"
+    autoplay
+    muted
+    loop
+    playsinline>
+</video>
 
             <div class="video-controls">
 
@@ -189,58 +194,62 @@
     <!-- ВЕСЬ ТВОЙ HTML ВЫШЕ -->
 
 <script>
-const video = document.getElementById('notationVideo');
-const muteBtn = document.getElementById('muteBtn');
-const volumeSlider = document.getElementById('volumeSlider');
+const video = document.getElementById("notationani");
+const muteBtn = document.querySelector(
+    '.mute-btn[data-video="notationani"]'
+);
+const volumeSlider = document.querySelector(
+    '.volume-slider[data-video="notationani"]'
+);
 
-const iconMute = muteBtn.querySelector('.icon-mute');
-const iconSound = muteBtn.querySelector('.icon-sound');
+const iconVolume = muteBtn.querySelector(".icon-volume");
+const iconMute = muteBtn.querySelector(".icon-mute");
 
-// стартовое состояние
+// начальные настройки
 video.muted = true;
 video.volume = 0;
 
-// UI иконки
-function updateIcon(isMuted) {
-    if (isMuted) {
-        iconMute.classList.remove('hidden');
-        iconSound.classList.add('hidden');
-        volumeSlider.classList.add('hidden');
+function updateIcon() {
+    if (video.muted || video.volume === 0) {
+        iconVolume.classList.add("hidden");
+        iconMute.classList.remove("hidden");
+        volumeSlider.classList.add("hidden");
     } else {
-        iconMute.classList.add('hidden');
-        iconSound.classList.remove('hidden');
-        volumeSlider.classList.remove('hidden');
+        iconVolume.classList.remove("hidden");
+        iconMute.classList.add("hidden");
+        volumeSlider.classList.remove("hidden");
     }
 }
 
-// инициализация
-updateIcon(true);
+updateIcon();
 
-// клик по кнопке звука
-muteBtn.addEventListener('click', () => {
-    video.muted = !video.muted;
-
-    // если включили звук впервые — даём базовую громкость
-    if (!video.muted && video.volume === 0) {
-        video.volume = 0.5;
-        volumeSlider.value = 0.5;
-    }
-
-    updateIcon(video.muted);
-});
-
-// регулировка громкости
-volumeSlider.addEventListener('input', (e) => {
-    const value = parseFloat(e.target.value);
-    video.volume = value;
-
-    if (value > 0) {
+// кнопка звука
+muteBtn.addEventListener("click", () => {
+    if (video.muted || video.volume === 0) {
         video.muted = false;
-        updateIcon(false);
+
+        if (video.volume === 0) {
+            video.volume = 0.5;
+            volumeSlider.value = 0.5;
+        }
     } else {
         video.muted = true;
-        updateIcon(true);
     }
+
+    updateIcon();
+});
+
+// ползунок громкости
+volumeSlider.addEventListener("input", (e) => {
+    video.volume = parseFloat(e.target.value);
+
+    if (video.volume === 0) {
+        video.muted = true;
+    } else {
+        video.muted = false;
+    }
+
+    updateIcon();
 });
 
 const videoAni = document.getElementById('notationAniVideo');
