@@ -892,7 +892,7 @@ scroll-stage {
     display: flex;
     flex-direction: column;
 
-    align-items: flex-start;
+    align-items: stretch;
 }
 
 .notation h2 {
@@ -991,7 +991,7 @@ scroll-stage {
     gap:20px;
 
     width:100%;
-    margin:70px auto 120px;
+    margin:100px auto 120px;
 }
 
 .notation-posters img{
@@ -1027,7 +1027,7 @@ scroll-stage {
 .notationani-inner {
     display:grid;
     grid-template-columns: 560px 1fr;
-    gap:60px;
+    gap: 60px;
     align-items:start;
 
 }
@@ -1040,27 +1040,30 @@ scroll-stage {
 }
 
 .notationani-textblock{
-
-    max-width:500px;
-
-    padding-top:10px;
-
+    max-width: 500px;
+    padding-top: 0;
+    font-weight: 300;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .notationani-textblock p{
 
     font-size:18px;
     line-height:1.6;
-
     opacity:.85;
-
-    margin-bottom:22px;
+    font-weight: 300;
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto 22px auto;
 
 }
 
 .project-gallery{
 
     padding:0 var(--side-padding) 120px;
+    margin-top:50px;
 
 }
 
