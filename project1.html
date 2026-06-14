@@ -272,18 +272,19 @@ volumeSlider.addEventListener("input", (e) => {
     updateIcon();
 });
 
-const videoAni = document.getElementById('notationAniVideo');
-const muteBtnAni = document.getElementById('muteBtnAni');
-const volumeSliderAni = document.getElementById('volumeSliderAni');
+const videoAni = document.getElementById("notationAniVideo");
+const muteBtnAni = document.getElementById("muteBtnAni");
+const volumeSliderAni = document.getElementById("volumeSliderAni");
 
-const iconMuteAni = muteBtnAni.querySelector('.icon-mute');
 const iconVolumeAni = muteBtnAni.querySelector(".icon-volume");
+const iconMuteAni = muteBtnAni.querySelector(".icon-mute");
 
+// старт
 videoAni.muted = true;
 videoAni.volume = 0;
 
-function updateAni(isMuted) {
-    if (isMuted) {
+function updateAniIcon() {
+    if (videoAni.muted || videoAni.volume === 0) {
         iconVolumeAni.classList.add("hidden");
         iconMuteAni.classList.remove("hidden");
         volumeSliderAni.classList.add("hidden");
@@ -294,30 +295,33 @@ function updateAni(isMuted) {
     }
 }
 
-updateAni(true);
+updateAniIcon();
 
-muteBtnAni.addEventListener('click', () => {
-    videoAni.muted = !videoAni.muted;
-
-    if (!videoAni.muted && videoAni.volume === 0) {
-        videoAni.volume = 0.5;
-        volumeSliderAni.value = 0.5;
-    }
-
-    updateAni(videoAni.muted);
-});
-
-volumeSliderAni.addEventListener('input', (e) => {
-    const v = parseFloat(e.target.value);
-    videoAni.volume = v;
-
-    if (v > 0) {
+muteBtnAni.addEventListener("click", () => {
+    if (videoAni.muted || videoAni.volume === 0) {
         videoAni.muted = false;
-        updateAni(false);
+
+        if (videoAni.volume === 0) {
+            videoAni.volume = 0.5;
+            volumeSliderAni.value = 0.5;
+        }
     } else {
         videoAni.muted = true;
-        updateAni(true);
     }
+
+    updateAniIcon();
+});
+
+volumeSliderAni.addEventListener("input", (e) => {
+    videoAni.volume = parseFloat(e.target.value);
+
+    if (videoAni.volume === 0) {
+        videoAni.muted = true;
+    } else {
+        videoAni.muted = false;
+    }
+
+    updateAniIcon();
 });
 </script>
 
