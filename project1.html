@@ -24,49 +24,57 @@
 <!-- ЗАГОЛОВОК -->
 <section class="notation">
 
-    <h2>Experimental Notation</h2>
+    <div class="notation-inner">
 
-    <p class="project-description">
-        Experimental Notation is a visual research project exploring alternative
-        systems of musical notation through motion design, typography and
-        procedural animation. Rather than representing sound traditionally,
-        the work investigates rhythm, timing and structure as animated graphic
-        compositions.
-    </p>
+        <h2>Experimental Notation</h2>
 
-    <div class="video-wrapper">
+        <div class="notation-text">
 
-        <video id="notationani1" autoplay muted loop playsinline>
-            <source src="video/notationani1.mp4" type="video/mp4">
-        </video>
+            <p class="text-body">
+                Experimental Notation is a visual research project exploring
+                alternative systems of musical notation through motion design,
+                typography and procedural animation. Rather than representing
+                sound traditionally, the work investigates rhythm, timing and
+                structure as animated graphic compositions.
+            </p>
 
-        <div class="video-controls">
+        </div>
 
-            <button class="mute-btn" data-video="notationani1">
+        <div class="video-wrapper">
 
-                <svg class="icon icon-volume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                    <path d="M15 9a5 5 0 010 6"></path>
-                    <path d="M18.5 6.5a9 9 0 010 11"></path>
-                </svg>
+            <video id="notationani1" autoplay muted loop playsinline>
+                <source src="video/notationani1.mp4" type="video/mp4">
+            </video>
 
-                <svg class="icon icon-mute hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                    <line x1="23" y1="9" x2="17" y2="15"></line>
-                    <line x1="17" y1="9" x2="23" y2="15"></line>
-                </svg>
+            <div class="video-controls">
 
-            </button>
+                <button class="mute-btn" data-video="notationani1">
 
-            <input
-                class="volume-slider"
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                value="0.5"
-                data-video="notationani1"
-            >
+                    <svg class="icon icon-volume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M15 9a5 5 0 010 6"></path>
+                        <path d="M18.5 6.5a9 9 0 010 11"></path>
+                    </svg>
+
+                    <svg class="icon icon-mute hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <line x1="23" y1="9" x2="17" y2="15"></line>
+                        <line x1="17" y1="9" x2="23" y2="15"></line>
+                    </svg>
+
+                </button>
+
+                <input
+                    class="volume-slider"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value="0.5"
+                    data-video="notationani1"
+                >
+
+            </div>
 
         </div>
 
@@ -74,85 +82,51 @@
 
 </section>
 
-<!-- НОВЫЙ БЛОК -->
+<!-- ОПИСАНИЕ -->
 
-    <section class="notation">
-    <div class="notation-inner">
+<section class="notationani-bottom">
 
-        <!-- ЛЕВАЯ КОЛОНКА -->
-        <div class="notation-left">
+    <div class="notation-text">
 
-            <!-- ТЕКСТ -->
-            <div class="notation-text">
-                <p class="text-body">
-                    Здесь будет описание проекта. Напиши что-нибудь осмысленное, 
-                а не «я сделала красиво потому что красиво». 
-                Например: идея, концепция, материалы, почему это вообще существует.
-            </p>
+        <p class="text-body">
+            Здесь будет более подробное описание проекта. Можно рассказать
+            про исследование альтернативной музыкальной нотации, процесс
+            создания, эксперименты с движением, ритмом и визуальным языком.
+        </p>
 
-            <p> 
-                Можно разбить на несколько абзацев, чтобы не выглядело как 
-                поток сознания дизайнера в 3 часа ночи.
-                </p>
-            </div>
+        <p class="text-body">
+            Второй абзац позволяет сделать страницу более «воздушной» и
+            поддерживает композицию перед галереей постеров.
+        </p>
 
-            <!-- ПОСТЕРЫ -->
-            <div class="notation-posters">
-                <img src="notation/nposter.png" alt="">
-                <img src="notation/nposter1.png" alt="">
-                <img src="notation/nposter2.png" alt="">
-            </div>
+    </div>
 
-        </div>
+    <div class="notation-posters">
 
-      <!-- ВТОРОЕ ВИДЕО (notationani) -->
-        <!-- ПРАВАЯ КОЛОНКА (основное видео) -->
-        <div class="notation-video">
+        <img src="notation/nposter.png" alt="">
+        <img src="notation/nposter1.png" alt="">
+        <img src="notation/nposter2.png" alt="">
 
-    <div class="video-wrapper">
-        <video id="notationVideo" src="notation/nmedia.mp4" autoplay muted loop playsinline></video>
+    </div>
 
-        <!-- КНОПКА ЗВУКА -->
-      <div class="video-controls">
-
-    <button id="muteBtn" class="mute-btn" aria-label="sound toggle">
-
-        <!-- mute icon (по умолчанию) -->
-        <svg class="icon icon-mute" viewBox="0 0 24 24">
-            <path d="M5 9v6h4l5 4V5L9 9H5z" fill="white"/>
-            <line x1="17" y1="7" x2="21" y2="11" stroke="white" stroke-width="2"/>
-            <line x1="21" y1="7" x2="17" y2="11" stroke="white" stroke-width="2"/>
-        </svg>
-
-        <!-- sound icon -->
-        <svg class="icon icon-sound hidden" viewBox="0 0 24 24">
-            <path d="M5 9v6h4l5 4V5L9 9H5z" fill="white"/>
-            <path d="M14 8c1.5 1.5 1.5 6.5 0 8" stroke="white" fill="none"/>
-            <path d="M16 6c2.5 2.5 2.5 9.5 0 12" stroke="white" fill="none"/>
-        </svg>
-
-    </button>
-
-    <input id="volumeSlider" class="volume-slider hidden" type="range" min="0" max="1" step="0.01" value="0">
-
-</div>
-</div>
-            <!-- ПРАВАЯ КОЛОНКА -->
-
-</div>
-
-</div>
 </section>
 
-    
-    <section class="notationani-bottom">
+<!-- ВТОРОЙ БЛОК -->
+
+<section class="notationani-bottom">
 
     <div class="notationani-inner">
 
-        <!-- ВИДЕО -->
         <div class="video-wrapper">
 
-            <video id="notationAniVideo" src="notation/notationani.mp4" autoplay muted loop playsinline></video>
+            <video
+                id="notationAniVideo"
+                src="notation/notationani.mp4"
+                autoplay
+                muted
+                loop
+                playsinline>
+            </video>
 
             <div class="video-controls">
 
@@ -172,21 +146,28 @@
 
                 </button>
 
-                <input id="volumeSliderAni" class="volume-slider hidden" type="range" min="0" max="1" step="0.01">
+                <input
+                    id="volumeSliderAni"
+                    class="volume-slider hidden"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01">
 
             </div>
 
         </div>
 
-        <!-- ТЕКСТ -->
         <div class="notationani-textblock">
 
             <p>
-                Здесь можно описать вторую часть проекта — анимацию, процесс, эксперименты с формой, звуком или типографикой.
+                Здесь можно подробнее рассказать о процессе создания анимации,
+                логике движения элементов и взаимодействии графических форм.
             </p>
 
             <p>
-                Лучше коротко и по делу, потому что длинные тексты рядом с видео выглядят как оправдание, а не концепция.
+                Справа остается место для нескольких абзацев, как на твоем
+                наброске. Блок хорошо работает рядом с вертикальным видео.
             </p>
 
         </div>
@@ -195,6 +176,16 @@
 
 </section>
 
+<!-- ФИНАЛЬНОЕ ИЗОБРАЖЕНИЕ -->
+
+<section class="project-gallery">
+
+    <img
+        src="notation/final-image.png"
+        alt="Experimental Notation"
+        style="width:100%; display:block; border-radius:24px;">
+
+</section>
     <!-- ВЕСЬ ТВОЙ HTML ВЫШЕ -->
 
 <script>
