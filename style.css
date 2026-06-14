@@ -1022,20 +1022,17 @@ scroll-stage {
 }
 
 .notationani-inner {
-
     display:grid;
     grid-template-columns: 560px 1fr;
-
     gap:60px;
-
     align-items:start;
 
 }
 
 .notationani-inner .video-wrapper{
-
-    width:100%;
-    max-width:none;
+    width: 100%;
+    max-width: 650px; 
+    justify-self: start;
 
 }
 
