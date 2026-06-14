@@ -875,6 +875,10 @@ scroll-stage {
   experimental notation
 ========================= */
 
+/* =========================
+   EXPERIMENTAL NOTATION
+========================= */
+
 .notation {
     min-height: 100vh;
 
@@ -882,12 +886,12 @@ scroll-stage {
     justify-content: center;
     align-items: center;
 
-    padding: 140px var(--side-padding) 100px;
+    padding: 160px var(--side-padding) 120px;
 }
 
 .notation-inner {
     width: 100%;
-    max-width: 900px;
+    max-width: 920px;
 
     display: flex;
     flex-direction: column;
@@ -896,60 +900,41 @@ scroll-stage {
     text-align: center;
 }
 
-.notation-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 48px;
-}
-
-.notation-left h2 {
+.notation h2 {
     font-weight: 200;
     font-size: 110px;
     line-height: 0.8;
-    letter-spacing: 1.05px;
+    letter-spacing: 1px;
+
+    margin-bottom: 60px;
 }
 
 .notation-text {
     max-width: 700px;
 
-    font-weight: 200;
+    margin-bottom: 70px;
+
+    text-align: center;
+}
+
+.notation-text p {
     font-size: 18px;
+    font-weight: 200;
     line-height: 1.6;
-
-    opacity: 0.85;
+    opacity: .85;
+    margin-bottom: 20px;
 }
 
-.notation-posters {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+/* первое видео */
 
-    gap: 16px; /* чуть плотнее, чем основной ритм */
-    margin-top: auto;
-}
-
-.notation-posters img {
+.notation .video-wrapper {
     width: 100%;
-    aspect-ratio: 1 / 1.414;
-    object-fit: cover;
-
-    border-radius: 14px;
-
-    transition: transform 0.25s ease;
+    max-width: 900px;
 }
 
-.notation-posters img:hover {
-    transform: scale(1.05);
-}
-
-.notation-video {
+.notation .video-wrapper video {
     width: 100%;
-
-    display: flex;
-    justify-content: center;
-
-    margin-top: 70px;
+    border-radius: 18px;
 }
 
 /* =========================
@@ -1012,6 +997,34 @@ scroll-stage {
     width: 80px;
     accent-color: white;
 }
+.notation-posters {
+
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+
+    gap:20px;
+
+    width:100%;
+    margin:70px auto 120px;
+}
+
+.notation-posters img{
+
+    width:100%;
+    aspect-ratio:1 / 1.414;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    transition:transform .25s ease;
+}
+
+.notation-posters img:hover{
+
+    transform:scale(1.03);
+
+}
 
 /* =========================
 видео второе
@@ -1026,26 +1039,55 @@ scroll-stage {
 }
 
 .notationani-inner {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
+
+    display:grid;
+    grid-template-columns: 560px 1fr;
+
+    gap:60px;
+
+    align-items:start;
+
 }
 
-.notationani-inner .video-wrapper {
-    max-width: 100%;
-    width: 830px;
-   
+.notationani-inner .video-wrapper{
+
+    width:100%;
+    max-width:none;
+
 }
 
-.notationani-textblock {
-    max-width: 500px;
+.notationani-textblock{
+
+    max-width:500px;
+
+    padding-top:10px;
+
 }
 
-.notationani-textblock p {
-    font-size: 16px;
-    line-height: 1.6;
-    opacity: 0.85;
-    margin-bottom: 16px;
+.notationani-textblock p{
+
+    font-size:18px;
+    line-height:1.6;
+
+    opacity:.85;
+
+    margin-bottom:22px;
+
+}
+
+.project-gallery{
+
+    padding:0 var(--side-padding) 120px;
+
+}
+
+.project-gallery img{
+
+    width:100%;
+    display:block;
+
+    border-radius:24px;
+
 }
 /* =========================
    EXPERIMENTAL SCROLL SCENE
@@ -1087,3 +1129,5 @@ scroll-stage {
     object-fit: cover;
     display: block;
 }
+
+
