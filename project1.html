@@ -282,8 +282,8 @@ const iconVolumeAni = muteBtnAni.querySelector(".icon-volume");
 videoAni.muted = true;
 videoAni.volume = 0;
 
-function updateAni() {
-    if (videoAni.muted || videoAni.volume === 0) {
+function updateAni(isMuted) {
+    if (isMuted) {
         iconVolumeAni.classList.add("hidden");
         iconMuteAni.classList.remove("hidden");
         volumeSliderAni.classList.add("hidden");
