@@ -907,7 +907,7 @@ scroll-stage {
 
 .notation-text {
     max-width: 700px;
-    margin: 40px auto 70px auto;
+    margin: 0px auto 70px auto;
     text-align: center;
 }
 
@@ -916,7 +916,8 @@ scroll-stage {
     font-weight: 200;
     line-height: 1.6;
     opacity: .85;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 /* =========================
@@ -1031,7 +1032,7 @@ scroll-stage {
 
 .notationani-inner .video-wrapper{
     width: 100%;
-    max-width: 650px; 
+    max-width: 450px; 
     justify-self: start;
 
 }
