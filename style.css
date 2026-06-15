@@ -1138,13 +1138,14 @@ scroll-stage {
     width: 100%;
     max-width: 1200px;
 
-    height: 220px; /* 👈 ВОТ ТУТ уменьшаешь/увеличиваешь общую высоту */
+    height: 450px; /* 👈 ВОТ ТУТ уменьшаешь/увеличиваешь общую высоту */
 }
 .image-block img {
     width: 100%;
     height: 100%;
     object-fit: contain; /* 👈 важно: НЕ cover */
     display: block;
+    height: 450px; 
 }
 
 /* ЛЕВАЯ КОЛОНКА (2 равные половины) */
