@@ -1024,7 +1024,6 @@ scroll-stage {
 }
 .posters {
     width: 100%;
-    padding: 0;
     display: flex;
     justify-content: center;
 }
@@ -1035,7 +1034,6 @@ scroll-stage {
     gap: 20px;
 
     width: 100%; /* вот это ключ */
-    max-width: 1200px;
 }
 
 .posters-inner img {
@@ -1198,5 +1196,3 @@ scroll-stage {
 
     border-radius: 16px;
 }
-
-
