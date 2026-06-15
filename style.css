@@ -1022,10 +1022,11 @@ scroll-stage {
 
 .notationani-inner {
     display:grid;
-    grid-template-columns: 560px 1.2fr;
+    grid-template-columns: 560px 1.4fr;
     gap: 60px;
     align-items: stretch;
     min-height: 100%;
+    margin-left: 40px;
 
 }
 
