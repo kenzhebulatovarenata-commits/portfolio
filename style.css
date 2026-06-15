@@ -1012,6 +1012,25 @@ scroll-stage {
     width: 80px;
     accent-color: white;
 }
+.posters {
+    width: 100%;
+}
+
+.posters-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    width: 100vw; /* вот это ключ */
+    margin-left: calc(-1 * var(--side-padding));
+    margin-right: calc(-1 * var(--side-padding));
+}
+
+.posters-inner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
 .notation-posters {
 
     display: grid;
