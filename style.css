@@ -1024,6 +1024,9 @@ scroll-stage {
 }
 .posters {
     width: 100%;
+    padding: 0 var(--side-padding);
+    display: flex;
+    justify-content: center;
 }
 
 .posters-inner {
@@ -1031,15 +1034,16 @@ scroll-stage {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 
-    width: 100vw; /* вот это ключ */
-    margin-left: calc(-1 * var(--side-padding));
-    margin-right: calc(-1 * var(--side-padding));
+    width: 100%; /* вот это ключ */
+    max-width: 1200px;
 }
 
 .posters-inner img {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 18px;
+    object-fit: cover;
 }
 .notation-posters {
 
