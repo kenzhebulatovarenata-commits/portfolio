@@ -1102,7 +1102,10 @@ scroll-stage {
 .image-block {
     width: 100%;
 }
-
+.nmerch {
+   width: 100%;
+}
+ 
 .image-block-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
