@@ -1165,11 +1165,10 @@ scroll-stage {
 
 .nstickers-inner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 300px 257px 447px;
     gap: 20px;
-
-    width: 100%;
-    max-width: 450px; /* чтобы совпадало с твоим блоком */
+    width: 998px;
+    height: 315px;/* чтобы совпадало с твоим блоком */
 }
 
 .nstickers-inner img {
