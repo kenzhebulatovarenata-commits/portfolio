@@ -883,7 +883,7 @@ scroll-stage {
 .page {
     display: flex;
     flex-direction: column;
-    padding: 0 var(--side-padding);
+   padding: 0 100px;
 }
 
 .page section {
@@ -895,7 +895,6 @@ scroll-stage {
 }
 
 .notation {
-    padding: 160px var(--side-padding) 120px;
     position: relative;
     overflow: hidden;
     padding-top: 0;
@@ -1079,7 +1078,7 @@ scroll-stage {
 ========================= */
 
 .notationani-bottom {
-    padding: 20px var(--side-padding);
+    padding: 0;
 }
 
 .notationani-inner {
@@ -1127,7 +1126,7 @@ scroll-stage {
 
 .project-gallery{
 
-    padding:0 var(--side-padding) 120px;
+    padding:0;
     margin-top:50px;
 
 }
