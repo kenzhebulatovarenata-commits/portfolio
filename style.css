@@ -1100,21 +1100,16 @@ scroll-stage {
 ========================= */
 
 /* ......МЕРЧ...... */
-.nmerch {
-    display: flex;
-    justify-content: center;
-}
-
 .image-block {
     width: 100%;
 }
  
 .image-block-inner {
     display: grid;
-    grid-template-columns: 183px 632px;
+    grid-template-columns: 227px 774px;
     gap: 20px;
-    width: 815px;
-    height: 450px; /* 👈 ВОТ ТУТ уменьшаешь/увеличиваешь общую высоту */
+    width: 998px;
+    height: 555px; /* 👈 ВОТ ТУТ уменьшаешь/увеличиваешь общую высоту */
 }
 
 .image-block img {
@@ -1160,4 +1155,25 @@ scroll-stage {
     display: block;
 
     border-radius: 16px;
+}
+
+.nstickers {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nstickers-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    width: 100%;
+    max-width: 450px; /* чтобы совпадало с твоим блоком */
+}
+
+.nstickers-inner img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
