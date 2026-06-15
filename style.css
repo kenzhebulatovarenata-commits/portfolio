@@ -1109,7 +1109,7 @@ section {
  
 .image-block-inner {
     display: grid;
-    grid-template-columns: 22% 78%;
+    grid-template-columns: 1fr 3.55fr;
     gap: 20px;
     width: 100%;
     height: auto; /* 👈 ВОТ ТУТ уменьшаешь/увеличиваешь общую высоту */
@@ -1169,7 +1169,7 @@ section {
 
 .nstickers-inner {
     display: grid;
-    grid-template-columns: 28% 23% 49%;
+    grid-template-columns: 1fr 0.8fr 1.7fr;
     gap: 20px;
     width: 100%;
     height: 400px; /* 👈 ВОТ ТУТ уменьшаешь/увеличиваешь общую высоту */
