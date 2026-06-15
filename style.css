@@ -1098,9 +1098,6 @@ scroll-stage {
 /* ......МЕРЧ...... */
 .image-block {
     width: 100%;
-
-    display: flex;
-    justify-content: center;
 }
 
 .image-block-inner {
@@ -1111,6 +1108,13 @@ scroll-stage {
     width: 100%;
 
     height: 450px; /* 👈 ВОТ ТУТ уменьшаешь/увеличиваешь общую высоту */
+}
+
+.image-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* ЛЕВАЯ КОЛОНКА (2 равные половины) */
@@ -1130,7 +1134,17 @@ scroll-stage {
 }
 
 /* КАРТИНКИ */
-.small-col img,
+.small-col img{
+   width: 100%;
+    height: 100%;
+
+    object-fit: cover; /* ← чтобы заполняло красиво */
+    display: block;
+
+    border-radius: 16px;
+    min-height:0;
+}
+
 .big-col img {
     width: 100%;
     height: 100%;
@@ -1139,4 +1153,5 @@ scroll-stage {
     display: block;
 
     border-radius: 16px;
+    min-height:0;
 }
