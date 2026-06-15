@@ -932,7 +932,7 @@ scroll-stage {
     left: 50%;
     transform: translateX(-50%);
 
-    width: 70%;
+    width: 60%;
     height: auto;
 
     z-index: -1;
