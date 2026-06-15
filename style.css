@@ -951,6 +951,7 @@ scroll-stage {
     max-width: 900px;
     margin: 0 auto;
     margin-top: 50px;
+    display: inline-block;
 }
 
 .video-wrapper video {
