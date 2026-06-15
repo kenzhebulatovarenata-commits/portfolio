@@ -883,8 +883,15 @@ scroll-stage {
 .page {
     display: flex;
     flex-direction: column;
-    gap: 50px;
 }
+
+.page section {
+    margin-bottom: 70px;
+}
+
+.page section:last-child {
+    margin-bottom: 0;
+
 
 .notation {
     padding: 160px var(--side-padding) 120px;
