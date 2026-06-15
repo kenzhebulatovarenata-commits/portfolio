@@ -1111,7 +1111,7 @@ scroll-stage {
  
 .image-block-inner {
     display: grid;
-    grid-template-columns: 173px 277px;
+    grid-template-columns: 183px 632px;
     gap: 20px;
     width: 815px;
     height: 450px; /* 👈 ВОТ ТУТ уменьшаешь/увеличиваешь общую высоту */
