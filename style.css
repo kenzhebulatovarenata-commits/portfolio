@@ -1172,7 +1172,7 @@ section {
     grid-template-columns: 28% 23% 49%;
     gap: 20px;
     width: 100%;
-    height: auto; /* 👈 ВОТ ТУТ уменьшаешь/увеличиваешь общую высоту */
+    height: 400px; /* 👈 ВОТ ТУТ уменьшаешь/увеличиваешь общую высоту */
     align-items: start;
 }
 
@@ -1180,6 +1180,9 @@ section {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 16px;
     object-fit: cover;
+}
+.nstickers-inner > div {
+    overflow: hidden;
+    border-radius: 16px;
 }
