@@ -1099,11 +1099,13 @@ scroll-stage {
 ========================= */
 
 /* ......МЕРЧ...... */
+.nmerch {
+    display: flex;
+    justify-content: center;
+}
+
 .image-block {
     width: 100%;
-}
-.nmerch {
-   width: 100%;
 }
  
 .image-block-inner {
@@ -1128,7 +1130,7 @@ scroll-stage {
     display: grid;
     grid-template-rows: 1fr 1fr;
     gap: 20px;
-    height: 450px;
+    align-content: start;
 }
 
 /* ПРАВАЯ КОЛОНКА (2 рядом, но на всю высоту) */
@@ -1136,19 +1138,18 @@ scroll-stage {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    height: 450px;
+    align-content: start;
 }
 
 /* КАРТИНКИ */
 .small-col img{
-   width: 100%;
+    width: 100%;
     height: 100%;
 
     object-fit: cover; /* ← чтобы заполняло красиво */
     display: block;
 
     border-radius: 16px;
-    min-height:0;
 }
 
 .big-col img {
@@ -1159,5 +1160,4 @@ scroll-stage {
     display: block;
 
     border-radius: 16px;
-    min-height:0;
 }
