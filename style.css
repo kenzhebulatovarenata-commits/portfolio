@@ -880,6 +880,12 @@ scroll-stage {
    EXPERIMENTAL NOTATION
 ========================= */
 
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
 .notation {
     padding: 160px var(--side-padding) 120px;
     position: relative;
