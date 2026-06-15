@@ -32,6 +32,7 @@ body {
     font-family: 'RalewayCustom', sans-serif;
     overflow-x: hidden;
     overflow-y: auto;
+    margin: 0;
 }
 
 /* =========================
@@ -926,14 +927,14 @@ scroll-stage {
 
 
 .notation-bg {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 50%;
+    left: 0;
+    width: 100%;
+    height: 60vh;
 
-    transform: translateX(-50%);
-
-    width: 80%;
-    z-index: 0;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .notation-inner {
