@@ -1033,6 +1033,9 @@ scroll-stage {
 /* =========================
 видео второе
 ========================= */
+.ntext {
+   padding: 0;
+}
 
 .notationani-bottom {
     padding: 0;
