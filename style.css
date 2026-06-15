@@ -901,13 +901,13 @@ scroll-stage {
     line-height: 1.1;
     letter-spacing: 1px;
     text-align: center;
-    margin-bottom: 90px;
-    margin-top: 150px;
+    margin-bottom: 100px;
+    margin-top: 120px;
 }
 
 .notation-text {
     max-width: 700px;
-    margin: 0px auto 70px auto;
+    margin: 0px auto 50px auto;
     text-align: center;
     font-weight: 300;
 }
@@ -917,8 +917,7 @@ scroll-stage {
     font-weight: 300;
     line-height: 1.6;
     opacity: .85;
-    margin-bottom: 50px;
-    margin-top: 50px;
+    margin: 50px auto 50px;
 }
 
 /* =========================
@@ -991,8 +990,8 @@ scroll-stage {
 
     gap:20px;
 
-    width:100%;
-    margin:100px auto 120px;
+    width: 100%;
+    margin: 100px auto 100px;
 }
 
 .notation-posters img{
