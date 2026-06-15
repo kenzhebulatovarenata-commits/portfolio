@@ -1040,7 +1040,6 @@ section {
 ========================= */
 .ntext {
    padding: 0;
-   margin-bottom: 50px:
 }
 
 .notationani-bottom {
@@ -1081,6 +1080,7 @@ section {
     text-align: center;
     max-width: 480px;
     margin: 0 auto 22px auto;
+    margin-top: 50px:
 
 }
 
