@@ -891,7 +891,7 @@ scroll-stage {
 
 .page section:last-child {
     margin-bottom: 0;
-
+}
 
 .notation {
     padding: 160px var(--side-padding) 120px;
