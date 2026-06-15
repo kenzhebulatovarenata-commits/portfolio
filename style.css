@@ -1103,6 +1103,15 @@ section {
 ========================= */
 
 /* ......МЕРЧ...... */
+
+.merch-inner h2 {
+    font-weight: 200;
+    font-size: 64px;
+    letter-spacing: 1px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
 .image-block {
     width: 100%;
 }
@@ -1183,4 +1192,5 @@ section {
     object-fit: cover;
     border-radius: 16px;
 }
+
 
