@@ -919,6 +919,26 @@ scroll-stage {
     opacity: .85;
     margin: 50px auto 50px;
 }
+.notation {
+    position: relative;
+    overflow: hidden;
+}
+
+.notation-bg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+    z-index: 0;
+}
+
+.notation-inner {
+    position: relative;
+    z-index: 1;
+}
 
 /* =========================
  кнопка звука
