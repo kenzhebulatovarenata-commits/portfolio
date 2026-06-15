@@ -883,6 +883,7 @@ scroll-stage {
 .page {
     display: flex;
     flex-direction: column;
+    padding: 0 var(--side-padding);
 }
 
 .page section {
