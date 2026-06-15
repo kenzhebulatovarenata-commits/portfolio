@@ -44,17 +44,16 @@
         <div class="video-wrapper">
 
            <video
-    id="notationani"
-    src="notation/notationani.mp4"
     autoplay
     muted
     loop
     playsinline>
+    <source src="notation/notationani.mp4">
 </video>
 
             <div class="video-controls">
 
-                <button class="mute-btn" data-video="notationani">
+                <button class="mute-btn">
 
                     <svg class="icon icon-volume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -77,7 +76,6 @@
                     max="1"
                     step="0.01"
                     value="0.5"
-                    data-video="notationani"
                 >
 
             </div>
@@ -123,17 +121,16 @@
     <div class="video-wrapper">
 
            <video
-    id="notationani"
-    src="notation/nmedia.mp4"
     autoplay
     muted
     loop
     playsinline>
+    <source src="notation/nmedia.mp4">
 </video>
 
             <div class="video-controls">
 
-                <button class="mute-btn" data-video="notationani">
+                <button class="mute-btn">
 
                     <svg class="icon icon-volume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -156,7 +153,6 @@
                     max="1"
                     step="0.01"
                     value="0.5"
-                    data-video="notationani"
                 >
 
             </div>
@@ -215,115 +211,65 @@
     <!-- ВЕСЬ ТВОЙ HTML ВЫШЕ -->
 
 <script>
-const video = document.getElementById("notationani");
-const muteBtn = document.querySelector(
-    '.mute-btn[data-video="notationani"]'
-);
-const volumeSlider = document.querySelector(
-    '.volume-slider[data-video="notationani"]'
-);
+document.querySelectorAll(".video-wrapper").forEach(wrapper => {
 
-const iconVolume = muteBtn.querySelector(".icon-volume");
-const iconMute = muteBtn.querySelector(".icon-mute");
+    const video = wrapper.querySelector("video");
+    const muteBtn = wrapper.querySelector(".mute-btn");
+    const volumeSlider = wrapper.querySelector(".volume-slider");
 
-// начальные настройки
-video.muted = true;
-video.volume = 0;
+    const iconVolume = muteBtn.querySelector(".icon-volume");
+    const iconMute = muteBtn.querySelector(".icon-mute");
 
-function updateIcon() {
-    if (video.muted || video.volume === 0) {
-        iconVolume.classList.add("hidden");
-        iconMute.classList.remove("hidden");
-        volumeSlider.classList.add("hidden");
-    } else {
-        iconVolume.classList.remove("hidden");
-        iconMute.classList.add("hidden");
-        volumeSlider.classList.remove("hidden");
-    }
-}
+    video.muted = true;
+    video.volume = 0;
 
-updateIcon();
-
-// кнопка звука
-muteBtn.addEventListener("click", () => {
-    if (video.muted || video.volume === 0) {
-        video.muted = false;
-
-        if (video.volume === 0) {
-            video.volume = 0.5;
-            volumeSlider.value = 0.5;
+    function updateUI() {
+        if (video.muted || video.volume === 0) {
+            iconVolume.classList.add("hidden");
+            iconMute.classList.remove("hidden");
+            volumeSlider.classList.add("hidden");
+        } else {
+            iconVolume.classList.remove("hidden");
+            iconMute.classList.add("hidden");
+            volumeSlider.classList.remove("hidden");
         }
-    } else {
-        video.muted = true;
     }
 
-    updateIcon();
-});
+    updateUI();
 
-// ползунок громкости
-volumeSlider.addEventListener("input", (e) => {
-    video.volume = parseFloat(e.target.value);
+    muteBtn.addEventListener("click", () => {
 
-    if (video.volume === 0) {
-        video.muted = true;
-    } else {
-        video.muted = false;
-    }
+        if (video.muted || video.volume === 0) {
 
-    updateIcon();
-});
+            video.muted = false;
 
-const videoAni = document.getElementById("notationAniVideo");
-const muteBtnAni = document.getElementById("muteBtnAni");
-const volumeSliderAni = document.getElementById("volumeSliderAni");
+            if (video.volume === 0) {
+                video.volume = 0.5;
+                volumeSlider.value = 0.5;
+            }
 
-const iconVolumeAni = muteBtnAni.querySelector(".icon-volume");
-const iconMuteAni = muteBtnAni.querySelector(".icon-mute");
+        } else {
 
-// старт
-videoAni.muted = true;
-videoAni.volume = 0;
+            video.muted = true;
 
-function updateAniIcon() {
-    if (videoAni.muted || videoAni.volume === 0) {
-        iconVolumeAni.classList.add("hidden");
-        iconMuteAni.classList.remove("hidden");
-        volumeSliderAni.classList.add("hidden");
-    } else {
-        iconVolumeAni.classList.remove("hidden");
-        iconMuteAni.classList.add("hidden");
-        volumeSliderAni.classList.remove("hidden");
-    }
-}
-
-updateAniIcon();
-
-muteBtnAni.addEventListener("click", () => {
-    if (videoAni.muted || videoAni.volume === 0) {
-        videoAni.muted = false;
-
-        if (videoAni.volume === 0) {
-            videoAni.volume = 0.5;
-            volumeSliderAni.value = 0.5;
         }
-    } else {
-        videoAni.muted = true;
-    }
 
-    updateAniIcon();
+        updateUI();
+
+    });
+
+    volumeSlider.addEventListener("input", e => {
+
+        video.volume = parseFloat(e.target.value);
+
+        video.muted = video.volume === 0;
+
+        updateUI();
+
+    });
+
 });
-
-volumeSliderAni.addEventListener("input", (e) => {
-    videoAni.volume = parseFloat(e.target.value);
-
-    if (videoAni.volume === 0) {
-        videoAni.muted = true;
-    } else {
-        videoAni.muted = false;
-    }
-
-    updateAniIcon();
-});
+    
 </script>
 
 </body>
