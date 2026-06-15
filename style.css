@@ -883,7 +883,7 @@ scroll-stage {
 .page {
     display: flex;
     flex-direction: column;
-   padding: 0 100px;
+   padding: 0 50px;
 }
 
 .page section {
@@ -1045,33 +1045,6 @@ scroll-stage {
     border-radius: 18px;
     object-fit: cover;
 }
-.notation-posters {
-
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-
-    gap:20px;
-
-    width: 100%;
-}
-
-.notation-posters img{
-
-    width:100%;
-    aspect-ratio:1 / 1.414;
-
-    object-fit:cover;
-
-    border-radius:18px;
-
-    transition:transform .25s ease;
-}
-
-.notation-posters img:hover{
-
-    transform:scale(1.03);
-
-}
 
 /* =========================
 видео второе
@@ -1193,7 +1166,6 @@ scroll-stage {
     gap: 20px;
 
     width: 100%;
-    max-width: 1200px;
 
     height: 450px; /* 👈 ВОТ ТУТ уменьшаешь/увеличиваешь общую высоту */
 }
