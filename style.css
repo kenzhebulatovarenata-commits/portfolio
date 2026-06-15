@@ -928,7 +928,6 @@ scroll-stage {
     font-weight: 300;
     line-height: 1.6;
     opacity: .85;
-    margin: 50px auto 50px;
 }
 
 
@@ -959,7 +958,6 @@ scroll-stage {
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    margin-top: 50px;
     display: inline-block;
 }
 
@@ -1022,8 +1020,6 @@ scroll-stage {
     gap:20px;
 
     width: 100%;
-    margin: 100px auto 100px;
-    margin-top: 100px;
 }
 
 .notation-posters img{
@@ -1124,7 +1120,6 @@ scroll-stage {
     text-align: center;
     font-size: 80px;
     font-weight: 200;
-    margin: 60px 0 40px 0;
 }
 
 /* контейнер карточек */
@@ -1154,8 +1149,6 @@ scroll-stage {
 /* ......МЕРЧ...... */
 .image-block {
     width: 100%;
-    padding: 0 var(--side-padding);
-    margin: 80px 0;
 
     display: flex;
     justify-content: center;
