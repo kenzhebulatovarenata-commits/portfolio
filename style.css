@@ -1166,10 +1166,11 @@ scroll-stage {
 
 .nstickers-inner {
     display: grid;
-    grid-template-columns: 300px 257px 447px;
+    grid-template-columns: 30% 24% 46%;
     gap: 20px;
-    width: 998px;
-    height: 315px;/* чтобы совпадало с твоим блоком */
+    width: 100%;
+    height: auto; /* 👈 ВОТ ТУТ уменьшаешь/увеличиваешь общую высоту */
+    align-items: start;
 }
 
 .nstickers-inner img {
