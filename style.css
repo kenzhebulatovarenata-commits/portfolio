@@ -289,7 +289,7 @@ scroll-stage {
 
 .zig-image img {
     width: 100%;
-    height: auto; /* можно менять */
+    height: 100px; /* можно менять */
     display: block;
 }
 
