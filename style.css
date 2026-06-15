@@ -880,8 +880,12 @@ scroll-stage {
 ========================= */
 
 .notation {
-
     padding: 160px var(--side-padding) 120px;
+    position: relative;
+    overflow: hidden;
+    padding-top: 0;
+    margin-top: 0;
+    background-position: top center;
 }
 
 .notation-inner {
@@ -919,10 +923,7 @@ scroll-stage {
     opacity: .85;
     margin: 50px auto 50px;
 }
-.notation {
-    position: relative;
-    overflow: hidden;
-}
+
 
 .notation-bg {
     position: absolute;
