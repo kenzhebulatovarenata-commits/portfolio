@@ -1200,9 +1200,9 @@ section {
 
     max-width: 1200px;   /* ВАЖНО: центрируем всю конструкцию */
     margin: 0 auto;      /* вот это тянет блок в центр */
-
-    align-items: start;
+    align-items: center;
 }
+
 .notationani-inner .video-wrapper{
     width: 100%;
     max-width: 380px; 
@@ -1240,7 +1240,7 @@ section {
 }
 
 .notationani-textblock p:nth-of-type(3) {
-    margin-top: 80px;
+    margin-top: 150px;
 }
 
 /* =========================
