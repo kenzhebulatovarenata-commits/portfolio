@@ -280,10 +280,10 @@ scroll-stage {
 
 .zig-image {
     position: relative;
-    width: 100vw;
+    width: calc(100vw + 2px);
     left: 50%;
     right: 50%;
-    margin-left: -50vw;
+    margin-left: calc(-50vw - 1px):
     margin-right: -50vw;
     margin-top: 0;
 }
