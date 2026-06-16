@@ -744,9 +744,9 @@ scroll-stage {
 /* заголовок */
 .footer h2 {
     font-weight: 200;
-    font-size: 18px;
+    font-size: 14px;
     letter-spacing: 1px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 /* текст */
