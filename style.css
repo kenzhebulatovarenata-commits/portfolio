@@ -345,6 +345,27 @@ scroll-stage {
     border-radius: 20px;
     max-width: 420px;
 }
+.about-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
+.about-button a {
+    color: white;
+    text-decoration: none;
+
+    font-size: 24px;
+    font-weight: 200;
+    letter-spacing: 1px;
+
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s ease;
+}
+
+.about-button a:hover {
+    border-bottom: 1px solid white;
+}
 
 /* =========================
    EXPERIENCE
