@@ -1101,13 +1101,13 @@ section {
 
 }
 /* =========================
-   EXPERIMENTAL SCROLL SCENE
+   инструменты
 ========================= */
 .ntools {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    gap: 40px; 
     width: 100%;
 }
 
@@ -1122,6 +1122,7 @@ section {
 .ntools-icons {
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
 .ntools-icons img {
