@@ -319,7 +319,7 @@ scroll-stage {
     margin: 0 auto;
 }
 /* заголовок*/
-.about-inner h2{
+.about h2{
     font-weight: 200;
     font-size: 64px;
     line-height: 1.1;
