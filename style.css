@@ -1205,7 +1205,7 @@ section {
 .notationani-inner .video-wrapper{
     width: 100%;
     max-width: 380px; 
-    justify-self: center;
+    justify-self: end;
 
 }
 .notationani-right{
