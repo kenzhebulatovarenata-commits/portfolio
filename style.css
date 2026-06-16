@@ -1195,7 +1195,7 @@ section {
 
 .notationani-inner {
     display: grid;
-    grid-template-columns: 380px 1fr;
+    grid-template-columns: 520px 1fr;
     gap: 60px;
 
     max-width: 1200px;   /* ВАЖНО: центрируем всю конструкцию */
@@ -1240,7 +1240,7 @@ section {
 }
 
 .notationani-textblock p:nth-of-type(3) {
-    margin-top: 150px;
+    margin-top: 180px;
 }
 
 /* =========================
