@@ -883,11 +883,11 @@ scroll-stage {
 .page {
     display: flex;
     flex-direction: column;
-   padding: 0 100px;
+    padding: 0 100px;
 }
 
 .page section {
-    margin-bottom: 100px;
+    margin-bottom: 90px;
 }
 
 .page section:last-child {
