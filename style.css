@@ -1063,17 +1063,27 @@ section {
 }
 
 .notationani-textblock{
-    font-weight: 300;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-   
-    background: rgba(0,0,0,0.05); /* или любой фон */
-    padding: 24px 28px;
-    border-radius: 16px;
-    max-width: 420px;
+    width: 100%;
+    max-width: 500px;
+
+    padding: 30px 30px 40px;
+
+    border-bottom: 1px solid rgba(255,255,255,.6);
+    border-radius: 0 0 24px 24px;
+
+    margin-bottom: 30px;
+}
+
+.notationani-textblock p{
+    margin: 0;
+
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: .8;
+
     text-align: center;
 }
+
 .icons-row {
     display: flex;
     justify-content: center;
@@ -1082,22 +1092,9 @@ section {
 }
 
 .icons-row img {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     object-fit: contain;
-}
-
-.notationani-textblock p{
-
-    font-size:18px;
-    line-height:1.6;
-    opacity:.85;
-    font-weight: 300;
-    text-align: center;
-    max-width: 480px;
-    margin: 0 auto 22px auto;
-    margin-top: 50px:
-
 }
 
 .project-gallery{
