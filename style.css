@@ -1200,7 +1200,6 @@ section {
 
     max-width: 1200px;   /* ВАЖНО: центрируем всю конструкцию */
     margin: 0 auto;      /* вот это тянет блок в центр */
-    align-items: center;
 }
 
 .notationani-inner .video-wrapper{
@@ -1215,8 +1214,6 @@ section {
 
     justify-content: flex-start;
     align-items:center;
-
-    gap: 40px;
     width: 100%;
 }
 
