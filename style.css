@@ -309,16 +309,6 @@ scroll-stage {
     flex-direction: column;
 }
 
-/* заголовок*/
-.about-inner h2{
-    font-weight: 200;
-    font-size: 64px;
-    line-height: 1.1;
-    letter-spacing: 1px;
-
-    margin-bottom: 80px;
-}
-
 .about-inner {
     display: grid;
     grid-template-columns: 1.24fr 1fr;
@@ -327,6 +317,15 @@ scroll-stage {
     gap: 24px;
     max-width: 1200px;
     margin: 0 auto;
+}
+/* заголовок*/
+.about-inner h2{
+    font-weight: 200;
+    font-size: 64px;
+    line-height: 1.1;
+    letter-spacing: 1px;
+
+    margin-bottom: 20px;
 }
 /* текст */
 .about-inner p {
