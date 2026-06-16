@@ -1105,11 +1105,12 @@ section {
 
 /* ......МЕРЧ...... */
 
-.image-block-inner h2 {
+.image-block h2 {
     font-weight: 200;
     font-size: 64px;
+    line-height: 1.1;
     letter-spacing: 1px;
-    margin: 0;
+    margin: 0 0 10px 0;
     flex-shrink: 0;
 }
 
