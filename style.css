@@ -1081,17 +1081,17 @@ section {
 .notationani-inner {
     display:grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 40px;
     align-items: start;
     min-height: 100%;
-    margin-right: 70px;
-    margin-left: 50px;
 
 }
 .notationani-text h3{
     font-weight: 500;
     font-size: 22px;
     margin-bottom: 12px;
+    text-align: center;
+    margin: 0;
 }
 
 .notationani-inner .video-wrapper{
@@ -1135,7 +1135,7 @@ section {
 
 .icons-row {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     gap: 30px;
