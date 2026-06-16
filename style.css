@@ -1063,9 +1063,14 @@ section {
     gap: 80px;
     align-items: start;
     min-height: 100%;
-    margin-right: 50px;
+    margin-right: 70px;
     margin-left: 50px;
 
+}
+.notationani-text h3{
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 12px;
 }
 
 .notationani-inner .video-wrapper{
