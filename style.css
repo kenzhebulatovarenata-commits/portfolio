@@ -1063,6 +1063,8 @@ section {
     gap: 80px;
     align-items: start;
     min-height: 100%;
+    margin-right: 50px;
+    margin-left: 50px;
 
 }
 
@@ -1080,7 +1082,6 @@ section {
     align-items:center;
 
     gap: 40px;
-
     width: 100%;
 }
 
