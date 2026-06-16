@@ -1104,7 +1104,7 @@ section {
 ========================= */
 .ntools {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 40px; 
     width: 100%;
