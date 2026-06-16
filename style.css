@@ -1201,11 +1201,6 @@ section {
     border-radius: 16px;
 }
 
-.nstickers {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
 
 .nstickers-inner {
     display: grid;
