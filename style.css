@@ -347,29 +347,30 @@ scroll-stage {
     border-radius: 20px;
     max-width: 420px;
 }
-.about-button {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 40px;
-    margin-top: auto;
-}
-
-.about-button a {
+.about-btn {
     color: white;
     text-decoration: none;
 
     font-size: 24px;
     font-weight: 200;
-    letter-spacing: 1px;
 
-    border-bottom: 1px solid transparent;
-    transition: border-color .3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    position: relative;
 }
 
-.about-button a:hover {
-    border-bottom: 1px solid white;
+.about-arrow {
+    font-size: 26px;
+    font-weight: 200;
+    transition: transform 0.25s ease;
 }
 
+/* лёгкий “живой” эффект */
+.about-btn:hover .about-arrow {
+    transform: translateX(6px);
+}
 /* =========================
    EXPERIENCE
 ========================= */
