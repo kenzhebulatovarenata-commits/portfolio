@@ -316,7 +316,7 @@ scroll-stage {
     line-height: 1.1;
     letter-spacing: 1px;
 
-    margin: 0 0 40px 0;
+    margin-bottom: 50px;
 }
 
 .about-inner {
@@ -416,7 +416,7 @@ scroll-stage {
     font-size: 64px;
     font-weight: 200;
     margin-bottom: 50px;
-   letter-spacing: 1px;
+    letter-spacing: 1px;
 }
 
 .exp-grid {
