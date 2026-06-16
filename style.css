@@ -926,7 +926,7 @@ section {
     line-height: 1.1;
     letter-spacing: 1px;
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 150px;
     margin-top: 300px;
 }
 
@@ -1040,7 +1040,6 @@ section {
 ========================= */
 .ntext {
    padding: 0;
-   margin-top: 20px;
 }
 
 .notationani-bottom {
