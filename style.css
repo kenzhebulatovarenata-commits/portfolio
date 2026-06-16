@@ -1203,10 +1203,14 @@ section {
     align-items: start;
 }
 
+/* ЛЕВАЯ КОЛОНКА КАК КОНТЕЙНЕР */
+.notationani-inner > div:first-child {
+    display: flex;
+    justify-content: flex-end;
+
 .notationani-inner .video-wrapper{
     width: 100%;
     max-width: 380px; 
-    justify-self: end;
 
 }
 .notationani-right{
@@ -1239,7 +1243,7 @@ section {
 }
 
 .notationani-textblock p:nth-of-type(3) {
-    margin-top: 180px;
+    margin-top: 200px;
 }
 
 /* =========================
