@@ -345,6 +345,7 @@ scroll-stage {
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
 .about-photo img {
     width: 100%;
