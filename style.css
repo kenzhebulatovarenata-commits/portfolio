@@ -1186,7 +1186,7 @@ section {
     grid-template-columns: 380px 1fr;
     gap: 60px;
 
-    max-width: 1000px;   /* ВАЖНО: центрируем всю конструкцию */
+    max-width: 1200px;   /* ВАЖНО: центрируем всю конструкцию */
     margin: 0 auto;      /* вот это тянет блок в центр */
 
     align-items: start;
@@ -1211,21 +1211,16 @@ section {
 .notationani-textblock{
     width: 100%;
     max-width: 500px;
-
-    padding: 30px;
-
-    border-bottom:1px solid rgba(255,255,255,.6);
-    border-radius:0 0 24px 24px;
-
     margin:0;
 }
 
 .notationani-textblock p{
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.6;
     opacity: .8;
     margin-bottom: 20px;
     text-align: left;
+    font-size: 18px;
 }
 
 .project-gallery{
