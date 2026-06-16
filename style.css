@@ -279,24 +279,20 @@ scroll-stage {
 }
 
 .zig-image {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-
     position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 0;
 }
 
 .zig-image img {
-    width: 100vw;
-    max-width: 100vw;
-
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-
+    width: 100%;
     display: block;
     height: auto;
 }
-
 
 /* =========================
    ABOUT SECTION
