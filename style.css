@@ -985,6 +985,18 @@ scroll-stage {
     width: 100%;
     padding: 90px var(--side-padding) 120px;
     box-sizing: border-box;
+   
+    padding:0;
+    margin-top:50px;
+}
+
+.project-gallery img{
+
+    width:100%;
+    display:block;
+
+    border-radius:24px;
+
 }
 
 /* =========================
@@ -1223,21 +1235,14 @@ section {
     font-size: 18px;
 }
 
-.project-gallery{
-
-    padding:0;
-    margin-top:50px;
-
+.notationani-textblock p + p {
+    margin-top: 20px;
 }
 
-.project-gallery img{
-
-    width:100%;
-    display:block;
-
-    border-radius:24px;
-
+.notationani-textblock p:nth-of-type(3) {
+    margin-top: 80px;
 }
+
 /* =========================
    инструменты
 ========================= */
