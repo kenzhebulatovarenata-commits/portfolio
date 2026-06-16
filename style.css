@@ -718,19 +718,68 @@ scroll-stage {
        СДЕЛАНО МНОЙ
 ========================= */
 
-.footer-note {
+.footer {
     width: 100%;
+    padding: 120px var(--side-padding) 60px;
+    box-sizing: border-box;
+    color: white;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* сам контактный блок */
+.footer .contact-text {
+    max-width: 600px;
+}
+
+/* заголовок */
+.footer h2 {
+    font-weight: 200;
+    font-size: 64px;
+    margin-bottom: 40px;
+}
+
+/* текст */
+.footer .text-body {
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+/* подчёркивание как у тебя везде */
+.footer a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 1px;
+    background: white;
+    transition: 0.3s ease;
+}
+
+.footer a:hover::after {
+    width: 100%;
+}
+
+/* подпись */
+.footer-note {
     text-align: center;
-
-    padding: 80px 0 40px;
-
+    margin-top: 60px;   /* вот это твой “чуть ниже” */
     font-size: 14px;
     font-weight: 200;
-
     opacity: 0.6;
-    color: white;
-    justify-content: center;
-    letter-spacing: 0.5px;
 }
 /* underline анимация */
 .contact-text a::after {
