@@ -603,6 +603,24 @@ scroll-stage {
 /* =========================
    одинаковый мелкий текст
 ========================= */
+
+.worksall {
+    width: 100%;
+    padding: 90px 100px;
+    color: white;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.worksall h2 {
+    font-weight: 200;
+    font-size: 64px;
+    line-height: 1.1;
+    letter-spacing: 1px;
+
+    margin-bottom: 20px;
+}
 .text-body {
     font-family: 'RalewayCustom', sans-serif;
     font-weight: 200;
