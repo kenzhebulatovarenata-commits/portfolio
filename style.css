@@ -1061,27 +1061,27 @@ section {
     display:grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
-    align-items: center;
+    align-items: start;
     min-height: 100%;
 
 }
 
 .notationani-inner .video-wrapper{
     width: 100%;
-    max-width: 450px; 
+    max-width: 380px; 
     justify-self: center;
 
 }
-.notation-right{
+.notationani-right{
     display:flex;
     flex-direction:column;
 
-    justify-content:center;
+    justify-content: flex-start;
     align-items:center;
 
-    gap:30px;
+    gap: 40px;
 
-    width:100%;
+    width: 100%;
 }
 
 .notationani-textblock{
@@ -1109,8 +1109,19 @@ section {
 .icons-row {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    width:100%;
+    align-items: center;
+
+    gap: 30px;
+
+    width: 100%;
+    max-width: 500px;
+
+    padding: 30px;
+
+    border-bottom: 1px solid rgba(255,255,255,.6);
+    border-radius: 0 0 24px 24px;
+
+    margin-top: 20px;
 }
 
 .icons-row img {
