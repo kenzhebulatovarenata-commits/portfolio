@@ -308,21 +308,25 @@ scroll-stage {
     box-sizing: border-box;
 }
 
-.about-inner {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 120px;
-}
-
-/* заголовок */
-.about-inner h2 {
+/* заголовок*/
+.about h2{
     font-weight: 200;
     font-size: 64px;
+    line-height: 1.1;
     letter-spacing: 1px;
-    margin: 0;
-    flex-shrink: 0;
+
+    margin: 0 0 40px 0;
 }
+
+.about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    align-items: center;
+    width: 100%;
+    gap: 60px;
+}
+
+/* заголовок
 
 /* текст */
 .about-inner p {
@@ -333,6 +337,13 @@ scroll-stage {
 
     max-width: 600px;
     margin: 0;
+}
+
+.about-photo img {
+    width: 100%;
+    display: block;
+    border-radius: 20px;
+    max-width: 420px;
 }
 
 /* =========================
