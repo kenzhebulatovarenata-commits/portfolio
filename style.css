@@ -618,7 +618,7 @@ scroll-stage {
     font-size: 64px;
     line-height: 1.1;
     letter-spacing: 1px;
-
+    margin-top: 50px;
     margin-bottom: 20px;
 }
 .text-body {
