@@ -691,7 +691,7 @@ scroll-stage {
 
     opacity: 0.6;
     color: white;
-
+    justify-content: center;
     letter-spacing: 0.5px;
 }
 
