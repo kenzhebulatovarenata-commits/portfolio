@@ -1103,7 +1103,34 @@ section {
 /* =========================
    EXPERIMENTAL SCROLL SCENE
 ========================= */
+.ntools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    width: 100%;
+}
+
+.ntools-title p {
+    margin: 0;
+
+    font-size: 32px;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+.ntools-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.ntools-icons img {
+    width: 64px;   /* размер иконок */
+    height: 64px;
+
+    object-fit: contain;
+    display: block;
+}
 /* ......МЕРЧ...... */
 
 .image-block h2 {
