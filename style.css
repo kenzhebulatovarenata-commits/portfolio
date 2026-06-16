@@ -1224,6 +1224,7 @@ section {
     width: 100%;
     max-width: 500px;
     margin:0;
+   justify-self: center;
 }
 
 .notationani-textblock p{
