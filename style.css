@@ -1102,35 +1102,7 @@ section {
 /* =========================
    инструменты
 ========================= */
-.ntools {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px; 
-    width: 100%;
-}
 
-.ntools-title p {
-    margin: 0;
-
-    font-size: 32px;
-    font-weight: 200;
-    letter-spacing: 1px;
-}
-
-.ntools-icons {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.ntools-icons img {
-    width: 64px;   /* размер иконок */
-    height: 64px;
-
-    object-fit: contain;
-    display: block;
-}
 /* ......МЕРЧ...... */
 
 .image-block h2 {
