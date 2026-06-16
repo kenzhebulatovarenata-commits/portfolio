@@ -347,6 +347,14 @@ scroll-stage {
     border-radius: 20px;
     max-width: 420px;
 }
+
+.about-button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
 .about-btn {
     color: white;
     text-decoration: none;
