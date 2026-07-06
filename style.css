@@ -1378,6 +1378,11 @@ section {
     .exp-grid {
         grid-template-columns: 1fr;
     }
+   
+   .scroll-spacer {
+        height: 40vh;
+   }
+   
    .all-works {
         margin-top: -200px;
     }
