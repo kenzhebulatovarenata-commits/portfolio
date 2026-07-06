@@ -300,13 +300,18 @@ scroll-stage {
 
 
 
+.container {
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding-inline: clamp(1.5rem, 5vw, 6.25rem);
+}
+
 .about {
     width: 100%;
-    padding: 90px 100px;
+    padding-block: 5.625rem;
     color: white;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
 }
 
 .about-inner {
@@ -409,8 +414,7 @@ scroll-stage {
     position: relative;
     z-index: 2;
     width: 100%;
-    padding: 100px var(--side-padding);
-    max-width: none;
+    padding-block: 6.25rem;
 }
 
 .experience h2 {
@@ -475,9 +479,11 @@ scroll-stage {
 
 .tools {
     width: 100%;
-    padding: 100px 100px;
+    padding-block: 6.25rem;
     color: white;
     box-sizing: border-box;
+}
+.tools .container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1359,4 +1365,35 @@ section {
     border-radius: 16px;
 }
 
+/* =========================
+   IPAD / TABLET
+========================= */
 
+@media (max-width: 1024px) {
+
+    .about-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .exp-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================
+   PHONE
+========================= */
+
+@media (max-width: 768px) {
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .header {
+        padding: 1rem;
+    }
+
+}
