@@ -1380,15 +1380,15 @@ section {
     }
    
    .scroll-spacer {
-        height: 40vh;
+        height: 20vh;
    }
    
    .all-works {
-        margin-top: -200px;
+        margin-top: 0px;
     }
 
     .proj {
-        margin-top: -50px;
+        margin-top: 50px;
     }
 
 
