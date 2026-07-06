@@ -1379,11 +1379,11 @@ section {
         grid-template-columns: 1fr;
     }
    .all-works {
-        margin-top: -100px;
+        margin-top: -200px;
     }
 
     .proj {
-        margin-top: 50px;
+        margin-top: -50px;
     }
 
 
