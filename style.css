@@ -1378,6 +1378,15 @@ section {
     .exp-grid {
         grid-template-columns: 1fr;
     }
+   .all-works {
+        margin-top: 0;
+    }
+
+    .proj {
+        margin-top: 150px;
+    }
+
+
 
 }
 
