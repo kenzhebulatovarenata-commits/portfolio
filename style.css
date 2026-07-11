@@ -1424,8 +1424,8 @@ section {
     margin-bottom: 50px;
 }
 .scheme-title {
-    margin-left: 3vw;
-    margin-bottom: 24px;
+    margin-left: 0;
+    margin-bottom: 48px;
 
     font-size: 64px;
     font-weight: 300;
