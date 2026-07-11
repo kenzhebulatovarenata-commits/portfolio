@@ -1496,8 +1496,38 @@ section {
     right:3%;
 }
 /* =========================
-   IPAD / TABLET
+   drafts
 ========================= */
+.drafts {
+    width: 100%;
+    margin-top: 200px;
+}
+
+.drafts-title {
+    margin-left: 3vw;
+    margin-bottom: 48px;
+
+    font-size: 48px;
+    font-weight: 300;
+    color: white;
+}
+
+.drafts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+
+    width: 100%;
+    padding: 0 3vw;
+    box-sizing: border-box;
+}
+
+.drafts-grid video {
+    width: 100%;
+    display: block;
+
+    object-fit: cover;
+}
 
 @media (max-width: 1024px) {
 
@@ -1527,6 +1557,9 @@ section {
 
     .point-row{
         gap:30px;
+    }
+   .drafts-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }
@@ -1561,6 +1594,10 @@ section {
 
     .point-row p{
         max-width:none;
+    }
+
+    .drafts-grid {
+        grid-template-columns: 1fr;
     }
 
 
