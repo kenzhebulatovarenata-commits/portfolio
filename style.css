@@ -1466,8 +1466,8 @@ section {
     transform:translate(-50%, -50%);
 
     transition:
-        filter .15s ease,
-        opacity .15s ease;
+        filter .3s ease,
+        opacity .3s ease;
 }
 
 
