@@ -1410,6 +1410,10 @@ section {
     margin:0;
     max-width:520px;
 }
+
+/* =========================
+  grid
+========================= */
 .scheme {
     position: relative;
     width: 100%;
