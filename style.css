@@ -1451,10 +1451,13 @@ section {
     position:absolute;
     inset:0;
 
-    width:100%;
-    height:100%;
+    width:80%;
+    height:80%;
     object-fit:contain;
     display:block;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
 
     transition:
         filter .15s ease,
