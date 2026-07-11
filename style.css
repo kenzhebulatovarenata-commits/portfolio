@@ -1632,7 +1632,7 @@ section {
     max-height: 80vh;
 
     object-fit: contain;
-    border-radius: 24px;
+    transform: translateY(-40px);
     transform: scale(0.96);
     transition: transform 0.3s ease;
 }
@@ -1665,16 +1665,14 @@ section {
     transform: translateX(-50%);
 
     display: flex;
-    gap: 6px;
+    gap: 10px;
 }
 
 .lightbox-thumbs img {
-    width: 32px;
+    width: 40px;
     height: auto;
 
     object-fit: cover;
-
-    border-radius: 8px;
 
     opacity: 0.6;
     cursor: pointer;
@@ -1687,6 +1685,46 @@ section {
 .lightbox-thumbs img:hover {
     opacity: 1;
     transform: translateY(-4px);
+}
+.lightbox-prev,
+.lightbox-next {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background: none;
+    border: none;
+
+    color: white;
+
+    font-size: 40px;
+
+    cursor: pointer;
+
+    z-index: 2;
+
+    opacity: 0.7;
+
+    transition: opacity 0.2s ease;
+}
+
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    opacity: 1;
+}
+
+
+.lightbox-prev {
+    left: 40px;
+}
+
+
+.lightbox-next {
+    right: 40px;
 }
 
 @media (max-width: 1024px) {
