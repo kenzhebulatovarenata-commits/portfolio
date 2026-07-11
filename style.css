@@ -1558,6 +1558,10 @@ section {
     object-fit: cover;
 }
 
+/* =========================
+   DRAFTS
+========================= */
+
 .drafts2 {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -1567,34 +1571,44 @@ section {
 
 .drafts2-item {
     position: relative;
-   transition: opacity 0.3s ease;
 }
 
-.drafts2-caption {
+.gallery-image {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+
+    transition: transform 0.25s ease;
+}
+
+.gallery-image:hover {
+    transform: translateY(-8px);
+}
+
+.drafts2-title {
     position: absolute;
     top: -30px;
     left: 0;
 
     margin: 0;
+
     font-size: 16px;
+    font-weight: 400;
     color: white;
+
+    white-space: nowrap;
 }
 
-.drafts2-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
 
-.drafts2-item.dark {
-    opacity: 0.3;
-}
+/* =========================
+   LIGHTBOX
+========================= */
 
 .lightbox {
     position: fixed;
     inset: 0;
 
-    background: rgba(0,0,0,0.92);
+    background: rgba(0, 0, 0, 0.92);
 
     display: flex;
     justify-content: center;
@@ -1603,17 +1617,15 @@ section {
     opacity: 0;
     pointer-events: none;
 
-    transition: 0.3s ease;
+    transition: opacity 0.3s ease;
 
     z-index: 999;
 }
-
 
 .lightbox.active {
     opacity: 1;
     pointer-events: auto;
 }
-
 
 .lightbox-main {
     max-width: 85vw;
@@ -1622,19 +1634,32 @@ section {
     object-fit: contain;
 }
 
+.lightbox-caption {
+    position: absolute;
+
+    top: 40px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    margin: 0;
+
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+}
 
 .lightbox-thumbs {
     position: absolute;
 
-    bottom: 30px;
     left: 50%;
+    bottom: 30px;
 
     transform: translateX(-50%);
 
     display: flex;
     gap: 10px;
 }
-
 
 .lightbox-thumbs img {
     width: 60px;
@@ -1645,13 +1670,16 @@ section {
     border-radius: 8px;
 
     opacity: 0.6;
-
     cursor: pointer;
-}
 
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
 
 .lightbox-thumbs img:hover {
     opacity: 1;
+    transform: translateY(-4px);
 }
 @media (max-width: 1024px) {
 
