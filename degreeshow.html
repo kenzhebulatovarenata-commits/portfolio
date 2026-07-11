@@ -211,46 +211,49 @@
             
 </section>
         
-        <script>
+
+ <script>
 const labels = document.querySelectorAll(".label");
 const layers = document.querySelectorAll(".layer");
 
 
-// =========================
-// НАВЕДЕНИЕ НА ПОДПИСИ
-// =========================
-
 labels.forEach(label => {
 
-    label.addEventListener("mouseenter", () => {
 
-        layers.forEach(layer => {
+    label.addEventListener("mouseenter",()=>{
 
-            if (layer.dataset.name !== label.dataset.target) {
+
+        layers.forEach(layer=>{
+
+            if(layer.dataset.name !== label.dataset.target){
+
                 layer.classList.add("dark");
+
             }
 
         });
 
+
     });
 
 
-    label.addEventListener("mouseleave", () => {
+    label.addEventListener("mouseleave",()=>{
 
-        layers.forEach(layer => {
+        layers.forEach(layer=>{
             layer.classList.remove("dark");
         });
 
     });
 
+
 });
 
 
 // =========================
-// ГАЛЕРЕЯ DRAFTS
+// ГАЛЕРЕЯ
 // =========================
 
-const images = document.querySelectorAll(".drafts2-item");
+const images = document.querySelectorAll(".gallery-image");
 
 const lightbox = document.querySelector(".lightbox");
 const mainImage = document.querySelector(".lightbox-main");
@@ -258,7 +261,7 @@ const thumbs = document.querySelector(".lightbox-thumbs");
 const captions = document.querySelector(".lightbox-caption");
 
 
-// создаём миниатюры снизу
+// создаём миниатюры
 
 images.forEach((img) => {
 
@@ -267,7 +270,7 @@ images.forEach((img) => {
     thumbs.appendChild(thumb);
 
 
-    // открытие изображения
+    // открыть большое изображение
 
     img.addEventListener("click", () => {
 
@@ -296,13 +299,12 @@ images.forEach((img) => {
         mainImage.src = thumb.src;
 
 
-        const original = [...images].find(image => image.src === thumb.src);
+        const original = [...images].find(i => i.src === thumb.src);
 
 
         if (original) {
 
-            const title = original.parentElement.querySelector(".drafts2-title");
-
+            const title = original.parentElement.querySelector(".photo-title");
 
             if (title) {
                 captions.textContent = title.textContent;
@@ -314,14 +316,15 @@ images.forEach((img) => {
 
     });
 
+
 });
 
 
-// закрытие по фону
+// закрытие по клику на фон
 
-lightbox.addEventListener("click", (e) => {
+lightbox.addEventListener("click", (e)=>{
 
-    if (e.target === lightbox) {
+    if(e.target === lightbox){
 
         lightbox.classList.remove("active");
 
