@@ -1639,7 +1639,7 @@ section {
 
 .lightbox.active .lightbox-main {
     transform: scale(1);
-
+}
 
 .lightbox-caption {
     position: absolute;
