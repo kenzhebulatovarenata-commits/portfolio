@@ -1375,7 +1375,7 @@ section {
     display:flex;
     flex-direction:column;
     gap:42px;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
 .point{
@@ -1421,7 +1421,7 @@ section {
     aspect-ratio: 16 / 9;
     overflow: hidden;
     background: black;
-    margin-bottom: 50px;
+    margin-bottom: 0;
 }
 .scheme-title {
     margin-left: 0;
@@ -1509,7 +1509,7 @@ section {
 ========================= */
 .drafts {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 0;
 }
 
 .drafts-title {
