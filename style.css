@@ -1410,6 +1410,75 @@ section {
     margin:0;
     max-width:520px;
 }
+.scheme {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: black;
+}
+
+
+.scheme-images {
+    position:absolute;
+    inset:0;
+}
+
+
+.layer {
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+    object-fit:contain;
+
+    transition:
+        filter .4s ease,
+        opacity .4s ease;
+}
+
+
+.layer.dark {
+    filter:brightness(0.15);
+}
+
+
+
+.labels {
+    position:absolute;
+    inset:0;
+    color:white;
+    font-family: "Inter Tight", sans-serif;
+}
+
+
+.label {
+    position:absolute;
+    font-size:clamp(18px,2vw,32px);
+    font-weight:300;
+    cursor:pointer;
+}
+
+
+/* позиции */
+
+.label:nth-child(1){
+    top:7%;
+    right:3%;
+}
+
+
+.label:nth-child(2){
+    top:34%;
+    left:3%;
+}
+
+
+.label:nth-child(3){
+    bottom:5%;
+    right:3%;
+}
 /* =========================
    IPAD / TABLET
 ========================= */
