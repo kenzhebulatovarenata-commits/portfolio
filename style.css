@@ -1492,19 +1492,19 @@ section {
 /* позиции */
 
 .label:nth-child(1){
-    top:10%;
+    top:12%;
     right:3%;
 }
 
 
 .label:nth-child(2){
-    top:36%;
+    top:35%;
     left:3%;
 }
 
 
 .label:nth-child(3){
-    bottom:7%;
+    bottom:12%;
     right:3%;
 }
 /* =========================
