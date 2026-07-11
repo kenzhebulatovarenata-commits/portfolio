@@ -1535,7 +1535,7 @@ section {
     gap: 24px;
 
     width: 100%;
-    padding: 0 3vw;
+    padding: 0;
     box-sizing: border-box;
 }
 
