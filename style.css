@@ -1371,7 +1371,7 @@ section {
 
 .project-points{
     width:100%;
-    padding:100px var(--side-padding);
+    padding: 50px var(--side-padding);
     display:flex;
     flex-direction:column;
     gap:42px;
@@ -1429,12 +1429,12 @@ section {
     font-size: 64px;
     font-weight: 300;
     color: white;
+    margin-bottom: 64px;
 }
 
 .scheme-images {
     position:absolute;
     inset:0;
-    margin-top: 64px;
 }
 
 .scheme-lines{
