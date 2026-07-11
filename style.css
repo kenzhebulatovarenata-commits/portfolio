@@ -1429,7 +1429,7 @@ section {
     font-size: 64px;
     font-weight: 300;
     color: white;
-    top:0%;
+    transform: translateY(-40px);
 }
 
 .scheme-images {
