@@ -1377,6 +1377,10 @@ section {
     gap:42px;
     margin-bottom: 0;
 }
+.page .project-points {
+    margin-bottom: 0;
+}
+
 .project-points-title {
     margin-left: 0;
     margin-bottom: 20px;
