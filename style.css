@@ -1379,11 +1379,10 @@ section {
 }
 .project-points-title {
     margin-left: 0;
-    margin-bottom: -64px;
+    margin-bottom: 20px;
     font-size: 64px;
     font-weight: 300;
     color: white;
-    top: -64px
 }
 
 .point{
