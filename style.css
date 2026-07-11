@@ -1520,6 +1520,9 @@ section {
     width: 100%;
     margin-top: 0;
 }
+.page .drafts {
+    margin-bottom: 0;
+}
 
 .drafts-title {
     margin-left:0;
