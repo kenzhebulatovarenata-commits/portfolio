@@ -182,34 +182,64 @@
     </div>
 
 </section>
-        <section class="drafts2">
-<div class="photos">
-    <img class="gallery-image" src="degree/degposter.jpg" alt="">
+       <section class="drafts2">
+
+    <div class="drafts2-item">
+        <img class="gallery-image" src="degree/degposter.jpg" alt="Постеры">
         <p class="drafts2-title">Постеры</p>
-    <img class="gallery-image" src="degree/degposter1.jpg">
-    <img class="gallery-image" src="degree/degposter2.jpg">
-    <img class="gallery-image" src="degree/degposter3.jpg">
-    <img class="gallery-image" src="degree/degposter4.jpg">
-    <img class="gallery-image" src="degree/degposter5.jpg">
-    <img class="gallery-image" src="degree/derflag.jpg"> alt="">
+    </div>
+
+    <div class="drafts2-item">
+        <img class="gallery-image" src="degree/degposter1.jpg" alt="">
+    </div>
+
+    <div class="drafts2-item">
+        <img class="gallery-image" src="degree/degposter2.jpg" alt="">
+    </div>
+
+    <div class="drafts2-item">
+        <img class="gallery-image" src="degree/degposter3.jpg" alt="">
+    </div>
+
+    <div class="drafts2-item">
+        <img class="gallery-image" src="degree/degposter4.jpg" alt="">
+    </div>
+
+    <div class="drafts2-item">
+        <img class="gallery-image" src="degree/degposter5.jpg" alt="">
+    </div>
+
+    <div class="drafts2-item">
+        <img class="gallery-image" src="degree/derflag.jpg" alt="Флаг">
         <p class="drafts2-title">Флаг</p>
-    <img class="gallery-image" src="degree/degroll.jpg"> alt="">
-        <p class="drafts2-title">Ролл ап</p>
-    <img class="gallery-image" src="degree/degmerch.jpg"> alt="">
+    </div>
+
+    <div class="drafts2-item">
+        <img class="gallery-image" src="degree/degroll.jpg" alt="Ролл-ап">
+        <p class="drafts2-title">Ролл-ап</p>
+    </div>
+
+    <div class="drafts2-item">
+        <img class="gallery-image" src="degree/degmerch.jpg" alt="Мерч">
         <p class="drafts2-title">Мерч</p>
-    <img class="gallery-image" src="degree/degmerch1.jpg">
-</div>
+    </div>
+
+    <div class="drafts2-item">
+        <img class="gallery-image" src="degree/degmerch1.jpg" alt="">
+    </div>
+
+</section>
+
+
 <div class="lightbox">
 
-    <img class="lightbox-main" src="">
+    <img class="lightbox-main" src="" alt="">
 
     <p class="lightbox-caption"></p>
 
     <div class="lightbox-thumbs"></div>
 
 </div>
-            
-</section>
         
 
  <script>
@@ -258,7 +288,7 @@ const images = document.querySelectorAll(".gallery-image");
 const lightbox = document.querySelector(".lightbox");
 const mainImage = document.querySelector(".lightbox-main");
 const thumbs = document.querySelector(".lightbox-thumbs");
-const captions = document.querySelector(".lightbox-caption");
+const caption = document.querySelector(".lightbox-caption");
 
 
 // создаём миниатюры
@@ -270,64 +300,67 @@ images.forEach((img) => {
     thumbs.appendChild(thumb);
 
 
-    // открыть большое изображение
+    // открыть изображение
 
     img.addEventListener("click", () => {
 
         mainImage.src = img.src;
 
-
         const title = img.parentElement.querySelector(".drafts2-title");
 
         if (title) {
-            captions.textContent = title.textContent;
+            caption.textContent = title.textContent;
         } else {
-            captions.textContent = "";
+            caption.textContent = "";
         }
-
 
         lightbox.classList.add("active");
 
     });
 
 
-
-    // переключение через миниатюры
+    // переключение по миниатюрам
 
     thumb.addEventListener("click", () => {
 
         mainImage.src = thumb.src;
 
-
-        const original = [...images].find(i => i.src === thumb.src);
-
+        const original = [...images].find(image => image.src === thumb.src);
 
         if (original) {
 
-            const title = original.parentElement.querySelector(".photo-title");
+            const title = original.parentElement.querySelector(".drafts2-title");
 
             if (title) {
-                captions.textContent = title.textContent;
+                caption.textContent = title.textContent;
             } else {
-                captions.textContent = "";
+                caption.textContent = "";
             }
 
         }
 
     });
 
-
 });
 
 
 // закрытие по клику на фон
 
-lightbox.addEventListener("click", (e)=>{
+lightbox.addEventListener("click", (e) => {
 
-    if(e.target === lightbox){
-
+    if (e.target === lightbox) {
         lightbox.classList.remove("active");
+    }
 
+});
+
+
+// закрытие по Esc
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+        lightbox.classList.remove("active");
     }
 
 });
