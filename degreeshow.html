@@ -216,42 +216,49 @@ const labels = document.querySelectorAll(".label");
 const layers = document.querySelectorAll(".layer");
 
 
+// =========================
+// НАВЕДЕНИЕ НА ПОДПИСИ
+// =========================
+
 labels.forEach(label => {
 
+    label.addEventListener("mouseenter", () => {
 
-    label.addEventListener("mouseenter",()=>{
+        layers.forEach(layer => {
 
-
-        layers.forEach(layer=>{
-
-            if(layer.dataset.name !== label.dataset.target){
-
+            if (layer.dataset.name !== label.dataset.target) {
                 layer.classList.add("dark");
-
             }
 
         });
 
-
     });
 
 
-    label.addEventListener("mouseleave",()=>{
+    label.addEventListener("mouseleave", () => {
 
-        layers.forEach(layer=>{
+        layers.forEach(layer => {
             layer.classList.remove("dark");
         });
 
     });
 
-
 });
-            const images = document.querySelectorAll(".gallery-image");
+
+
+// =========================
+// ГАЛЕРЕЯ DRAFTS
+// =========================
+
+const images = document.querySelectorAll(".drafts2-item");
 
 const lightbox = document.querySelector(".lightbox");
 const mainImage = document.querySelector(".lightbox-main");
 const thumbs = document.querySelector(".lightbox-thumbs");
+const captions = document.querySelector(".lightbox-caption");
 
+
+// создаём миниатюры снизу
 
 images.forEach((img) => {
 
@@ -260,28 +267,64 @@ images.forEach((img) => {
     thumbs.appendChild(thumb);
 
 
+    // открытие изображения
+
     img.addEventListener("click", () => {
 
         mainImage.src = img.src;
+
+
+        const title = img.parentElement.querySelector(".drafts2-title");
+
+        if (title) {
+            captions.textContent = title.textContent;
+        } else {
+            captions.textContent = "";
+        }
+
 
         lightbox.classList.add("active");
 
     });
 
 
+
+    // переключение через миниатюры
+
     thumb.addEventListener("click", () => {
 
         mainImage.src = thumb.src;
+
+
+        const original = [...images].find(image => image.src === thumb.src);
+
+
+        if (original) {
+
+            const title = original.parentElement.querySelector(".drafts2-title");
+
+
+            if (title) {
+                captions.textContent = title.textContent;
+            } else {
+                captions.textContent = "";
+            }
+
+        }
 
     });
 
 });
 
 
-lightbox.addEventListener("click", (e)=>{
+// закрытие по фону
 
-    if(e.target === lightbox){
+lightbox.addEventListener("click", (e) => {
+
+    if (e.target === lightbox) {
+
         lightbox.classList.remove("active");
+
     }
 
 });
