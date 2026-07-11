@@ -1555,6 +1555,28 @@ section {
     object-fit: cover;
 }
 
+.drafts2 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+}
+
+.drafts2-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.drafts2-caption {
+    margin: 0 0 12px;
+    min-height: 20px; /* резервирует место */
+    font-size: 16px;
+    color: white;
+}
+
+.drafts2-item img {
+    width: 100%;
+    display: block;
+}
 @media (max-width: 1024px) {
 
     .about-inner {
