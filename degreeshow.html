@@ -126,6 +126,39 @@
     </div>
 
 </section>
+const labels = document.querySelectorAll(".label");
+const layers = document.querySelectorAll(".layer");
 
+
+labels.forEach(label => {
+
+
+    label.addEventListener("mouseenter",()=>{
+
+
+        layers.forEach(layer=>{
+
+            if(layer.dataset.name !== label.dataset.target){
+
+                layer.classList.add("dark");
+
+            }
+
+        });
+
+
+    });
+
+
+    label.addEventListener("mouseleave",()=>{
+
+        layers.forEach(layer=>{
+            layer.classList.remove("dark");
+        });
+
+    });
+
+
+});
 </body>
 </html>
