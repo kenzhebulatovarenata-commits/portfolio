@@ -1435,6 +1435,7 @@ section {
 .scheme-images {
     position:absolute;
     inset:0;
+    margin-top: 10px;
 }
 
 .scheme-lines{
