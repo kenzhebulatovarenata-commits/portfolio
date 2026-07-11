@@ -1369,18 +1369,29 @@ section {
   degree show
 ========================= */
 
-.dgr-points{
+.project-points{
     width:100%;
     padding:120px var(--side-padding);
     display:flex;
     flex-direction:column;
-    gap:48px;
+    gap:42px;
 }
 
 .point{
+    width:100%;
+}
+
+.point-line{
+    width:100%;
+    height:1px;
+    background:rgba(255,255,255,.3);
+    margin-bottom:16px;
+}
+
+.point-row{
     display:grid;
     grid-template-columns:60px 1fr;
-    column-gap:40px;
+    column-gap:80px; /* регулирует расстояние между номером и текстом */
     align-items:start;
 }
 
@@ -1388,20 +1399,14 @@ section {
     font-size:14px;
     font-weight:200;
     opacity:.7;
-    padding-top:14px;
 }
 
-.point-content{
-    border-top:1px solid rgba(255,255,255,.35);
-    padding-top:16px;
-}
-
-.point-content p{
+.point-row p{
+    max-width:420px;
     font-size:18px;
     line-height:1.6;
     font-weight:200;
     opacity:.85;
-    max-width:520px;
 }
 /* =========================
    IPAD / TABLET
