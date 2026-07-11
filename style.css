@@ -1498,13 +1498,13 @@ section {
 
 
 .label:nth-child(2){
-    top:35%;
+    top:34.5%;
     left:3%;
 }
 
 
 .label:nth-child(3){
-    bottom:12%;
+    bottom:14%;
     right:3%;
 }
 /* =========================
