@@ -1377,6 +1377,14 @@ section {
     gap:42px;
     margin-bottom: 0;
 }
+.project-points-title {
+    margin-left: 0;
+    margin-bottom: -64px;
+    font-size: 64px;
+    font-weight: 300;
+    color: white;
+    top: -64px
+}
 
 .point{
     width:100%;
@@ -1425,14 +1433,6 @@ section {
 }
 .page .scheme {
     margin-bottom: 0;
-}
-.scheme-title {
-    margin-left: 0;
-    margin-bottom: -64px;
-    font-size: 64px;
-    font-weight: 300;
-    color: white;
-    top: -64px
 }
 
 .scheme-images {
