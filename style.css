@@ -1554,12 +1554,12 @@ section {
 .drafts-grid video {
     width: 100%;
     display: block;
-
+    border-radius: 18px;
     object-fit: cover;
 }
 
 /* =========================
-   DRAFTS
+   DRAFTS 2
 ========================= */
 
 .drafts2 {
@@ -1577,7 +1577,7 @@ section {
     width: 100%;
     display: block;
     cursor: pointer;
-
+    border-radius: 18px;
     transition: transform 0.25s ease;
 }
 
@@ -1632,7 +1632,14 @@ section {
     max-height: 80vh;
 
     object-fit: contain;
+    border-radius: 24px;
+    transform: scale(0.96);
+    transition: transform 0.3s ease;
 }
+
+.lightbox.active .lightbox-main {
+    transform: scale(1);
+
 
 .lightbox-caption {
     position: absolute;
@@ -1658,12 +1665,12 @@ section {
     transform: translateX(-50%);
 
     display: flex;
-    gap: 10px;
+    gap: 6px;
 }
 
 .lightbox-thumbs img {
-    width: 60px;
-    height: 80px;
+    width: 32px;
+    height: auto;
 
     object-fit: cover;
 
