@@ -1439,8 +1439,8 @@ section {
     display:block;
 
     transition:
-        filter .4s ease,
-        opacity .4s ease;
+        filter .15s ease,
+        opacity .15s ease;
 }
 
 
