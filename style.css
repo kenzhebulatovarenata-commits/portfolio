@@ -1371,10 +1371,11 @@ section {
 
 .project-points{
     width:100%;
-    padding:120px var(--side-padding);
+    padding:100px var(--side-padding);
     display:flex;
     flex-direction:column;
     gap:42px;
+    margin-bottom: 50px;
 }
 
 .point{
@@ -1420,6 +1421,7 @@ section {
     aspect-ratio: 16 / 9;
     overflow: hidden;
     background: black;
+    margin-bottom: 50px;
 }
 
 
@@ -1500,7 +1502,7 @@ section {
 ========================= */
 .drafts {
     width: 100%;
-    margin-top: 200px;
+    margin-top: 50px;
 }
 
 .drafts-title {
