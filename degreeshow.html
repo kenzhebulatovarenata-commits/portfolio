@@ -233,7 +233,11 @@
 
 <div class="lightbox">
 
-    <img class="lightbox-main" src="" alt="">
+    <button class="lightbox-prev">←</button>
+
+    <img class="lightbox-main" src="">
+
+    <button class="lightbox-next">→</button>
 
     <p class="lightbox-caption"></p>
 
@@ -290,77 +294,132 @@ const mainImage = document.querySelector(".lightbox-main");
 const thumbs = document.querySelector(".lightbox-thumbs");
 const caption = document.querySelector(".lightbox-caption");
 
+const prevButton = document.querySelector(".lightbox-prev");
+const nextButton = document.querySelector(".lightbox-next");
 
-// создаём миниатюры
+let currentIndex = 0;
 
-images.forEach((img) => {
+
+// =========================
+// ОТКРЫТИЕ КАРТИНКИ
+// =========================
+
+function openImage(index) {
+
+    currentIndex = index;
+
+    const img = images[index];
+
+    mainImage.src = img.src;
+
+
+    const title = img.parentElement.querySelector(".drafts2-title");
+
+    if (title) {
+        caption.textContent = title.textContent;
+    } else {
+        caption.textContent = "";
+    }
+
+}
+
+
+
+// =========================
+// СОЗДАНИЕ МИНИАТЮР
+// =========================
+
+images.forEach((img, index) => {
 
     const thumb = img.cloneNode();
 
     thumbs.appendChild(thumb);
 
 
-    // открыть изображение
+
+    // открыть картинку
 
     img.addEventListener("click", () => {
 
-        mainImage.src = img.src;
-
-        const title = img.parentElement.querySelector(".drafts2-title");
-
-        if (title) {
-            caption.textContent = title.textContent;
-        } else {
-            caption.textContent = "";
-        }
+        openImage(index);
 
         lightbox.classList.add("active");
 
     });
 
 
-    // переключение по миниатюрам
+
+    // переключение миниатюрами
 
     thumb.addEventListener("click", () => {
 
-        mainImage.src = thumb.src;
-
-        const original = [...images].find(image => image.src === thumb.src);
-
-        if (original) {
-
-            const title = original.parentElement.querySelector(".drafts2-title");
-
-            if (title) {
-                caption.textContent = title.textContent;
-            } else {
-                caption.textContent = "";
-            }
-
-        }
+        openImage(index);
 
     });
+
 
 });
 
 
-// закрытие по клику на фон
+
+// =========================
+// СТРЕЛКИ
+// =========================
+
+nextButton.addEventListener("click", () => {
+
+    currentIndex++;
+
+    if (currentIndex >= images.length) {
+        currentIndex = 0;
+    }
+
+    openImage(currentIndex);
+
+});
+
+
+
+prevButton.addEventListener("click", () => {
+
+    currentIndex--;
+
+    if (currentIndex < 0) {
+        currentIndex = images.length - 1;
+    }
+
+    openImage(currentIndex);
+
+});
+
+
+
+// =========================
+// ЗАКРЫТИЕ ПО ФОНУ
+// =========================
 
 lightbox.addEventListener("click", (e) => {
 
     if (e.target === lightbox) {
+
         lightbox.classList.remove("active");
+
     }
 
 });
 
 
-// закрытие по Esc
+
+// =========================
+// ЗАКРЫТИЕ ESC
+// =========================
 
 document.addEventListener("keydown", (e) => {
 
     if (e.key === "Escape") {
+
         lightbox.classList.remove("active");
+
     }
 
 });
