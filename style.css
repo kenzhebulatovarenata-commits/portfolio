@@ -1513,7 +1513,7 @@ section {
 }
 
 .drafts-title {
-    margin-left: 3vw;
+    margin-left:0;
     margin-bottom: 24px;
 
     font-size: 64px;
@@ -1521,7 +1521,7 @@ section {
     color: white;
 }
 .drafts-subtitle {
-    margin-left: 3vw;
+    margin-left: 0;
     margin-bottom: 24px;
 
     font-size: 20px;
