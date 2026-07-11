@@ -1422,6 +1422,7 @@ section {
     overflow: hidden;
     background: black;
     margin-bottom: 0;
+    padding: 10px var(--side-padding);
 }
 .scheme-title {
     margin-left: 0;
