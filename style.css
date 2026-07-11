@@ -1366,6 +1366,44 @@ section {
 }
 
 /* =========================
+  degree show
+========================= */
+
+.dgr-points{
+    width:100%;
+    padding:120px var(--side-padding);
+    display:flex;
+    flex-direction:column;
+    gap:48px;
+}
+
+.point{
+    display:grid;
+    grid-template-columns:60px 1fr;
+    column-gap:40px;
+    align-items:start;
+}
+
+.point-number{
+    font-size:14px;
+    font-weight:200;
+    opacity:.7;
+    padding-top:14px;
+}
+
+.point-content{
+    border-top:1px solid rgba(255,255,255,.35);
+    padding-top:16px;
+}
+
+.point-content p{
+    font-size:18px;
+    line-height:1.6;
+    font-weight:200;
+    opacity:.85;
+    max-width:520px;
+}
+/* =========================
    IPAD / TABLET
 ========================= */
 
