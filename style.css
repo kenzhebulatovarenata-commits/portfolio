@@ -1667,6 +1667,9 @@ section {
     display: flex;
     gap: 10px;
 }
+.lightbox-thumbs .gallery-image {
+    border-radius: 4px;
+}
 
 .lightbox-thumbs img {
     width: 40px;
