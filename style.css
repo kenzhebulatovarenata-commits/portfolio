@@ -1584,6 +1584,69 @@ section {
     height: auto;
     display: block;
 }
+.lightbox {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.92);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: 0.3s ease;
+
+    z-index: 999;
+}
+
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.lightbox-main {
+    max-width: 85vw;
+    max-height: 80vh;
+
+    object-fit: contain;
+}
+
+
+.lightbox-thumbs {
+    position: absolute;
+
+    bottom: 30px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 10px;
+}
+
+
+.lightbox-thumbs img {
+    width: 60px;
+    height: 80px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    opacity: 0.6;
+
+    cursor: pointer;
+}
+
+
+.lightbox-thumbs img:hover {
+    opacity: 1;
+}
 @media (max-width: 1024px) {
 
     .about-inner {
