@@ -1577,7 +1577,7 @@ section {
     width: 100%;
     display: block;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 8px;
     transition: transform 0.25s ease;
 }
 
