@@ -1681,6 +1681,8 @@ section {
     opacity: 1;
     transform: translateY(-4px);
 }
+
+
 @media (max-width: 1024px) {
 
     .about-inner {
@@ -1710,8 +1712,22 @@ section {
     .point-row{
         gap:30px;
     }
+   
    .drafts-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .drafts2 {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 24px 20px;
+    }
+
+    .drafts2-title {
+        top: -24px;
+        font-size: 14px;
+    }
+
+    .gallery-image:hover {
+        transform: none;
     }
 
 }
