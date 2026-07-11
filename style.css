@@ -1567,6 +1567,7 @@ section {
 
 .drafts2-item {
     position: relative;
+   transition: opacity 0.3s ease;
 }
 
 .drafts2-caption {
@@ -1584,6 +1585,11 @@ section {
     height: auto;
     display: block;
 }
+
+.drafts2-item.dark {
+    opacity: 0.3;
+}
+
 .lightbox {
     position: fixed;
     inset: 0;
