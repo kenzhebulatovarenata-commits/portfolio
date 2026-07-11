@@ -1557,24 +1557,28 @@ section {
 
 .drafts2 {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(10, 1fr);
     gap: 24px;
+    width: 100%;
 }
 
 .drafts2-item {
-    display: flex;
-    flex-direction: column;
+    position: relative;
 }
 
 .drafts2-caption {
-    margin: 0 0 12px;
-    min-height: 20px; /* резервирует место */
+    position: absolute;
+    top: -30px;
+    left: 0;
+
+    margin: 0;
     font-size: 16px;
     color: white;
 }
 
 .drafts2-item img {
     width: 100%;
+    height: auto;
     display: block;
 }
 @media (max-width: 1024px) {
