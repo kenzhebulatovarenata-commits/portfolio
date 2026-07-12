@@ -1573,7 +1573,7 @@ section {
     position: relative;
 }
 .page .drafts2 {
-    margin-bottom: 50px;
+    margin-bottom: 0;
 }
 
 .gallery-image {
