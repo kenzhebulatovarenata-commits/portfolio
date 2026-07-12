@@ -2009,6 +2009,27 @@ section {
 /* =========================
    LIGHTBOX
 ========================= */
+.gallery-image1 {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.25s ease;
+}
+
+.drafts2-title1 {
+    position: absolute;
+    top: -30px;
+    left: 0;
+
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+
+    white-space: nowrap;
+}
 
 .lightbox1 {
     position: fixed;
