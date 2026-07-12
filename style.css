@@ -1902,7 +1902,8 @@ section {
     gap: 16px;
     min-width: 0;
     height: 100%;
-   align-items: stretch;
+    align-items: stretch;
+   aspect-ratio: 965 / 896
 }
 
 .post-left img{
