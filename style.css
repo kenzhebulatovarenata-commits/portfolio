@@ -1902,6 +1902,7 @@ section {
     gap: 16px;
     min-width: 0;
     height: 100%;
+   align-items: stretch;
 }
 
 .post-left img{
@@ -1909,12 +1910,12 @@ section {
     display:block;
 }
 .post-right{
-    flex: 56;
+    flex: 57;
     display: flex;
     flex-direction: column;
     gap: 16px;
     min-width: 0;
-    height: 100%;
+    aspect-ratio: 558 / 896
 }
 .cards{
     display:grid;
@@ -1930,6 +1931,7 @@ section {
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:16px;
+   align-items: stretch;
 }
 
 .invites img{
