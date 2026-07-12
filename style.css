@@ -1955,7 +1955,7 @@ section {
     flex:706;
 
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns: 185fr 163fr;
     grid-template-rows:1fr 1fr;
     gap:24px;
 }
