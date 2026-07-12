@@ -1934,23 +1934,13 @@ section {
     display:block;
 }
 
-.merch-gallery{
-    display:grid;
-    grid-template-columns:repeat(11,1fr);
-    gap:12px;
-}
+
 .merch-gallery{
     display:flex;
-    gap:24px;
+    gap:20px;
+    align-items: stretch;
 }
 
-.merch-left{
-    flex:706;
-}
-
-.merch-right{
-    flex:822;
-}
 .merch-left{
     flex:706;
 
@@ -1958,6 +1948,7 @@ section {
     grid-template-columns: 185fr 163fr;
     grid-template-rows:1fr 1fr;
     gap:12px;
+    height: 100%;
 }
 
 .merch-left img{
@@ -1996,6 +1987,7 @@ section {
         173fr;
 
     gap:12px;
+    height: 100%;
 }
 
 .merch-right img{
