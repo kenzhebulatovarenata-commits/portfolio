@@ -511,186 +511,204 @@ labels.forEach(label => {
 // ГАЛЕРЕЯ
 // =========================
 
-const images = document.querySelectorAll(".gallery-image");
-
-const lightbox = document.querySelector(".lightbox");
-const mainImage = document.querySelector(".lightbox-main");
-const thumbs = document.querySelector(".lightbox-thumbs");
-const caption = document.querySelector(".lightbox-caption");
-
-const prevButton = document.querySelector(".lightbox-prev");
-const nextButton = document.querySelector(".lightbox-next");
-
-     
-const images = document.querySelectorAll(".gallery-image");
-
-const lightbox = document.querySelector(".lightbox1");
-const mainImage = document.querySelector(".lightbox1-main");
-const thumbs = document.querySelector(".lightbox1-thumbs");
-const caption = document.querySelector(".lightbox1-caption");
-
-const prevButton = document.querySelector(".lightbox1-prev");
-const nextButton = document.querySelector(".lightbox1-next");
-
-let currentIndex = 0;
-
-
 // =========================
-// ОТКРЫТИЕ КАРТИНКИ
+// СОЗДАНИЕ ЛАЙТБОКСА
 // =========================
 
-function openImage(index) {
+function createLightbox(config) {
 
-    currentIndex = index;
+    const images = document.querySelectorAll(config.images);
 
-    const img = images[index];
+    const lightbox = document.querySelector(config.lightbox);
+    const mainImage = document.querySelector(config.mainImage);
+    const thumbs = document.querySelector(config.thumbs);
+    const caption = document.querySelector(config.caption);
 
-    mainImage.src = img.src;
+    const prevButton = document.querySelector(config.prev);
+    const nextButton = document.querySelector(config.next);
 
+    let currentIndex = 0;
 
-    const title = img.parentElement.querySelector(".drafts2-title");
+    function openImage(index){
 
-    if (title) {
-        caption.textContent = title.textContent;
-    } else {
-        caption.textContent = "";
+        currentIndex = index;
+
+        const img = images[index];
+
+        mainImage.src = img.src;
+
+        const title = img.parentElement.querySelector(config.title);
+
+        if(title){
+            caption.textContent = title.textContent;
+        }else{
+            caption.textContent = "";
+        }
+
+        thumbs.querySelectorAll("img").forEach((thumb,i)=>{
+
+            thumb.classList.toggle("active", i===index);
+
+        });
+
     }
+
+
+    // Миниатюры
+
+    images.forEach((img,index)=>{
+
+        const thumb = img.cloneNode();
+
+        thumbs.appendChild(thumb);
+
+        img.addEventListener("click",()=>{
+
+            openImage(index);
+
+            lightbox.classList.add("active");
+
+        });
+
+        thumb.addEventListener("click",()=>{
+
+            openImage(index);
+
+        });
+
+    });
+
+
+    // Следующая
+
+    nextButton.addEventListener("click",()=>{
+
+        currentIndex++;
+
+        if(currentIndex>=images.length){
+            currentIndex=0;
+        }
+
+        openImage(currentIndex);
+
+    });
+
+
+    // Предыдущая
+
+    prevButton.addEventListener("click",()=>{
+
+        currentIndex--;
+
+        if(currentIndex<0){
+            currentIndex=images.length-1;
+        }
+
+        openImage(currentIndex);
+
+    });
+
+
+    // Закрытие
+
+    lightbox.addEventListener("click",(e)=>{
+
+        if(e.target===lightbox){
+
+            lightbox.classList.remove("active");
+
+        }
+
+    });
+
+
+    // Клавиатура
+
+    document.addEventListener("keydown",(e)=>{
+
+        if(!lightbox.classList.contains("active")) return;
+
+        if(e.key==="Escape"){
+
+            lightbox.classList.remove("active");
+
+        }
+
+        if(e.key==="ArrowRight"){
+
+            currentIndex++;
+
+            if(currentIndex>=images.length){
+                currentIndex=0;
+            }
+
+            openImage(currentIndex);
+
+        }
+
+        if(e.key==="ArrowLeft"){
+
+            currentIndex--;
+
+            if(currentIndex<0){
+                currentIndex=images.length-1;
+            }
+
+            openImage(currentIndex);
+
+        }
+
+    });
 
 }
 
 
-
 // =========================
-// СОЗДАНИЕ МИНИАТЮР
+// ПЕРВАЯ ГАЛЕРЕЯ
 // =========================
 
-images.forEach((img, index) => {
+createLightbox({
 
-    const thumb = img.cloneNode();
+    images: ".gallery-image",
 
-    thumbs.appendChild(thumb);
+    lightbox: ".lightbox",
 
+    mainImage: ".lightbox-main",
 
+    thumbs: ".lightbox-thumbs",
 
-    // открыть картинку
+    caption: ".lightbox-caption",
 
-    img.addEventListener("click", () => {
+    prev: ".lightbox-prev",
 
-        openImage(index);
+    next: ".lightbox-next",
 
-        lightbox.classList.add("active");
-
-    });
-
-
-
-    // переключение миниатюрами
-
-    thumb.addEventListener("click", () => {
-
-        openImage(index);
-
-    });
-
+    title: ".drafts2-title"
 
 });
 
 
-
 // =========================
-// СТРЕЛКИ
-// =========================
-
-nextButton.addEventListener("click", () => {
-
-    currentIndex++;
-
-    if (currentIndex >= images.length) {
-        currentIndex = 0;
-    }
-
-    openImage(currentIndex);
-
-});
-
-
-
-prevButton.addEventListener("click", () => {
-
-    currentIndex--;
-
-    if (currentIndex < 0) {
-        currentIndex = images.length - 1;
-    }
-
-    openImage(currentIndex);
-
-});
-
-
-
-// =========================
-// ЗАКРЫТИЕ ПО ФОНУ
+// ВТОРАЯ ГАЛЕРЕЯ
 // =========================
 
-lightbox.addEventListener("click", (e) => {
+createLightbox({
 
-    if (e.target === lightbox) {
+    images: ".gallery-image1",
 
-        lightbox.classList.remove("active");
+    lightbox: ".lightbox1",
 
-    }
+    mainImage: ".lightbox1-main",
 
-});
+    thumbs: ".lightbox1-thumbs",
 
+    caption: ".lightbox1-caption",
 
+    prev: ".lightbox1-prev",
 
-// =========================
-// ЗАКРЫТИЕ ESC
-// =========================
+    next: ".lightbox1-next",
 
-document.addEventListener("keydown", (e) => {
-
-    if (e.key === "Escape") {
-
-        lightbox.classList.remove("active");
-
-    }
-
-});
-     // =========================
-// ЛИСТАНИЕ КЛАВИШАМИ
-// =========================
-
-document.addEventListener("keydown", (e) => {
-
-    if (!lightbox.classList.contains("active")) return;
-
-
-    if (e.key === "ArrowRight") {
-
-        currentIndex++;
-
-        if (currentIndex >= images.length) {
-            currentIndex = 0;
-        }
-
-        openImage(currentIndex);
-
-    }
-
-
-    if (e.key === "ArrowLeft") {
-
-        currentIndex--;
-
-        if (currentIndex < 0) {
-            currentIndex = images.length - 1;
-        }
-
-        openImage(currentIndex);
-
-    }
+    title: ".drafts2-title"
 
 });
 
