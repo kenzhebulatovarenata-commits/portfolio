@@ -1953,6 +1953,7 @@ section {
     grid-template-rows:1fr 1fr;
     gap:16px;
     height: 100%;
+    align-items: stretch;
 
 }
 
