@@ -1932,7 +1932,7 @@ section {
     display:block;
 }
 .post-right{
-    width:22%;
+    width:37%;
     display:flex;
     flex-direction:column;
     gap:20px;
