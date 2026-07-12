@@ -1768,7 +1768,7 @@ section {
     box-sizing: border-box;
 }
 .page .final-version{
-    margin-bottom: 60px;
+    margin-bottom: 0;
 }
 
 .final-title {
@@ -1845,7 +1845,7 @@ section {
 
 }
 .page .final-gallery{
-    margin-bottom: 0;
+    margin-bottom: 60px;
 }
 
 
