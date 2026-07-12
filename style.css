@@ -1943,7 +1943,7 @@ section {
 }
 
 .merch-left{
-    flex:134;
+    flex:115;
 
     display:grid;
     grid-template-columns: 1.135fr 1fr;
@@ -1976,7 +1976,7 @@ section {
 
 .merch-right{
 
-    flex: 115;
+    flex: 134;
 
     display:grid;
     grid-template-columns:
