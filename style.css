@@ -1764,7 +1764,7 @@ section {
 
 .final-version {
     width: 100%;
-    padding: 0 var(--side-padding) 140px;
+    padding: 0 var(--side-padding) 0px;
     box-sizing: border-box;
 }
 .page .final-version{
