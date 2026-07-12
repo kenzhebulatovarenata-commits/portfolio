@@ -1761,6 +1761,9 @@ section {
     padding: 0 var(--side-padding) 140px;
     box-sizing: border-box;
 }
+.page .final-version{
+    margin-bottom: 60px;
+}
 
 .final-title {
     font-size: 64px;
@@ -1830,10 +1833,9 @@ section {
 .final-gallery{
 
     display:grid;
-
-    grid-template-columns: 1fr 1.0203fr 1.0203fr;
-
+    grid-template-columns: 1fr 1.04fr 1.04fr;
     gap:20px;
+    align-items: stretch;
 
 }
 .page .final-gallery{
@@ -1895,7 +1897,7 @@ section {
     margin-bottom: 60px;
 }
 .post-left{
-    flex: 965;
+    flex: 99;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -1907,7 +1909,7 @@ section {
     display:block;
 }
 .post-right{
-    flex: 558;
+    flex: 56;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -1942,13 +1944,14 @@ section {
 }
 
 .merch-left{
-    flex:706;
+    flex:71.5;
 
     display:grid;
-    grid-template-columns: 185fr 163fr;
+    grid-template-columns: 1.135fr 1fr;
     grid-template-rows:1fr 1fr;
     gap:12px;
     height: 100%;
+   align-items: stretch;
 }
 
 .merch-left img{
@@ -1974,17 +1977,17 @@ section {
 
 .merch-right{
 
-    flex:822;
+    flex:84.2;
 
     display:grid;
     grid-template-columns:
-        108fr
-        108fr
-        108fr
-        108fr
-        108fr
-        108fr
-        173fr;
+        1fr
+        1fr
+        1fr
+        1fr
+        1fr
+        1fr
+        1.602fr;
 
     gap:12px;
     height: 100%;
