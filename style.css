@@ -1730,6 +1730,76 @@ section {
     right: 40px;
 }
 
+
+/* =========================
+      ТЕКСТ ПО ЦЕНТРУ
+========================= */
+
+.final-text {
+    max-width: 760px;
+    margin: 180px auto 180px;
+    text-align: center;
+}
+
+.final-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 200;
+    opacity: 0.85;
+}
+
+
+/* =========================
+      ФИНАЛЬНАЯ ВЕРСИЯ
+========================= */
+
+.final-version {
+    width: 100%;
+    padding: 0 var(--side-padding) 140px;
+    box-sizing: border-box;
+}
+
+.final-title {
+    font-size: 64px;
+    font-weight: 300;
+    margin-bottom: 32px;
+    color: white;
+}
+
+.final-subtitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 28px;
+    color: white;
+}
+
+
+/* две анимации */
+
+.final-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+
+    margin-bottom: 24px;
+}
+
+.final-grid video {
+    width: 100%;
+    display: block;
+
+    border-radius: 24px;
+}
+
+
+/* широкая анимация */
+
+.final-wide video {
+    width: 100%;
+    display: block;
+
+    border-radius: 24px;
+}
 @media (max-width: 1024px) {
 
     .about-inner {
