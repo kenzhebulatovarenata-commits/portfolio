@@ -1888,7 +1888,6 @@ section {
     display:flex;
     gap:20px;
     align-items:stretch;
-    max-width: 1400px;
     margin: 0 auto;
 
     box-sizing: border-box;
