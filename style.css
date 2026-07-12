@@ -1829,7 +1829,7 @@ section {
 
     grid-template-columns: 1fr 1.065fr 1.065fr;
 
-    gap:24px;
+    gap:20px;
 
 }
 .page .final-gallery{
@@ -1937,7 +1937,7 @@ section {
 .merch-gallery{
     display:grid;
     grid-template-columns:repeat(11,1fr);
-    gap:24px;
+    gap:12px;
 }
 .merch-gallery{
     display:flex;
@@ -1957,7 +1957,7 @@ section {
     display:grid;
     grid-template-columns: 185fr 163fr;
     grid-template-rows:1fr 1fr;
-    gap:24px;
+    gap:12px;
 }
 
 .merch-left img{
@@ -1995,7 +1995,7 @@ section {
         108fr
         173fr;
 
-    gap:24px;
+    gap:12px;
 }
 
 .merch-right img{
