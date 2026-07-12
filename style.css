@@ -1787,6 +1787,10 @@ section {
     margin-bottom: 24px;
 }
 
+.page .final-grid{
+    margin-bottom: 60px;
+}
+
 .final-grid video {
     width: 100%;
     display: block;
@@ -1812,7 +1816,7 @@ section {
 .posters-gallery,
 .merch-gallery{
     width:100%;
-    margin-top:48px;
+    margin-top:0;
     align-items:start;
 }
 
@@ -1827,13 +1831,13 @@ section {
 
     display:grid;
 
-    grid-template-columns: 1fr 1.065fr 1.065fr;
+    grid-template-columns: 1fr 1.0203fr 1.0203fr;
 
     gap:20px;
 
 }
 .page .final-gallery{
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 
@@ -1888,10 +1892,10 @@ section {
     box-sizing: border-box;
 }
 .page .post-gallery{
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 }
 .post-left{
-    flex: 64;
+    flex: 965;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -1903,7 +1907,7 @@ section {
     display:block;
 }
 .post-right{
-    flex: 36;
+    flex: 558;
 
     display: flex;
 
