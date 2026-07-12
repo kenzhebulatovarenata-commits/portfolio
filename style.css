@@ -1827,7 +1827,7 @@ section {
 
     display:grid;
 
-    grid-template-columns: 1fr 1.07fr 1.07fr;
+    grid-template-columns: 1fr 1.065fr 1.065fr;
 
     gap:24px;
 
@@ -1891,7 +1891,7 @@ section {
     margin-bottom: 20px;
 }
 .post-left{
-    flex: 642;
+    flex: 64;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -1903,7 +1903,7 @@ section {
     display:block;
 }
 .post-right{
-    flex: 358;
+    flex: 36;
 
     display: flex;
 
