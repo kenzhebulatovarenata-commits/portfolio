@@ -1882,15 +1882,20 @@ section {
     display:flex;
     gap:25px;
     align-items:flex-start;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    box-sizing: border-box;
 }
 .page .post-gallery{
     margin-bottom: 20px;
 }
 .post-left{
-    flex:1;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    flex: 642;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    min-width: 0;
 }
 
 .post-left img{
@@ -1898,10 +1903,15 @@ section {
     display:block;
 }
 .post-right{
-    width:35.2%;
-    display:flex;
-    flex-direction:column;
-    gap:20px;
+    flex: 358;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    min-width: 0;
 }
 .cards{
     display:grid;
@@ -2008,6 +2018,67 @@ section {
     .gallery-image:hover {
         transform: none;
     }
+    .post-left{
+
+        grid-template-columns:repeat(3,1fr);
+
+        gap:12px;
+
+    }
+
+    /* Вторая секция */
+
+    .post-gallery{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:20px;
+
+    }
+
+    .post-right{
+
+        width:100%;
+
+        display:grid;
+
+        grid-template-columns:2fr 1fr;
+
+        gap:16px;
+
+    }
+
+    .cards{
+
+        display:grid;
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:12px;
+
+    }
+
+    .invites{
+
+        display:grid;
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:12px;
+
+    }
+
+    .cards img,
+
+    .invites img{
+
+        width:100%;
+
+        display:block;
+
+    }
 
 }
 
@@ -2047,5 +2118,30 @@ section {
         grid-template-columns: 1fr;
     }
 
+    .post-gallery{
+
+        gap:14px;
+
+    }
+
+    .post-left{
+
+        gap:8px;
+
+    }
+
+    .post-right{
+
+        gap:10px;
+
+    }
+
+    .cards,
+
+    .invites{
+
+        gap:8px;
+
+    }
 
 }
