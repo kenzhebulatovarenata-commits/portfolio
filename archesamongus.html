@@ -42,6 +42,83 @@
    </div>
 </section>
 
+<section class="arches">
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 1.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 2.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 4.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 5.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 6.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 7.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 8.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 9.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 10.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 11.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 12.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 13.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 14.mp4" muted playsinline preload="metadata"></video>
+    </div>
+    
+     <div class="arches-item">
+        <video class="arches-video" src="arches/vid 15.mp4" muted playsinline preload="metadata"></video>
+    </div>
+    
+    <div class="arches-item">
+        <video class="arches-video" src="arches/vid 16.mp4" muted playsinline preload="metadata"></video>
+    </div>
+
+</section>
+
+
+<div class="arches-lightbox">
+
+    <button class="arches-prev">&#10094;</button>
+
+    <video class="arches-main" controls playsinline></video>
+
+    <button class="arches-next">&#10095;</button>
+
+    <div class="arches-thumbs"></div>
+
+</div>
+        
          <footer class="footer">
 
     <div class="footer-inner">
@@ -74,5 +151,156 @@
     </div>
 
 </footer>
+<script>
+        const videos = document.querySelectorAll(".arches-video");
+
+const lightbox = document.querySelector(".arches-lightbox");
+const mainVideo = document.querySelector(".arches-main");
+const thumbs = document.querySelector(".arches-thumbs");
+
+const prev = document.querySelector(".arches-prev");
+const next = document.querySelector(".arches-next");
+
+let current = 0;
+
+
+
+function openVideo(index){
+
+    current = index;
+
+    mainVideo.pause();
+
+    mainVideo.src = videos[index].src;
+
+    mainVideo.load();
+
+    mainVideo.play();
+
+    thumbs.querySelectorAll("video").forEach((video,i)=>{
+
+        video.classList.toggle("active",i===index);
+
+    });
+
+}
+
+
+
+videos.forEach((video,index)=>{
+
+    video.addEventListener("mouseenter",()=>{
+
+        video.play();
+
+    });
+
+    video.addEventListener("mouseleave",()=>{
+
+        video.pause();
+        video.currentTime=0;
+
+    });
+
+    video.addEventListener("click",()=>{
+
+        openVideo(index);
+
+        lightbox.classList.add("active");
+
+    });
+
+    const thumb=document.createElement("video");
+
+    thumb.src=video.src;
+
+    thumb.muted=true;
+    thumb.playsInline=true;
+    thumb.preload="metadata";
+
+    thumbs.appendChild(thumb);
+
+    thumb.addEventListener("click",()=>{
+
+        openVideo(index);
+
+    });
+
+});
+
+
+
+next.onclick=()=>{
+
+    current++;
+
+    if(current>=videos.length){
+
+        current=0;
+
+    }
+
+    openVideo(current);
+
+};
+
+
+
+prev.onclick=()=>{
+
+    current--;
+
+    if(current<0){
+
+        current=videos.length-1;
+
+    }
+
+    openVideo(current);
+
+};
+
+
+
+lightbox.addEventListener("click",(e)=>{
+
+    if(e.target===lightbox){
+
+        mainVideo.pause();
+
+        lightbox.classList.remove("active");
+
+    }
+
+});
+
+
+
+document.addEventListener("keydown",(e)=>{
+
+    if(!lightbox.classList.contains("active")) return;
+
+    if(e.key==="Escape"){
+
+        mainVideo.pause();
+
+        lightbox.classList.remove("active");
+
+    }
+
+    if(e.key==="ArrowRight"){
+
+        next.click();
+
+    }
+
+    if(e.key==="ArrowLeft"){
+
+        prev.click();
+
+    }
+
+});
+        </script>
 </body>
 </html>
