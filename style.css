@@ -2164,6 +2164,170 @@ section {
     right: 40px;
 }
 
+/* =========================
+  АРКИ
+========================= */
+
+.arches{
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    gap:24px;
+    width:100%;
+
+}
+
+.arches-item{
+
+    aspect-ratio:9/16;
+    overflow:hidden;
+    border-radius:10px;
+
+}
+
+.arches-video{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.arches-video:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+
+/* LIGHTBOX */
+
+.arches-lightbox{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.92);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:9999;
+
+}
+
+.arches-lightbox.active{
+
+    opacity:1;
+    pointer-events:auto;
+
+}
+
+.arches-main{
+
+    max-height:82vh;
+    max-width:90vw;
+
+    border-radius:10px;
+
+}
+
+.arches-thumbs{
+
+    position:absolute;
+
+    bottom:20px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    gap:10px;
+
+    overflow-x:auto;
+    max-width:90%;
+
+}
+
+.arches-thumbs video{
+
+    width:60px;
+    height:100px;
+
+    object-fit:cover;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    opacity:.5;
+
+    transition:.2s;
+
+}
+
+.arches-thumbs video.active{
+
+    opacity:1;
+
+    outline:2px solid white;
+
+}
+
+.arches-prev,
+.arches-next{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border:none;
+    background:none;
+
+    color:white;
+
+    font-size:60px;
+
+    cursor:pointer;
+
+    opacity:.7;
+
+}
+
+.arches-prev:hover,
+.arches-next:hover{
+
+    opacity:1;
+
+}
+
+.arches-prev{
+
+    left:40px;
+
+}
+
+.arches-next{
+
+    right:40px;
+
+}
+
 @media (max-width: 1024px) {
 
     .about-inner {
