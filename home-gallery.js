@@ -7,6 +7,13 @@
     const header = document.querySelector('.header');
     const projectsTitle = document.querySelector('.proj');
     const boundary = document.querySelector('.zig-image');
+    projectsTitle.after(scene);
+    let entrance = 0;
+    let entranceTarget = 0;
+    const observer = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) { entranceTarget = 1; requestRender(); observer.disconnect(); }
+    }, { threshold: 0.15 });
+    observer.observe(projectsTitle);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const svgNS = 'http://www.w3.org/2000/svg';
     const svg = document.createElementNS(svgNS, 'svg');
@@ -57,12 +64,27 @@
         clip.append(path);
         defs.append(clip);
         inner.style.clipPath = `url(#${clip.id})`;
+        const filter = document.createElementNS(svgNS, 'filter');
+        filter.id = `home-glass-${i}`;
+        filter.setAttribute('x', '-25%'); filter.setAttribute('y', '-25%');
+        filter.setAttribute('width', '150%'); filter.setAttribute('height', '150%');
+        filter.setAttribute('color-interpolation-filters', 'sRGB');
+        const noise = document.createElementNS(svgNS, 'feTurbulence');
+        noise.setAttribute('type', 'fractalNoise'); noise.setAttribute('baseFrequency', '0.006 0.012');
+        noise.setAttribute('numOctaves', '1'); noise.setAttribute('seed', '8'); noise.setAttribute('result', 'lens');
+        const displacement = document.createElementNS(svgNS, 'feDisplacementMap');
+        displacement.setAttribute('in', 'SourceGraphic'); displacement.setAttribute('in2', 'lens');
+        displacement.setAttribute('xChannelSelector', 'R'); displacement.setAttribute('yChannelSelector', 'G');
+        displacement.setAttribute('scale', '0');
+        filter.append(noise, displacement); defs.append(filter);
+
         const image = card.querySelector('img');
         image.alt = label.textContent.replace('→', '').trim();
         image.draggable = false;
+        image.style.filter = `url(#home-glass-${i})`;
         card.setAttribute('aria-label', image.alt);
         card.draggable = false;
-        return { card, inner, image, label, separator, path };
+        return { card, inner, image, label, separator, path, displacement };
     });
 
     function requestRender() {
@@ -115,7 +137,7 @@
             activeIndex = targetIndex;
             indexVelocity = 0;
         } else {
-            const frequency = drag?.horizontal || wheelEndTimer !== null ? 12 : 8;
+            const frequency = drag?.horizontal || wheelEndTimer !== null ? 9 : 4.5;
             const count = Math.ceil(dt / 8);
             const seconds = dt / count / 1000;
             for (let n = 0; n < count; n++) {
@@ -133,29 +155,23 @@
         if (Math.abs(scroll - targetScroll) < 0.1) scroll = targetScroll;
 
         const progress = clamp(scroll / (height * 2.3));
-        const exitStart = Math.max(height * 0.15, boundaryY - height * 0.95);
-        const growthStart = Math.min(height * 0.1, exitStart * 0.15);
-        const growthEnd = Math.min(height * 0.95, exitStart * 0.85);
-        const growth = smoothstep(clamp((scroll - growthStart) / Math.max(1, growthEnd - growthStart)));
-        const exit = smoothstep(clamp((scroll - exitStart) / Math.max(1, boundaryY - exitStart)));
-        const expandedWidth = Math.min(width * 0.56, height * 1.12, 1000);
-        const expandedHeight = expandedWidth * 0.5625;
-        const compactScale = Math.min(1, width / 800);
-        const cardWidth = lerp(171 * compactScale, expandedWidth, growth);
+        entrance = reducedMotion.matches ? entranceTarget : lerp(entrance, entranceTarget, 1 - Math.exp(-dt / 300));
+        if (Math.abs(entrance - entranceTarget) < 0.0001) entrance = entranceTarget;
+        const growth = 1;
+        const exit = 0;
+        const cardWidth = Math.min(width * 0.56, height * 1.12, 1000);
         const cardHeight = cardWidth * 0.5625;
-        const gap = expandedWidth * 0.13;
-        step = lerp(240 * compactScale, expandedWidth + gap, growth);
-        const centreY = lerp(-100, 0, growth) - exit * height * 1.2;
+        step = cardWidth * 1.13;
+        const centreY = 0;
+        gallery.style.transform = `translateX(${-(1 - entrance) * width * 1.6}px)`;
+        gallery.style.opacity = String(entrance);
         const velocity = (activeIndex - oldIndex) * 16.67 / dt;
 
         // Retain the existing header and project-heading scroll choreography.
         header.style.transform = `translateY(${-120 * progress}px)`;
-        const titleExit = clamp((progress - 0.75) / 0.25);
-        projectsTitle.style.transform = `translateY(${-150 * titleExit}px)`;
-        scene.style.visibility = exit === 1 ? 'hidden' : 'visible';
-        scene.inert = exit === 1;
+        scene.inert = entrance < 0.01;
 
-        items.forEach(({ card, image, label, separator, path }, i) => {
+        items.forEach(({ card, image, label, separator, path, displacement }, i) => {
             const offset = relativeOffset(i, activeIndex);
             card.style.width = `${cardWidth}px`;
             card.style.height = `${cardHeight}px`;
@@ -163,7 +179,8 @@
             card.style.zIndex = String(cards.length - Math.round(Math.abs(offset)));
             card.style.setProperty('--separator-gap', `${Math.max(0, step - cardWidth) / 2}px`);
             path.setAttribute('d', contour(cardWidth, cardHeight, growth, offset, velocity));
-            const refraction = reducedMotion.matches ? 0 : clamp(indexVelocity * 0.018, -0.09, 0.09);
+            const refraction = reducedMotion.matches ? 0 : clamp(indexVelocity * 0.08, -0.3, 0.3);
+            displacement.setAttribute('scale', String(Math.abs(refraction) * cardWidth * 0.65));
             image.style.transform = `translateX(${-refraction * 25}%) scale(${1.04 + Math.abs(refraction) * 0.6}) skewX(${refraction * -12}deg)`;
             const selected = i === wrapIndex(Math.round(targetIndex));
             if (selected) card.setAttribute('aria-current', 'true');
@@ -173,7 +190,7 @@
             separator.style.opacity = String(growth * (1 - exit));
         });
 
-        if (activeIndex !== targetIndex || scroll !== targetScroll) requestRender();
+        if (activeIndex !== targetIndex || scroll !== targetScroll || entrance !== entranceTarget) requestRender();
         else previousTime = 0;
     }
 
@@ -193,7 +210,8 @@
 
     window.addEventListener('wheel', event => {
         const horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);
-        if ((!horizontal && !event.shiftKey) || scene.inert) return;
+        const bounds = scene.getBoundingClientRect();
+        if ((!horizontal && !event.shiftKey) || scene.inert || bounds.bottom < 0 || bounds.top > height) return;
         const delta = horizontal ? event.deltaX : event.deltaY;
         if (!delta) return;
         // Leave normal vertical scrolling entirely under the browser's control.
@@ -204,7 +222,7 @@
         wheelEndTimer = setTimeout(() => {
             wheelEndTimer = null;
             select(Math.round(targetIndex));
-        }, 150);
+        }, 260);
         requestRender();
     }, { passive: false });
 

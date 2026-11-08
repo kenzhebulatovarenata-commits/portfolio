@@ -103,3 +103,17 @@
         font-size: 14px;
     }
 }
+
+/* The projects now occupy a normal section below the unchanged introduction. */
+.home-projects .scroll-spacer { height: 100px; }
+.home-projects .all-works { margin-top: 0; padding-top: 24px; }
+.home-projects .proj { margin-top: 0; padding-top: 32px; padding-bottom: 40px; }
+.home-projects .scene {
+    position: relative;
+    inset: auto;
+    height: clamp(360px, 46vw, 780px);
+    visibility: visible;
+}
+.home-projects .gallery { height: 100%; opacity: 0; }
+.home-projects .gallery-clips { overflow: visible; }
+.home-projects .card img { will-change: transform, filter; }
