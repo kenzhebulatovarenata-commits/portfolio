@@ -1,0 +1,105 @@
+/* The home gallery is isolated from the project and catalogue galleries. */
+.home-projects .scene {
+    z-index: 0;
+    perspective: none;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.home-projects .gallery {
+    width: 100%;
+    transform-style: flat;
+    touch-action: pan-y;
+}
+
+.home-projects .card {
+    top: 50%;
+    left: 50%;
+    width: 171px;
+    height: 216px;
+    border-radius: 0;
+    transition: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: pan-y;
+    user-select: none;
+}
+
+.home-projects .card-inner {
+    border-radius: 0;
+    transition: none;
+    transform: none;
+    box-shadow: none;
+    background: #000;
+    /* The SVG contour is updated along with the horizontal movement. */
+}
+
+.home-projects .card:hover .card-inner {
+    transform: none;
+    box-shadow: none;
+}
+
+.home-projects .card img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+.home-projects .card-label {
+    top: calc(100% + 26px);
+    bottom: auto;
+    padding: 0 12px;
+    background: transparent;
+    color: #fff;
+    font-size: clamp(14px, 1.55vw, 24px);
+    font-weight: 500;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    transform: none;
+    transition: none;
+    pointer-events: none;
+}
+
+.home-projects .card-arrow {
+    font-size: 0.9em;
+}
+
+.home-projects .card-separator {
+    position: absolute;
+    top: -6%;
+    left: calc(100% + var(--separator-gap, 24px));
+    height: 112%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.32);
+    pointer-events: none;
+}
+
+.home-projects .card:focus-visible {
+    outline: 1px solid #fff;
+    outline-offset: 8px;
+    border-radius: 999px;
+}
+
+.home-projects .all-works,
+.home-projects .zig-image,
+.home-projects .about,
+.home-projects .tools,
+.home-projects .experience,
+.home-projects .footer {
+    position: relative;
+    z-index: 2;
+}
+
+.home-projects .gallery-clips {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .home-projects .card-label {
+        top: calc(100% + 18px);
+        font-size: 14px;
+    }
+}
