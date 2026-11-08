@@ -31,9 +31,8 @@
     let step = 240;
     let drag = null;
     let suppressClickUntil = 0;
-    let wheelDistance = 0;
-    let wheelUsed = false;
-    let lastWheelTime = -Infinity;
+    let wheelEndTimer = null;
+    let indexVelocity = 0;
 
     const clamp = (value, min = 0, max = 1) => Math.max(min, Math.min(max, value));
     const lerp = (a, b, t) => a + (b - a) * t;
@@ -63,7 +62,7 @@
         image.draggable = false;
         card.setAttribute('aria-label', image.alt);
         card.draggable = false;
-        return { card, inner, label, separator, path };
+        return { card, inner, image, label, separator, path };
     });
 
     function requestRender() {
@@ -85,11 +84,11 @@
     // A rounded rectangle becomes a horizontal capsule. The far edge bends
     // gently as it travels off centre, like the moving ovals in the reference.
     function contour(w, h, growth, offset, velocity) {
-        const radius = lerp(28.8 * Math.min(1, width / 800), h / 2, growth);
+        const radius = h / 2;
         const rx = Math.min(0.5, radius / w);
         const ry = Math.min(0.5, radius / h);
         const k = 0.55228475;
-        const bend = growth * clamp(Math.abs(offset) * 0.065 + Math.abs(velocity) * 0.25, 0, 0.17);
+        const bend = reducedMotion.matches ? 0 : clamp(Math.abs(offset) * 0.12 + Math.abs(velocity) * 2.2, 0, 0.3);
         const left = offset < 0 ? bend : 0;
         const right = offset > 0 ? bend : 0;
         return [
@@ -110,11 +109,27 @@
         const dt = previousTime ? Math.min(48, time - previousTime) : 16.67;
         previousTime = time;
         const oldIndex = activeIndex;
-        const indexEase = reducedMotion.matches ? 1 : 1 - Math.exp(-dt / 115);
-        const scrollEase = reducedMotion.matches ? 1 : 1 - Math.exp(-dt / 95);
-        activeIndex = lerp(activeIndex, targetIndex, indexEase);
+        // Integrate a critically damped spring in small time steps. Unlike a
+        // per-event jump this preserves momentum when a gesture changes direction.
+        if (reducedMotion.matches) {
+            activeIndex = targetIndex;
+            indexVelocity = 0;
+        } else {
+            const frequency = drag?.horizontal || wheelEndTimer !== null ? 12 : 8;
+            const count = Math.ceil(dt / 8);
+            const seconds = dt / count / 1000;
+            for (let n = 0; n < count; n++) {
+                indexVelocity += ((targetIndex - activeIndex) * frequency * frequency
+                    - 2 * frequency * indexVelocity) * seconds;
+                activeIndex += indexVelocity * seconds;
+            }
+        }
+        const scrollEase = reducedMotion.matches ? 1 : 1 - Math.exp(-dt / 160);
         scroll = lerp(scroll, targetScroll, scrollEase);
-        if (Math.abs(activeIndex - targetIndex) < 0.0005) activeIndex = targetIndex;
+        if (Math.abs(activeIndex - targetIndex) < 0.0001 && Math.abs(indexVelocity) < 0.001) {
+            activeIndex = targetIndex;
+            indexVelocity = 0;
+        }
         if (Math.abs(scroll - targetScroll) < 0.1) scroll = targetScroll;
 
         const progress = clamp(scroll / (height * 2.3));
@@ -127,7 +142,7 @@
         const expandedHeight = expandedWidth * 0.5625;
         const compactScale = Math.min(1, width / 800);
         const cardWidth = lerp(171 * compactScale, expandedWidth, growth);
-        const cardHeight = lerp(216 * compactScale, expandedHeight, growth);
+        const cardHeight = cardWidth * 0.5625;
         const gap = expandedWidth * 0.13;
         step = lerp(240 * compactScale, expandedWidth + gap, growth);
         const centreY = lerp(-100, 0, growth) - exit * height * 1.2;
@@ -140,7 +155,7 @@
         scene.style.visibility = exit === 1 ? 'hidden' : 'visible';
         scene.inert = exit === 1;
 
-        items.forEach(({ card, label, separator, path }, i) => {
+        items.forEach(({ card, image, label, separator, path }, i) => {
             const offset = relativeOffset(i, activeIndex);
             card.style.width = `${cardWidth}px`;
             card.style.height = `${cardHeight}px`;
@@ -148,6 +163,8 @@
             card.style.zIndex = String(cards.length - Math.round(Math.abs(offset)));
             card.style.setProperty('--separator-gap', `${Math.max(0, step - cardWidth) / 2}px`);
             path.setAttribute('d', contour(cardWidth, cardHeight, growth, offset, velocity));
+            const refraction = reducedMotion.matches ? 0 : clamp(indexVelocity * 0.018, -0.09, 0.09);
+            image.style.transform = `translateX(${-refraction * 25}%) scale(${1.04 + Math.abs(refraction) * 0.6}) skewX(${refraction * -12}deg)`;
             const selected = i === wrapIndex(Math.round(targetIndex));
             if (selected) card.setAttribute('aria-current', 'true');
             else card.removeAttribute('aria-current');
@@ -181,33 +198,32 @@
         if (!delta) return;
         // Leave normal vertical scrolling entirely under the browser's control.
         event.preventDefault();
-        const now = performance.now();
-        if (now - lastWheelTime > 170) {
-            wheelDistance = 0;
-            wheelUsed = false;
-        }
-        lastWheelTime = now;
-        if (wheelUsed) return;
         const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? width : 1;
-        wheelDistance += delta * unit;
-        if (Math.abs(wheelDistance) >= 36) {
-            select(targetIndex + Math.sign(wheelDistance));
-            wheelUsed = true;
-        }
+        targetIndex += clamp(delta * unit / Math.max(180, step * 0.65), -0.65, 0.65);
+        clearTimeout(wheelEndTimer);
+        wheelEndTimer = setTimeout(() => {
+            wheelEndTimer = null;
+            select(Math.round(targetIndex));
+        }, 150);
+        requestRender();
     }, { passive: false });
 
     gallery.addEventListener('keydown', event => {
         if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
         event.preventDefault();
-        select(targetIndex + (event.key === 'ArrowRight' ? 1 : -1));
+        clearTimeout(wheelEndTimer);
+        wheelEndTimer = null;
+        select(Math.round(targetIndex) + (event.key === 'ArrowRight' ? 1 : -1));
         cards[wrapIndex(targetIndex)].focus({ preventScroll: true });
     });
 
     gallery.addEventListener('pointerdown', event => {
         if (event.button !== 0 || !event.target.closest('.card')) return;
+        clearTimeout(wheelEndTimer);
+        wheelEndTimer = null;
         event.target.closest('.card').setPointerCapture(event.pointerId);
         drag = { id: event.pointerId, x: event.clientX, y: event.clientY,
-            index: Math.round(targetIndex), horizontal: false };
+            index: activeIndex, horizontal: false };
     });
 
     gallery.addEventListener('pointermove', event => {
@@ -229,8 +245,8 @@
         if (drag.horizontal) {
             const dx = event.clientX - drag.x;
             const moved = Math.abs(dx) > Math.min(48, step * 0.15);
-            select(event.type === 'pointercancel' ? drag.index :
-                moved ? drag.index - Math.sign(dx) * Math.max(1, Math.round(Math.abs(dx) / step)) : drag.index);
+            select(event.type === 'pointercancel' ? Math.round(drag.index) :
+                moved ? Math.round(drag.index) - Math.sign(dx) * Math.max(1, Math.round(Math.abs(dx) / step)) : Math.round(drag.index));
             suppressClickUntil = performance.now() + 300;
         }
         drag = null;
