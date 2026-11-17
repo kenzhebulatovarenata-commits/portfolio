@@ -1,119 +1,614 @@
-/* The home gallery is isolated from the project and catalogue galleries. */
-.home-projects .scene {
-    z-index: 0;
-    perspective: none;
-    overflow: hidden;
-    isolation: isolate;
+/* Home navigation follows the artboard's three-column alignment. */
+.home-projects .header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    padding-inline: 4.8vw;
 }
 
-.home-projects .gallery {
-    width: 100%;
-    transform-style: flat;
-    touch-action: pan-y;
+.home-projects .header :is(.nav-left, .nav-right) {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2.35vw, 36px);
 }
 
-.home-projects .card {
-    top: 50%;
-    left: 50%;
-    width: 171px;
-    height: 96.1875px;
-    border-radius: 0;
-    transition: none;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: pan-y;
-    user-select: none;
+.home-projects .header .nav-right {
+    justify-self: end;
+    grid-column: -2 / -1;
+    gap: clamp(16px, 3.6vw, 55px);
 }
 
-.home-projects .card-inner {
-    border-radius: 0;
-    transition: none;
-    transform: none;
-    box-shadow: none;
-    background: #000;
-    /* The SVG contour is updated along with the horizontal movement. */
+.home-projects .header a {
+    --button-inline-padding: 0px;
+    margin-right: 0;
+    white-space: nowrap;
 }
 
-.home-projects .card:hover .card-inner {
-    transform: none;
-    box-shadow: none;
-}
-
-.home-projects .card img {
-    pointer-events: none;
-    -webkit-user-drag: none;
-}
-
-.home-projects .card-label {
-    top: calc(100% + 26px);
-    bottom: auto;
-    padding: 0 12px;
-    background: transparent;
+.home-projects .header-name,
+.home-projects .header-language {
     color: #fff;
-    font-size: clamp(14px, 1.55vw, 24px);
+    font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    justify-content: center;
-    gap: 12px;
+    white-space: nowrap;
+}
+
+.home-projects .header-name {
+    font-size: 14px;
     text-align: center;
-    transform: none;
-    transition: none;
-    pointer-events: none;
+    text-transform: uppercase;
 }
 
-.home-projects .card-arrow {
-    font-size: 0.9em;
+.home-projects .header-language {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: 14px;
+    opacity: 1;
 }
 
-.home-projects .card-separator {
-    position: absolute;
-    top: -6%;
-    left: calc(100% + var(--separator-gap, 24px));
-    height: 112%;
-    width: 1px;
-    background: rgba(255, 255, 255, 0.32);
-    pointer-events: none;
+@media (max-width: 880px) {
+    .home-projects .header {
+        grid-template-columns: minmax(0, 1fr) auto;
+        row-gap: 2px;
+        padding: 8px 16px;
+    }
+
+    .home-projects .header-name {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    .home-projects .header :is(.nav-left, .nav-right) {
+        gap: clamp(7px, 2vw, 16px);
+    }
+
 }
 
-.home-projects .card:focus-visible {
-    outline: 1px solid #fff;
-    outline-offset: 8px;
-    border-radius: 999px;
-}
-
-.home-projects .all-works,
-.home-projects .zig-image,
-.home-projects .about,
-.home-projects .tools,
-.home-projects .experience,
-.home-projects .footer {
-    position: relative;
-    z-index: 2;
-}
-
-.home-projects .gallery-clips {
-    position: absolute;
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-@media (max-width: 768px) {
-    .home-projects .card-label {
-        top: calc(100% + 18px);
-        font-size: 14px;
+@media (max-width: 600px) {
+    .home-projects .header-name,
+    .home-projects .header-language {
+        font-size: clamp(10px, 2.6vw, 14px);
     }
 }
 
-/* The projects now occupy a normal section below the unchanged introduction. */
-.home-projects .scroll-spacer { height: 100px; }
-.home-projects .all-works { margin-top: 0; padding-top: 24px; }
-.home-projects .proj { margin-top: 0; padding-top: 32px; padding-bottom: 40px; }
+/* First-screen greeting: keep the reference's two lines and second-line indent. */
+.home-projects .hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 130px 4.5vw 3.6vw;
+    display: flex;
+    align-items: flex-end;
+}
+
+.home-projects .hero h1 {
+    font-size: clamp(24px, 8.05vw, 160px);
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+
+.home-projects .hero-line {
+    display: block;
+    white-space: nowrap;
+}
+
+.home-projects .hero-line.indent {
+    margin-left: 16.3vw;
+}
+
+.home-projects .hero-word {
+    display: inline-block;
+}
+
+.has-home-intro .home-projects .hero-word {
+    opacity: 0;
+    transform: translateY(0.4em);
+}
+
+.has-home-reveals .hero-word {
+    opacity: 0;
+    translate: 0 0.4em;
+    transition: opacity 600ms ease, translate 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.has-home-reveals .reveal-greeting.is-in-view .hero-word {
+    opacity: 1;
+    translate: 0 0;
+    transition-duration: 1800ms;
+}
+
+.has-home-reveals .reveal-greeting.is-in-view .hero-line:first-child .hero-word:nth-child(2) { transition-delay: 600ms; }
+.has-home-reveals .reveal-greeting.is-in-view .hero-line:last-child .hero-word:first-child { transition-delay: 900ms; }
+.has-home-reveals .reveal-greeting.is-in-view .hero-line:last-child .hero-word:last-child { transition-delay: 1500ms; }
+
+.has-home-reveals .scroll-reveal {
+    opacity: 0;
+    translate: 0 32px;
+    transition: opacity var(--reveal-duration, 1800ms) ease,
+                translate var(--reveal-duration, 1800ms) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.has-home-reveals [data-reveal-direction="left"] { translate: -40px 0; }
+.has-home-reveals [data-reveal-direction="right"] { translate: 40px 0; }
+
+.has-home-reveals .scroll-reveal.is-in-view {
+    opacity: var(--reveal-opacity, 1);
+    translate: 0 0;
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.has-home-reveals :is(.tools-grid > .scroll-reveal, .exp-grid > .scroll-reveal) {
+    --reveal-duration: 850ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .has-home-reveals .hero-word {
+        translate: none;
+        transition-duration: 200ms;
+    }
+}
+
+/* One heading size across the home page; the greeting keeps its own type. */
+.home-projects {
+    --media-radius: 16px;
+}
+
+.home-projects h2,
+.home-projects h3,
+.home-projects h4,
+.home-projects h5,
+.home-projects h6 {
+    font-size: var(--section-heading-size);
+    text-align: center;
+    overflow-wrap: anywhere;
+    hyphens: none;
+}
+
+/* Home copy and the smaller heading roles retain their existing layout. */
+.home-projects .about .text-body,
+.home-projects .tools .text-body,
+.home-projects .experience .text-body {
+    font-size: 18px;
+}
+
+/* Let the copy set the height of both columns. */
+.home-projects .about-inner {
+    width: calc(85.25% - 0.46px);
+    max-width: 974.8px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px;
+}
+
+.home-projects .about-photo img {
+    width: 100%;
+    max-width: 477.4px;
+    border-radius: var(--media-radius);
+}
+
+@media (min-width: 1025px) {
+    .home-projects .about-photo {
+        position: relative;
+        align-self: stretch;
+    }
+
+    .home-projects .about-photo img {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.home-projects .about .about-btn { font-size: 20px; }
+
+@media (max-width: 1024px) {
+    .home-projects .about-inner {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .home-projects .about-photo img { width: 77%; }
+}
+.home-projects .exp-item h3 { font-size: 20px; }
+
+.home-projects img { border-radius: var(--media-radius); }
+.home-projects .exp-item {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    border-radius: var(--media-radius);
+    padding-block: 26px 34px;
+}
+
+/* Fixed-size horizontal project strip, matching the supplied reference. */
+.home-projects .proj {
+    margin: 0;
+    padding: clamp(72px, 9vw, 145px) 24px 0;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+.home-projects .proj h2 {
+    margin: 0;
+    font-size: var(--section-heading-size) !important;
+    line-height: 1;
+    letter-spacing: -0.035em;
+}
+.home-projects .scroll-spacer { height: 0; }
 .home-projects .scene {
+    --strip-card-width: 23.5vw;
+    --strip-caption-height: clamp(108px, 7vw, 144px);
     position: relative;
     inset: auto;
-    height: clamp(360px, 46vw, 780px);
-    visibility: visible;
+    display: block;
+    height: auto;
+    min-height: 0;
+    padding-top: 8.5vw;
+    perspective: none;
+    overflow: clip;
+    pointer-events: auto;
+    color: #fff;
 }
-.home-projects .gallery { height: 100%; opacity: 0; }
-.home-projects .gallery-clips { overflow: visible; }
-.home-projects .card img { will-change: transform, filter; }
+.home-projects .gallery {
+    position: relative;
+    top: auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.2vw;
+    padding-inline: .7vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    transform-style: flat;
+    pointer-events: auto;
+    touch-action: pan-x pan-y;
+    overscroll-behavior-x: contain;
+    cursor: grab;
+}
+.home-projects .gallery::-webkit-scrollbar { display: none; }
+.home-projects .gallery.is-dragging,
+.home-projects .gallery.is-dragging .card { cursor: grabbing; }
+.home-projects .card {
+    position: relative;
+    inset: auto;
+    flex: 0 0 var(--strip-card-width);
+    width: var(--strip-card-width);
+    height: auto;
+    margin: 0;
+    border-radius: 0;
+    overflow: hidden;
+    transform: none;
+    transition: none;
+    will-change: auto;
+    color: var(--project-ink);
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.home-projects article.card { cursor: grab; }
+.home-projects .card-inner,
+.home-projects .card:hover .card-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 428 / 576;
+    border-radius: 0;
+    transform: none;
+    background: #000;
+    box-shadow: none;
+    mask-image: none;
+    -webkit-mask-image: none;
+    pointer-events: none;
+}
+.home-projects .card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+.home-projects .project-caption {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: var(--strip-caption-height);
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    background: var(--project-color);
+    color: var(--project-ink);
+    font: 400 clamp(12px, .85vw, 16px)/1.35 'Inter Tight', sans-serif;
+    transform: translateY(-100%);
+    visibility: hidden;
+    transition: transform 440ms cubic-bezier(.22,.61,.36,1), visibility 0s 440ms;
+    pointer-events: none;
+}
+.home-projects .project-caption-title {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+}
+.home-projects .card:hover .project-caption,
+.home-projects .card:focus-visible .project-caption {
+    transform: translateY(0);
+    visibility: visible;
+    transition-delay: 0s;
+}
+.home-projects .gallery.is-dragging .project-caption {
+    transform: translateY(-100%);
+    visibility: hidden;
+}
+.home-projects .card:focus-visible { outline: 1px solid #fff; outline-offset: -2px; }
+.home-projects .project-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 18px 3.2vw 0;
+}
+.home-projects .project-controls button {
+    padding: 4px 8px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+.home-projects .project-controls button:disabled { opacity: .25; cursor: default; }
+@media (max-width: 600px) {
+    .home-projects .scene { --strip-card-width: 64vw; padding-top: 60px; }
+    .home-projects .gallery { gap: 3vw; padding-inline: 3.2vw; }
+    .home-projects .proj { padding-top: 72px; }
+    .home-projects .proj h2 { font-size: var(--section-heading-size) !important; }
+    .home-projects { --side-padding: 24px; }
+}
+
+/* The black project panel slides over the full-height light greeting. */
+.home-projects {
+    background: #f1f1ef;
+}
+
+.home-projects .header {
+    background: transparent;
+    mix-blend-mode: difference;
+}
+
+.home-light {
+    position: sticky;
+    top: var(--home-light-top, 0px);
+    padding-bottom: 0;
+    z-index: 0;
+    background: #f1f1ef;
+}
+
+.home-projects .hero {
+    position: relative;
+    top: 0;
+    z-index: 0;
+    height: 100svh;
+    min-height: 0;
+    padding: 0 3.2vw;
+    align-items: center;
+    justify-content: center;
+    background: #f1f1ef;
+    color: #080808;
+}
+
+.home-projects .hero h1 {
+    width: max-content;
+    max-width: 100%;
+    font-size: var(--greeting-size, 9.4vw);
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+    color: #080808;
+}
+
+.home-projects .hero-line {
+    display: block;
+}
+
+.home-projects .hero-line.indent {
+    margin-left: 16.3vw;
+}
+
+.home-content {
+    position: relative;
+    z-index: 1;
+    background: #000;
+    border-radius: 32px 32px 0 0;
+    overflow: clip;
+}
+
+@media (max-width: 600px) {
+    .home-content { border-radius: 24px 24px 0 0; }
+}
+
+/* Hide the gallery until its scroll reveals have been initialized. */
+.has-home-intro .home-projects .gallery { opacity: 0; }
+
+
+/* Card images have their own reveal transition, separate from hover sizing. */
+.has-home-reveals .home-projects .card .card-inner.scroll-reveal {
+    opacity: 0;
+    translate: 0 56px;
+    transition: opacity 420ms ease, translate 420ms cubic-bezier(.22,.61,.36,1);
+    transition-delay: 0ms;
+}
+
+.has-home-reveals .home-projects .card .card-inner.scroll-reveal.is-in-view {
+    opacity: 1;
+    translate: 0 0;
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+
+/* The portrait and contact link stay pinned while three paragraphs scroll. */
+.home-projects .about.has-about-scroll {
+    position: relative;
+    height: 340svh;
+    padding-block: 0;
+}
+.home-projects .has-about-scroll .about-stage {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    max-width: none;
+    translate: 0 var(--about-settle-y, 0px);
+    will-change: translate;
+}
+.home-projects .has-about-scroll h2 {
+    position: absolute;
+    top: 12.5svh;
+    left: 0;
+    width: 100%;
+    margin: 0;
+}
+.home-projects .has-about-scroll .about-inner {
+    position: absolute;
+    left: 1.43vw;
+    top: 32.75svh;
+    transform: none;
+    width: 95.7vw;
+    max-width: none;
+    height: 55svh;
+    margin: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1.006fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    gap: 3.38vw;
+    align-items: stretch;
+}
+.home-projects .has-about-scroll .about-photo {
+    position: relative;
+    grid-column: 1;
+    grid-row: 1;
+}
+.home-projects .has-about-scroll .about-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+}
+.home-projects .has-about-scroll .about-text {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 28px;
+    min-height: 0;
+}
+.home-projects .has-about-scroll .about-copy-window {
+    overflow: hidden;
+    min-height: 0;
+}
+.home-projects .has-about-scroll .about-copy-track {
+    height: 100%;
+    will-change: transform;
+}
+.home-projects .has-about-scroll .about-copy-track > p {
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    max-width: min(100%, 480px);
+    display: flex;
+    align-items: center;
+    opacity: 0.85;
+}
+.home-projects .has-about-scroll .about-button {
+    grid-row: 2;
+    margin: 0;
+    justify-content: flex-end;
+    align-self: end;
+}
+.home-projects .has-about-scroll .about-btn { font-size: 20px; }
+
+@media (max-width: 600px) {
+    .home-projects .has-about-scroll h2 { top: 76px; }
+    .home-projects .has-about-scroll .about-inner {
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%, -50%);
+        width: 85.25%;
+        height: 72svh;
+        grid-template-columns: 1fr;
+        grid-template-rows: 32svh minmax(0, 1fr);
+        gap: 20px;
+    }
+    .home-projects .has-about-scroll .about-photo {
+        grid-column: 1;
+        grid-row: 1;
+        width: 72%;
+        justify-self: center;
+    }
+    .home-projects .has-about-scroll .about-text {
+        grid-column: 1;
+        grid-row: 2;
+        gap: 12px;
+    }
+    .home-projects .has-about-scroll .text-body {
+        font-size: clamp(13px, 3.3vw, 17px);
+        line-height: 1.45;
+    }
+    .home-projects .has-about-scroll .about-button { justify-content: flex-start; }
+    .home-projects .has-about-scroll .about-btn { font-size: 16px; }
+}
+
+/* The greeting is slightly larger than the shared section titles. */
+.home-projects .hero h1 {
+    font-size: calc(var(--section-heading-size) * 1.2) !important;
+}
+.home-projects .proj {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.home-projects .projects-more {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font: 500 clamp(10px, .9vw, 14px)/1.3 'Manrope', sans-serif;
+    padding-block: 2px;
+}
+.home-projects .projects-more::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 -4px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 300ms cubic-bezier(.22,.61,.36,1);
+}
+.home-projects .projects-more:hover::after,
+.home-projects .projects-more:focus-visible::after { transform: scaleX(1); }
+.home-projects .projects-more span { font-size: 1.4em; line-height: 1; }
+
+/* Reveal the complete strip from the left as its stationary section enters view. */
+.has-home-reveals .home-projects .gallery.projects-enter {
+    opacity: 0;
+    translate: -110vw 0;
+    transition: translate 1800ms cubic-bezier(.16, 1, .3, 1), opacity 850ms ease;
+    will-change: translate, opacity;
+}
+.has-home-reveals .home-projects .gallery.projects-enter.projects-entered {
+    opacity: 1;
+    translate: 0 0;
+}
+@media (prefers-reduced-motion: reduce) {
+    .has-home-reveals .home-projects .gallery.projects-enter {
+        translate: none;
+        transition: opacity 200ms ease;
+    }
+}

@@ -1,0 +1,72 @@
+/* Projects catalogue: pinned group index and horizontal project rows. */
+.works-page { background: #f1f1ef; }
+.works-page .header { display: flex; padding-inline: 4.8vw; }
+.works-page .header :is(.nav-left, .nav-right) { display: flex; align-items: center; gap: 2.35vw; }
+.works-page .header .nav-right { gap: 3.6vw; }
+.works-page .header a { padding-inline: 0; margin: 0; --button-inline-padding: 0px; }
+.catalogue-language { color: #fff; background: none; border: 0; font: 500 14px 'Manrope', sans-serif; }
+.works-page .works-content { border-radius: 0; }
+.catalogue-layout { display: grid; grid-template-columns: 10.2vw minmax(0, 1fr); align-items: start; }
+.catalogue-nav {
+    position: sticky;
+    top: calc(50svh - 88px);
+    margin-top: calc(50svh - 88px);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-inline: 1.6vw 8px;
+    z-index: 3;
+}
+.catalogue-nav a { color: #777; font: 400 14px/1.5 'Inter Tight', sans-serif; text-decoration: none; transition: color 180ms ease; }
+.catalogue-nav a[aria-current="true"], .catalogue-nav a:hover, .catalogue-nav a:focus-visible { color: #fff; }
+.catalogue-groups { min-width: 0; }
+.catalogue-group { min-height: 100svh; padding-block: clamp(120px, 12.4vw, 190px) 4vw; scroll-margin-top: 0; }
+.catalogue-track { display: flex; gap: .8vw; align-items: flex-start; width: 100%; overflow-x: auto; overflow-y: hidden; padding-right: 1vw; scrollbar-width: none; touch-action: pan-x pan-y; overscroll-behavior-x: contain; cursor: grab; }
+.catalogue-track::-webkit-scrollbar { display: none; }
+.catalogue-track.is-dragging, .catalogue-track.is-dragging .catalogue-card { cursor: grabbing; }
+.catalogue-entry { flex: 0 0 22vw; width: 22vw; min-width: 0; }
+.catalogue-card { position: relative; display: block; width: 100%; padding: 0; border: 0; background: transparent; color: #fff; text-align: left; text-decoration: none; cursor: pointer; font: inherit; user-select: none; }
+.catalogue-dot { position: absolute; top: 0; right: 8px; width: 7px; height: 7px; border-radius: 50%; background: #fff; }
+.catalogue-cover { display: block; width: 100%; aspect-ratio: 338 / 454; padding: 0; margin-top: 46px; overflow: hidden; }
+.catalogue-cover img { width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 0; pointer-events: none; -webkit-user-drag: none; }
+/* The dot sits above the cover; padding creates room without collapsing margins. */
+.catalogue-card { padding-top: 46px; }
+.catalogue-card .catalogue-cover { margin-top: 0; }
+.catalogue-caption { display: flex; flex-direction: column; gap: 12px; min-height: 116px; padding-block: 28px 16px; opacity: 0; translate: 0 12px; transition: opacity 250ms ease, translate 320ms cubic-bezier(.22,.61,.36,1); pointer-events: none; }
+.catalogue-title { font: 500 13px/1.4 'Manrope', sans-serif; }
+.catalogue-description { font: 400 13px/1.4 'Inter Tight', sans-serif; }
+.catalogue-card:hover .catalogue-caption, .catalogue-card:focus-visible .catalogue-caption { opacity: 1; translate: 0 0; }
+.catalogue-track.is-dragging .catalogue-caption { opacity: 0; }
+.catalogue-card:focus-visible { outline: 1px solid #fff; outline-offset: -1px; }
+.catalogue-controls { display: flex; justify-content: flex-end; gap: 18px; padding: 4px 2vw 0; }
+.catalogue-controls button { border: 0; background: transparent; color: #fff; font-size: 24px; padding: 4px 8px; cursor: pointer; }
+.catalogue-controls button:disabled { opacity: .2; cursor: default; }
+.catalogue-sr-only { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.catalogue-viewer { position: fixed; inset: 0; width: 100vw; height: 100svh; max-width: none; max-height: none; margin: 0; padding: 64px 24px 24px; border: 0; background: #000; color: #fff; }
+.catalogue-viewer::backdrop { background: rgba(0,0,0,.95); }
+.viewer-close { position: absolute; right: 24px; top: 12px; color: #fff; border: 0; background: transparent; font-size: 36px; cursor: pointer; }
+.viewer-body { height: calc(100% - 60px); display: flex; align-items: center; justify-content: center; gap: 24px; }
+.viewer-image { max-width: 82vw; max-height: 100%; object-fit: contain; }
+.viewer-video { max-width: 82vw; max-height: 100%; min-width: 0; object-fit: contain; }
+.viewer-image[hidden], .viewer-video[hidden] { display: none; }
+.viewer-prev, .viewer-next { color: #fff; background: none; border: 0; font-size: 28px; cursor: pointer; }
+.viewer-title { text-align: center; margin-top: 18px; font-size: 14px; }
+.works-page > .footer { border-radius: 0; }
+@media (max-width: 700px) {
+    .works-page .header { padding: 8px 16px; }
+    .works-page .header :is(.nav-left, .nav-right) { gap: 12px; }
+    .catalogue-language { display: none; }
+    .catalogue-layout { grid-template-columns: 100px minmax(0, 1fr); }
+    .catalogue-nav { padding-inline: 14px 4px; gap: 16px; }
+    .catalogue-nav a { font-size: 12px; }
+    .catalogue-group { padding-top: 110px; }
+    .catalogue-track { gap: 14px; padding-right: 16px; }
+    .catalogue-entry { flex-basis: 60vw; width: 60vw; }
+    .catalogue-card { padding-top: 36px; }
+    .catalogue-caption { min-height: 130px; padding-top: 20px; }
+    .viewer-body { gap: 8px; }
+    .viewer-image { max-width: 75vw; }
+    .viewer-video { max-width: 75vw; }
+}
+
+.catalogue-empty { color: #777; margin: 46px 0 0; font-size: 14px; }

@@ -1,0 +1,130 @@
+{
+  "groups": [
+    {
+      "id": "all",
+      "title": "Все"
+    },
+    {
+      "id": "branding",
+      "title": "Брендинг"
+    },
+    {
+      "id": "motion",
+      "title": "Моушн"
+    },
+    {
+      "id": "3d",
+      "title": "3D"
+    },
+    {
+      "id": "publications",
+      "title": "Публикации"
+    },
+    {
+      "id": "illustration",
+      "title": "Иллюстрация"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Арки Среди Нас",
+      "image": "img/2.jpg",
+      "href": "archesamongus.html",
+      "group": "motion",
+      "description": "Командный проект об арках Гагаринского района и внутреннем мире городской архитектуры."
+    },
+    {
+      "id": 2,
+      "title": "Degree Show 2026",
+      "image": "degree/degava.png",
+      "href": "degreeshow.html",
+      "group": "branding",
+      "description": "Айдентика Итоговой выставки 2026 Универсального Университета."
+    },
+    {
+      "id": 3,
+      "title": "Experimental Notation",
+      "image": "img/1.jpg",
+      "href": "experimentalnotation.html",
+      "group": "branding",
+      "description": "Визуализация музыки Kendrick Lamar через абстрактные формы, градиенты и ритм."
+    },
+    {
+      "id": 4,
+      "title": "плакаты Bambule",
+      "image": "img/img8.png",
+      "images": [
+        "img/img8.png",
+        "img/img6.png",
+        "img/img7.png"
+      ],
+      "group": "illustration",
+      "description": "Серия ярких типографических афиш музыкальных событий."
+    },
+    {
+      "id": 5,
+      "title": "Pragma x БВШД",
+      "image": "img/pragma-cover-circle.png",
+      "group": "branding",
+      "description": "Лимитированная коллекция посуды с иллюстрациями, объединяющими людей за одним столом.",
+      "href": "pragma.html"
+    },
+    {
+      "id": 6,
+      "title": "alphabet",
+      "image": "img/project-alphabet.png",
+      "group": "publications",
+      "description": "Композиция с алфавитом и именем на розовом фоне.",
+      "href": "alphabet.html"
+    },
+    {
+      "id": 7,
+      "title": "My workplace",
+      "image": "img/project-table.png",
+      "images": [
+        "img/project-table.png",
+        "img/img1.png",
+        "img/img2.png"
+      ],
+      "group": "3d",
+      "description": "Визуализация рабочего пространства, света, фактур и предметов интерьера."
+    },
+    {
+      "id": 8,
+      "title": "DON’T TEXT YOUR EX",
+      "image": "img/project-wine.jpg",
+      "group": "motion",
+      "description": "Дизайн винной этикетки и предметная фотография.",
+      "images": [
+        "img/project-wine.jpg",
+        "videos/wine-animation.mp4"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Everyday Objects",
+      "image": "img/img5.png",
+      "images": [
+        "img/img4.png",
+        "img/img5.png"
+      ],
+      "group": "illustration",
+      "description": "Графическая серия Everyday Objects: новый взгляд на форму привычных предметов."
+    },
+    {
+      "id": 10,
+      "title": "Левша",
+      "image": "img/img9.png",
+      "group": "illustration",
+      "description": "Типографический киноплакат с диагональной композицией и геометрическими буквами."
+    },
+    {
+      "id": 11,
+      "title": "Афиша театра",
+      "image": "img/img1_1.png",
+      "group": "illustration",
+      "description": "Театральная афиша: чёрно-белая типографика, фрагменты букв и бумажная фактура."
+    }
+  ]
+}

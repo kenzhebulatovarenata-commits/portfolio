@@ -6,7 +6,13 @@
     <link rel="icon" href="img/favicon.png" sizes="any">
     <link rel="icon" type="image/png" href="img/favicon.png">
     <title>АРКИ СРЕДИ НАС</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20261115-compact-headings-3">
+    <link rel="stylesheet" href="page-titles.css?v=20261117-1">
+<link rel="stylesheet" href="media-gallery.css?v=20261117-focus-2">
+<script src="media-gallery.js?v=20261117-bilingual-3" defer></script>
+<link rel="stylesheet" href="footer.css?v=20261117-proportional-title-6">
+<link rel="stylesheet" href="language-switch.css?v=20261117-1">
+<script src="language-switch.js?v=20261117-1" defer></script>
 </head>
 
 <body>
@@ -14,11 +20,11 @@
 <header class="header">
     <div class="nav-left">
         <a href="works.html">Все проекты</a>
-        <a href="index.html">На главную</a>
+        <a href="index.html">На&nbsp;главную</a>
     </div>
 
-    <div class="nav-right">
-        <a href="contact.html">Связаться со мной</a>
+    <div class="nav-right"><!-- language-switch --><span class="site-language" aria-label="Language"><a href="archesamongus.html" lang="ru" data-language-link="ru" aria-current="page">RU</a><span aria-hidden="true">|</span><a href="en/archesamongus.html" lang="en" data-language-link="en">EN</a></span><!-- /language-switch -->
+        <a href="contact.html">Связаться со&nbsp;мной</a>
     </div>
 </header>
 
@@ -31,12 +37,12 @@
    
     <div class="notation-inner">
 
-        <h2>АРКИ СРЕДИ НАС</h2>
+        <h2 class="page-title">АРКИ СРЕДИ НАС</h2>
 
         <div class="notation-text">
 
             <p class="text-body">
-                Этот креативный проект был командной работой, посвященный аркам в&nbsp;Гагаринском районе и&nbsp;представляет нашу интерпретацию того, что они собой представляют. Вместо того, чтобы показывать арки только как архитектурные элементы, я&nbsp;попытался увидеть в&nbsp;них что-то более живое, с&nbsp;их&nbsp;собственным внутренним характером. Основная идея проекта основана на&nbsp;контрасте между внешним и&nbsp;внутренним пространством. Снаружи арка выглядит как простая и&nbsp;привычная конструкция. Люди проходят через нее, не&nbsp;задумываясь об&nbsp;этом. Это просто часть окружающей среды. Но&nbsp;я&nbsp;хотела представить, что за&nbsp;этой видимой поверхностью что-то скрыто. В&nbsp;моей интерпретации, каждая арка имеет свой собственный внутренний мир, сформированный людьми, которые живут поблизости или проходят через нее каждый день.
+                Этот креативный проект был командной работой, посвященный аркам в&nbsp;Гагаринском районе и&nbsp;представляет нашу интерпретацию того, что они собой представляют. Вместо того, чтобы показывать арки только как архитектурные элементы, я&nbsp;попытался увидеть в&nbsp;них что-то более живое, с&nbsp;их&nbsp;собственным внутренним характером. Основная идея проекта основана на&nbsp;контрасте между&nbsp;внешним и&nbsp;внутренним пространством. Снаружи арка выглядит как простая и&nbsp;привычная конструкция. Люди проходят через&nbsp;нее, не&nbsp;задумываясь об&nbsp;этом. Это просто часть окружающей среды. Но&nbsp;я&nbsp;хотела представить, что за&nbsp;этой видимой поверхностью что-то скрыто. В&nbsp;моей интерпретации, каждая арка имеет свой собственный внутренний мир, сформированный людьми, которые живут поблизости или&nbsp;проходят через&nbsp;нее каждый день.
             </p>
          </div>
    </div>
@@ -107,24 +113,19 @@
 </section>
 
 
-<div class="arches-lightbox">
 
-    <button class="arches-prev">&#10094;</button>
-
-    <video class="arches-main" controls playsinline></video>
-
-    <button class="arches-next">&#10095;</button>
-
-    <div class="arches-thumbs"></div>
 
 </div>
         
-         <footer class="footer">
+
+
+</main>
+<footer class="footer">
 
     <div class="footer-inner">
 
         <div class="contact-text">
-            <h2>Связаться со мной:</h2>
+            <h2>Связаться со&nbsp;мной:</h2>
 
             <div class="contact-contacts">
                 <p class="text-body">
@@ -151,156 +152,5 @@
     </div>
 
 </footer>
-<script>
-        const videos = document.querySelectorAll(".arches-video");
-
-const lightbox = document.querySelector(".arches-lightbox");
-const mainVideo = document.querySelector(".arches-main");
-const thumbs = document.querySelector(".arches-thumbs");
-
-const prev = document.querySelector(".arches-prev");
-const next = document.querySelector(".arches-next");
-
-let current = 0;
-
-
-
-function openVideo(index){
-
-    current = index;
-
-    mainVideo.pause();
-
-    mainVideo.src = videos[index].src;
-
-    mainVideo.load();
-
-    mainVideo.play();
-
-    thumbs.querySelectorAll("video").forEach((video,i)=>{
-
-        video.classList.toggle("active",i===index);
-
-    });
-
-}
-
-
-
-videos.forEach((video,index)=>{
-
-    video.addEventListener("mouseenter",()=>{
-
-        video.play();
-
-    });
-
-    video.addEventListener("mouseleave",()=>{
-
-        video.pause();
-        video.currentTime=0;
-
-    });
-
-    video.addEventListener("click",()=>{
-
-        openVideo(index);
-
-        lightbox.classList.add("active");
-
-    });
-
-    const thumb=document.createElement("video");
-
-    thumb.src=video.src;
-
-    thumb.muted=true;
-    thumb.playsInline=true;
-    thumb.preload="metadata";
-
-    thumbs.appendChild(thumb);
-
-    thumb.addEventListener("click",()=>{
-
-        openVideo(index);
-
-    });
-
-});
-
-
-
-next.onclick=()=>{
-
-    current++;
-
-    if(current>=videos.length){
-
-        current=0;
-
-    }
-
-    openVideo(current);
-
-};
-
-
-
-prev.onclick=()=>{
-
-    current--;
-
-    if(current<0){
-
-        current=videos.length-1;
-
-    }
-
-    openVideo(current);
-
-};
-
-
-
-lightbox.addEventListener("click",(e)=>{
-
-    if(e.target===lightbox){
-
-        mainVideo.pause();
-
-        lightbox.classList.remove("active");
-
-    }
-
-});
-
-
-
-document.addEventListener("keydown",(e)=>{
-
-    if(!lightbox.classList.contains("active")) return;
-
-    if(e.key==="Escape"){
-
-        mainVideo.pause();
-
-        lightbox.classList.remove("active");
-
-    }
-
-    if(e.key==="ArrowRight"){
-
-        next.click();
-
-    }
-
-    if(e.key==="ArrowLeft"){
-
-        prev.click();
-
-    }
-
-});
-        </script>
 </body>
 </html>

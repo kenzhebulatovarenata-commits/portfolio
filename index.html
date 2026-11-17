@@ -6,131 +6,131 @@
     <link rel="icon" href="img/favicon.png" sizes="any">
 <link rel="icon" type="image/png" href="img/favicon.png">
     <title>Renata Kenzhebulatova</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="home-gallery.css">
+    <link rel="preload" href="fonts/Manrope-Variable.ttf" as="font" type="font/ttf" crossorigin>
+    <script src="home-intro.js?v=20261117-static-footer-2"></script>
+    <link rel="stylesheet" href="style.css?v=20261115-compact-headings-3">
+    <link rel="stylesheet" href="home-gallery.css?v=20261115-gallery-entry-10">
+    <link rel="stylesheet" href="home-layout.css?v=20261117-compact-end-2">
+    <link rel="stylesheet" href="footer.css?v=20261117-proportional-title-6">
+<link rel="stylesheet" href="language-switch.css?v=20261117-1">
+<script src="language-switch.js?v=20261117-1" defer></script>
 </head>
 <body class="home-projects">
 
 <header class="header">
     <div class="nav-left">
         <a href="works.html">Проекты</a>
-        <a href="about.html">Обо мне</a>
+        <a href="#about">Обо&nbsp;мне</a>
     </div>
 
-    <div class="nav-right">
-        <a href="contact.html">Связаться со мной</a>
+
+    <div class="nav-right"><!-- language-switch --><span class="site-language" aria-label="Language"><a href="index.html" lang="ru" data-language-link="ru" aria-current="page">RU</a><span aria-hidden="true">|</span><a href="en/index.html" lang="en" data-language-link="en">EN</a></span><!-- /language-switch -->
+
+        <a href="contact.html">Связаться со&nbsp;мной</a>
     </div>
 </header>
 
-<!-- СЦЕНА С КАРТОЧКАМИ (фиксированная) -->
-<section class="scene">
-    <div class="gallery">
-       <a class="card" href="experimentalnotation.html">
-    <div class="card-inner">
-        <img src="img/1.jpg">
-
-        <div class="card-label">
-            Experimental Notation <span class="card-arrow">→</span>
-        </div>
-    </div>
-</a>
-       <a class="card" href="archesamongus.html">
-    <div class="card-inner">
-        <img src="img/2.jpg">
-
-        <div class="card-label">
-            Арки Среди Нас <span class="card-arrow">→</span>
-        </div>
-    </div>
-</a>
-        <a class="card" href="degreeshow.html">
-    <div class="card-inner">
-        <img src="degree/degava.png">
-
-        <div class="card-label">
-            Degree Show 2026 <span class="card-arrow">→</span>
-        </div>
-    </div>
-</a>
-        <a class="card" href="project4.html">
-    <div class="card-inner">
-        <img src="img/4.jpg">
-
-        <div class="card-label">
-            Project One <span class="card-arrow">→</span>
-        </div>
-    </div>
-</a>
-       <a class="card" href="project5.html">
-    <div class="card-inner">
-        <img src="img/5.jpg">
-
-        <div class="card-label">
-            Project One <span class="card-arrow">→</span>
-        </div>
-    </div>
-</a>
-    </div>
-</section>
-
-<!-- ТЕКСТ ВНИЗУ -->
+<div class="home-light">
+<!-- Приветствие на первом экране -->
 <section class="hero">
-    <h1>ПРИВЕТ, МЕНЯ<br><span class="indent">ЗОВУТ РЕНАТА!</span></h1>
+    <h1 aria-label="Привет, меня зовут Рената!">
+        <span class="hero-line" aria-hidden="true"><span class="hero-word">ПРИВЕТ,</span> <span class="hero-word">МЕНЯ</span></span>
+        <span class="hero-line indent" aria-hidden="true"><span class="hero-word">ЗОВУТ</span> <span class="hero-word">РЕНАТА!</span></span>
+    </h1>
 </section>
 
+</div>
+<main class="home-content">
 <div class="scroll-spacer"></div>
 
-    <div class="all-works">
-    <a href="works.html">ВСЕ ПРОЕКТЫ →</a>
-</div>
-
-    <section class="proj">
+<section class="proj" id="projects">
     <h2>ПРОЕКТЫ</h2>
-        </section>
-
-<!-- НОВАЯ ГОРИЗОНТАЛЬНАЯ КАРТИНКА -->
-<section class="zig-image">
-    <img src="img/zig.png" alt="">
 </section>
 
-    <section class="about">
-        <div class="container" >
-    <h2>ОБО МНЕ</h2>
+<!-- Горизонтальная лента: обложки постоянного размера. -->
+<section class="scene" aria-label="Избранные проекты">
+    <div class="gallery" aria-label="Лента проектов">
+        <a class="card" href="archesamongus.html" aria-label="Арки Среди Нас" style="--project-color: #eaeaea; --project-ink: black">
+            <div class="card-inner"><img src="img/2.jpg" alt="Арки Среди Нас" loading="lazy" draggable="false"></div>
+            <div class="project-caption"><span class="project-caption-title">Арки Среди Нас</span><span>Исследование арок Гагаринского района.</span></div>
+        </a>
+        <a class="card" href="degreeshow.html" aria-label="Degree Show 2026" style="--project-color: #95aefc; --project-ink: black">
+            <div class="card-inner"><img src="degree/degava.png" alt="Degree Show 2026" loading="lazy" draggable="false"></div>
+            <div class="project-caption"><span class="project-caption-title">Degree Show 2026</span><span>Айдентика Итоговой выставки 2026.</span></div>
+        </a>
+        <a class="card" href="experimentalnotation.html" aria-label="Experimental Notation" style="--project-color: #7dc0b8; --project-ink: black">
+            <div class="card-inner"><img src="img/1.jpg" alt="Experimental Notation" loading="lazy" draggable="false"></div>
+            <div class="project-caption"><span class="project-caption-title">Experimental Notation</span><span>Визуализация звука через абстрактные формы и ритм.</span></div>
+        </a>
+        <a class="card" href="pragma.html" aria-label="Pragma x БВШД" style="--project-color: #fcf6d2; --project-ink: black">
+            <div class="card-inner"><img src="img/pragma-cover-circle.png" alt="Pragma x БВШД" loading="lazy" draggable="false"></div>
+            <div class="project-caption"><span class="project-caption-title">Pragma x БВШД</span><span>Лимитированная коллекция посуды.</span></div>
+        </a>
+        <a class="card" href="alphabet.html" aria-label="alphabet" style="--project-color: #201f1f; --project-ink: white">
+            <div class="card-inner"><img src="img/project-alphabet.png" alt="alphabet" loading="lazy" draggable="false"></div>
+            <div class="project-caption"><span class="project-caption-title">alphabet</span><span>Типографическая композиция с алфавитом.</span></div>
+        </a>
+        <article class="card" tabindex="0" aria-label="My workplace" style="--project-color: #282f1b; --project-ink: white">
+            <div class="card-inner"><img src="img/project-table.png" alt="My workplace" loading="lazy" draggable="false"></div>
+            <div class="project-caption"><span class="project-caption-title">My workplace</span><span>Визуализация рабочего пространства.</span></div>
+        </article>
+        <a class="card" href="works.html?project=8" aria-label="DON’T TEXT YOUR EX" style="--project-color: #8c381d; --project-ink: white">
+            <div class="card-inner"><img src="img/project-wine.jpg" alt="DON’T TEXT YOUR EX" loading="lazy" draggable="false"></div>
+            <div class="project-caption"><span class="project-caption-title">DON’T TEXT YOUR EX</span><span>Дизайн винной этикетки и предметная фотография.</span></div>
+        </a>
+        <div class="project-more-wrap project-more-card">
+            <a class="projects-more" href="works.html">Посмотреть больше <span aria-hidden="true">→</span></a>
+        </div>
+    </div>
+    <div class="project-controls" aria-label="Прокрутка проектов">
+        <button type="button" data-project-direction="-1" aria-label="Предыдущие проекты">←</button>
+        <button type="button" data-project-direction="1" aria-label="Следующие проекты">→</button>
+    </div>
+</section>
+
+    <section class="about" id="about">
+        <div class="container about-stage">
         
     <div class="about-inner">
       <div class="about-photo">
-            <img src="img/me1.png" loading="lazy">
+            <img src="img/me-home.jpg" loading="lazy" alt="Рената">
         </div>
         <div class="about-text">
+        <h2>ОБО&nbsp;МНЕ</h2>
+        <div class="about-copy-window">
+        <div class="about-copy-track">
         <p class="text-body">
 Привет! Меня зовут Рената Кенжебулатова. Я&nbsp;учусь в&nbsp;Британской высшей школе дизайна на&nbsp;программе бакалавриата &laquo;Графический дизайн&raquo;, а&nbsp;также прошла годовой курс &laquo;Моушн-дизайн и&nbsp;CG&raquo; в&nbsp;Bang Bang Education.
-<br><br>
+</p>
+        <p class="text-body">
+С&nbsp;каждым годом я&nbsp;стараюсь развивать свои навыки в&nbsp;разных направлениях: иллюстрация, типографика, верстка, айдентика и&nbsp;анимация. При&nbsp;этом я&nbsp;продолжаю развивать креативность, работая с&nbsp;разнообразными задачами.
 
-С&nbsp;каждым годом я&nbsp;стараюсь развивать свои навыки в&nbsp;разных направлениях: иллюстрация, типографика, верстка, айдентика и&nbsp;анимация. При этом я&nbsp;продолжаю развивать креативность, работая с&nbsp;разнообразными задачами.
-
-<br><br>
-
+</p>
+        <p class="text-body">
 Люблю работать как в&nbsp;команде, так и&nbsp;самостоятельно. Мне нравится глубоко погружаться в&nbsp;технические и&nbsp;креативные аспекты разных направлений и&nbsp;постоянно совершенствовать свои навыки.
 </p>
-    </div>
- </div>
+        </div>
+        </div>
         <div class="about-button">
     <a href="contact.html" class="about-btn">
-        Связаться со мной <span class="about-arrow"></span>
+        Связаться со&nbsp;мной <span class="about-arrow"></span>
     </a>
         </div>
+    </div>
+ </div>
+
 
     </div>
 
 </section>
     
-    <section class="tools">
+    <section class="tools" id="tools">
         <div class="container">
 
         <h2>ИНСТРУМЕНТЫ</h2>
 
         <p class="tools-desc text-body">
-Работаю с&nbsp;инструментами для анимации (Cinema 4D, After Effects), иллюстрации и&nbsp;графики (Photoshop, Illustrator, Affinity Designer), 3D&nbsp;(Blender для создания сцен и&nbsp;объектов) и&nbsp;верстки (InDesign).
+Работаю с&nbsp;инструментами для&nbsp;анимации (Cinema 4D, After Effects), иллюстрации и&nbsp;графики (Photoshop, Illustrator, Affinity Designer), 3D&nbsp;(Blender для&nbsp;создания сцен и&nbsp;объектов) и&nbsp;верстки (InDesign).
 </p>
 
         <div class="tools-grid">
@@ -144,24 +144,24 @@
             </div>
 </div>
 </section>
-    <section class="experience">
+    <section class="experience" id="experience">
         <div class="container">
         <h2>ОПЫТ</h2>
 
        <div class="exp-grid">
-        <div class="exp-item"><h3>3D моделирование и анимации</h3>
+        <div class="exp-item" tabindex="0"><h3>3D моделирование и&nbsp;анимации</h3>
         <p class="text-body">
 Работаю с&nbsp;2D&nbsp;и&nbsp;3D-графикой: создаю анимацию, иллюстрации и&nbsp;визуальные эффекты в&nbsp;разных форматах. Умею разрабатывать проекты от&nbsp;идеи до&nbsp;финальной реализации, включая концепцию, дизайн и&nbsp;продакшн.
 
-Хорошо владею несколькими профессиональными программами и&nbsp;использую их&nbsp;в&nbsp;зависимости от&nbsp;задачи&nbsp;&mdash; как для статической графики, так и&nbsp;для анимации и&nbsp;3D.
+Хорошо владею несколькими профессиональными программами и&nbsp;использую их&nbsp;в&nbsp;зависимости от&nbsp;задачи&nbsp;&mdash; как для&nbsp;статической графики, так и&nbsp;для&nbsp;анимации и&nbsp;3D.
 </p></div>
-        <div class="exp-item"><h3>Айдентика и визуальные системы</h3>
+        <div class="exp-item" tabindex="0"><h3>Айдентика и&nbsp;визуальные системы</h3>
         <p class="text-body">
 Разрабатываю айдентику от&nbsp;идеи до&nbsp;полной реализации: от&nbsp;ключевых визуальных решений и&nbsp;headline&rsquo;ов до&nbsp;мерча и&nbsp;коммуникации.
 
-Создаю целостные визуальные системы и&nbsp;адаптирую их&nbsp;под разные форматы&nbsp;&mdash; включая анимацию, баннеры и&nbsp;digital-коммуникацию.
+Создаю целостные визуальные системы и&nbsp;адаптирую их&nbsp;под&nbsp;разные форматы&nbsp;&mdash; включая анимацию, баннеры и&nbsp;digital-коммуникацию.
 </p></div>
-        <div class="exp-item"><h3>Верстка и работа с текстом</h3>
+        <div class="exp-item" tabindex="0"><h3>Верстка и&nbsp;работа с&nbsp;текстом</h3>
         <p class="text-body">
 Опыт верстки печатных и&nbsp;цифровых форматов: работа с&nbsp;текстом, композицией, типографикой и&nbsp;графикой.
 
@@ -171,12 +171,17 @@
     </div>
 </section>
 
+
+</main>
+
+<script src="home-about.js?v=20261115-animation-fix-1" defer></script>
+<script src="home-gallery.js?v=20261115-project-strip-9" defer></script>
 <footer class="footer">
 
     <div class="footer-inner">
 
         <div class="contact-text">
-            <h2>Связаться со мной:</h2>
+            <h2>Связаться со&nbsp;мной:</h2>
 
             <div class="contact-contacts">
                 <p class="text-body">
@@ -203,7 +208,5 @@
     </div>
 
 </footer>
-
-<script src="home-gallery.js" defer></script>
 </body>
 </html>

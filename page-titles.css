@@ -1,0 +1,9 @@
+/* Opening titles share one type scale; home and Experimental Notation keep theirs. */
+body .page-title.page-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: var(--section-heading-size) !important;
+    font-weight: 800;
+    line-height: 1.03;
+    letter-spacing: -.035em;
+    text-transform: uppercase;
+}

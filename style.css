@@ -3,17 +3,33 @@
 ========================= */
 
 @font-face {
-    font-family: 'RalewayCustom';
-    src: url('fonts/Raleway-v4020-ExtraLight.otf') format('opentype');
-    font-weight: 200;
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Variable.ttf') format('truetype');
+    font-weight: 200 800;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'RalewayCustom';
-    src: url('fonts/Raleway-v4020-Medium.otf') format('opentype');
-    font-weight: 500;
+    font-family: 'Inter Tight';
+    src: url('fonts/InterTight-Variable.ttf') format('truetype');
+    font-weight: 100 900;
     font-style: normal;
+    font-display: swap;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+}
+
+button, input, textarea, select {
+    font: inherit;
+}
+
+button, input[type="submit"], input[type="button"] {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
 }
 
 /* =========================
@@ -29,7 +45,7 @@
 body {
     background: #000;
     color: #fff;
-    font-family: 'RalewayCustom', sans-serif;
+    font-family: 'Inter Tight', sans-serif;
     overflow-x: hidden;
     overflow-y: auto;
     margin: 0;
@@ -51,7 +67,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 50px;
+    padding: 12px 50px;
+    background: #000;
     position: fixed;
     top: 0;
     left: 0;
@@ -61,24 +78,69 @@ body {
 }
 
 .header a {
+    font-family: 'Manrope', sans-serif;
     font-weight: 500;
     color: white;
     text-decoration: none;
-    border: 1px solid white;
-    border-radius: 999px;
     padding: 10px 22px;
     font-size: 14px;
     margin-right: 12px;
-    transition: all 0.3s ease;
 }
 
-.header a:hover {
-    background: white;
-    color: black;
-}
 
 .nav-left a:last-child {
     margin-right: 0;
+}
+
+/* Text buttons share the same quiet underline and upward hover motion. */
+.header a,
+.all-works a,
+.about-btn {
+    position: relative;
+    display: inline-flex;
+    text-transform: uppercase;
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header a,
+.all-works a {
+    --button-inline-padding: 22px;
+    --button-underline-bottom: 5px;
+    padding-inline: var(--button-inline-padding);
+}
+
+.header a::after,
+.all-works a::after,
+.about-btn::after {
+    content: "";
+    position: absolute;
+    left: var(--button-inline-padding, 0px);
+    right: var(--button-inline-padding, 0px);
+    bottom: var(--button-underline-bottom, -5px);
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+}
+
+.header a:hover,
+.header a:focus-visible,
+.all-works a:hover,
+.all-works a:focus-visible,
+.about-btn:hover,
+.about-btn:focus-visible {
+    transform: translateY(-4px);
+}
+
+.header a:hover::after,
+.header a:focus-visible::after,
+.all-works a:hover::after,
+.all-works a:focus-visible::after,
+.about-btn:hover::after,
+.about-btn:focus-visible::after {
+    transform: scaleX(1);
 }
 
 /* =========================
@@ -203,7 +265,7 @@ scroll-stage {
 }
 
 .hero h1 {
-    font-weight: 200;
+    font-weight: 800;
     font-size: 110px;
     line-height: 0.8;
     letter-spacing: 1.05px;
@@ -234,23 +296,17 @@ scroll-stage {
 }
 
 .all-works a {
+    font-family: 'Manrope', sans-serif;
     font-weight: 500;
     color: white;
     text-decoration: none;
 
-    border: 1px solid white;
-    border-radius: 999px;
 
     padding: 10px 22px;
     font-size: 14px;
     display: inline-block;
 
-    transition: all 0.3s ease;
     pointer-events: auto;
-}
-.all-works a:hover {
-    background: white;
-    color: black;
 }
 
 /* =========================
@@ -271,7 +327,7 @@ scroll-stage {
 }
 
 .proj h2 {
-    font-weight: 200;
+    font-weight: 800;
     font-size: 110px;
     margin-bottom: 0;
     letter-spacing: 1px;
@@ -325,7 +381,7 @@ scroll-stage {
 }
 /* заголовок*/
 .about h2{
-    font-weight: 200;
+    font-weight: 800;
     font-size: 64px;
     line-height: 1.1;
     letter-spacing: 1px;
@@ -334,7 +390,7 @@ scroll-stage {
 }
 /* текст */
 .about-inner p {
-    font-weight: 200;
+    font-weight: 400;
     font-size: 18px;
     line-height: 1.6;
     opacity: 0.85;
@@ -355,6 +411,39 @@ scroll-stage {
     max-width: 620px;
 }
 
+.about-page .about {
+    padding: 0;
+}
+
+.about-page .about-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    max-width: none;
+    min-height: 100svh;
+    margin: 0;
+}
+
+.about-page .about-photo {
+    align-self: start;
+    height: 100svh;
+}
+
+.about-page .about-photo img {
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.about-page .about-text {
+    padding: 80px clamp(12px, 4.8vw, 74px) 40px;
+    overflow-wrap: anywhere;
+}
+
+.about-page .about-text h2 {
+    margin-bottom: clamp(20px, 3vw, 50px);
+}
+
 .about-button {
     width: 100%;
     display: flex;
@@ -363,11 +452,12 @@ scroll-stage {
 }
 
 .about-btn {
+    font-family: 'Manrope', sans-serif;
     color: white;
     text-decoration: none;
 
     font-size: 24px;
-    font-weight: 200;
+    font-weight: 500;
 
     display: inline-flex;
     align-items: center;
@@ -419,7 +509,7 @@ scroll-stage {
 
 .experience h2 {
     font-size: 64px;
-    font-weight: 200;
+    font-weight: 800;
     margin-bottom: 50px;
     letter-spacing: 1px;
 }
@@ -453,7 +543,7 @@ scroll-stage {
 }
 
 .exp-item h3 {
-   font-weight: 500;
+   font-weight: 800;
     font-size: 22px;
     margin-bottom: 12px;
 }
@@ -490,7 +580,7 @@ scroll-stage {
 }
 
 .tools h2 {
-    font-weight: 200;
+    font-weight: 800;
     font-size: 64px;
     margin-bottom: 70px;
     letter-spacing: 1px;
@@ -518,7 +608,7 @@ scroll-stage {
     max-width: 700px;
     text-align: center;
 
-    font-weight: 200;
+    font-weight: 400;
     font-size: 18px;
     line-height: 1.6;
     opacity: 0.85;
@@ -563,13 +653,13 @@ scroll-stage {
 
 .contact h2 {
     font-size: 64px;
-    font-weight: 200;
+    font-weight: 800;
     margin-bottom: 40px;
     letter-spacing: 1px;
 }
 
 .contact p {
-    font-weight: 200;
+    font-weight: 400;
     font-size: 18px;
     opacity: 0.85;
     line-height: 1.6;
@@ -620,7 +710,7 @@ scroll-stage {
 }
 
 .worksall h2 {
-    font-weight: 200;
+    font-weight: 800;
     font-size: 64px;
     line-height: 1.1;
     letter-spacing: 1px;
@@ -628,8 +718,8 @@ scroll-stage {
     margin-bottom: 20px;
 }
 .text-body {
-    font-family: 'RalewayCustom', sans-serif;
-    font-weight: 200;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 400;
     font-size: 18px;
     line-height: 1.6;
     opacity: 0.85;
@@ -640,78 +730,155 @@ scroll-stage {
    ПРОЕКТЫ МОУШН
 ========================= */
 
-.motion-list {
+.works-page .header {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-
-    padding: 0 var(--side-padding);
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
 }
+
+.works-page .nav-right {
+    justify-self: end;
+}
+
+.works-header-title {
+    font: 500 14px 'Manrope', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.motion-list {
+    --motion-top: 108px;
+    display: grid;
+    grid-template-columns: minmax(0, 49.2fr) minmax(0, 44fr);
+    column-gap: 0;
+    align-items: start;
+    /* The cover is 44vw wide with a 410:234 aspect ratio. */
+    padding: max(var(--motion-top), calc((100svh - 44vw * 234 / 410) / 2)) 2.6vw 0 4.2vw;
+}
+
+.motion-names {
+    display: grid;
+    gap: clamp(8px, 1.1vw, 16px);
+    padding-top: max(0px, calc(min(45svh, 31vw) - var(--motion-top)));
+    padding-right: clamp(10px, 4vw, 60px);
+}
+
+.motion-list.has-project-index {
+    overflow: clip;
+}
+
+.has-project-index .motion-names {
+    position: sticky;
+    top: var(--motion-top);
+    height: 0;
+    padding: 0;
+}
+
+.has-project-index .motion-name {
+    position: absolute;
+    left: 0;
+    right: clamp(10px, 4vw, 60px);
+    top: var(--name-centre);
+    transform: translateY(-50%);
+    opacity: 0.35;
+    transition: opacity 250ms ease;
+}
+
+.has-project-index .motion-name[aria-current="true"],
+.has-project-index .motion-name:focus-visible {
+    opacity: 1;
+}
+
+.motion-covers {
+    display: grid;
+    gap: clamp(8px, 2vw, 30px);
+}
+
 .motion-item {
     display: block;
+    color: #fff;
     text-decoration: none;
-
-    height: 360px; /* ← ВОТ ТУТ РЕГУЛИРУЕШЬ ВЫСОТУ */
-    border-radius: 32px;
-
-    overflow: hidden;
 }
 
-/* ВНУТРЕННИЙ КОНТЕЙНЕР */
+.motion-name {
+    display: flex;
+    align-items: center;
+    gap: clamp(6px, 1vw, 14px);
+}
+
+.motion-label {
+    min-width: 0;
+    font: 500 clamp(14px, 3.6vw, 44px)/1.1 'Manrope', sans-serif;
+    overflow-wrap: anywhere;
+}
+
+.motion-dot {
+    flex: 0 0 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
 .motion-inner {
-    position: relative;
+    display: block;
     width: 100%;
-    height: 100%; /* ← важно: наследует высоту от motion-item */
-
+    aspect-ratio: 410 / 234;
     overflow: hidden;
     border-radius: 32px;
-
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-
-.motion-item:hover .motion-inner {
-    transform: translateY(-10px);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
 }
 
 .motion-inner img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* ПАНЕЛЬ (как в карточках) */
-.motion-label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-
-    background: rgba(255, 255, 255, 0.9);
-    color: #000;
-
-    font-size: 14px;
-    font-weight: 500;
-   
-    border-radius: 0 0 32px 32px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 10px 14px 10px 18px;
-
-    transform: translateY(100%);
-    transition: transform 0.25s ease;
-
-    z-index: 2;
+.motion-item :is(.motion-label, .motion-dot, .motion-inner) {
+    opacity: 1;
+    translate: 0 0;
+    transition: opacity 1800ms ease, translate 1800ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--motion-entry-delay, 0ms);
 }
 
-/* ХОВЕР — как у тебя в карточках */
-.motion-item:hover .motion-label {
-    transform: translateY(0);
+.motion-item.motion-pending:not(:focus) :is(.motion-label, .motion-dot, .motion-inner) {
+    opacity: 0;
+    translate: 0 32px;
+    transition-delay: 0ms;
+}
+
+@media (max-width: 600px) {
+    .works-header-title {
+        font-size: clamp(10px, 2.6vw, 14px);
+    }
+
+    .motion-list {
+        --motion-top: 76px;
+    }
+
+    .motion-inner {
+        border-radius: 16px;
+    }
+}
+
+:is(.works-page, .notation-page) .works-scroll-reveal {
+    opacity: 0;
+    translate: 0 32px;
+    transition: opacity var(--reveal-duration, 1800ms) ease,
+                translate var(--reveal-duration, 1800ms) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.works-page .grid > .works-scroll-reveal,
+.notation-page img.works-scroll-reveal {
+    --reveal-duration: 850ms;
+}
+
+.notation-page [data-reveal-direction="left"] { translate: -40px 0; }
+.notation-page [data-reveal-direction="right"] { translate: 40px 0; }
+
+:is(.works-page, .notation-page) .works-scroll-reveal.is-in-view {
+    opacity: 1;
+    translate: 0 0;
+    transition-delay: var(--reveal-delay, 0ms);
 }
 
 /* стрелки */
@@ -763,18 +930,22 @@ scroll-stage {
 
 /* заголовок */
 .footer h2 {
-    font-weight: 200;
-    font-size: 18px;
+    font-weight: 800;
+    font-size: 14px;
     letter-spacing: 1px;
-    margin-bottom: 10px;
+    margin-bottom: 18px;
 }
 
 /* текст */
 .footer .text-body {
-    font-weight: 200;
+    font-weight: 400;
     font-size: 14px;
     line-height: 1.6;
     opacity: 0.86;
+}
+
+.footer .text-body + .text-body {
+    margin-top: 16px;
 }
 
 .footer a {
@@ -804,7 +975,7 @@ scroll-stage {
     text-align: center;
     margin-top: 80px;   /* вот это твой “чуть ниже” */
     font-size: 14px;
-    font-weight: 200;
+    font-weight: 400;
     opacity: 0.6;
 }
 /* underline анимация */
@@ -1088,7 +1259,7 @@ section {
 }
 
 .notation h2 {
-    font-weight: 200;
+    font-weight: 800;
     font-size: 110px;
     line-height: 1.1;
     letter-spacing: 1px;
@@ -1101,12 +1272,12 @@ section {
     max-width: min(100%, 43.75rem);
     margin: 0 auto 0 auto;
     text-align: center;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .notation-text p {
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.6;
     opacity: .85;
 }
@@ -1274,7 +1445,7 @@ section {
 /* ......МЕРЧ...... */
 
 .image-block h2 {
-    font-weight: 200;
+    font-weight: 800;
     font-size: 64px;
     line-height: 1.1;
     letter-spacing: 1px;
@@ -1382,10 +1553,11 @@ section {
 }
 
 .project-points-title {
+    font-family: 'Manrope', sans-serif;
     margin-left: 0;
     margin-bottom: 20px;
     font-size: 64px;
-    font-weight: 300;
+    font-weight: 800;
     color: white;
 }
 
@@ -1409,14 +1581,14 @@ section {
 
 .point-number{
     font-size:18px;
-    font-weight:200;
+    font-weight: 400;
     line-height:1.6;
     opacity:.85;
 }
 
 .point-row p{
     font-size:18px;
-    font-weight:200;
+    font-weight: 400;
     line-height:1.6;
     opacity:.85;
     margin:0;
@@ -1488,7 +1660,7 @@ section {
 .label {
     position:absolute;
     font-size:clamp(18px,2vw,32px);
-    font-weight:300;
+    font-weight: 400;
     cursor:pointer;
     padding: 20px;
     margin: -20px;
@@ -1525,19 +1697,21 @@ section {
 }
 
 .drafts-title {
+    font-family: 'Manrope', sans-serif;
     margin-left:0;
     margin-bottom: 24px;
 
     font-size: 64px;
-    font-weight: 300;
+    font-weight: 800;
     color: white;
 }
 .drafts-subtitle {
+    font-family: 'Manrope', sans-serif;
     margin-left: 0;
     margin-bottom: 24px;
 
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 800;
     color: white;
 }
 
@@ -1589,6 +1763,7 @@ section {
 }
 
 .drafts2-title {
+    font-family: 'Manrope', sans-serif;
     position: absolute;
     top: -30px;
     left: 0;
@@ -1596,7 +1771,7 @@ section {
     margin: 0;
 
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 800;
     color: white;
 
     white-space: nowrap;
@@ -1753,7 +1928,7 @@ section {
 .final-text p {
     font-size: 18px;
     line-height: 1.6;
-    font-weight: 200;
+    font-weight: 400;
     opacity: 0.85;
 }
 
@@ -1773,15 +1948,17 @@ section {
 }
 
 .final-title {
+    font-family: 'Manrope', sans-serif;
     font-size: 64px;
-    font-weight: 300;
+    font-weight: 800;
     margin-bottom: 32px;
     color: white;
 }
 
 .final-subtitle {
+    font-family: 'Manrope', sans-serif;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 800;
     margin-bottom: 28px;
     color: white;
 }
@@ -2450,7 +2627,7 @@ section {
     }
 
     .header {
-        padding: 1rem;
+        padding: 8px 16px;
     }
        .project-points{
         padding:70px 24px;
@@ -2500,4 +2677,332 @@ section {
 
     }
 
+}
+
+/* Keep the shared text navigation readable on narrow pages. */
+@media (max-width: 600px) {
+    .nav-left { display: flex; gap: 8px; }
+    .header a {
+        --button-inline-padding: 0px;
+        margin-right: 0;
+        padding: 8px var(--button-inline-padding);
+        font-size: clamp(10px, 2.6vw, 14px);
+        white-space: nowrap;
+    }
+}
+
+/* Shared page and section titles use the home page's heading scale. */
+body {
+    --section-heading-size: clamp(28px, 4vw, 64px);
+    hyphens: none;
+}
+
+body :is(h1, h2, h3, h4, h5, h6) {
+    font-size: var(--section-heading-size) !important;
+    text-align: center !important;
+    overflow-wrap: anywhere;
+    hyphens: none;
+}
+
+/* Scroll-driven opening for Experimental Notation. */
+.notation-page .page {
+    display: block;
+    padding: 0;
+}
+
+.notation-page .notation-light {
+    position: sticky;
+    top: var(--light-pin-top, 0);
+    background: #f1f1ef;
+    color: #080808;
+    z-index: 0;
+}
+
+.notation-page .page .notation-scroll-scene {
+    position: relative;
+    height: var(--notation-scene-height, 340svh);
+    margin: 0;
+}
+
+.notation-stage {
+    position: sticky;
+    top: 0;
+    height: var(--notation-stage-height, 200svh);
+    overflow: visible;
+}
+
+.notation-page .notation-hero-title {
+    margin: 0;
+    font-size: 9.5vw !important;
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+    font-weight: 800;
+    color: #080808;
+}
+
+.notation-experimental,
+.notation-word {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.notation-word {
+    display: flex;
+    font-size: 13vw;
+    letter-spacing: -0.055em;
+}
+
+.notation-growing-video {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.notation-growing-video .video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-width: none;
+    margin: 0;
+}
+
+.notation-growing-video video {
+    width: 100%;
+    height: 100%;
+}
+
+.notation-page main :is(img, video) {
+    border-radius: 0;
+}
+
+.notation-poster-panel {
+    position: sticky;
+    top: var(--poster-pin-top, 0);
+    z-index: 2;
+    min-height: 100svh;
+    background: #000;
+    color: #fff;
+    padding-block: 72px;
+    border-radius: 32px 32px 0 0;
+    overflow: clip;
+}
+
+/* Match the home gallery's side margins and spacing between covers. */
+.notation-page .notation-poster-panel .posters {
+    margin: 0;
+    padding-inline: 1.3vw;
+}
+
+.notation-poster-panel .posters-inner {
+    gap: 1.2vw;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 700px) {
+    .notation-page .notation-poster-panel .posters { padding-inline: 3.2vw; }
+    .notation-poster-panel .posters-inner { gap: 3vw; }
+}
+
+.notation-page .notation-rest > :is(.notationani-bottom, .image-block) {
+    position: relative;
+    z-index: 1;
+    background: #000;
+    padding-inline: 100px;
+    padding-top: 150px;
+    margin: 0;
+}
+
+.notation-page .footer {
+    position: relative;
+    z-index: 1;
+    background: #000;
+}
+
+@media (max-width: 600px) {
+    .notation-page .notation-rest > :is(.notationani-bottom, .image-block) {
+        padding-inline: 24px;
+    }
+}
+
+.notation-page .notation-growing-video video,
+.notation-page .notation-poster-panel .posters-inner img {
+    border-radius: 20px;
+}
+
+/* Each new panel rises over the preceding pinned panel. */
+.notation-page .page .notation-copy-panel {
+    position: sticky;
+    top: 0;
+    min-height: 0;
+    margin: 0;
+    padding: var(--notation-gutter, 10vw);
+    display: grid;
+    place-items: center;
+    border-radius: 32px 32px 0 0;
+}
+
+.notation-copy-panel .notation-text {
+    width: 100%;
+    max-width: 700px;
+    margin: 0;
+    text-align: center;
+}
+
+.notation-copy-panel .text-body {
+    color: inherit;
+    opacity: 1;
+}
+
+.notation-page .notation-intro-copy {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    min-height: 85svh;
+    margin: 0;
+    padding: 0;
+    display: block;
+    color: #080808;
+}
+
+.notation-intro-copy .notation-text {
+    width: 100%;
+    max-width: 700px;
+    margin: 0;
+    text-align: center;
+}
+
+.notation-intro-copy .text-body {
+    position: relative;
+    margin: 0;
+    color: inherit;
+    opacity: 1;
+    font-size: 8px;
+    text-align: left;
+}
+
+.notation-intro-copy .text-body > span {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.notation-copy-yellow {
+    z-index: 3;
+    background: #f2cc32;
+    color: #000;
+}
+
+.notation-rest {
+    position: relative;
+    z-index: 4;
+    background: #000;
+    border-radius: 32px 32px 0 0;
+    overflow: clip;
+}
+
+/* The project collection slides over a pinned light opening. */
+.works-page {
+    background: #f1f1ef;
+}
+
+.works-page .header {
+    background: transparent;
+    mix-blend-mode: difference;
+}
+
+.works-intro {
+    position: sticky;
+    top: 0;
+    height: 55svh;
+    display: flex;
+    align-items: center;
+    padding: 72px 4.2vw 32px;
+    background: #f1f1ef;
+    color: #080808;
+    z-index: 0;
+}
+
+.works-page .works-intro h1 {
+    margin: 0;
+    font-size: var(--section-heading-size) !important;
+    line-height: 0.95;
+    letter-spacing: -0.065em;
+    text-align: left !important;
+    white-space: nowrap;
+}
+
+.works-content {
+    position: relative;
+    z-index: 1;
+    background: #000;
+    border-radius: 32px 32px 0 0;
+    overflow: clip;
+    min-height: 100svh;
+}
+
+.works-content .motion-list {
+    padding-top: clamp(24px, 3vw, 48px);
+}
+
+.works-page > .footer {
+    position: relative;
+    z-index: 1;
+    background: #000;
+}
+
+@media (max-width: 600px) {
+    .works-content { border-radius: 24px 24px 0 0; }
+}
+
+/* One shared heading size throughout the site. */
+body :is(h1, h2, h3, h4, h5, h6) {
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+.notation-page .notation-word { font-size: inherit; }
+
+
+/* Match the home greeting on mobile and keep this project square throughout. */
+@media (max-width: 700px) {
+    .notation-page .notation-hero-title { font-size: 8.3vw !important; }
+}
+
+.notation-page,
+.notation-page *,
+.notation-page *::before,
+.notation-page *::after {
+    border-radius: 0 !important;
+}
+
+.notation-page .volume-slider::-webkit-slider-thumb { border-radius: 0; }
+.notation-page .volume-slider::-moz-range-thumb { border-radius: 0; }
+
+
+/* Lower project images follow the same margins as the home gallery and posters. */
+.notation-page .notation-rest > .image-block {
+    padding-inline: 1.3vw;
+}
+
+.notation-page .image-block :is(.image-block-inner, .small-col, .big-col, .nstickers-inner) {
+    gap: 1.2vw;
+}
+
+.notation-page .image-block-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3.55fr);
+}
+
+.notation-page .image-block .nstickers { margin-top: 1.2vw; }
+
+@media (max-width: 700px) {
+    .notation-page .notation-rest > .image-block { padding-inline: 3.2vw; }
+    .notation-page .image-block :is(.image-block-inner, .small-col, .big-col, .nstickers-inner) { gap: 3vw; }
+    .notation-page .image-block .nstickers { margin-top: 3vw; }
+}
+
+
+/* Transparent navigation inverts over the project, as on the home page. */
+.notation-page .header {
+    background: transparent;
+    mix-blend-mode: difference;
 }

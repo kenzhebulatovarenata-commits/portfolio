@@ -1,0 +1,198 @@
+/* Degree Show: a white opening followed by the existing black project. */
+.degree-page {
+    --degree-stage-height: max(520px, 78svh);
+    --degree-gutter: 1.3vw;
+    --degree-gap: clamp(8px, 1.2vw, 24px);
+    background: #fff;
+    color: #000;
+}
+.degree-page .header { background: transparent; mix-blend-mode: difference; }
+.degree-page .header a { color: #fff; }
+.degree-page .page { display: block; padding: 0; }
+.degree-page .page .degree-opening {
+    position: relative;
+    height: calc(var(--degree-stage-height) * 2);
+    margin-bottom: calc(var(--degree-stage-height) * -1);
+    background: #fff;
+}
+.degree-stage {
+    position: sticky;
+    top: 0;
+    height: var(--degree-stage-height);
+    overflow: hidden;
+    background: #fff;
+}
+.degree-page #degree-title {
+    position: absolute;
+    top: var(--degree-title-top, 60%);
+    left: 3.2vw;
+    width: 44vw;
+    margin: 0;
+    padding: 0;
+    font-size: var(--section-heading-size) !important;
+    line-height: 1.03;
+    letter-spacing: -.035em;
+    text-align: left !important;
+    transform: translateY(-100%) scale(var(--degree-title-scale, 1));
+    transform-origin: left bottom;
+    will-change: transform, top;
+}
+.degree-page #degree-title span { display: inline; }
+.degree-page #degree-title span:last-child { display: block; }
+.degree-description {
+    position: absolute;
+    top: var(--degree-copy-top, 60%);
+    left: 51.5vw;
+    width: 45.3vw;
+    max-width: 700px;
+    text-align: left;
+    transform: translateY(-100%) scale(var(--degree-copy-scale, .65));
+    transform-origin: left bottom;
+    will-change: transform, top;
+}
+.degree-description .text-body {
+    margin: 0;
+    font-size: clamp(14px, .94vw, 16px);
+    line-height: 1.5;
+    font-weight: 400;
+    opacity: 1;
+}
+.degree-content {
+    position: relative;
+    z-index: 1;
+    padding: clamp(64px, 7vw, 112px) var(--degree-gutter) 0;
+    background: #000;
+    color: #fff;
+}
+.degree-page .project-points { padding: 10px 0; }
+.degree-page .final-version { padding: 0; }
+.degree-content :is(section, .drafts2-item, .post-left, .post-right, .merch-left, .merch-right, .cards, .invites) {
+    min-width: 0;
+}
+.degree-content :is(.drafts-grid, .drafts2, .final-grid, .final-gallery, .post-gallery, .post-left, .post-right, .cards, .invites, .merch-gallery, .merch-left, .merch-right) {
+    gap: var(--degree-gap);
+}
+.degree-content :is(.drafts-grid, .final-grid) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.degree-content .final-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.degree-content .drafts2 { grid-template-columns: repeat(10, minmax(0, 1fr)); }
+.degree-content :is(.post-gallery, .post-left, .post-right, .merch-gallery) { aspect-ratio: auto; }
+.degree-content :is(.post-left, .merch-left, .merch-right) { height: auto; }
+.degree-content .post-left { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.degree-content :is(.cards, .invites) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.degree-content .merch-left { grid-template-columns: minmax(0, 1.135fr) minmax(0, 1fr); }
+.degree-content .merch-right { grid-template-columns: repeat(6, minmax(0, 1fr)) minmax(0, 1.8fr); }
+.degree-content :is(.drafts-grid, .drafts2, .final-grid, .final-wide, .final-gallery, .post-gallery, .merch-gallery) :is(img, video) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+.degree-content .merch-right img { height: 100%; }
+.degree-page .final-text { margin-block: clamp(64px, 8vw, 128px); }
+.degree-page .footer { padding: 8.67vw 0 6.67vw; }
+.degree-page .footer-inner { width: 100%; }
+.degree-page .footer a { overflow-wrap: anywhere; }
+.degree-page :is(.lightbox-thumbs, .lightbox1-thumbs) {
+    max-width: calc(100vw - 32px);
+    overflow-x: auto;
+}
+.degree-page :is(.lightbox-thumbs, .lightbox1-thumbs) img { flex: 0 0 40px; object-fit: contain; }
+.final-animation-copy {
+    max-width: 700px;
+    margin: 0 auto 60px;
+}
+.degree-page main :is(img, video, button),
+.degree-page :is(.lightbox, .lightbox1, .lightbox-thumbs img, .lightbox1-thumbs img) {
+    border-radius: 0;
+}
+.degree-page .drafts-subtitle,
+.degree-page .drafts2-title {
+    font-size: 14px;
+    font-weight: 400;
+}
+@media (max-width: 700px) {
+    .degree-page { --degree-stage-height: max(620px, 85svh); --degree-gutter: 3.2vw; }
+    .degree-page #degree-title {
+        left: 3.2vw;
+        width: 93.6vw;
+    }
+    .degree-page #degree-title span { display: inline; }
+    .degree-page #degree-title span:last-child { display: block; }
+    .degree-description { left: 3.2vw; width: 93.6vw; }
+    .degree-description .text-body { font-size: 13px; line-height: 1.4; }
+    .degree-content { padding-top: 64px; }
+    .degree-page .header { padding-inline: 8px; }
+    .degree-page .header a { padding-inline: 8px; margin-right: 0; font-size: 11px; }
+    .degree-page .drafts2-title { font-size: 12px; }
+}
+@media (max-width: 1024px) {
+    .degree-content .drafts2 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .degree-content .drafts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 768px) {
+    .degree-content .merch-gallery { flex-direction: column; }
+    .degree-page .scheme .label { font-size: clamp(10px, 2.3vw, 18px); }
+    .degree-page .point-row { grid-template-columns: 32px minmax(0, 1fr); gap: 16px; }
+    .degree-page .point-row :is(p, .point-number) { font-size: 14px; }
+    .degree-content .final-gallery { grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 1.04fr)); }
+}
+@media (max-width: 600px) {
+    .degree-page .header a { padding-inline: 0; font-size: clamp(9px, 2.6vw, 11px); }
+    .degree-content .drafts2 { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 36px; }
+    .degree-page .final-subtitle { font-size: 14px; font-weight: 400; }
+    .degree-page .footer { padding-block: 66.67px 40px; }
+    .degree-page :is(.lightbox-prev, .lightbox1-prev) { left: 8px; }
+    .degree-page :is(.lightbox-next, .lightbox1-next) { right: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .degree-page .page .degree-opening { height: var(--degree-stage-height); margin-bottom: 0; }
+    .degree-stage { position: relative; }
+    .degree-page #degree-title { top: 60%; transform: translateY(-100%); }
+    .degree-description { top: 60%; transform: translateY(-100%); }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+    .degree-page #degree-title { top: 38%; }
+    .degree-description { top: 80%; }
+}
+
+/* Match the home page's soft upward entrance without changing layout transforms. */
+.has-degree-reveals .degree-reveal {
+    opacity: 0;
+    translate: 0 12px;
+    transition: opacity 1000ms cubic-bezier(.3,0,.2,1),
+                translate 1100ms cubic-bezier(.3,0,.2,1);
+}
+.has-degree-reveals #degree-title span.degree-reveal { display: inline-block; }
+.has-degree-reveals #degree-title span.degree-reveal:last-child { display: block; }
+.has-degree-reveals .degree-reveal.is-in-view {
+    opacity: var(--degree-reveal-opacity, 1);
+    translate: 0 0;
+    transition-delay: var(--degree-reveal-delay, 0ms);
+}
+.has-degree-reveals .point-line.degree-reveal {
+    translate: none;
+    scale: 0 1;
+    transform-origin: left;
+    transition: opacity 850ms cubic-bezier(.3,0,.2,1), scale 1000ms cubic-bezier(.3,0,.2,1);
+}
+.has-degree-reveals .point-line.is-in-view {
+    scale: 1 1;
+    transition-delay: var(--degree-reveal-delay, 0ms);
+}
+.has-degree-reveals .layer.degree-reveal {
+    transition: opacity 1000ms cubic-bezier(.3,0,.2,1), translate 1100ms cubic-bezier(.3,0,.2,1), filter 300ms ease;
+}
+.has-degree-reveals .layer.degree-reveal.is-in-view {
+    transition-delay: var(--degree-reveal-delay, 0ms), var(--degree-reveal-delay, 0ms), 0ms;
+}
+.has-degree-reveals polyline.degree-reveal {
+    translate: none;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: opacity 1000ms cubic-bezier(.3,0,.2,1), stroke-dashoffset 1100ms cubic-bezier(.3,0,.2,1);
+}
+.has-degree-reveals polyline.degree-reveal.is-in-view {
+    stroke-dashoffset: 0;
+    transition-delay: var(--degree-reveal-delay, 0ms);
+}

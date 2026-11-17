@@ -1,0 +1,26 @@
+.alphabet-page { background: #000; color: #fff; }
+.alphabet-page .header { padding-inline: 4.8vw; background: transparent; mix-blend-mode: difference; }
+.alphabet-page .header :is(.nav-left, .nav-right) { display: flex; align-items: center; gap: clamp(16px, 2.35vw, 36px); }
+.alphabet-page .header a { --button-inline-padding: 0px; margin-right: 0; white-space: nowrap; text-transform: uppercase; }
+.alphabet-opening { height: 48.6vw; min-height: 560px; padding: 60px 3.2vw 0; display: grid; grid-template-columns: minmax(0, 44fr) minmax(0, 45.3fr); column-gap: 4.3vw; align-items: end; align-content: center; background: #f1f1ef; color: #080808; }
+.alphabet-page .alphabet-opening h1 { margin: 0; font-size: var(--section-heading-size) !important; line-height: 1.03; letter-spacing: -.035em; color: inherit; text-align: left !important; }
+.alphabet-description { width: 100%; max-width: 700px; margin: 0; font-size: clamp(14px, .94vw, 16px); font-weight: 400; line-height: 1.5; text-align: left; }
+.alphabet-layout { display: grid; grid-template-columns: minmax(0, 40fr) minmax(0, 22fr) minmax(0, 38fr); align-items: start; background: #000; }
+.alphabet-spreads { display: grid; gap: 0; min-width: 0; }
+.alphabet-spreads img { display: block; width: 100%; height: auto; }
+.alphabet-legend { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; }
+.alphabet-legend dl { display: grid; gap: 28px; font-size: clamp(10px, .85vw, 14px); font-weight: 500; }
+.alphabet-legend dl > div { display: grid; grid-template-columns: 16px auto; gap: 10px; align-items: baseline; }
+.alphabet-legend dd { margin: 0; }
+.alphabet-cover { position: sticky; top: 0; height: 100svh; min-width: 0; margin: 0; background: #dfa4bc; }
+.alphabet-cover img { display: block; width: 100%; height: 100%; object-fit: contain; }
+@media (max-width: 880px) {
+    .alphabet-page .header { padding: 8px 16px; }
+    .alphabet-page .header :is(.nav-left, .nav-right) { gap: clamp(7px, 2vw, 16px); }
+    .alphabet-layout { grid-template-columns: minmax(0, 65fr) minmax(0, 35fr); }
+    .alphabet-legend { display: none; }
+}
+@media (max-width: 700px) {
+    .alphabet-opening { height: auto; min-height: 65svh; padding: 100px 24px 72px; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .alphabet-cover { height: 100svh; }
+}

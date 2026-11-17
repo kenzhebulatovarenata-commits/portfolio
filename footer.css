@@ -1,0 +1,62 @@
+/* One footer shared by the home, catalogue and project pages. */
+body .footer.footer {
+    --footer-copy-size: clamp(14px, .94vw, 16px);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 0;
+    padding: 100px 24px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background: #000;
+    color: #fff;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+}
+body .footer.footer .footer-inner,
+body .footer.footer .contact-text { width: 100%; max-width: none; }
+body .footer.footer h2 {
+    font-family: 'Manrope', sans-serif;
+    font-size: calc(var(--footer-copy-size) * 1.5) !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .2px;
+    line-height: 1.2;
+    margin: 0 0 18px;
+}
+body .footer.footer .text-body {
+    font-family: 'Manrope', sans-serif;
+    font-size: var(--footer-copy-size);
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 1;
+}
+body .footer.footer .text-body + .text-body { margin-top: 8px; }
+body .footer.footer a { color: #fff; overflow-wrap: anywhere; }
+body .footer.footer .footer-note {
+    font-size: var(--footer-copy-size);
+    font-weight: 400;
+    line-height: 1.4;
+    margin-top: 32px;
+    opacity: .6;
+}
+@media (max-width: 700px) {
+    body .footer.footer { --footer-copy-size: 13px; padding: 64px 16px 12px; }
+}
+
+/* Footer content stays visible and still, independently of page entrance effects. */
+body .footer.footer,
+body .footer.footer * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    translate: none !important;
+    scale: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+}
+body .footer.footer .text-body { opacity: 1 !important; }
+body .footer.footer .footer-note { opacity: .6 !important; }

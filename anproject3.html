@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/favicon.ico" sizes="any">
+    <link rel="icon" href="img/favicon.png" sizes="any">
 <link rel="icon" type="image/png" href="img/favicon.png">
     <title>Комната мечты</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20261115-compact-headings-3">
+    <link rel="stylesheet" href="page-titles.css?v=20261117-1">
+<link rel="stylesheet" href="media-gallery.css?v=20261117-focus-2">
+<script src="media-gallery.js?v=20261117-bilingual-3" defer></script>
+<link rel="stylesheet" href="footer.css?v=20261117-proportional-title-6">
+<link rel="stylesheet" href="language-switch.css?v=20261117-1">
+<script src="language-switch.js?v=20261117-1" defer></script>
 </head>
 
 <body>
@@ -16,15 +22,15 @@
         <a href="works.html">Назад</a>
     </div>
 
-    <div class="nav-right">
-        <a href="contact.html">Связаться со мной</a>
+    <div class="nav-right"><!-- language-switch --><span class="site-language" aria-label="Language"><a href="anproject3.html" lang="ru" data-language-link="ru" aria-current="page">RU</a><span aria-hidden="true">|</span><a href="en/anproject3.html" lang="en" data-language-link="en">EN</a></span><!-- /language-switch -->
+        <a href="contact.html">Связаться со&nbsp;мной</a>
     </div>
 </header>
 
 <!-- ЗАГОЛОВОК -->
 <section class="about">
     <div class="about-inner">
-        <h2>Комната мечты</h2>
+        <h2 class="page-title">Комната мечты</h2>
     </div>
 </section>
 
@@ -39,76 +45,40 @@
     </div>
 </section>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-    <div class="lightbox-content">
-        <span class="lightbox-close" id="close">×</span>
 
-        <div class="lightbox-arrow left" id="prev">←</div>
-        <img id="lightbox-img">
-        <div class="lightbox-arrow right" id="next">→</div>
+
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+        <div class="contact-text">
+            <h2>Связаться со&nbsp;мной:</h2>
+
+            <div class="contact-contacts">
+                <p class="text-body">
+                    Телефон:
+                    <a href="tel:+79646203575">+7 964 620 35 75</a>
+                </p>
+
+                <p class="text-body">
+                    Телеграм:
+                    <a href="https://t.me/yachervyak" target="_blank">@yachervyak</a>
+                </p>
+
+                <p class="text-body">
+                    Почта:
+                    <a href="mailto:kenzhebulatova.renata@gmail.com">kenzhebulatova.renata@gmail.com</a>
+                </p>
+            </div>
+        </div>
+
     </div>
-</div>
-<script>
-const images = document.querySelectorAll('.gallery-grid img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
 
-const next = document.getElementById('next');
-const prev = document.getElementById('prev');
-const close = document.getElementById('close');
+    <div class="footer-note">
+        Сделано Ренатой Кенжебулатовой
+    </div>
 
-let currentIndex = 0;
-
-/* открыть */
-images.forEach((img, i) => {
-    img.addEventListener('click', () => {
-        currentIndex = i;
-        openLightbox();
-    });
-});
-
-function openLightbox() {
-    lightbox.classList.add('active');
-    updateImage();
-}
-
-/* закрыть */
-function closeLightbox() {
-    lightbox.classList.remove('active');
-}
-
-close.addEventListener('click', closeLightbox);
-
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-});
-
-/* показать картинку */
-function updateImage() {
-    lightboxImg.src = images[currentIndex].src;
-}
-
-/* next */
-next.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateImage();
-});
-
-/* prev */
-prev.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateImage();
-});
-
-/* клавиатура (потому что ты теперь почти как продуктовый дизайнер, но с клавишами) */
-document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') next.click();
-    if (e.key === 'ArrowLeft') prev.click();
-});
-</script>
+</footer>
 </body>
 </html>

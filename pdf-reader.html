@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alphabet — PDF</title>
+<style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #282828; color: #fff; font: 14px sans-serif; }
+    main { padding: 16px; }
+    .page { position: relative; width: 100%; max-width: 1100px; margin: 0 auto 16px; background: #fff; }
+    canvas { display: block; width: 100%; height: auto; }
+    #status { text-align: center; }
+    @media (max-width: 700px) { main { padding: 8px; } .page { margin-bottom: 8px; } }
+</style>
+</head>
+<body>
+<p id="status" role="status">Загрузка PDF…</p>
+<main aria-label="Страницы каталога Alphabet"></main>
+<script type="module">
+import { getDocument, GlobalWorkerOptions } from './vendor/pdfjs/pdf.min.mjs';
+GlobalWorkerOptions.workerSrc = './vendor/pdfjs/pdf.worker.min.mjs';
+const status = document.querySelector('#status');
+const main = document.querySelector('main');
+try {
+    const file = new URL(new URLSearchParams(location.search).get('file'), location.href);
+    if (file.origin !== location.origin) throw new Error('Invalid PDF origin');
+    const pdf = await getDocument(file.href).promise;
+    status.textContent = `${pdf.numPages} стр. · Листайте вниз`;
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(async entry => {
+            if (!entry.isIntersecting) return;
+            const holder = entry.target;
+            observer.unobserve(holder);
+            try {
+                const page = await pdf.getPage(Number(holder.dataset.page));
+                const natural = page.getViewport({ scale: 1 });
+                const viewport = page.getViewport({ scale: Math.min(2200, holder.clientWidth * Math.min(devicePixelRatio, 2)) / natural.width });
+                const canvas = document.createElement('canvas');
+                canvas.width = Math.ceil(viewport.width);
+                canvas.height = Math.ceil(viewport.height);
+                canvas.setAttribute('role', 'img');
+                canvas.setAttribute('aria-label', `Страница ${holder.dataset.page}`);
+                await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+                holder.append(canvas);
+                page.cleanup();
+            } catch {
+                holder.textContent = 'Не удалось показать страницу. Откройте PDF отдельно.';
+                holder.style.color = '#000';
+            }
+        });
+    }, { rootMargin: '100% 0px' });
+    for (let number = 1; number <= pdf.numPages; number++) {
+        const page = await pdf.getPage(number);
+        const size = page.getViewport({ scale: 1 });
+        const holder = document.createElement('section');
+        holder.className = 'page';
+        holder.dataset.page = number;
+        holder.style.aspectRatio = `${size.width} / ${size.height}`;
+        main.append(holder);
+        observer.observe(holder);
+    }
+} catch {
+    status.textContent = 'Не удалось загрузить PDF. Откройте его по ссылке сверху.';
+}
+</script>
+</body>
+</html>

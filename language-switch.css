@@ -1,0 +1,9 @@
+.header .site-language { display: inline-flex; align-items: center; gap: 5px; color: #fff; font: 500 14px/1.4 'Manrope', sans-serif; white-space: nowrap; }
+.header .site-language a { --button-inline-padding: 0px; padding: 0; margin: 0; font: inherit; color: inherit; opacity: .6; }
+.header .site-language a[aria-current="page"] { opacity: 1; }
+.header .site-language a:hover, .header .site-language a:focus-visible { opacity: 1; }
+.header .nav-right { display: flex; align-items: center; gap: clamp(12px, 2.35vw, 36px); }
+@media (max-width: 700px) {
+    .header .site-language { font-size: 11px; gap: 3px; }
+    .header .nav-right { gap: 10px; }
+}
