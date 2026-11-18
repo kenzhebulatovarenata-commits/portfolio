@@ -35,10 +35,12 @@
             element = element.parentElement;
         }
         color ||= getComputedStyle(document.body).backgroundColor;
-        // At the document end, use the footer even during Safari rubber-banding.
-        const footer = document.querySelector('.footer');
-        const atEnd = Math.ceil(scrollY + innerHeight) >= root.scrollHeight - 2;
-        if (footer && atEnd) color = getComputedStyle(footer).backgroundColor;
+        // Safari's visual viewport changes as its bottom toolbar collapses.
+        // Keep the exposed bottom edge black, including pages without a footer.
+        const documentHeight = document.scrollingElement?.scrollHeight || root.scrollHeight;
+        const visibleBottom = viewport ? viewport.pageTop + viewport.height : scrollY + innerHeight;
+        const atEnd = Math.ceil(Math.max(scrollY + innerHeight, visibleBottom)) >= documentHeight - 4;
+        if (atEnd) color = 'rgb(0, 0, 0)';
         // The yellow panel is content, not browser chrome. Safari may retain
         // a sampled tint after that sticky panel has left the viewport.
         if (document.body.classList.contains('notation-page') && color === 'rgb(242, 204, 50)') color = 'rgb(0, 0, 0)';

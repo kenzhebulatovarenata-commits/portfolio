@@ -1,7 +1,8 @@
 /* Let mobile content continue under Safari's translucent controls. */
 @media (max-width: 700px) {
-    html { background-color: var(--mobile-edge-background, #f1f1ef); }
-    html.home-page,
+    /* Safari exposes the root canvas below the document and during overscroll. */
+    html,
+    html.home-page { background-color: #000; }
     body.home-projects { background-color: var(--mobile-edge-background, #f1f1ef); }
     /* Fill the space revealed when mobile browser controls collapse. */
     .home-projects .has-about-scroll .about-stage {
