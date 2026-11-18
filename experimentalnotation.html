@@ -14,11 +14,13 @@
 <script src="mobile-viewport.js?v=20261118-black-bottom-5" defer></script>
 <link rel="stylesheet" href="notation-mobile.css?v=20261118-stable-video-12">
 <script src="notation-playback.js?v=20261118-stable-video-3" defer></script>
+<link rel="stylesheet" href="mobile-header.css?v=20261118-2">
+<script src="mobile-header.js?v=20261118-1" defer></script>
 </head>
 
 <body class="notation-page">
 
-<header class="header">
+<header class="header mobile-header-enabled">
     <div class="nav-left">
         <a href="index.html">На&nbsp;главную</a>
         <a href="works.html">Все работы</a>
@@ -27,7 +29,12 @@
     <div class="nav-right"><!-- language-switch --><span class="site-language" aria-label="Language"><a href="experimentalnotation.html" lang="ru" data-language-link="ru" aria-current="page">RU</a><span aria-hidden="true">|</span><a href="en/experimentalnotation.html" lang="en" data-language-link="en">EN</a></span><!-- /language-switch -->
         <a href="contact.html">Связаться со&nbsp;мной</a>
     </div>
+<div class="mobile-header-bar">
+<div class="mobile-header-start"><button type="button" class="mobile-menu-toggle" aria-label="Открыть меню" data-open-label="Открыть меню" data-close-label="Закрыть меню" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button><a href="index.html">На главную</a></div>
+<div class="mobile-header-end"><span class="site-language" aria-label="Language"><a href="experimentalnotation.html" lang="ru" data-language-link="ru" aria-current="page">RU</a><span aria-hidden="true">|</span><a href="en/experimentalnotation.html" lang="en" data-language-link="en">EN</a></span><a href="contact.html">Связаться&nbsp;со&nbsp;мной</a></div>
+</div>
 </header>
+<nav id="mobile-menu" class="mobile-menu" aria-label="Основное меню" hidden><a href="index.html">Главная</a><a href="works.html">Работы</a><a href="index.html#about">Обо мне</a><a href="contact.html">Связаться со мной</a></nav>
 
     <main class="page">
 <div class="notation-before-yellow">

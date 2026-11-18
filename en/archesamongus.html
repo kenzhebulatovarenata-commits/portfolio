@@ -17,11 +17,13 @@
 <script src="../mobile-viewport.js?v=20261118-black-bottom-5" defer></script>
 <link rel="stylesheet" href="../arches.css?v=20261118-mobile-title-lines-9">
 <script src="../arches.js?v=20261118-1" defer></script>
+<link rel="stylesheet" href="../mobile-header.css?v=20261118-2">
+<script src="../mobile-header.js?v=20261118-1" defer></script>
 </head>
 
 <body class="arches-page">
 
-<header class="header">
+<header class="header mobile-header-enabled">
     <div class="nav-left">
         <a href="index.html">Home</a>
         <a href="works.html">All works</a>
@@ -30,7 +32,12 @@
     <div class="nav-right"><!-- language-switch --><span class="site-language" aria-label="Language"><a href="../archesamongus.html" lang="ru" data-language-link="ru">RU</a><span aria-hidden="true">|</span><a href="archesamongus.html" lang="en" data-language-link="en" aria-current="page">EN</a></span><!-- /language-switch -->
         <a href="contact.html">Contact me</a>
     </div>
+<div class="mobile-header-bar">
+<div class="mobile-header-start"><button type="button" class="mobile-menu-toggle" aria-label="Open menu" data-open-label="Open menu" data-close-label="Close menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button><a href="index.html">Home</a></div>
+<div class="mobile-header-end"><span class="site-language" aria-label="Language"><a href="../archesamongus.html" lang="ru" data-language-link="ru">RU</a><span aria-hidden="true">|</span><a href="archesamongus.html" lang="en" data-language-link="en" aria-current="page">EN</a></span><a href="contact.html">Contact&nbsp;me</a></div>
+</div>
 </header>
+<nav id="mobile-menu" class="mobile-menu" aria-label="Main navigation" hidden><a href="index.html">Home</a><a href="works.html">Works</a><a href="index.html#about">About me</a><a href="contact.html">Contact me</a></nav>
 
     <main class="page">
 <!-- ЗАГОЛОВОК -->

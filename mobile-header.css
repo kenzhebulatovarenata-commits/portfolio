@@ -1,0 +1,78 @@
+/* Shared mobile navigation; desktop headers retain their existing markup. */
+.mobile-header-bar,
+.mobile-menu { display: none; }
+@media (max-width: 700px) {
+    body .header.mobile-header-enabled {
+        display: flex;
+        padding-inline: 12px;
+        z-index: 1002;
+    }
+    body .header.mobile-header-enabled > :is(.nav-left, .nav-right) { display: none; }
+    body .header .mobile-header-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        width: 100%;
+        color: #fff;
+    }
+    body:is(.works-page, .contact-page) .header .mobile-header-bar { color: #080808; }
+    .mobile-header-start,
+    .mobile-header-end { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    body .header .mobile-header-bar a {
+        --button-inline-padding: 0px;
+        padding: 10px 0;
+        margin: 0;
+        font: 500 11px/1.4 'Manrope', sans-serif;
+        white-space: nowrap;
+        color: inherit;
+    }
+    body .header .mobile-header-bar .site-language { color: inherit; font-size: 11px; }
+    body .header .mobile-header-bar .site-language a { padding: 0; }
+    .mobile-menu-toggle {
+        display: grid;
+        place-content: center;
+        gap: 5px;
+        width: 36px;
+        height: 40px;
+        flex: 0 0 36px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+    }
+    .mobile-menu-toggle span { display: block; width: 22px; height: 1px; background: currentColor; }
+    .mobile-menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(6px) rotate(45deg); }
+    .mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .mobile-menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-menu-toggle:focus-visible { outline: 1px solid currentColor; outline-offset: 2px; }
+    .mobile-menu:not([hidden]) {
+        position: fixed;
+        inset: 0;
+        z-index: 1001;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 24px;
+        padding: calc(80px + env(safe-area-inset-top, 0px)) 24px max(40px, env(safe-area-inset-bottom, 0px));
+        overflow-y: auto;
+        background: #000;
+        color: #fff;
+    }
+    .mobile-menu a {
+        color: #fff;
+        text-decoration: none;
+        font: 500 clamp(22px, 6vw, 36px)/1.2 'Manrope', sans-serif;
+        text-transform: uppercase;
+    }
+    html.mobile-menu-open,
+    html.mobile-menu-open body { overflow: hidden; }
+    html.mobile-menu-open body .header.mobile-header-enabled {
+        background: #000;
+        mix-blend-mode: normal;
+        transform: none;
+    }
+    html.mobile-menu-open body .header .mobile-header-bar { color: #fff; }
+}
