@@ -56,13 +56,16 @@
     .pragma-page .header :is(.nav-left, .nav-right) { gap: clamp(7px, 2vw, 16px); }
 }
 @media (max-width: 700px) {
-    .pragma-page { --pragma-gutter: 3.2vw; --pragma-gap: 1.2vw; }
-    .pragma-opening { height: 65svh; min-height: 360px; padding: 50px 3.2vw 0; }
+    /* Match Degree Show’s mobile text, content frame and gallery spacing. */
+    .pragma-page .header { padding-inline: 8px; }
+    .pragma-page .header a { font-size: 11px; }
+    .pragma-page { --pragma-gutter: 3.2vw; --pragma-gap: clamp(8px, 1.2vw, 24px); }
+    .pragma-opening { height: 65svh; min-height: 360px; padding: 50px 20px 0; }
     .pragma-page .pragma-opening h1 { margin-bottom: 12px; }
-    .project-subtitle { font-size: 4.4vw; }
+    .pragma-page .project-subtitle { font-size: 13px; line-height: 1.4; }
     .pragma-palette { height: 38vw; }
-    .pragma-story { padding: 48px 24px; }
-    .pragma-copy { width: 100%; max-width: 30ch; font-size: 13px; line-height: 1.4; }
+    .pragma-story { padding: 48px var(--pragma-gutter); }
+    .pragma-copy { width: 100%; max-width: none; font-size: 13px; line-height: 1.4; }
     .pragma-posters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .pragma-products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .pragma-packaging { grid-template-columns: repeat(2, minmax(0, 1fr)); }
