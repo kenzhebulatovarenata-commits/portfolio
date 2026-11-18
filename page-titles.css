@@ -7,3 +7,14 @@ body .page-title.page-title {
     letter-spacing: -.035em;
     text-transform: uppercase;
 }
+
+/* Mobile opening titles use the Works page scale. */
+@media (max-width: 700px) {
+    body:not(.home-projects):not(.notation-page):not(.contact-page) .page-title.page-title {
+        --section-heading-size: 14vw;
+        font-size: 14vw !important;
+        overflow-wrap: normal;
+        word-break: normal;
+    }
+    body.degree-page #degree-title.page-title { font-size: 14vw !important; }
+}

@@ -3,11 +3,12 @@
     const opening = document.querySelector('.degree-opening');
     if (!opening) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mobileOpening = window.matchMedia('(max-width: 700px)');
     let frame = 0;
     const mix = (start, end, progress) => start + (end - start) * progress;
     function render() {
         frame = 0;
-        if (reducedMotion.matches) return;
+        if (reducedMotion.matches || mobileOpening.matches) return;
         const height = opening.querySelector('.degree-stage').clientHeight;
         const progress = Math.max(0, Math.min(1, -opening.getBoundingClientRect().top / (height * .3)));
         const eased = progress * progress * (3 - 2 * progress);

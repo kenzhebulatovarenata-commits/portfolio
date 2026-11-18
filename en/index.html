@@ -10,16 +10,17 @@
     <script src="../home-intro.js?v=20261117-static-footer-2"></script>
     <link rel="stylesheet" href="../style.css?v=20261115-compact-headings-3">
     <link rel="stylesheet" href="../home-gallery.css?v=20261115-gallery-entry-10">
-    <link rel="stylesheet" href="../home-layout.css?v=20261117-compact-end-2">
-    <link rel="stylesheet" href="../footer.css?v=20261117-proportional-title-6">
+    <link rel="stylesheet" href="../home-layout.css?v=20261118-centered-mobile-hero-8">
+    <link rel="stylesheet" href="../footer.css?v=20261118-mobile-footer-1">
 <link rel="stylesheet" href="../language-switch.css?v=20261117-1">
 <script src="../language-switch.js?v=20261117-1" defer></script>
+<script src="../mobile-project-captions.js?v=20261118-3" defer></script>
 </head>
 <body class="home-projects">
 
 <header class="header">
     <div class="nav-left">
-        <a href="works.html">Projects</a>
+        <a href="works.html">Works</a>
         <a href="#about">About me</a>
     </div>
 
@@ -34,7 +35,7 @@
 <!-- Приветствие на первом экране -->
 <section class="hero">
     <h1 aria-label="Hi, my name is Renata!">
-        <span class="hero-line" aria-hidden="true"><span class="hero-word">HI,</span> <span class="hero-word">MY NAME</span></span>
+        <span class="hero-line" aria-hidden="true"><span class="hero-word">HI<span class="hero-mobile-punctuation">,</span></span> <span class="hero-word">MY NAME</span></span>
         <span class="hero-line indent" aria-hidden="true"><span class="hero-word">IS</span> <span class="hero-word">RENATA!</span></span>
     </h1>
 </section>
@@ -44,47 +45,47 @@
 <div class="scroll-spacer"></div>
 
 <section class="proj" id="projects">
-    <h2>PROJECTS</h2>
+    <h2>WORKS</h2>
 </section>
 
 <!-- Горизонтальная лента: обложки постоянного размера. -->
-<section class="scene" aria-label="Selected projects">
-    <div class="gallery" aria-label="Project gallery">
+<section class="scene" aria-label="Selected works">
+    <div class="gallery" aria-label="Work gallery">
         <a class="card" href="archesamongus.html" aria-label="Arches Among Us" style="--project-color: #eaeaea; --project-ink: black">
             <div class="card-inner"><img src="../img/2.jpg" alt="Arches Among Us" loading="lazy" draggable="false"></div>
-            <div class="project-caption"><span class="project-caption-title">Arches Among Us</span><span>An exploration of arches in the Gagarinsky District.</span></div>
+            <div class="project-caption"><span class="project-caption-title">Arches Among Us</span></div>
         </a>
         <a class="card" href="degreeshow.html" aria-label="Degree Show 2026" style="--project-color: #95aefc; --project-ink: black">
             <div class="card-inner"><img src="../degree/degava.png" alt="Degree Show 2026" loading="lazy" draggable="false"></div>
-            <div class="project-caption"><span class="project-caption-title">Degree Show 2026</span><span>Identity for Degree Show 2026.</span></div>
+            <div class="project-caption"><span class="project-caption-title">Degree Show 2026</span></div>
         </a>
         <a class="card" href="experimentalnotation.html" aria-label="Experimental Notation" style="--project-color: #7dc0b8; --project-ink: black">
             <div class="card-inner"><img src="../img/1.jpg" alt="Experimental Notation" loading="lazy" draggable="false"></div>
-            <div class="project-caption"><span class="project-caption-title">Experimental Notation</span><span>Visualising sound through abstract shapes and rhythm.</span></div>
+            <div class="project-caption"><span class="project-caption-title">Experimental Notation</span></div>
         </a>
         <a class="card" href="pragma.html" aria-label="Pragma x BHSAD" style="--project-color: #fcf6d2; --project-ink: black">
             <div class="card-inner"><img src="../img/pragma-cover-circle.png" alt="Pragma x BHSAD" loading="lazy" draggable="false"></div>
-            <div class="project-caption"><span class="project-caption-title">Pragma x BHSAD</span><span>A limited-edition tableware collection.</span></div>
+            <div class="project-caption"><span class="project-caption-title">Pragma x BHSAD</span></div>
         </a>
         <a class="card" href="alphabet.html" aria-label="alphabet" style="--project-color: #201f1f; --project-ink: white">
             <div class="card-inner"><img src="../img/project-alphabet.png" alt="alphabet" loading="lazy" draggable="false"></div>
-            <div class="project-caption"><span class="project-caption-title">alphabet</span><span>A typographic composition with the alphabet.</span></div>
+            <div class="project-caption"><span class="project-caption-title">alphabet</span></div>
         </a>
         <article class="card" tabindex="0" aria-label="My workplace" style="--project-color: #282f1b; --project-ink: white">
             <div class="card-inner"><img src="../img/project-table.png" alt="My workplace" loading="lazy" draggable="false"></div>
-            <div class="project-caption"><span class="project-caption-title">My workplace</span><span>A visualisation of a workspace.</span></div>
+            <div class="project-caption"><span class="project-caption-title">My workplace</span></div>
         </article>
         <a class="card" href="works.html?project=8" aria-label="DON’T TEXT YOUR EX" style="--project-color: #8c381d; --project-ink: white">
             <div class="card-inner"><img src="../img/project-wine.jpg" alt="DON’T TEXT YOUR EX" loading="lazy" draggable="false"></div>
-            <div class="project-caption"><span class="project-caption-title">DON’T TEXT YOUR EX</span><span>Wine label design and product photography.</span></div>
+            <div class="project-caption"><span class="project-caption-title">DON’T TEXT YOUR EX</span></div>
         </a>
         <div class="project-more-wrap project-more-card">
             <a class="projects-more" href="works.html">See more <span aria-hidden="true">→</span></a>
         </div>
     </div>
-    <div class="project-controls" aria-label="Browse projects">
-        <button type="button" data-project-direction="-1" aria-label="Previous projects">←</button>
-        <button type="button" data-project-direction="1" aria-label="Next projects">→</button>
+    <div class="project-controls" aria-label="Browse works">
+        <button type="button" data-project-direction="-1" aria-label="Previous works">←</button>
+        <button type="button" data-project-direction="1" aria-label="Next works">→</button>
     </div>
 </section>
 
@@ -175,7 +176,7 @@ I develop books, booklets and zines from the initial idea to final production.
 </main>
 
 <script src="../home-about.js?v=20261115-animation-fix-1" defer></script>
-<script src="../home-gallery.js?v=20261115-project-strip-9" defer></script>
+<script src="../home-gallery.js?v=20261118-restore-original-background-11" defer></script>
 <footer class="footer">
 
     <div class="footer-inner">

@@ -2,7 +2,7 @@
     'use strict';
     const english = document.documentElement.lang === 'en';
     const labels = {
-        'Просмотр проекта': 'Project viewer', 'Закрыть просмотр': 'Close viewer',
+        'Просмотр работы': 'Work viewer', 'Закрыть просмотр': 'Close viewer',
         'Предыдущее изображение': 'Previous image', 'Следующее изображение': 'Next image',
         'Выбрать изображение': 'Choose an image', 'видео': 'video', 'из': 'of',
         'Видео': 'Video', 'Изображение': 'Image', 'Открыть': 'Open',
@@ -15,7 +15,7 @@
     const viewer = document.createElement('dialog');
     viewer.className = 'media-modal';
     viewer.tabIndex = -1;
-    viewer.setAttribute('aria-label', t('Просмотр проекта'));
+    viewer.setAttribute('aria-label', t('Просмотр работы'));
     viewer.innerHTML = `<button class="media-close" type="button" aria-label="Закрыть просмотр">×</button>
         <div class="media-body"><button class="media-prev" type="button" aria-label="Предыдущее изображение">←</button><img class="media-image" alt=""><video class="media-video" controls muted loop playsinline hidden></video><button class="media-next" type="button" aria-label="Следующее изображение">→</button></div>
         <p class="media-caption" aria-live="polite"></p><div class="media-thumbs" aria-label="Выбрать изображение"></div>`;

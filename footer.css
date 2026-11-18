@@ -44,7 +44,19 @@ body .footer.footer .footer-note {
     opacity: .6;
 }
 @media (max-width: 700px) {
-    body .footer.footer { --footer-copy-size: 13px; padding: 64px 16px 12px; }
+    body .footer.footer {
+        --footer-copy-size: 10.667px;
+        padding: 48px 16px 12px;
+        margin-top: 0;
+    }
+    body .footer.footer h2 { margin-bottom: 14px; }
+    body .footer.footer .text-body + .text-body { margin-top: 6px; }
+    body .footer.footer .footer-note { margin-top: 24px; }
+
+    /* Let the footer own the gap after the final mobile content block. */
+    body.home-projects .experience,
+    body.arches-page .arches-content,
+    body.works-page .catalogue-groups { padding-bottom: 0; }
 }
 
 /* Footer content stays visible and still, independently of page entrance effects. */

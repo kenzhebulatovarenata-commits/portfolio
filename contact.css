@@ -18,9 +18,9 @@
 @media (max-width: 700px) {
     .contact-page .header { padding: 8px 16px; }
     .contact-page .header .nav-left { gap: 10px; }
-    .contact-layout { grid-template-columns: minmax(0, 1fr); padding-top: 52px; }
+    .contact-layout { grid-template-columns: minmax(0, 1fr); align-content: start; padding-top: 52px; }
     .contact-portrait { height: 55svh; }
     .contact-portrait img { object-position: center 45%; }
-    .contact-copy { padding: 40px 24px 64px; }
+    .contact-copy { justify-content: flex-start; padding: 40px 24px 64px; }
     .contact-links { font-size: 13px; }
 }

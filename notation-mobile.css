@@ -1,0 +1,190 @@
+/* Mobile-only proportions; the desktop composition keeps its existing rules. */
+@media (max-width: 700px) {
+    .notation-page .notation-hero-title {
+        font-size: var(--notation-mobile-title-size, 12.5vw) !important;
+    }
+    .notation-page .page :is(.notation-intro-copy, .notation-copy-panel, .notationani-textblock) p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    .notation-page .notation-poster-panel { padding-block: 32px; }
+    .notation-page .notation-poster-panel .posters,
+    .notation-page .notation-rest > :is(.notationani-bottom, .image-block) { padding-inline: 8px; }
+    .notation-page .notation-poster-panel .posters-inner,
+    .notation-page .image-block :is(.image-block-inner, .small-col, .big-col, .nstickers-inner) { gap: 8px; }
+    .notation-page .notation-rest > :is(.notationani-bottom, .image-block) { padding-top: 48px; }
+    .notation-page .notationani-inner { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .notation-page .notationani-inner .video-wrapper { width: 100%; max-width: none; margin: 0; }
+    .notation-page .notationani-textblock { max-width: none; padding-inline: 12px; }
+    .notation-page .image-block .nstickers { margin-top: 8px; }
+}
+
+@media (max-width: 700px) {
+    .notation-page .notationani-inner > .video-wrapper,
+    .notation-page .notationani-inner > .notationani-right {
+        --reveal-duration: 800ms;
+    }
+    .notation-page .notationani-inner [data-reveal-direction="left"] { translate: -50vw 0; }
+    .notation-page .notationani-inner [data-reveal-direction="right"] { translate: 50vw 0; }
+    .notation-page .notationani-inner .works-scroll-reveal.is-in-view { translate: 0 0; }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+    .notation-page .notationani-inner .works-scroll-reveal {
+        opacity: 1;
+        translate: none;
+        transition: none;
+    }
+}
+
+/* A normal mobile document flow: title, introduction, then the first video. */
+@media (max-width: 700px) {
+    .notation-page .notation-light { position: relative; top: auto; }
+    .notation-page .page .notation-scroll-scene { height: auto; }
+    .notation-page .notation-stage {
+        position: relative;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: calc(96px + env(safe-area-inset-top, 0px)) 8px 0;
+    }
+    .notation-page .notation-hero-title { width: 100%; }
+    .notation-page :is(.notation-experimental, .notation-word) {
+        position: static;
+        left: auto;
+        transform: none;
+        white-space: nowrap;
+    }
+    .notation-page .notation-experimental { display: block; width: max-content; }
+    .notation-page .notation-word { width: max-content; margin-inline: auto; column-gap: 0; }
+    .notation-page .notation-intro-copy {
+        position: static;
+        width: 100%;
+        min-height: 0;
+        padding: 0 12px;
+    }
+    .notation-page .notation-intro-copy .notation-text { max-width: none; }
+    .notation-page .notation-growing-video {
+        position: relative;
+        width: 100%;
+        left: auto;
+        transform: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .notation-page .notation-growing-video {
+        width: calc(100% + 16px);
+        margin-inline: -8px;
+        padding: 24px 8px 0;
+        background: #000;
+    }
+    .notation-page .notation-poster-panel {
+        position: relative;
+        top: auto;
+        min-height: 0;
+        padding: 24px 0 16px;
+    }
+    .notation-page .page .notation-copy-panel {
+        position: relative;
+        padding: 32px 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    .notation-page .page .works-scroll-reveal { --reveal-duration: 450ms; }
+    .notation-page .notationani-inner > .works-scroll-reveal { --reveal-duration: 650ms; }
+}
+
+.notation-before-yellow { display: contents; }
+@media (max-width: 700px) {
+    .notation-page .notation-before-yellow {
+        display: block;
+        position: sticky;
+        top: var(--notation-before-pin-top, 0px);
+        z-index: 0;
+    }
+    .notation-page .page .notation-copy-yellow {
+        z-index: 3;
+        padding-block: 32px;
+    }
+    .notation-page .notation-copy-yellow .text-body { margin: 0; }
+    .notation-page .notation-rest > .notationani-bottom { padding-top: 16px; }
+}
+
+@media (max-width: 700px) {
+    .notation-page .notation-copy-yellow .notation-text.works-scroll-reveal {
+        translate: none;
+        transition-property: opacity;
+    }
+}
+
+/* Final media grid follows the supplied mobile reference. */
+@media (max-width: 700px) {
+    .notation-page .image-block-inner {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 3.55fr);
+        align-items: stretch;
+    }
+    .notation-page .image-block .small-col {
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
+    .notation-page .image-block .big-col {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+    }
+    .notation-page .image-block :is(.small-col, .big-col) img {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        object-fit: cover;
+    }
+    .notation-page .image-block .nstickers-inner {
+        min-height: 0;
+        grid-template-columns: minmax(0, 1fr) minmax(0, .8fr) minmax(0, 1.7fr);
+        align-items: start;
+    }
+    .notation-page .image-block .nstickers-inner img {
+        height: auto;
+        object-fit: contain;
+    }
+    .notation-page .notation-growing-video { padding-block: 16px; }
+    .notation-page .notation-poster-panel { padding-top: 0; }
+}
+
+@media (max-width: 700px) {
+    .notation-page .image-block .nstickers {
+        margin-top: 0;
+        padding-top: 8px;
+    }
+}
+
+/* Match the reference photo sizes: two bottles beside two full-height packs. */
+@media (max-width: 700px) {
+    .notation-page .image-block .image-block-inner {
+        grid-template-columns: minmax(0, 1fr) repeat(2, minmax(0, 1.75fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        aspect-ratio: 2490 / 1395;
+        gap: 8px;
+    }
+    .notation-page .image-block-inner > .image-col { display: contents; }
+    .notation-page .image-block .small-col img:first-child { grid-area: 1 / 1 / 2 / 2; }
+    .notation-page .image-block .small-col img:last-child { grid-area: 2 / 1 / 3 / 2; }
+    .notation-page .image-block .big-col img:first-child { grid-area: 1 / 2 / 3 / 3; }
+    .notation-page .image-block .big-col img:last-child { grid-area: 1 / 3 / 3 / 4; }
+}
+
+
+/* Reserve the portrait video's layout before metadata or playback starts. */
+@media (max-width: 700px) {
+    .notation-page .notationani-inner > .video-wrapper {
+        aspect-ratio: 320 / 569;
+        overflow-anchor: none;
+    }
+    .notation-page .notationani-inner > .video-wrapper > video {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 320 / 569;
+        object-fit: contain;
+    }
+    .notation-page .notation-rest { overflow-anchor: none; }
+}

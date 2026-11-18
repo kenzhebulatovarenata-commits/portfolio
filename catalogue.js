@@ -2,10 +2,29 @@
     'use strict';
     const groups = [...document.querySelectorAll('.catalogue-group')];
     const links = [...document.querySelectorAll('[data-catalogue-group]')];
+    const mobile = matchMedia('(max-width: 700px)');
+    const header = document.querySelector('.header');
+    function measureHeader() {
+        document.documentElement.style.setProperty('--catalogue-header-height', `${header.getBoundingClientRect().height}px`);
+    }
+    new ResizeObserver(measureHeader).observe(header);
+    measureHeader();
+    let mobileGroup = groups.find(group => '#' + group.id === location.hash)?.dataset.group || 'all';
+    function showMobileGroup(value) {
+        mobileGroup = groups.some(group => group.dataset.group === value) ? value : 'all';
+        groups.forEach(group => group.classList.toggle('is-mobile-current', group.dataset.group === mobileGroup));
+        links.forEach(link => {
+            if (link.dataset.catalogueGroup === mobileGroup) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
+        });
+    }
+    document.body.classList.add('has-mobile-catalogue');
+    showMobileGroup(mobileGroup);
     let active = '';
     let frame = null;
     function updateGroup() {
         frame = null;
+        if (mobile.matches) return;
         const focus = innerHeight * .55;
         const current = groups.find(group => {
             const r = group.getBoundingClientRect();
@@ -21,8 +40,22 @@
     function scheduleGroup() { if (frame === null) frame = requestAnimationFrame(updateGroup); }
     window.addEventListener('scroll', scheduleGroup, { passive: true });
     window.addEventListener('resize', scheduleGroup);
+    mobile.addEventListener('change', () => {
+        if (mobile.matches) showMobileGroup(mobileGroup);
+        else { active = ''; scheduleGroup(); }
+    });
+    window.addEventListener('hashchange', () => {
+        if (!mobile.matches) return;
+        const group = groups.find(group => '#' + group.id === location.hash);
+        if (group) showMobileGroup(group.dataset.group);
+    });
     links.forEach(link => link.addEventListener('click', event => {
         event.preventDefault();
+        if (mobile.matches) {
+            showMobileGroup(link.dataset.catalogueGroup);
+            history.replaceState(null, '', link.getAttribute('href'));
+            return;
+        }
         document.getElementById(link.getAttribute('href').slice(1)).scrollIntoView({ behavior: 'smooth', block: 'start' });
     }));
     groups.forEach(group => {
@@ -42,12 +75,13 @@
         }
         controls.forEach(button => button.addEventListener('click', () => move(Number(button.dataset.direction))));
         track.addEventListener('keydown', event => {
+            if (mobile.matches) return;
             if (!['ArrowLeft','ArrowRight'].includes(event.key)) return;
             event.preventDefault();
             move(event.key === 'ArrowLeft' ? -1 : 1);
         });
         track.addEventListener('pointerdown', event => {
-            if (event.pointerType !== 'mouse' || event.button !== 0) return;
+            if (mobile.matches || event.pointerType !== 'mouse' || event.button !== 0) return;
             drag = { id: event.pointerId, x: event.clientX, start: track.scrollLeft, active: false };
         });
         track.addEventListener('pointermove', event => {

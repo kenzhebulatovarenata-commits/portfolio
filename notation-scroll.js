@@ -18,24 +18,33 @@
     paragraph.replaceChildren(...words.flatMap((span, index) => index ? [document.createTextNode(' '), span] : [span]));
     let endWidth = 0;
     let frame = null;
+    let measuredWidth = 0;
+    let measureFrame = null;
 
     function render() {
         frame = null;
         const width = document.documentElement.clientWidth;
         const height = window.innerHeight;
+        const mobile = width <= 700;
+        if (mobile) {
+            paragraph.style.fontSize = '13px';
+            return;
+        }
         const rect = scene.getBoundingClientRect();
         const distance = Math.max(0, -rect.top);
         const progress = Math.min(1, distance / (height * 1.4));
         const headerHeight = document.querySelector('.header').offsetHeight;
         const firstTop = Math.max(headerHeight + 42, height * 0.2);
         const wordTop = firstTop + width * 0.145 + 22;
-        const startWidth = width * 0.33;
+        const titleWordsWidth = document.querySelector('.notation-nota').offsetWidth + document.querySelector('.notation-tion').offsetWidth;
+        const startGap = mobile ? Math.max(0, width - 16 - titleWordsWidth) : width * 0.35;
+        const startWidth = mobile ? Math.min(width * 0.33, startGap) : width * 0.33;
         const videoWidth = startWidth + (endWidth - startWidth) * progress;
         const endTop = Math.max(headerHeight + 16, (height - endWidth * 9 / 16) / 2);
 
         experimental.style.top = `${firstTop - height * 0.65 * progress}px`;
         word.style.top = `${wordTop - height * 0.48 * progress}px`;
-        word.style.columnGap = `${width * 0.35 * (1 - Math.min(1, progress / 0.8))}px`;
+        word.style.columnGap = `${startGap * (1 - Math.min(1, progress / 0.8))}px`;
         const notaWidth = document.querySelector('.notation-nota').offsetWidth;
         const tionWidth = document.querySelector('.notation-tion').offsetWidth;
         const mediaCenter = width / 2 + (notaWidth - tionWidth) / 2 * (1 - progress);
@@ -44,7 +53,7 @@
         const mediaTop = wordTop + (endTop - wordTop) * progress;
         media.style.top = `${mediaTop}px`;
         const eased = progress * progress * (3 - 2 * progress);
-        const gutter = Math.max(24, (width - endWidth) / 2);
+        const gutter = mobile ? 8 : Math.max(24, (width - endWidth) / 2);
         const finalCopyWidth = Math.min(700, width - gutter * 2);
         const initialLeft = mediaCenter - videoWidth / 2;
         const initialCopyWidth = Math.min(Math.max(160, videoWidth * 0.64), width - initialLeft - 16);
@@ -52,7 +61,7 @@
         intro.style.width = `${copyWidth}px`;
         intro.style.left = `${initialLeft + ((width - finalCopyWidth) / 2 - initialLeft) * eased}px`;
         intro.style.top = `${mediaTop + videoWidth * 9 / 16 + 10 * (1 - eased)}px`;
-        paragraph.style.fontSize = `${8 + 10 * eased}px`;
+        paragraph.style.fontSize = `${mobile ? 13 : 8 + 10 * eased}px`;
         copy.style.transform = `translateY(${Math.max(0, (intro.offsetHeight - paragraph.offsetHeight) / 2) * eased}px)`;
 
         const lines = new Map();
@@ -68,14 +77,35 @@
     }
 
     function requestRender() {
+        if (document.documentElement.clientWidth <= 700) return;
         if (frame === null) frame = requestAnimationFrame(render);
     }
 
     function measure() {
         const width = document.documentElement.clientWidth;
+        const mobile = width <= 700;
+        if (mobile && measuredWidth === width) return;
+        measuredWidth = width;
+        if (mobile) {
+            [experimental, word, media, intro, copy, ...words].forEach(element => {
+                ['top', 'left', 'width', 'transform', 'column-gap'].forEach(property => element.style.removeProperty(property));
+            });
+            word.style.removeProperty('font-size');
+            const currentSize = parseFloat(getComputedStyle(experimental).fontSize);
+            const currentWidth = experimental.getBoundingClientRect().width;
+            if (currentWidth > 0) document.body.style.setProperty('--notation-mobile-title-size', `${currentSize * (width - 16) / currentWidth}px`);
+            const wordSize = parseFloat(getComputedStyle(word).fontSize);
+            const wordWidth = word.getBoundingClientRect().width;
+            if (wordWidth > 0) word.style.fontSize = `${wordSize * (width - 16) / wordWidth}px`;
+            paragraph.style.fontSize = '13px';
+            return;
+        } else {
+            document.body.style.removeProperty('--notation-mobile-title-size');
+            word.style.removeProperty('font-size');
+        }
         const headerHeight = document.querySelector('.header').offsetHeight;
         const currentMaxWidth = Math.min(width * 0.8, Math.max(width * 0.4, (window.innerHeight - headerHeight - 190) * 16 / 9));
-        endWidth = (currentMaxWidth + width * 0.96) / 2;
+        endWidth = mobile ? width - 16 : (currentMaxWidth + width * 0.96) / 2;
         const endTop = Math.max(headerHeight + 16, (window.innerHeight - endWidth * 9 / 16) / 2);
         document.body.style.setProperty('--notation-gutter', `${(width - endWidth) / 2}px`);
         const stageHeight = Math.max(window.innerHeight, endTop + endWidth * 9 / 16 + intro.offsetHeight + window.innerHeight * 0.18);
@@ -89,8 +119,11 @@
     }
 
     window.addEventListener('scroll', requestRender, { passive: true });
-    window.addEventListener('resize', measure);
+    window.addEventListener('resize', () => {
+        if (document.documentElement.clientWidth <= 700 && document.documentElement.clientWidth === measuredWidth) return;
+        if (measureFrame === null) measureFrame = requestAnimationFrame(() => { measureFrame = null; measure(); });
+    });
     window.addEventListener('load', measure, { once: true });
-    document.fonts.ready.then(measure);
+    document.fonts.ready.then(() => { measuredWidth = 0; measure(); });
     measure();
 })();

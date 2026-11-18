@@ -1,0 +1,85 @@
+.arches-page { background: #fff; color: #080808; }
+.arches-page .header { background: transparent; mix-blend-mode: difference; }
+.arches-page .page { display: block; padding: 0; }
+.arches-page .page section { margin-bottom: 0; }
+.arches-page .arches-opening {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+    min-height: max(520px, 78svh);
+    display: grid;
+    grid-template-columns: minmax(0, 44fr) minmax(0, 45.3fr);
+    gap: 4.3vw;
+    align-items: end;
+    align-content: center;
+    padding: 100px 3.2vw 72px;
+    background: #fff;
+    color: #080808;
+}
+.arches-page .arches-opening .page-title { margin: 0; text-align: left !important; }
+.arches-page .arches-intro,
+.arches-page .arches-story .text-body {
+    font-size: clamp(14px, .94vw, 16px);
+    line-height: 1.5;
+    font-weight: 400;
+    opacity: 1;
+    margin: 0;
+    text-align: left;
+}
+.arches-page .arches-content {
+    position: relative;
+    z-index: 1;
+    padding: 64px 3.2vw 80px;
+    background: #000;
+    color: #fff;
+}
+.arches-page .arches { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(8px, 1.6vw, 24px); }
+.arches-page .arches-item { position: relative; border-radius: 0; }
+.arches-page .arches-poster,
+.arches-page .arches-video {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+}
+.arches-page .arches-poster { pointer-events: none; }
+.arches-page .arches-video { opacity: 0; transform: none; transition: none; }
+.arches-page .arches-video.is-playing { opacity: 1; }
+.arches-page .arches-story { width: 100%; max-width: 700px; margin: 48px auto !important; }
+@media (max-width: 700px) {
+    .arches-page .header { padding: 8px 16px; }
+    .arches-page .header :is(.nav-left, .nav-right) { display: flex; align-items: center; gap: 10px; }
+    .arches-page .header a { padding-inline: 0; margin: 0; font-size: 11px; white-space: nowrap; }
+    .arches-page .arches-opening {
+        min-height: 0;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+        padding: calc(96px + env(safe-area-inset-top, 0px)) 20px 48px;
+    }
+    .arches-page .arches-intro,
+    .arches-page .arches-story .text-body { font-size: 13px; line-height: 1.4; }
+    .arches-page .arches-content { padding: 32px 20px 48px; }
+    .arches-page .arches { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .arches-page .arches-story { margin: 24px auto !important; }
+}
+
+/* Restore the original desktop grid while keeping three columns on phones. */
+@media (min-width: 701px) {
+    .arches-page .arches-content {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: clamp(8px, 1.6vw, 24px);
+    }
+    .arches-page .arches-content > .arches { display: contents; }
+    .arches-page .arches-story { grid-column: 1 / -1; }
+    .arches-page .arches-story-first { grid-row: 2; }
+    .arches-page .arches-story-second { grid-row: 4; }
+}
+
+
+@media (max-width: 700px) {
+    .arches-page #arches-title .arches-title-word { display: block; }
+}

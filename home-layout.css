@@ -314,3 +314,55 @@
                 opacity 380ms ease, translate 460ms cubic-bezier(.22,.61,.36,1);
     transition-delay: 0ms, 0ms, var(--part-delay, 0ms), var(--part-delay, 0ms);
 }
+
+/* Mobile greeting follows the Russian and English reference line breaks. */
+@media (max-width: 700px) {
+    .home-projects .hero {
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 64px 4vw 0;
+    }
+    .home-projects .hero h1 {
+        width: 100%;
+        margin: 0;
+        font-size: 21.5vw !important;
+        line-height: 1.02;
+        overflow-wrap: normal;
+    }
+    .home-projects .hero-line.indent { margin-left: 0; }
+    .home-projects .hero-line .hero-word { display: block; }
+    html:is([lang="ru"], [lang="en"]) .home-projects .hero {
+        align-items: center;
+        padding-top: 0;
+    }
+    html[lang="en"] .home-projects .hero h1 {
+        font-size: 18vw !important;
+        line-height: 1.02;
+    }
+    html[lang="en"] .home-projects .hero-line:last-child .hero-word { display: inline-block; }
+    .home-projects .hero-mobile-punctuation { display: none; }
+}
+
+/* Touch captions are controlled by a settled, fully visible project. */
+@media (max-width: 700px) {
+    .home-projects .card .project-caption {
+        transform: translateY(-100%);
+        visibility: hidden;
+        transition: transform 440ms cubic-bezier(.22,.61,.36,1), visibility 0s 440ms;
+    }
+    .home-projects .card.is-caption-visible .project-caption {
+        transform: translateY(0);
+        visibility: visible;
+        transition-delay: 0s;
+    }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+    .home-projects .card .project-caption { transition: none; }
+}
+
+/* Project captions contain only a title, so size each panel to its text. */
+.home-projects .project-caption {
+    min-height: 0;
+    padding: 12px 16px;
+    gap: 0;
+}

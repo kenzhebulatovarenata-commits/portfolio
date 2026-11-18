@@ -196,3 +196,43 @@
     stroke-dashoffset: 0;
     transition-delay: var(--degree-reveal-delay, 0ms);
 }
+
+/* A static mobile opening; the black project sections keep their reveals. */
+@media (max-width: 700px) {
+    .degree-page .page .degree-opening {
+        height: auto;
+        margin-bottom: 0;
+    }
+    .degree-page .degree-stage {
+        position: relative;
+        height: auto;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        padding: calc(96px + env(safe-area-inset-top, 0px)) 20px 48px;
+    }
+    .degree-page #degree-title,
+    .degree-page .degree-description {
+        position: static;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        transform: none;
+        will-change: auto;
+    }
+    .degree-page .degree-opening .degree-reveal {
+        opacity: 1;
+        translate: none;
+        transition: none;
+        animation: none;
+    }
+}
+
+/* Match mobile body copy to the description below the opening title. */
+@media (max-width: 700px) {
+    .degree-page .degree-content :is(p, .drafts-subtitle) {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+}
