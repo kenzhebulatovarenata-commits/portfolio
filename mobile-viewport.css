@@ -3,6 +3,10 @@
     html { background-color: var(--mobile-edge-background, #f1f1ef); }
     html.home-page,
     body.home-projects { background-color: var(--mobile-edge-background, #f1f1ef); }
+    /* Fill the space revealed when mobile browser controls collapse. */
+    .home-projects .has-about-scroll .about-stage {
+        height: 100dvh;
+    }
     body .header {
         padding-top: calc(8px + env(safe-area-inset-top, 0px)) !important;
     }

@@ -35,6 +35,10 @@
             element = element.parentElement;
         }
         color ||= getComputedStyle(document.body).backgroundColor;
+        // At the document end, use the footer even during Safari rubber-banding.
+        const footer = document.querySelector('.footer');
+        const atEnd = Math.ceil(scrollY + innerHeight) >= root.scrollHeight - 2;
+        if (footer && atEnd) color = getComputedStyle(footer).backgroundColor;
         // The yellow panel is content, not browser chrome. Safari may retain
         // a sampled tint after that sticky panel has left the viewport.
         if (document.body.classList.contains('notation-page') && color === 'rgb(242, 204, 50)') color = 'rgb(0, 0, 0)';
